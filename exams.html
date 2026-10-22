@@ -68,7 +68,6 @@
     .page-title { font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px; }
     .page-sub { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 600px; }
 
-    /* Табы предметов */
     .tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
     .tab-btn {
       padding: 12px 24px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
@@ -78,7 +77,6 @@
     .tab-btn:hover { background: var(--glass-hover); color: var(--text-main); }
     .tab-btn.active { background: var(--accent-primary); color: var(--bg-base); border-color: var(--accent-primary); }
 
-    /* Карточки тем */
     .topics-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
     
     .topic-item {
@@ -88,7 +86,6 @@
     }
     .topic-item:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.15); }
 
-    /* Кастомный чекбокс */
     .topic-item input[type="checkbox"] { display: none; }
     .checkmark {
       width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--text-muted);
@@ -102,7 +99,6 @@
 
     .topic-text { font-size: 16px; font-weight: 500; transition: var(--transition); }
 
-    /* Блок ресурсов */
     .resources-card {
       background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, var(--glass-bg) 100%);
       border: 1px solid rgba(0, 255, 136, 0.15);
@@ -147,11 +143,15 @@
       <button class="tab-btn active" onclick="switchSubject('inf', this)">Информатика</button>
       <button class="tab-btn" onclick="switchSubject('math', this)">Математика</button>
       <button class="tab-btn" onclick="switchSubject('rus', this)">Русский язык</button>
+      <button class="tab-btn" onclick="switchSubject('phys', this)">Физика</button>
+      <button class="tab-btn" onclick="switchSubject('chem', this)">Химия</button>
+      <button class="tab-btn" onclick="switchSubject('bio', this)">Биология</button>
+      <button class="tab-btn" onclick="switchSubject('soc', this)">Обществознание</button>
+      <button class="tab-btn" onclick="switchSubject('hist', this)">История</button>
+      <button class="tab-btn" onclick="switchSubject('eng', this)">Английский</button>
     </div>
 
-    <div class="topics-list" id="topicsContainer">
-      <!-- Сюда будут загружаться темы через JS -->
-    </div>
+    <div class="topics-list" id="topicsContainer"></div>
 
     <div class="resources-card">
       <h3><i class="ph-fill ph-link"></i> Где готовиться?</h3>
@@ -169,54 +169,83 @@
   </main>
 
   <script>
-    // База данных тем по предметам
     const subjectsData = {
-      inf: {
-        title: "Информатика",
-        topics: [
-          { id: "inf1", name: "Системы счисления и перевод чисел" },
-          { id: "inf2", name: "Логика и таблицы истинности" },
-          { id: "inf3", name: "Алгоритмы и блок-схемы" },
-          { id: "inf4", name: "Программирование (циклы и массивы)" },
-          { id: "inf5", name: "Теория игр (Задание 19-21)" }
-        ]
-      },
-      math: {
-        title: "Математика",
-        topics: [
-          { id: "math1", name: "Планиметрия (треугольники, окружности)" },
-          { id: "math2", name: "Стереометрия (объемы и площади)" },
-          { id: "math3", name: "Производная и исследование функций" },
-          { id: "math4", name: "Текстовые задачи на движение и работу" },
-          { id: "math5", name: "Экономические задачи (кредиты и вклады)" }
-        ]
-      },
-      rus: {
-        title: "Русский язык",
-        topics: [
-          { id: "rus1", name: "Орфография (приставки, корни, суффиксы)" },
-          { id: "rus2", name: "Пунктуация в сложных предложениях" },
-          { id: "rus3", name: "Грамматические и речевые нормы" },
-          { id: "rus4", name: "Средства выразительности (тропы)" },
-          { id: "rus5", name: "Написание сочинения (Задание 27)" }
-        ]
-      }
+      inf: { title: "Информатика", topics: [
+        { id: "inf1", name: "Системы счисления и перевод чисел" },
+        { id: "inf2", name: "Логика и таблицы истинности" },
+        { id: "inf3", name: "Алгоритмы и блок-схемы" },
+        { id: "inf4", name: "Программирование (циклы и массивы)" },
+        { id: "inf5", name: "Теория игр (Задание 19-21)" }
+      ]},
+      math: { title: "Математика", topics: [
+        { id: "math1", name: "Планиметрия (треугольники, окружности)" },
+        { id: "math2", name: "Стереометрия (объемы и площади)" },
+        { id: "math3", name: "Производная и исследование функций" },
+        { id: "math4", name: "Текстовые задачи на движение и работу" },
+        { id: "math5", name: "Экономические задачи (кредиты и вклады)" }
+      ]},
+      rus: { title: "Русский язык", topics: [
+        { id: "rus1", name: "Орфография (приставки, корни, суффиксы)" },
+        { id: "rus2", name: "Пунктуация в сложных предложениях" },
+        { id: "rus3", name: "Грамматические и речевые нормы" },
+        { id: "rus4", name: "Средства выразительности (тропы)" },
+        { id: "rus5", name: "Написание сочинения (Задание 27)" }
+      ]},
+      phys: { title: "Физика", topics: [
+        { id: "phys1", name: "Механика (кинематика, динамика)" },
+        { id: "phys2", name: "Молекулярная физика и термодинамика" },
+        { id: "phys3", name: "Электродинамика (цепи, магнитное поле)" },
+        { id: "phys4", name: "Оптика (линзы, волны)" },
+        { id: "phys5", name: "Квантовая физика и атомы" }
+      ]},
+      chem: { title: "Химия", topics: [
+        { id: "chem1", name: "Строение атома и периодический закон" },
+        { id: "chem2", name: "Химическая связь и строение вещества" },
+        { id: "chem3", name: "Неорганическая химия (металлы, неметаллы)" },
+        { id: "chem4", name: "Органическая химия (углеводороды)" },
+        { id: "chem5", name: "Расчетные задачи по уравнениям реакций" }
+      ]},
+      bio: { title: "Биология", topics: [
+        { id: "bio1", name: "Ботаника (анатомия растений)" },
+        { id: "bio2", name: "Зоология (беспозвоночные и хордовые)" },
+        { id: "bio3", name: "Анатомия человека" },
+        { id: "bio4", name: "Генетика и селекция" },
+        { id: "bio5", name: "Экология и эволюция" }
+      ]},
+      soc: { title: "Обществознание", topics: [
+        { id: "soc1", name: "Человек и общество" },
+        { id: "soc2", name: "Экономика (рынок, налоги, банки)" },
+        { id: "soc3", name: "Социальные отношения" },
+        { id: "soc4", name: "Политика (государство, власть)" },
+        { id: "soc5", name: "Право (Конституция, отрасли права)" }
+      ]},
+      hist: { title: "История", topics: [
+        { id: "hist1", name: "Древняя Русь и период раздробленности" },
+        { id: "hist2", name: "Московское государство (XIV–XVII вв.)" },
+        { id: "hist3", name: "Российская империя (XVIII–XIX вв.)" },
+        { id: "hist4", name: "Революции и СССР (XX век)" },
+        { id: "hist5", name: "Современная Россия и ВОВ" }
+      ]},
+      eng: { title: "Английский язык", topics: [
+        { id: "eng1", name: "Времена глагола и пассивный залог" },
+        { id: "eng2", name: "Словообразование и лексика" },
+        { id: "eng3", name: "Чтение и понимание текстов" },
+        { id: "eng4", name: "Аудирование" },
+        { id: "eng5", name: "Письменная часть (Эссе)" }
+      ]}
     };
 
     let currentSubject = 'inf';
 
-    // Загрузка прогресса из localStorage
     function getProgress(id) {
       const saved = localStorage.getItem(`exam_progress_${id}`);
       return saved ? JSON.parse(saved) : [];
     }
 
-    // Сохранение прогресса
     function saveProgress(id, checkedIds) {
       localStorage.setItem(`exam_progress_${id}`, JSON.stringify(checkedIds));
     }
 
-    // Отрисовка списка тем
     function renderTopics() {
       const container = document.getElementById('topicsContainer');
       container.innerHTML = '';
@@ -238,7 +267,6 @@
       });
     }
 
-    // Обработка клика по чекбоксу
     function handleCheck(checkbox) {
       let checkedIds = getProgress(currentSubject);
       
@@ -251,7 +279,6 @@
       saveProgress(currentSubject, checkedIds);
     }
 
-    // Переключение предметов
     function switchSubject(subjectKey, btn) {
       currentSubject = subjectKey;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -259,7 +286,6 @@
       renderTopics();
     }
 
-    // Первый запуск
     renderTopics();
   </script>
 </body>
