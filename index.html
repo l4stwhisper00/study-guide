@@ -54,7 +54,6 @@
       background: radial-gradient(circle at 50% 0%, #151a2d 0%, var(--bg-base) 60%);
     }
     
-    /* Красивые туманности на фоне */
     .nebula {
       position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.4; z-index: -2; pointer-events: none;
     }
@@ -186,7 +185,7 @@
     .delay-3 { animation-delay: 0.3s; }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* ================= О ПРОЕКТЕ (С АНИМАЦИЕЙ ПРИ СКРОЛЛЕ) ================= */
+    /* ================= О ПРОЕКТЕ (АНИМАЦИЯ) ================= */
     .about {
       position: relative; padding: 140px 20px;
       background: linear-gradient(180deg, transparent 0%, var(--bg-surface) 20%, var(--bg-surface) 100%);
@@ -198,15 +197,20 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
 
-    /* Класс для плавного появления */
+    /* Базовый класс для анимации */
     .reveal {
       opacity: 0;
       transform: translateY(60px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      visibility: hidden;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.8s;
     }
+    /* Класс, когда элемент появился на экране */
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
+      visibility: visible;
     }
 
     .about-text h2 {
@@ -372,13 +376,13 @@
     <section class="about" id="about">
       <div class="container">
         
-        <!-- Текст и карточки с классом reveal -->
-        <div class="about-text reveal">
-          <h2>Вся информация для поступления</h2>
-          <p>Мы проанализировали сотни сайтов и собрали только то, что действительно нужно абитуриенту. Никаких пустых обещаний — только факты, баллы и ссылки на полезные материалы.</p>
+        <!-- Каждый элемент теперь имеет класс reveal и свою задержку -->
+        <div class="about-text">
+          <h2 class="reveal">Вся информация для поступления</h2>
+          <p class="reveal" style="transition-delay: 0.1s;">Мы проанализировали сотни сайтов и собрали только то, что действительно нужно абитуриенту. Никаких пустых обещаний — только факты, баллы и ссылки на полезные материалы.</p>
           
           <div class="features">
-            <div class="feature-card card-glow">
+            <div class="feature-card card-glow reveal" style="transition-delay: 0.2s;">
               <div class="feature-icon"><i class="ph-fill ph-list-checks"></i></div>
               <div>
                 <h3>Предметы для поступления</h3>
@@ -386,7 +390,7 @@
               </div>
             </div>
             
-            <div class="feature-card card-glow">
+            <div class="feature-card card-glow reveal" style="transition-delay: 0.3s;">
               <div class="feature-icon"><i class="ph-fill ph-chart-line-up"></i></div>
               <div>
                 <h3>Проходные баллы</h3>
@@ -394,7 +398,7 @@
               </div>
             </div>
             
-            <div class="feature-card card-glow">
+            <div class="feature-card card-glow reveal" style="transition-delay: 0.4s;">
               <div class="feature-icon"><i class="ph-fill ph-books"></i></div>
               <div>
                 <h3>Ресурсы для подготовки</h3>
@@ -404,8 +408,8 @@
           </div>
         </div>
 
-        <!-- Мокап с классом reveal -->
-        <div class="mockup-wrapper reveal" id="mockup">
+        <!-- Мокап тоже с задержкой -->
+        <div class="mockup-wrapper reveal" id="mockup" style="transition-delay: 0.2s;">
           <div class="mockup">
             <div class="mockup-header">
               <div class="mockup-dot"></div>
@@ -469,7 +473,7 @@
         }
       });
     }, {
-      rootMargin: '0px 0px -50px 0px', // Срабатывает, когда до элемента остается 50px
+      rootMargin: '0px 0px -100px 0px', // Срабатывает, когда элемент поднимается на 100px от низа экрана
       threshold: 0.1
     });
 
