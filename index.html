@@ -6,33 +6,25 @@
   <title>Навигатор выпускника</title>
   <meta name="description" content="Навигатор выпускника: выбор вуза или колледжа и подготовка к ОГЭ/ЕГЭ в одном месте." />
 
-  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Иконки Phosphor -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
   <style>
     :root {
-      /* Благородная палитра: глубокий космос, изумруд и чистый белый */
       --bg-base: #06080f;
       --bg-surface: #0f131f;
       --bg-card: rgba(255, 255, 255, 0.03);
-      
       --text-main: #f0f4f8;
       --text-muted: #8b96a5;
-      
-      --accent-primary: #10b981; /* Изумрудный */
+      --accent-primary: #10b981;
       --accent-glow: rgba(16, 185, 129, 0.2);
-      
       --border-light: rgba(255, 255, 255, 0.08);
       --border-hover: rgba(16, 185, 129, 0.4);
-      
       --radius-lg: 24px;
       --radius-md: 16px;
-      
       --transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -50,9 +42,8 @@
 
     ::selection { background: var(--accent-glow); color: #fff; }
     a { color: inherit; text-decoration: none; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 
-    /* ================= НАВИГАЦИЯ ================= */
+    /* Навигация */
     .nav {
       position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
       z-index: 100; width: min(1000px, calc(100% - 40px));
@@ -80,14 +71,13 @@
     }
     .nav-links a:hover { color: var(--text-main); background: var(--bg-card); }
 
-    /* ================= ГЛАВНЫЙ ЭКРАН (HERO) ================= */
+    /* Главный экран */
     .hero {
-      position: relative; min-height: 100vh; min-height: 100svh;
+      position: relative; min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       padding: 120px 20px 80px; overflow: hidden; isolation: isolate;
     }
 
-    /* Фоновые элементы */
     .hero-bg {
       position: absolute; inset: 0; z-index: -2;
       background: radial-gradient(circle at 50% 10%, #111a2e 0%, var(--bg-base) 60%);
@@ -100,7 +90,7 @@
       mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 20%, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, #000 20%, transparent 70%);
     }
-    canvas { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+    #dust { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 
     .hero-content { text-align: center; max-width: 800px; z-index: 10; }
     
@@ -116,7 +106,7 @@
       font-family: 'Manrope', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px;
     }
-    .hero-title .text-accent {
+    .hero-title span {
       background: linear-gradient(to right, #fff, var(--text-muted));
       -webkit-background-clip: text; background-clip: text; color: transparent;
       display: block;
@@ -127,11 +117,11 @@
       max-width: 580px; margin: 0 auto 48px; font-weight: 400;
     }
 
-    /* ================= КНОПКИ ================= */
+    /* Кнопки */
     .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
     
     .btn {
-      position: relative; display: flex; align-items: center; gap: 16px;
+      display: flex; align-items: center; gap: 16px;
       min-width: 300px; padding: 20px 24px; border-radius: var(--radius-md);
       background: var(--bg-card); border: 1px solid var(--border-light);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -160,14 +150,13 @@
     .btn-arrow { font-size: 20px; color: var(--text-muted); transition: var(--transition); }
     .btn:hover .btn-arrow { transform: translateX(4px); color: var(--accent-primary); }
 
-    /* Анимация появления */
     .fade-up { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* ================= О ПРОЕКТЕ ================= */
+    /* О проекте */
     .about {
       position: relative; padding: 120px 20px;
       background: var(--bg-surface); border-top: 1px solid var(--border-light);
@@ -184,7 +173,6 @@
     }
     .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; }
 
-    /* Карточки преимуществ */
     .features { display: flex; flex-direction: column; gap: 16px; }
     .feature-card {
       display: flex; gap: 20px; padding: 24px; border-radius: var(--radius-md);
@@ -201,9 +189,9 @@
     .feature-card h3 { font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
     .feature-card p { font-size: 14px; color: var(--text-muted); margin: 0; }
 
-    /* ================= МОКАП (Иллюстрация) ================= */
+    /* Мокап */
     .mockup-wrapper {
-      position: relative; perspective: 1000px;
+      position: relative;
       opacity: 0; transform: translateY(60px);
       transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -251,13 +239,13 @@
     .uni-name i { color: var(--text-muted); font-size: 16px; }
     .uni-score { font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--accent-primary); }
 
-    /* ================= ПОДВАЛ ================= */
+    /* Подвал */
     footer {
       text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px;
       background: var(--bg-base); border-top: 1px solid var(--border-light);
     }
 
-    /* ================= АДАПТИВ ================= */
+    /* Адаптив */
     @media (max-width: 900px) {
       .container { grid-template-columns: 1fr; gap: 50px; }
       .about-text { order: -1; text-align: center; }
@@ -275,7 +263,6 @@
 </head>
 <body>
 
-  <!-- Навигация -->
   <header class="nav">
     <div class="logo">
       <div class="logo-mark"><i class="ph-fill ph-compass"></i></div>
@@ -289,7 +276,6 @@
   </header>
 
   <main>
-    <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
@@ -303,7 +289,7 @@
 
         <h1 class="hero-title fade-up delay-1">
           Твой путь в будущее.
-          <span class="text-accent">Осознанный выбор.</span>
+          <span>Осознанный выбор.</span>
         </h1>
 
         <p class="hero-sub fade-up delay-2">
@@ -315,7 +301,7 @@
             <div class="btn-icon"><i class="ph-fill ph-buildings"></i></div>
             <div class="btn-text">
               <span>Выбрать заведение</span>
-              <small>ВУЗы и колледжи</small>
+              <small>Вузы и колледжи</small>
             </div>
             <i class="ph ph-arrow-right btn-arrow"></i>
           </a>
@@ -332,11 +318,9 @@
       </div>
     </section>
 
-    <!-- О ПРОЕКТЕ -->
     <section class="about" id="about">
       <div class="container">
         
-        <!-- Текстовая часть -->
         <div class="about-text">
           <h2>Вся информация для поступления</h2>
           <p>Мы проанализировали сотни сайтов и собрали только то, что действительно нужно абитуриенту. Никаких пустых обещаний — только факты, баллы и ссылки на полезные материалы.</p>
@@ -368,17 +352,15 @@
           </div>
         </div>
 
-        <!-- Мокап -->
         <div class="mockup-wrapper" id="mockup">
           <div class="mockup">
             <div class="mockup-header">
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
-              <div class="mockup-url mono">navigator.ru/dashboard</div>
+              <div class="mockup-url">navigator.ru/dashboard</div>
             </div>
             <div class="mockup-body">
-              
               <div class="m-card">
                 <div class="m-title"><i class="ph-fill ph-target"></i> Твой прогресс</div>
                 <div class="progress-row">
@@ -410,7 +392,6 @@
                   <div class="uni-score">260</div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -424,7 +405,6 @@
   </footer>
 
   <script>
-    /* ================= 1. Анимация космической пыли на фоне ================= */
     const canvas = document.getElementById('dust');
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -435,7 +415,6 @@
       height = canvas.height = window.innerHeight;
       particles = [];
       
-      // Создаем мягкие, медленные частицы (как пыль или далекие звезды)
       const count = Math.floor(width / 20); 
       for (let i = 0; i < count; i++) {
         particles.push({
@@ -456,7 +435,6 @@
         p.x += p.vx;
         p.y += p.vy;
 
-        // Зацикливание, чтобы частицы не улетали навсегда
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
@@ -475,17 +453,15 @@
     drawCanvas();
     window.addEventListener('resize', initCanvas);
 
-    /* ================= 2. Плавное выезжание мокапа при скролле ================= */
     const mockup = document.getElementById('mockup');
-    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // Срабатывает только один раз
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 }); // Сработает, когда 20% мокапа покажется на экране
+    }, { threshold: 0.2 });
 
     observer.observe(mockup);
   </script>
