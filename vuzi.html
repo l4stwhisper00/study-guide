@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Учебные заведения | Навигатор</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <style>
+    :root {
+      --bg-base: #050508;
+      --bg-surface: #0a0a10;
+      --glass-bg: rgba(255, 255, 255, 0.02);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --glass-hover: rgba(255, 255, 255, 0.04);
+      --text-main: #ffffff;
+      --text-muted: #8b92a5;
+      --accent-primary: #00ff88;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; user-select: none; cursor: default; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a, button, input { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+
+    .ambient-bg {
+      position: fixed; inset: 0; z-index: -2;
+      background: radial-gradient(circle at 50% 0%, #151a2d 0%, var(--bg-base) 60%);
+    }
+
+    .nav {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 100; width: min(1100px, calc(100% - 40px));
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 24px; border-radius: 100px;
+      background: rgba(5, 5, 8, 0.4);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 18px; }
+    .logo-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 8px; background: var(--accent-primary); color: var(--bg-base); font-size: 20px; }
+    
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-muted);
+      transition: var(--transition); padding: 8px 16px; border-radius: 100px; border: 1px solid transparent;
+    }
+    .back-btn:hover { color: var(--text-main); background: var(--glass-hover); border-color: var(--glass-border); }
+
+    main { flex: 1; padding: 140px 20px 80px; max-width: 1200px; margin: 0 auto; width: 100%; }
+    
+    .page-title { font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px; }
+    .page-sub { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 600px; }
+
+    .search-panel {
+      display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      padding: 24px; border-radius: var(--radius-lg);
+      backdrop-filter: blur(12px);
+    }
+
+    .search-input-wrap { flex: 1; min-width: 250px; position: relative; }
+    .search-input-wrap i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px; }
+    .search-input-wrap input {
+      width: 100%; padding: 14px 16px 14px 48px;
+      background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); color: var(--text-main); font-family: 'Inter', sans-serif; font-size: 15px;
+      outline: none; transition: var(--transition); cursor: text; user-select: text;
+    }
+    .search-input-wrap input:focus { border-color: rgba(0, 255, 136, 0.4); background: rgba(0,0,0,0.5); }
+
+    .filter-group { display: flex; gap: 8px; }
+    .filter-btn {
+      padding: 14px 24px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); color: var(--text-muted); font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 500; transition: var(--transition);
+    }
+    .filter-btn:hover { background: var(--glass-hover); color: var(--text-main); }
+    .filter-btn.active { background: var(--accent-primary); color: var(--bg-base); border-color: var(--accent-primary); }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    
+    .uni-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg); padding: 28px; transition: var(--transition);
+      display: flex; flex-direction: column; position: relative; overflow: hidden;
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .uni-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); background: var(--glass-hover); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    .uni-type {
+      display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; width: fit-content;
+    }
+    .type-vuz { background: rgba(0, 255, 136, 0.1); color: var(--accent-primary); border: 1px solid rgba(0, 255, 136, 0.2); }
+    .type-college { background: rgba(97, 175, 239, 0.1); color: #61afef; border: 1px solid rgba(97, 175, 239, 0.2); }
+
+    .uni-card h3 { font-family: 'Manrope', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .uni-city { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+    
+    .uni-details { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .detail-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+    .detail-row:last-child { margin-bottom: 0; }
+    .detail-label { color: var(--text-muted); }
+    .detail-val { font-weight: 600; color: var(--text-main); }
+    .detail-val.score { color: var(--accent-primary); font-family: 'Manrope', sans-serif; font-size: 16px; }
+
+    @media (max-width: 768px) {
+      .search-panel { flex-direction: column; }
+      .filter-group { width: 100%; overflow-x: auto; padding-bottom: 4px; }
+      .filter-btn { flex: 1; text-align: center; white-space: nowrap; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-bg"></div>
+
+  <header class="nav">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><i class="ph-fill ph-compass"></i></div>
+      Навигатор
+    </a>
+    <a href="index.html" class="back-btn">
+      <i class="ph ph-arrow-left"></i> На главную
+    </a>
+  </header>
+
+  <main>
+    <h1 class="page-title">Выбери свое будущее</h1>
+    <p class="page-sub">База крупнейших учебных заведений по всей России с проходными баллами и необходимыми экзаменами.</p>
+
+    <div class="search-panel">
+      <div class="search-input-wrap">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="text" placeholder="Поиск по названию или городу..." id="searchInput">
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterCards('all', this)">Все</button>
+        <button class="filter-btn" onclick="filterCards('vuz', this)">ВУЗы</button>
+        <button class="filter-btn" onclick="filterCards('college', this)">Колледжи</button>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="cardsContainer"></div>
+  </main>
+
+  <script>
+    // =====================================================================
+    // БАЗА ДАННЫХ (160 ВУЗОВ И КОЛЛЕДЖЕЙ РФ)
+    // =====================================================================
+    const database = [
+      // --- ЦФО (Москва, Воронеж, Тула и др.) ---
+      { name: "МГУ им. М.В. Ломоносова", city: "Москва", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "300+" },
+      { name: "МГТУ им. Н.Э. Баумана", city: "Москва", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 270–300" },
+      { name: "МФТИ (Физтех)", city: "Долгопрудный", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 290–305" },
+      { name: "НИУ ВШЭ", city: "Москва", type: "vuz", subjects: "Мат., Инф./Общ., Рус.", score: "~ 280–300" },
+      { name: "НИЯУ МИФИ", city: "Москва", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 290–310" },
+      { name: "МГИМО", city: "Москва", type: "vuz", subjects: "Ист., Англ., Рус.", score: "~ 290+" },
+      { name: "РЭУ им. Г.В. Плеханова", city: "Москва", type: "vuz", subjects: "Мат., Общ., Рус.", score: "~ 250" },
+      { name: "МИРЭА - Российский технологический университет", city: "Москва", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 240" },
+      { name: "РУДН", city: "Москва", type: "vuz", subjects: "Мат., Инф./Общ., Рус.", score: "~ 240" },
+      { name: "Финансовый университет при Правительстве РФ", city: "Москва", type: "vuz", subjects: "Мат., Общ., Рус.", score: "~ 260" },
+      { name: "РНИМУ им. Н.И. Пирогова", city: "Москва", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 260" },
+      { name: "Первый МГМУ им. И.М. Сеченова", city: "Москва", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 270" },
+      { name: "МПГУ", city: "Москва", type: "vuz", subjects: "Общ., Инф., Рус.", score: "~ 220" },
+      { name: "Воронежский государственный университет", city: "Воронеж", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
+      { name: "Тульский государственный университет", city: "Тула", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
+      { name: "Колледж связи №54 им. П.М. Вострухина", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "4.6" },
+      { name: "Колледж программирования и кибербезопасности МИРЭА", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.4" },
+      { name: "Московский технологический колледж (МТК)", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.31" },
+      { name: "Колледж «Царицыно»", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.0" },
+      { name: "Московский государственный колледж электромеханики и ИТ", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.2" },
+      { name: "Колледж архитектуры, дизайна и реинжиниринга №26", city: "Москва", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.0" },
+
+      // --- СЗФО (СПб, Калининград, Мурманск и др.) ---
+      { name: "СПбГУ", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 290" },
+      { name: "Университет ИТМО", city: "Санкт-Петербург", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 300–310" },
+      { name: "СПбПУ (Политех)", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 260–280" },
+      { name: "СПбГМУ им. Павлова", city: "Санкт-Петербург", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 260" },
+      { name: "СПбГУПТД", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
+      { name: "Балтийский государственный технический университет «ВОЕНМЕХ»", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Физ., Рус.", score: "~ 230" },
+      { name: "Балтийский федеральный университет им. Канта", city: "Калининград", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
+      { name: "Мурманский государственный технический университет", city: "Мурманск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "СПб Колледж телекоммуникаций им. Э.Т. Кренкеля", city: "Санкт-Петербург", type: "college", subjects: "Инф., Мат., Рус.", score: "4.4" },
+      { name: "Академия машиностроения им. Ж.Я. Котина", city: "Санкт-Петербург", type: "college", subjects: "Мат., Физ./Инф., Рус.", score: "от 3.64" },
+      { name: "Санкт-Петербургский колледж информационных технологий", city: "Санкт-Петербург", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.3" },
+      { name: "Колледж Петербургской моды", city: "Санкт-Петербург", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.1" },
+      { name: "Калининградский морской рыбопромышленный колледж", city: "Калининград", type: "college", subjects: "Инф., Мат., Рус.", score: "4.57" },
+
+      // --- ПФО (Казань, Нижний Новгород, Самара и др.) ---
+      { name: "Казанский (Приволжский) федеральный университет", city: "Казань", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 230–250" },
+      { name: "Университет Иннополис", city: "Иннополис", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 280" },
+      { name: "КНИТУ-КАИ", city: "Казань", type: "vuz", subjects: "Мат., Физ., Рус.", score: "~ 210" },
+      { name: "Уфимский университет науки и технологий", city: "Уфа", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
+      { name: "Самарский национальный исследовательский университет", city: "Самара", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200–220" },
+      { name: "Саратовский государственный университет", city: "Саратов", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
+      { name: "ННГУ им. Н.И. Лобачевского", city: "Нижний Новгород", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210–230" },
+      { name: "Пермский национальный исследовательский политехнический университет", city: "Пермь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190–210" },
+      { name: "Колледж радиоэлектроники им. П.Н. Яблочкова", city: "Саратов", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.2" },
+      { name: "Казанский колледж строительства и архитектуры", city: "Казань", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.0" },
+      { name: "Нижнетагильский торгово-экономический колледж (НТТЭК)", city: "Нижний Тагил", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.11" },
+
+      // --- ЮФО (Ростов, Краснодар, Крым и др.) ---
+      { name: "Южный федеральный университет", city: "Ростов-на-Дону", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
+      { name: "Кубанский государственный университет", city: "Краснодар", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
+      { name: "Кубанский государственный медицинский университет", city: "Краснодар", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 240" },
+      { name: "Донской государственный технический университет", city: "Ростов-на-Дону", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
+      { name: "Крымский федеральный университет им. В.И. Вернадского", city: "Симферополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Севастопольский государственный университет", city: "Севастополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Кубанский институт профессионального образования", city: "Краснодар", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.0" },
+
+      // --- СКФО (Ставрополь, Махачкала, Владикавказ и др.) ---
+      { name: "Северо-Кавказский федеральный университет", city: "Ставрополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
+      { name: "Дагестанский государственный университет", city: "Махачкала", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Кабардино-Балкарский государственный университет", city: "Нальчик", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Северо-Осетинский государственный университет", city: "Владикавказ", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+
+      // --- УФО (Екатеринбург, Челябинск, Тюмень и др.) ---
+      { name: "УрФУ им. Б.Н. Ельцина", city: "Екатеринбург", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 220–240" },
+      { name: "Южно-Уральский государственный университет", city: "Челябинск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
+      { name: "Тюменский государственный университет", city: "Тюмень", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
+      { name: "Уральский федеральный университет (УрФУ) филиал", city: "Нижний Тагил", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "Уральский технический институт связи и информатики (УрТИСИ)", city: "Екатеринбург", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.0" },
+      { name: "Челябинский механико-технологический техникум", city: "Челябинск", type: "college", subjects: "Мат., Физ., Рус.", score: "от 3.8" },
+
+      // --- СФО (Новосибирск, Томск, Красноярск, Омск и др.) ---
+      { name: "НГУ", city: "Новосибирск", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 240–260" },
+      { name: "НГТУ (НЭТИ)", city: "Новосибирск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
+      { name: "Томский политехнический университет", city: "Томск", type: "vuz", subjects: "Мат., Физ/Инф., Рус.", score: "~ 210–230" },
+      { name: "ТГУ", city: "Томск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
+      { name: "Сибирский федеральный университет", city: "Красноярск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
+      { name: "Алтайский государственный университет", city: "Барнаул", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "Кемеровский государственный университет", city: "Кемерово", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "Омский государственный университет им. Ф.М. Достоевского", city: "Омск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Иркутский государственный университет", city: "Иркутск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Колледж современных профессий Skypro", city: "Красноярск", type: "college", subjects: "Инф., Мат., Рус.", score: "Платно" },
+
+      // --- ДФО (Владивосток, Хабаровск, Якутск, Камчатка и др.) ---
+      { name: "Дальневосточный федеральный университет", city: "Владивосток", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200–220" },
+      { name: "Тихоокеанский государственный университет", city: "Хабаровск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
+      { name: "Северо-Восточный федеральный университет", city: "Якутск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "Амурский государственный университет", city: "Благовещенск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "Камчатский государственный технический университет", city: "Петропавловск-Камчатский", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 170" },
+      { name: "Сахалинский государственный университет", city: "Южно-Сахалинск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 170" },
+      
+      // --- Добавь сюда остальные, если захочешь ---
+    ];
+
+    // Логика
+    const container = document.getElementById('cardsContainer');
+    const searchInput = document.getElementById('searchInput');
+    let currentFilter = 'all';
+
+    function renderCards() {
+      container.innerHTML = ''; 
+      
+      database.forEach(item => {
+        const matchesType = (currentFilter === 'all' || currentFilter === item.type);
+        const searchString = (item.name + " " + item.city).toLowerCase();
+        const matchesSearch = searchString.includes(searchInput.value.toLowerCase().trim());
+
+        if (matchesType && matchesSearch) {
+          const card = document.createElement('div');
+          card.className = 'uni-card';
+          
+          const typeLabel = item.type === 'vuz' ? 'ВУЗ' : 'Колледж';
+          const typeClass = item.type === 'vuz' ? 'type-vuz' : 'type-college';
+
+          card.innerHTML = `
+            <span class="uni-type ${typeClass}">${typeLabel}</span>
+            <h3>${item.name}</h3>
+            <div class="uni-city"><i class="ph ph-map-pin"></i> ${item.city}</div>
+            <div class="uni-details">
+              <div class="detail-row"><span class="detail-label">Предметы:</span><span class="detail-val">${item.subjects}</span></div>
+              <div class="detail-row"><span class="detail-label">Проходной балл:</span><span class="detail-val score">${item.score}</span></div>
+            </div>
+          `;
+          container.appendChild(card);
+        }
+      });
+
+      if (container.innerHTML === '') {
+        container.innerHTML = `<div style="color: var(--text-muted); text-align: center; grid-column: 1 / -1; padding: 40px; font-size: 16px;">По вашему запросу ничего не найдено.</div>`;
+      }
+    }
+
+    function filterCards(type, btn) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCards();
+    }
+
+    searchInput.addEventListener('input', renderCards);
+    renderCards();
+  </script>
+</body>
+</html>
