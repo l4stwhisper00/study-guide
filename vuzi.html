@@ -37,7 +37,7 @@
       flex-direction: column;
     }
 
-    a, button, input, select { cursor: pointer; }
+    a, button, input { cursor: pointer; }
     a { color: inherit; text-decoration: none; }
 
     .ambient-bg {
@@ -65,18 +65,32 @@
 
     main { flex: 1; padding: 140px 20px 80px; max-width: 1200px; margin: 0 auto; width: 100%; }
     
+    .page-header {
+      display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;
+    }
     .page-title { font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px; }
-    .page-sub { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 600px; }
+    .page-sub { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; }
+
+    .stats-row { display: flex; gap: 16px; }
+    .stat-item {
+      background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 12px 20px;
+      border-radius: var(--radius-md); display: flex; align-items: center; gap: 12px;
+    }
+    .stat-item i { font-size: 24px; color: var(--accent-primary); }
+    .stat-info { display: flex; flex-direction: column; }
+    .stat-num { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.2; }
+    .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* Панель фильтров */
     .search-panel {
-      display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;
+      display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px;
       background: var(--glass-bg); border: 1px solid var(--glass-border);
       padding: 24px; border-radius: var(--radius-lg);
       backdrop-filter: blur(12px);
-      align-items: center;
     }
 
+    .search-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    
     .search-input-wrap { flex: 1; min-width: 250px; position: relative; }
     .search-input-wrap i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px; }
     .search-input-wrap input {
@@ -96,22 +110,23 @@
     .filter-btn:hover { background: var(--glass-hover); color: var(--text-main); }
     .filter-btn.active { background: var(--accent-primary); color: var(--bg-base); border-color: var(--accent-primary); }
 
-    /* Стили для выпадающего списка */
-    .filter-select {
-      padding: 14px 48px 14px 24px;
-      background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md); color: var(--text-muted); 
-      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
-      outline: none; transition: var(--transition);
-      appearance: none; -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238b92a5' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
+    /* Мультивыбор по предметам */
+    .subjects-row {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      border-top: 1px solid var(--glass-border); padding-top: 20px;
     }
-    .filter-select:hover { background-color: var(--glass-hover); color: var(--text-main); border-color: rgba(255,255,255,0.15); }
-    .filter-select:focus { border-color: rgba(0, 255, 136, 0.4); background-color: rgba(0,0,0,0.5); color: var(--text-main); }
-    .filter-select option { background: var(--bg-surface); color: var(--text-main); }
+    .subject-btn {
+      padding: 8px 16px; border-radius: 100px; background: rgba(0,0,0,0.2);
+      border: 1px solid var(--glass-border); color: var(--text-muted);
+      font-size: 13px; font-weight: 500; transition: var(--transition);
+    }
+    .subject-btn:hover { background: var(--glass-hover); color: var(--text-main); }
+    .subject-btn.active { 
+      background: rgba(0, 255, 136, 0.15); color: var(--accent-primary); 
+      border-color: rgba(0, 255, 136, 0.4); font-weight: 600;
+    }
 
+    /* Сетка карточек */
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
     
     .uni-card {
@@ -126,13 +141,14 @@
     
     .uni-type {
       display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; width: fit-content;
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; width: fit-content;
     }
     .type-vuz { background: rgba(0, 255, 136, 0.1); color: var(--accent-primary); border: 1px solid rgba(0, 255, 136, 0.2); }
     .type-college { background: rgba(97, 175, 239, 0.1); color: #61afef; border: 1px solid rgba(97, 175, 239, 0.2); }
 
-    .uni-card h3 { font-family: 'Manrope', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
-    .uni-city { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+    .uni-card h3 { font-family: 'Manrope', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+    .uni-city { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
+    .uni-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
     
     .uni-details { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
     .detail-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
@@ -142,10 +158,13 @@
     .detail-val.score { color: var(--accent-primary); font-family: 'Manrope', sans-serif; font-size: 16px; }
 
     @media (max-width: 768px) {
-      .search-panel { flex-direction: column; align-items: stretch; }
+      .search-row { flex-direction: column; align-items: stretch; }
       .filter-group { width: 100%; flex-direction: column; }
-      .filter-btn, .filter-select { width: 100%; text-align: center; }
+      .filter-btn { width: 100%; text-align: center; }
       .cards-grid { grid-template-columns: 1fr; }
+      .page-header { flex-direction: column; align-items: flex-start; }
+      .stats-row { width: 100%; flex-wrap: wrap; }
+      .stat-item { flex: 1; justify-content: center; }
     }
   </style>
 </head>
@@ -163,33 +182,56 @@
   </header>
 
   <main>
-    <h1 class="page-title">Выбери свое будущее</h1>
-    <p class="page-sub">База крупнейших учебных заведений по всей России с проходными баллами и необходимыми экзаменами.</p>
-
-    <div class="search-panel">
-      <div class="search-input-wrap">
-        <i class="ph ph-magnifying-glass"></i>
-        <input type="text" placeholder="Поиск по названию или городу..." id="searchInput">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Выбери свое будущее</h1>
+        <p class="page-sub">База крупнейших учебных заведений по всей России с проходными баллами и необходимыми экзаменами.</p>
       </div>
       
-      <div class="filter-group">
-        <button class="filter-btn active" onclick="filterCards('all', this)">Все</button>
-        <button class="filter-btn" onclick="filterCards('vuz', this)">ВУЗы</button>
-        <button class="filter-btn" onclick="filterCards('college', this)">Колледжи</button>
+      <div class="stats-row">
+        <div class="stat-item">
+          <i class="ph-fill ph-buildings"></i>
+          <div class="stat-info">
+            <span class="stat-num">80+</span>
+            <span class="stat-label">Вузов и колледжей</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="ph-fill ph-map-pin"></i>
+          <div class="stat-info">
+            <span class="stat-num">30+</span>
+            <span class="stat-label">Городов РФ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel">
+      <!-- Верхняя строка с поиском и типом -->
+      <div class="search-row">
+        <div class="search-input-wrap">
+          <i class="ph ph-magnifying-glass"></i>
+          <input type="text" placeholder="Поиск по названию или городу..." id="searchInput">
+        </div>
         
-        <!-- Новый фильтр по предметам -->
-        <select class="filter-select" id="subjectSelect">
-          <option value="all">Любой предмет</option>
-          <option value="Инф.">Информатика</option>
-          <option value="Мат.">Математика</option>
-          <option value="Рус.">Русский язык</option>
-          <option value="Физ.">Физика</option>
-          <option value="Хим.">Химия</option>
-          <option value="Био.">Биология</option>
-          <option value="Общ.">Обществознание</option>
-          <option value="Ист.">История</option>
-          <option value="Англ.">Английский язык</option>
-        </select>
+        <div class="filter-group">
+          <button class="filter-btn active" onclick="filterCards('all', this)">Все</button>
+          <button class="filter-btn" onclick="filterCards('vuz', this)">ВУЗы</button>
+          <button class="filter-btn" onclick="filterCards('college', this)">Колледжи</button>
+        </div>
+      </div>
+
+      <!-- Нижняя строка: Мультивыбор предметов -->
+      <div class="subjects-row">
+        <button class="subject-btn" onclick="toggleSubject('Мат.', this)">Математика</button>
+        <button class="subject-btn" onclick="toggleSubject('Инф.', this)">Информатика</button>
+        <button class="subject-btn" onclick="toggleSubject('Рус.', this)">Русский язык</button>
+        <button class="subject-btn" onclick="toggleSubject('Физ.', this)">Физика</button>
+        <button class="subject-btn" onclick="toggleSubject('Хим.', this)">Химия</button>
+        <button class="subject-btn" onclick="toggleSubject('Био.', this)">Биология</button>
+        <button class="subject-btn" onclick="toggleSubject('Общ.', this)">Обществознание</button>
+        <button class="subject-btn" onclick="toggleSubject('Ист.', this)">История</button>
+        <button class="subject-btn" onclick="toggleSubject('Англ.', this)">Английский</button>
       </div>
     </div>
 
@@ -197,122 +239,128 @@
   </main>
 
   <script>
-    // БАЗА ДАННЫХ
     const database = [
-      { name: "МГУ им. М.В. Ломоносова", city: "Москва", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "300+" },
-      { name: "МГТУ им. Н.Э. Баумана", city: "Москва", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 270–300" },
-      { name: "МФТИ (Физтех)", city: "Долгопрудный", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 290–305" },
-      { name: "НИУ ВШЭ", city: "Москва", type: "vuz", subjects: "Мат., Инф./Общ., Рус.", score: "~ 280–300" },
-      { name: "НИЯУ МИФИ", city: "Москва", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 290–310" },
-      { name: "МГИМО", city: "Москва", type: "vuz", subjects: "Ист., Англ., Рус.", score: "~ 290+" },
-      { name: "РЭУ им. Г.В. Плеханова", city: "Москва", type: "vuz", subjects: "Мат., Общ., Рус.", score: "~ 250" },
-      { name: "МИРЭА - Российский технологический университет", city: "Москва", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 240" },
-      { name: "РУДН", city: "Москва", type: "vuz", subjects: "Мат., Инф./Общ., Рус.", score: "~ 240" },
-      { name: "Финансовый университет", city: "Москва", type: "vuz", subjects: "Мат., Общ., Рус.", score: "~ 260" },
-      { name: "РНИМУ им. Н.И. Пирогова", city: "Москва", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 260" },
-      { name: "Первый МГМУ им. И.М. Сеченова", city: "Москва", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 270" },
-      { name: "МПГУ", city: "Москва", type: "vuz", subjects: "Общ., Инф., Рус.", score: "~ 220" },
-      { name: "Воронежский государственный университет", city: "Воронеж", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
-      { name: "Тульский государственный университет", city: "Тула", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
-      { name: "Колледж связи №54", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "4.6" },
-      { name: "Колледж программирования МИРЭА", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.4" },
-      { name: "Московский технологический колледж", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.31" },
-      { name: "Колледж «Царицыно»", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.0" },
-      { name: "Колледж архитектуры и дизайна №26", city: "Москва", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.0" },
+      { name: "МГУ им. М.В. Ломоносова", city: "Москва", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "300+", desc: "Старейший и самый престижный классический университет России. Широкий выбор фундаментальных направлений." },
+      { name: "МГТУ им. Н.Э. Баумана", city: "Москва", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 270–300", desc: "Легендарный технический университет. Готовит лучших инженеров, программистов и специалистов по робототехнике." },
+      { name: "МФТИ (Физтех)", city: "Долгопрудный", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 290–305", desc: "Ведущий вуз в области физики и математики. Высокие требования, но и блестящие перспективы для выпускников." },
+      { name: "НИУ ВШЭ", city: "Москва", type: "vuz", subjects: "Мат., Инф./Общ., Рус.", score: "~ 280–300", desc: "Современный исследовательский университет с сильнейшими экономическими и IT-программами." },
+      { name: "НИЯУ МИФИ", city: "Москва", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 290–310", desc: "Готовит специалистов для ядерной энергетики, кибербезопасности и IT. Тесная связь с госкорпорацией Росатом." },
+      { name: "МГИМО", city: "Москва", type: "vuz", subjects: "Ист., Англ., Рус.", score: "~ 290+", desc: "Кулаковка элитной дипломатии. Лучшие программы по международным отношениям и иностранным языкам." },
+      { name: "РЭУ им. Г.В. Плеханова", city: "Москва", type: "vuz", subjects: "Мат., Общ., Рус.", score: "~ 250", desc: "Один из ведущих экономических вузов страны. Готовит финансистов, аналитиков и менеджеров." },
+      { name: "МИРЭА - Российский технологический университет", city: "Москва", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 240", desc: "Крупный технический вуз с упором на IT, кибербезопасность, радиотехнику и автоматизацию." },
+      { name: "РУДН", city: "Москва", type: "vuz", subjects: "Мат., Инф./Общ., Рус.", score: "~ 240", desc: "Самый интернациональный вуз России. Сильные программы по медицине, экономике и IT." },
+      { name: "Финансовый университет", city: "Москва", type: "vuz", subjects: "Мат., Общ., Рус.", score: "~ 260", desc: "Кузница министров финансов и лучших экономистов. Огромный выбор бизнес-программ." },
+      { name: "РНИМУ им. Н.И. Пирогова", city: "Москва", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 260", desc: "Один из лучших медицинских вузов страны. Высокий уровень подготовки врачей и биологов." },
+      { name: "Первый МГМУ им. И.М. Сеченова", city: "Москва", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 270", desc: "Легендарный медицинский университет. Огромный конкурс, но и престиж на всю жизнь." },
+      { name: "МПГУ", city: "Москва", type: "vuz", subjects: "Общ., Инф., Рус.", score: "~ 220", desc: "Главный педагогический вуз страны. Готовит учителей по всем возможным предметам." },
+      { name: "Воронежский государственный университет", city: "Воронеж", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220", desc: "Крупнейший классический вуз Черноземья. Сильные IT, математические и биологические факультеты." },
+      { name: "Тульский государственный университет", city: "Тула", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210", desc: "Опорный вуз региона. Известен своими инженерными и оборонными специальностями." },
+      { name: "Колледж связи №54", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "4.6", desc: "Готовит специалистов по сетям, программированию и телекоммуникациям. Отличные отзывы." },
+      { name: "Колледж программирования МИРЭА", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.4", desc: "Практико-ориентированный колледж при мощном техническом вузе. Учит писать код с 1 курса." },
+      { name: "Московский технологический колледж", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.31", desc: "Современный колледж с большим выбором технических и IT-специальностей." },
+      { name: "Колледж «Царицыно»", city: "Москва", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.0", desc: "Один из крупнейших колледжей Москвы. Предлагает программы от IT до дизайна и кулинарии." },
+      { name: "Колледж архитектуры и дизайна №26", city: "Москва", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.0", desc: "Для тех, кто хочет творить. Готовит архитекторов, дизайнеров и специалистов по реставрации." },
 
-      { name: "СПбГУ", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 290" },
-      { name: "Университет ИТМО", city: "Санкт-Петербург", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 300–310" },
-      { name: "СПбПУ (Политех)", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 260–280" },
-      { name: "СПбГМУ им. Павлова", city: "Санкт-Петербург", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 260" },
-      { name: "СПбГУПТД", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
-      { name: "ВОЕНМЕХ", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Физ., Рус.", score: "~ 230" },
-      { name: "БФУ им. Канта", city: "Калининград", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
-      { name: "Мурманский государственный технический университет", city: "Мурманск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
-      { name: "СПб Колледж телекоммуникаций", city: "Санкт-Петербург", type: "college", subjects: "Инф., Мат., Рус.", score: "4.4" },
-      { name: "Академия машиностроения им. Котина", city: "Санкт-Петербург", type: "college", subjects: "Мат., Физ./Инф., Рус.", score: "от 3.64" },
-      { name: "СПб Колледж информационных технологий", city: "Санкт-Петербург", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.3" },
-      { name: "Колледж Петербургской моды", city: "Санкт-Петербург", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.1" },
-      { name: "Калининградский морской колледж", city: "Калининград", type: "college", subjects: "Инф., Мат., Рус.", score: "4.57" },
+      { name: "СПбГУ", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 290", desc: "Один из старейших и крупнейших университетов России. Классическое образование высочайшего уровня." },
+      { name: "Университет ИТМО", city: "Санкт-Петербург", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 300–310", desc: "Мекка для программистов. Многократный победитель международных олимпиад по программированию." },
+      { name: "СПбПУ (Политех)", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 260–280", desc: "Огромный кампус и сильнейшие инженерные школы. Тесное сотрудничество с крупными корпорациями." },
+      { name: "СПбГМУ им. Павлова", city: "Санкт-Петербург", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 260", desc: "Один из ведущих медицинских вузов. Готовит врачей для лучших клиник страны." },
+      { name: "СПбГУПТД", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220", desc: "Университет промышленных технологий и дизайна. Идеален для творческих и инженерных профессий." },
+      { name: "ВОЕНМЕХ", city: "Санкт-Петербург", type: "vuz", subjects: "Мат., Физ., Рус.", score: "~ 230", desc: "Легендарный вуз с оборонным уклоном. Готовит специалистов по ракетостроению и робототехнике." },
+      { name: "БФУ им. Канта", city: "Калининград", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200", desc: "Западный форпост российского образования. Современный кампус и сильные IT-направления." },
+      { name: "Мурманский государственный технический университет", city: "Мурманск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180", desc: "Ведущий технический вуз Заполярья. Специализируется на морских технологиях и рыболовстве." },
+      { name: "СПб Колледж телекоммуникаций", city: "Санкт-Петербург", type: "college", subjects: "Инф., Мат., Рус.", score: "4.4", desc: "Готовит связистов и сетевиков. Отличная база для поступления в профильные вузы." },
+      { name: "Академия машиностроения им. Котина", city: "Санкт-Петербург", type: "college", subjects: "Мат., Физ./Инф., Рус.", score: "от 3.64", desc: "Практическое обучение на современных станках и производственных линиях." },
+      { name: "СПб Колледж информационных технологий", city: "Санкт-Петербург", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.3", desc: "Выпускает востребованных разработчиков, системных администраторов и веб-дизайнеров." },
+      { name: "Колледж Петербургской моды", city: "Санкт-Петербург", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.1", desc: "Творческий колледж для дизайнеров одежды, стилистов и визажистов." },
+      { name: "Калининградский морской колледж", city: "Калининград", type: "college", subjects: "Инф., Мат., Рус.", score: "4.57", desc: "Готовит специалистов морского флота, судоводителей и механиков." },
 
-      { name: "Казанский федеральный университет", city: "Казань", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 230–250" },
-      { name: "Университет Иннополис", city: "Иннополис", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 280" },
-      { name: "КНИТУ-КАИ", city: "Казань", type: "vuz", subjects: "Мат., Физ., Рус.", score: "~ 210" },
-      { name: "Уфимский университет науки и технологий", city: "Уфа", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
-      { name: "Самарский университет", city: "Самара", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200–220" },
-      { name: "Саратовский государственный университет", city: "Саратов", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
-      { name: "ННГУ им. Лобачевского", city: "Нижний Новгород", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210–230" },
-      { name: "Пермский политех", city: "Пермь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190–210" },
-      { name: "Колледж радиоэлектроники им. Яблочкова", city: "Саратов", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.2" },
-      { name: "Казанский колледж строительства", city: "Казань", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.0" },
-      { name: "Нижнетагильский торгово-экономический колледж", city: "Нижний Тагил", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.11" },
+      { name: "Казанский федеральный университет", city: "Казань", type: "vuz", subjects: "Мат., Инф./Физ., Рус.", score: "~ 230–250", desc: "Огромный классический университет с многовековой историей. Сильные естественно-научные факультеты." },
+      { name: "Университет Иннополис", city: "Иннополис", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 280", desc: "Уникальный IT-город. Готовит лучших специалистов в области разработки и робототехники." },
+      { name: "КНИТУ-КАИ", city: "Казань", type: "vuz", subjects: "Мат., Физ., Рус.", score: "~ 210", desc: "Готовит инженеров для авиационной и ракетной промышленности." },
+      { name: "Уфимский университет науки и технологий", city: "Уфа", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200", desc: "Опорный вуз Башкортостана. Развитые IT и нефтегазовые направления." },
+      { name: "Самарский университет", city: "Самара", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200–220", desc: "Космический вуз. Готовит специалистов для аэрокосмической отрасли и IT." },
+      { name: "Саратовский государственный университет", city: "Саратов", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210", desc: "Крупный научно-образовательный центр Поволжья с сильной математической школой." },
+      { name: "ННГУ им. Лобачевского", city: "Нижний Новгород", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210–230", desc: "Ведущий вуз Нижнего Новгорода. Сильная физика, IT и экономика." },
+      { name: "Пермский политех", city: "Пермь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190–210", desc: "Инженерный вуз с хорошей базой для авиастроения и IT-технологий." },
+      { name: "Колледж радиоэлектроники им. Яблочкова", city: "Саратов", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.2", desc: "Готовит техников по обслуживанию электронной техники и программированию." },
+      { name: "Казанский колледж строительства", city: "Казань", type: "college", subjects: "Мат., Рус., Творч.", score: "от 4.0", desc: "Для будущих архитекторов, проектировщиков и строителей." },
+      { name: "Нижнетагильский торгово-экономический колледж", city: "Нижний Тагил", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.11", desc: "Готовит экономистов, бухгалтеров и специалистов по коммерции." },
 
-      { name: "Южный федеральный университет", city: "Ростов-на-Дону", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
-      { name: "Кубанский государственный университет", city: "Краснодар", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
-      { name: "Кубанский медицинский университет", city: "Краснодар", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 240" },
-      { name: "Донской государственный технический университет", city: "Ростов-на-Дону", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
-      { name: "Крымский федеральный университет", city: "Симферополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Севастопольский государственный университет", city: "Севастополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Кубанский институт профобразования", city: "Краснодар", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.0" },
+      { name: "Южный федеральный университет", city: "Ростов-на-Дону", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220", desc: "Крупнейший вуз Юга России. Широкий спектр направлений от IT до педагогики." },
+      { name: "Кубанский государственный университет", city: "Краснодар", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210", desc: "Классический университет с сильными химическими и биологическими школами." },
+      { name: "Кубанский медицинский университет", city: "Краснодар", type: "vuz", subjects: "Био., Хим., Рус.", score: "~ 240", desc: "Лучший медицинский вуз на юге России. Большие клинические базы." },
+      { name: "Донской государственный технический университет", city: "Ростов-на-Дону", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200", desc: "Технический вуз с сильными инженерными и IT-направлениями." },
+      { name: "Крымский федеральный университет", city: "Симферополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Главный вуз полуострова. Объединяет множество институтов и специальностей." },
+      { name: "Севастопольский государственный университет", city: "Севастополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Современный вуз с морскими и техническими специальностями." },
+      { name: "Кубанский институт профобразования", city: "Краснодар", type: "college", subjects: "Инф., Мат., Рус.", score: "от 3.0", desc: "Практико-ориентированный колледж, готовит по множеству прикладных профессий." },
 
-      { name: "Северо-Кавказский федеральный университет", city: "Ставрополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
-      { name: "Дагестанский государственный университет", city: "Махачкала", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Кабардино-Балкарский государственный университет", city: "Нальчик", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Северо-Осетинский государственный университет", city: "Владикавказ", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
+      { name: "Северо-Кавказский федеральный университет", city: "Ставрополь", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200", desc: "Крупный образовательный центр Северного Кавказа." },
+      { name: "Дагестанский государственный университет", city: "Махачкала", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Старейший вуз Дагестана, готовит кадры для региона." },
+      { name: "Кабардино-Балкарский государственный университет", city: "Нальчик", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Главный вуз КБР с сильными естественно-научными направлениями." },
+      { name: "Северо-Осетинский государственный университет", city: "Владикавказ", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180", desc: "Крупный университет республики, готовит специалистов по IT и экономике." },
 
-      { name: "УрФУ им. Ельцина", city: "Екатеринбург", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 220–240" },
-      { name: "Южно-Уральский государственный университет", city: "Челябинск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210" },
-      { name: "Тюменский государственный университет", city: "Тюмень", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
-      { name: "УрТИСИ", city: "Екатеринбург", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.0" },
-      { name: "Челябинский механико-технологический техникум", city: "Челябинск", type: "college", subjects: "Мат., Физ., Рус.", score: "от 3.8" },
+      { name: "УрФУ им. Ельцина", city: "Екатеринбург", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 220–240", desc: "Один из крупнейших вузов страны. Мощнейшая IT-школа и инженерные направления." },
+      { name: "Южно-Уральский государственный университет", city: "Челябинск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 210", desc: "Опорный вуз Челябинской области. Сильные технические и экономические специальности." },
+      { name: "Тюменский государственный университет", city: "Тюмень", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220", desc: "Классический университет с современным кампусом и сильными нефтегазовыми направлениями." },
+      { name: "УрТИСИ", city: "Екатеринбург", type: "college", subjects: "Инф., Мат., Рус.", score: "от 4.0", desc: "Готовит специалистов связи и телекоммуникаций. Отличная база для поступления." },
+      { name: "Челябинский механико-технологический техникум", city: "Челябинск", type: "college", subjects: "Мат., Физ., Рус.", score: "от 3.8", desc: "Практическое обучение техническим и инженерным специальностям." },
 
-      { name: "НГУ", city: "Новосибирск", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 240–260" },
-      { name: "НГТУ (НЭТИ)", city: "Новосибирск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
-      { name: "Томский политехнический университет", city: "Томск", type: "vuz", subjects: "Мат., Физ/Инф., Рус.", score: "~ 210–230" },
-      { name: "ТГУ", city: "Томск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220" },
-      { name: "Сибирский федеральный университет", city: "Красноярск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200" },
-      { name: "Алтайский государственный университет", city: "Барнаул", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
-      { name: "Кемеровский государственный университет", city: "Кемерово", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
-      { name: "Омский государственный университет", city: "Омск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Иркутский государственный университет", city: "Иркутск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Колледж Skypro", city: "Красноярск", type: "college", subjects: "Инф., Мат., Рус.", score: "Платно" },
+      { name: "НГУ", city: "Новосибирск", type: "vuz", subjects: "Инф., Мат., Рус.", score: "~ 240–260", desc: "Главный университет Сибири. Высочайший уровень математики и IT, тесная связь с СО РАН." },
+      { name: "НГТУ (НЭТИ)", city: "Новосибирск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220", desc: "Крупнейший технический вуз Сибири. Готовит инженеров и программистов." },
+      { name: "Томский политехнический университет", city: "Томск", type: "vuz", subjects: "Мат., Физ/Инф., Рус.", score: "~ 210–230", desc: "Старейший инженерный вуз азиатской части России. Сильная физика и IT." },
+      { name: "ТГУ", city: "Томск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 220", desc: "Классический университет с богатой историей. Развитые IT и естественные науки." },
+      { name: "Сибирский федеральный университет", city: "Красноярск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200", desc: "Крупнейший вуз Восточной Сибири. Объединяет множество институтов." },
+      { name: "Алтайский государственный университет", city: "Барнаул", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180", desc: "Классический вуз Алтая. Качественное образование по доступным баллам." },
+      { name: "Кемеровский государственный университет", city: "Кемерово", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180", desc: "Опорный вуз Кузбасса. Готовит кадры для промышленности." },
+      { name: "Омский государственный университет", city: "Омск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Крупный научно-образовательный центр Омской области." },
+      { name: "Иркутский государственный университет", city: "Иркутск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Старейший вуз Сибири. Сильные биологические и IT-факультеты." },
+      { name: "Колледж Skypro", city: "Красноярск", type: "college", subjects: "Инф., Мат., Рус.", score: "Платно", desc: "Современный онлайн-колледж с упором на программирование и цифровые профессии." },
 
-      { name: "Дальневосточный федеральный университет", city: "Владивосток", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200–220" },
-      { name: "Тихоокеанский государственный университет", city: "Хабаровск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190" },
-      { name: "Северо-Восточный федеральный университет", city: "Якутск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
-      { name: "Амурский государственный университет", city: "Благовещенск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180" },
-      { name: "Камчатский государственный технический университет", city: "Петропавловск-Камчатский", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 170" },
-      { name: "Сахалинский государственный университет", city: "Южно-Сахалинск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 170" }
+      { name: "Дальневосточный федеральный университет", city: "Владивосток", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 200–220", desc: "Огромный кампус на острове Русский. Главный вуз Дальнего Востока." },
+      { name: "Тихоокеанский государственный университет", city: "Хабаровск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 190", desc: "Крупнейший вуз Хабаровского края." },
+      { name: "Северо-Восточный федеральный университет", city: "Якутск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180", desc: "Главный вуз Республики Саха. Учитывает специфику северных регионов." },
+      { name: "Амурский государственный университет", city: "Благовещенск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 180", desc: "Вуз на границе с Китаем, развивает международное сотрудничество." },
+      { name: "Камчатский государственный технический университет", city: "Петропавловск-Камчатский", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 170", desc: "Готовит специалистов для рыбной отрасли и туризма." },
+      { name: "Сахалинский государственный университет", city: "Южно-Сахалинск", type: "vuz", subjects: "Мат., Инф., Рус.", score: "~ 170", desc: "Единственный классический университет на Сахалине." }
     ];
 
     const container = document.getElementById('cardsContainer');
     const searchInput = document.getElementById('searchInput');
-    const subjectSelect = document.getElementById('subjectSelect');
     
     let currentFilter = 'all';
-    let currentSubject = 'all';
+    let selectedSubjects = []; // Массив для хранения выбранных предметов
 
-    // Слушатели событий
     searchInput.addEventListener('input', updateDisplay);
-    subjectSelect.addEventListener('change', (e) => {
-      currentSubject = e.target.value;
+
+    // Функция переключения предметов
+    function toggleSubject(subject, btn) {
+      if (selectedSubjects.includes(subject)) {
+        // Если уже выбран - убираем
+        selectedSubjects = selectedSubjects.filter(s => s !== subject);
+        btn.classList.remove('active');
+      } else {
+        // Если не выбран - добавляем
+        selectedSubjects.push(subject);
+        btn.classList.add('active');
+      }
       updateDisplay();
-    });
+    }
 
     function updateDisplay() {
       container.innerHTML = ''; 
       
       database.forEach(item => {
-        // 1. Проверка по типу (ВУЗ/Колледж)
         const matchesType = (currentFilter === 'all' || currentFilter === item.type);
-        
-        // 2. Проверка по поиску (название + город)
         const searchString = (item.name + " " + item.city).toLowerCase();
         const matchesSearch = searchString.includes(searchInput.value.toLowerCase().trim());
+        
+        // Логика мультивыбора: вуз должен содержать ВСЕ выбранные предметы
+        let matchesSubject = true;
+        if (selectedSubjects.length > 0) {
+          matchesSubject = selectedSubjects.every(sub => item.subjects.includes(sub));
+        }
 
-        // 3. Проверка по предмету (если выбран не "Любой")
-        const matchesSubject = (currentSubject === 'all' || item.subjects.includes(currentSubject));
-
-        // Если всё совпало — рисуем карточку
         if (matchesType && matchesSearch && matchesSubject) {
           const card = document.createElement('div');
           card.className = 'uni-card';
@@ -324,6 +372,7 @@
             <span class="uni-type ${typeClass}">${typeLabel}</span>
             <h3>${item.name}</h3>
             <div class="uni-city"><i class="ph ph-map-pin"></i> ${item.city}</div>
+            <p class="uni-desc">${item.desc}</p>
             <div class="uni-details">
               <div class="detail-row"><span class="detail-label">Предметы:</span><span class="detail-val">${item.subjects}</span></div>
               <div class="detail-row"><span class="detail-label">Проходной балл:</span><span class="detail-val score">${item.score}</span></div>
@@ -333,7 +382,6 @@
         }
       });
 
-      // Если ничего не найдено
       if (container.innerHTML === '') {
         container.innerHTML = `<div style="color: var(--text-muted); text-align: center; grid-column: 1 / -1; padding: 40px; font-size: 16px;">По вашему запросу ничего не найдено. Попробуйте изменить фильтры.</div>`;
       }
@@ -346,7 +394,6 @@
       updateDisplay();
     }
 
-    // Первый запуск
     updateDisplay();
   </script>
 </body>
