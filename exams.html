@@ -1,188 +1,71 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Подготовка к экзаменам | Навигатор выпускника</title>
-  <meta name="description" content="Навигатор подготовки к ОГЭ/ЕГЭ: темы по 9 предметам, отслеживание прогресса и ссылки на официальные банки заданий ФИПИ." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%235c8dff'/%3E%3Cstop offset='1' stop-color='%233ee0c0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='36' height='36' rx='9' fill='url(%23g)'/%3E%3Ccircle cx='18' cy='18' r='9' fill='none' stroke='%2306121c' stroke-width='2.4'/%3E%3Cpath d='M22.5 13.5 20 20l-6.5 2.5L16 16z' fill='%2306121c'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="Чек-лист тем к ОГЭ/ЕГЭ по 9 предметам с сохранением прогресса и ссылки на банки заданий ФИПИ.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232340c9'/%3E%3Cpath d='M22 10l-3.5 8.5L10 22l3.5-8.5z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body>
-  <div class="ambient"></div>
-  <div class="grid-lines"></div>
-  <div class="noise"></div>
-  <div class="scroll-progress"></div>
+<body data-page="exams">
+  <script src="assets/icons.js"></script>
+  <a class="skip-link" href="#main">К содержанию</a>
 
-  <header class="nav">
-    <a href="index.html" class="logo">
-      <span class="logo-mark"><svg class="icon"><use href="#i-compass"/></svg></span>
-      Навигатор
-    </a>
-    <nav class="nav-links">
-      <a href="vuzi.html">Вузы</a>
-      <a href="exams.html">Экзамены</a>
-      <a href="index.html" class="nav-cta"><svg class="icon"><use href="#i-arrow-l"/></svg> На главную</a>
-    </nav>
+  <header class="site-header">
+    <div class="wrap header-in">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
+        <span class="logo-text">Навигатор выпускника</span>
+      </a>
+      <nav class="main-nav" aria-label="Основное меню">
+        <a href="index.html">Главная</a>
+        <a href="vuzi.html">Вузы</a>
+        <a href="exams.html" aria-current="page">Подготовка</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="page-main">
-    <div class="page-top intro in">
-      <div>
-        <span class="eyebrow">Навигатор подготовки</span>
-        <h1 class="h-page">Подготовка к экзаменам</h1>
-        <p class="page-sub">Отмечай изученные темы и переходи к практике на официальных платформах. Прогресс сохраняется автоматически — прямо в браузере.</p>
+  <main id="main" class="wrap page">
+    <header class="page-head">
+      <h1>Подготовка к экзаменам</h1>
+      <p class="lead">Отмечай пройденные темы. Прогресс хранится в этом браузере, регистрация не нужна.</p>
+    </header>
+
+    <section class="overall" aria-label="Общий прогресс">
+      <div class="overall-text">
+        <b id="overallPct">0%</b>
+        <span id="overallText">Изучено 0 тем</span>
       </div>
+      <div class="bar" aria-hidden="true"><span id="overallBar"></span></div>
+      <button type="button" class="link-btn danger" id="resetAll">Сбросить всё</button>
+    </section>
+
+    <div class="exams">
+      <nav class="subject-list" id="subjectNav" aria-label="Предметы"></nav>
+      <section class="subject-panel" id="subjectPanel"></section>
     </div>
 
-    <!-- ОБЩИЙ ПРОГРЕСС -->
-    <div class="progress-head intro in">
-      <div class="ring-wrap">
-        <svg viewBox="0 0 76 76">
-          <circle class="ring-track" cx="38" cy="38" r="33"/>
-          <circle class="ring-fill" id="ringFill" cx="38" cy="38" r="33"/>
-        </svg>
-        <span class="ring-num" id="ringNum">0%</span>
-      </div>
-      <div class="progress-head-info">
-        <h2>Общая готовность</h2>
-        <p id="overallText">Изучено 0 из 45 тем по всем предметам</p>
-      </div>
-      <button class="reset-btn progress-reset" id="resetAllBtn">
-        <svg class="icon"><use href="#i-rotate"/></svg> Сбросить весь прогресс
-      </button>
-    </div>
-
-    <div class="exams-layout">
-      <!-- ПРЕДМЕТЫ -->
-      <nav class="subjects-nav" id="subjectsNav" aria-label="Предметы"></nav>
-
-      <!-- ТЕМЫ -->
-      <div>
-        <div class="topics-list" id="topicsContainer"></div>
-
-        <!-- РЕСУРСЫ -->
-        <div class="resources-card">
-          <h3><svg class="icon"><use href="#i-link"/></svg> Где готовиться?</h3>
-          <div class="resources-grid" id="resourcesGrid"></div>
-        </div>
-      </div>
-    </div>
+    <section class="resources" aria-labelledby="resTitle">
+      <h2 id="resTitle">Официальные материалы и тренажёры</h2>
+      <ul class="res-list" id="resources"></ul>
+    </section>
   </main>
 
-  <footer>
-    <div class="footer-in">
-      <span class="footer-copy">© 2026 · Навигатор выпускника · Индивидуальный проект</span>
-      <nav>
+  <footer class="site-footer">
+    <div class="wrap footer-in">
+      <span>© 2026 Навигатор выпускника · Индивидуальный проект</span>
+      <nav aria-label="Ссылки в подвале">
         <a href="index.html">Главная</a>
         <a href="vuzi.html">Вузы и колледжи</a>
       </nav>
     </div>
   </footer>
 
-  <script src="assets/data.js"></script>
-  <script src="assets/main.js"></script>
-  <script>
-    const subjectsNav    = document.getElementById('subjectsNav');
-    const topicsContainer = document.getElementById('topicsContainer');
-    const resourcesGrid  = document.getElementById('resourcesGrid');
-    const ringFill       = document.getElementById('ringFill');
-    const ringNum        = document.getElementById('ringNum');
-    const overallText    = document.getElementById('overallText');
-
-    let currentSubject = 'inf';
-    const RING_LEN = 207.3;
-
-    /* ---------- Прогресс ---------- */
-    const getProgress    = key => JSON.parse(localStorage.getItem('exam_progress_' + key) || '[]');
-    const saveProgress   = (key, ids) => localStorage.setItem('exam_progress_' + key, JSON.stringify(ids));
-
-    function updateOverall() {
-      const total = Object.values(subjectsData).reduce((n, s) => n + s.topics.length, 0);
-      const done  = Object.keys(subjectsData).reduce((n, k) => n + getProgress(k).length, 0);
-      const pct   = total ? Math.round((done / total) * 100) : 0;
-      ringNum.textContent = pct + '%';
-      ringFill.style.strokeDashoffset = RING_LEN * (1 - pct / 100);
-      overallText.textContent = `Изучено ${done} из ${total} тем по всем предметам`;
-    }
-
-    function updateSubjectBadges() {
-      document.querySelectorAll('.subject-nav-btn').forEach(btn => {
-        const key = btn.dataset.key;
-        const done = getProgress(key).length;
-        const total = subjectsData[key].topics.length;
-        btn.querySelector('.mini-progress').textContent = `${done}/${total}`;
-      });
-    }
-
-    /* ---------- Рендер ---------- */
-    function renderNav() {
-      subjectsNav.innerHTML = '';
-      Object.entries(subjectsData).forEach(([key, subj]) => {
-        const btn = document.createElement('button');
-        btn.className = 'subject-nav-btn' + (key === currentSubject ? ' active' : '');
-        btn.dataset.key = key;
-        btn.innerHTML = `<span>${subj.title}</span><span class="mini-progress">0/5</span>`;
-        btn.addEventListener('click', () => {
-          currentSubject = key;
-          document.querySelectorAll('.subject-nav-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          renderTopics();
-        });
-        subjectsNav.appendChild(btn);
-      });
-      updateSubjectBadges();
-    }
-
-    function renderTopics() {
-      const subj = subjectsData[currentSubject];
-      const checked = getProgress(currentSubject);
-      topicsContainer.innerHTML = '';
-
-      subj.topics.forEach((topic, i) => {
-        const label = document.createElement('label');
-        label.className = 'topic-item';
-        label.innerHTML = `
-          <input type="checkbox" ${checked.includes(topic.id) ? 'checked' : ''} data-id="${topic.id}">
-          <span class="checkmark"><svg class="icon"><use href="#i-check"/></svg></span>
-          <span class="topic-text">${topic.name}</span>
-          <span class="topic-idx">${String(i + 1).padStart(2, '0')}</span>`;
-        label.querySelector('input').addEventListener('change', e => {
-          let ids = getProgress(currentSubject);
-          ids = e.target.checked
-            ? [...new Set([...ids, e.target.dataset.id])]
-            : ids.filter(id => id !== e.target.dataset.id);
-          saveProgress(currentSubject, ids);
-          updateOverall();
-          updateSubjectBadges();
-        });
-        topicsContainer.appendChild(label);
-      });
-    }
-
-    function renderResources() {
-      resourcesGrid.innerHTML = RESOURCES.map(r => `
-        <a href="${r.url}" target="_blank" rel="noopener" class="resource-link">
-          <span class="r-ic"><svg class="icon"><use href="#i-${r.icon}"/></svg></span>
-          <div><b>${r.name}</b><span>${r.desc}</span></div>
-          <svg class="icon ext"><use href="#i-ext"/></svg>
-        </a>`).join('');
-    }
-
-    document.getElementById('resetAllBtn').addEventListener('click', () => {
-      Object.keys(subjectsData).forEach(k => localStorage.removeItem('exam_progress_' + k));
-      renderTopics();
-      updateOverall();
-      updateSubjectBadges();
-    });
-
-    renderNav();
-    renderTopics();
-    renderResources();
-    requestAnimationFrame(() => requestAnimationFrame(updateOverall));
-  </script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/app.js" defer></script>
 </body>
 </html>
