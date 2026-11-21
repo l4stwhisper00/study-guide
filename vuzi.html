@@ -6,8 +6,7 @@
   <title>Вузы и колледжи | Навигатор выпускника</title>
   <meta name="description" content="Проходные баллы вузов и колледжей, нужные экзамены и расчёт шансов по твоим баллам. Фильтры, поиск и избранное — всё сохраняется в браузере.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cg fill='%236c5ce7'%3E%3Crect x='8' width='1' height='1'/%3E%3Crect x='12' width='1' height='1'/%3E%3Crect x='7' y='1' width='3' height='3'/%3E%3Crect x='12' y='1' width='2' height='1'/%3E%3Crect x='11' y='2' width='3' height='2'/%3E%3Crect x='6' y='4' width='8' height='1'/%3E%3Crect x='5' y='5' width='9' height='2'/%3E%3Crect x='4' y='7' width='10' height='2'/%3E%3Crect x='1' y='9' width='13' height='1'/%3E%3Crect x='1' y='10' width='3' height='1'/%3E%3Crect x='4' y='10' width='9' height='1'/%3E%3Crect x='5' y='11' width='8' height='1'/%3E%3Crect x='6' y='12' width='6' height='1'/%3E%3C/g%3E%3Cg fill='%23fff'%3E%3Crect x='7' y='8' width='2' height='1'/%3E%3Crect x='11' y='8' width='2' height='1'/%3E%3C/g%3E%3C/svg%3E">
-  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0b0d12">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,25 +18,27 @@
   <header class="site-header">
     <div class="wrap header-in">
       <a class="logo" href="index.html">
-        <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 16 16" shape-rendering="crispEdges"><g fill="currentColor"><rect x="8" width="1" height="1"/><rect x="12" width="1" height="1"/><rect x="7" y="1" width="3" height="3"/><rect x="12" y="1" width="2" height="1"/><rect x="11" y="2" width="3" height="2"/><rect x="6" y="4" width="8" height="1"/><rect x="5" y="5" width="9" height="2"/><rect x="4" y="7" width="10" height="2"/><rect x="1" y="9" width="13" height="1"/><rect x="1" y="10" width="3" height="1"/><rect x="4" y="10" width="9" height="1"/><rect x="5" y="11" width="8" height="1"/><rect x="6" y="12" width="6" height="1"/></g><g fill="#0b0d12"><rect x="7" y="8" width="2" height="1"/><rect x="11" y="8" width="2" height="1"/></g></svg>
+        </span>
         <span class="logo-text">Навигатор выпускника</span>
       </a>
       <nav class="main-nav" aria-label="Основная навигация">
         <a href="index.html">Главная</a>
         <a href="vuzi.html" aria-current="page">Вузы</a>
         <a href="exams.html">Подготовка</a>
+        <a href="account.html">Кабинет</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
     <div class="wrap page">
-      <header class="page-head reveal">
+      <header class="page-head reveal-up">
         <h1>Вузы и колледжи</h1>
         <p class="lead">Проходные баллы прошлых лет и нужные экзамены. Введи свои баллы, и на карточках появится оценка шансов.</p>
       </header>
 
-      <!-- Мои баллы -->
       <details class="scores" id="scoresPanel">
         <summary>Мои баллы <span class="muted" id="scoresSummary">· не указаны</span></summary>
         <div class="scores-body">
@@ -60,7 +61,6 @@
         </div>
       </details>
 
-      <!-- Фильтры -->
       <section class="filters" aria-label="Фильтры списка">
         <div class="filters-row">
           <div class="search-field">
@@ -93,9 +93,12 @@
           <span class="chip-label" id="subjLabel">Есть предмет</span>
           <div class="chips" id="subjChips" role="group" aria-labelledby="subjLabel"></div>
         </div>
+        <div class="chip-group">
+          <span class="chip-label" id="cityLabel">Город</span>
+          <div class="chips" id="cityChips" role="group" aria-labelledby="cityLabel"></div>
+        </div>
       </section>
 
-      <!-- Результаты -->
       <div class="results-bar">
         <p>Найдено <b id="found">0</b> из <span data-stat="total">0</span></p>
         <div class="results-actions">
@@ -127,34 +130,7 @@
 
   <script src="icons.js"></script>
   <script src="data.js"></script>
+  <script src="data-extra.js"></script>
   <script src="app.js"></script>
-  /* --- VUZI CARDS (IMAGE STYLE) --- */
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-.card-glass {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-  overflow: hidden; transition: all 0.4s var(--ease);
-  opacity: 0; animation: fadeInCard 0.6s forwards;
-}
-.card-glass:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5); border-color: var(--accent); }
-.card-img {
-  height: 180px; background-size: cover; background-position: center;
-  position: relative;
-}
-.card-img::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--bg), transparent);
-  opacity: 0.6;
-}
-.card-content { padding: 20px; position: relative; margin-top: -40px; z-index: 2; }
-.card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-.card-city { font-size: 0.9rem; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
-.card-score {
-  display: flex; justify-content: space-between; align-items: center;
-  padding-top: 16px; border-top: 1px solid var(--border);
-  font-size: 0.9rem; color: var(--muted);
-}
-.card-score b { font-size: 1.2rem; color: var(--accent); }
-
-@keyframes fadeInCard { to { opacity: 1; } }
 </body>
 </html>
