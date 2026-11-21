@@ -3,27 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Навигатор выпускника — выбор вуза и подготовка к ОГЭ/ЕГЭ</title>
-  <meta name="description" content="Проходные баллы вузов и колледжей, расчёт шансов по твоим баллам и чек-лист тем к ОГЭ и ЕГЭ. Без регистрации, всё сохраняется в браузере.">
+  <title>Навигатор выпускника — выбор вуза и подготовка</title>
   <link rel="icon" type="image/png" href="assets/cat-icon.png">
-  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main">К содержанию</a>
 
-  <header class="site-header">
+  <header class="site-header glass">
     <div class="wrap header-in">
       <a class="logo" href="index.html">
-        <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
-        <span class="logo-text">Навигатор выпускника</span>
+        <img src="assets/cat-icon.png" alt="" class="logo-img">
+        <span class="logo-text">Навигатор</span>
       </a>
-      <nav class="main-nav" aria-label="Основная навигация">
-        <a href="index.html" aria-current="page">Главная</a>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Главная</a>
         <a href="vuzi.html">Вузы</a>
         <a href="exams.html">Подготовка</a>
       </nav>
@@ -31,82 +28,88 @@
   </header>
 
   <main id="main">
-    <!-- ========== HERO ========== -->
-    <section class="wrap hero">
-      <div class="hero-copy">
-        <p class="hero-slogan" aria-label="Твоё будущее — твои правила">
-          <span class="slogan-line slogan-line--outline" style="--ad: 80ms" aria-hidden="true"><span>Твоё будущее —</span></span>
-          <span class="slogan-line slogan-line--accent" style="--ad: 200ms" aria-hidden="true"><span>твои правила.</span></span>
-        </p>
-        <p class="kicker" data-anim style="--ad: 320ms">Для 9 и 11 классов</p>
-        <h1 data-anim style="--ad: 400ms">Куда поступать и&nbsp;как к&nbsp;этому подготовиться</h1>
-        <p class="lead" data-anim style="--ad: 480ms">Проходные баллы вузов и колледжей, расчёт шансов по твоим баллам и чек-лист тем к ОГЭ и ЕГЭ. Без регистрации, всё сохраняется в браузере.</p>
-        <form class="hero-search" data-anim style="--ad: 560ms" action="vuzi.html" role="search">
-          <label class="visually-hidden" for="heroQ">Поиск учебного заведения</label>
-          <input id="heroQ" type="search" name="q" placeholder="Поиск учебного заведения" autocomplete="off">
-          <button class="btn btn-primary" type="submit">Найти</button>
-        </form>
-        <p class="hero-links" data-anim style="--ad: 640ms">
-          <a href="vuzi.html">Все заведения →</a>
-          <a href="exams.html">План подготовки →</a>
-        </p>
+    <!-- HERO SECTION -->
+    <section class="hero-full">
+      <div class="hero-bg"></div>
+      <div class="wrap hero-content">
+        <div class="reveal-up">
+          <span class="badge">Твоё будущее начинается здесь</span>
+          <h1 class="hero-title">Выбери путь.<br><span class="gradient-text">Измени всё.</span></h1>
+          <p class="hero-sub">92 вуза, 40 колледжей и честный расчёт шансов. Без воды, только цифры и твои амбиции.</p>
+          
+          <div class="hero-actions">
+            <a href="vuzi.html" class="btn-glass primary">Найти вуз мечты</a>
+            <a href="exams.html" class="btn-glass">План подготовки</a>
+          </div>
+        </div>
       </div>
-
-      <aside class="side-box" data-anim style="--ad: 460ms" aria-labelledby="topTitle">
-        <h2 class="side-title" id="topTitle">Самые высокие проходные баллы</h2>
-        <p class="muted" style="font-size: .875rem">Сумма баллов ЕГЭ по трём предметам, ориентир по прошлым годам.</p>
-        <ol class="top-list" id="topList"></ol>
-      </aside>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <span></span>
+        <p>Листай вниз</p>
+      </div>
     </section>
 
-    <!-- ========== СТАТИСТИКА ========== -->
-    <section class="wrap section">
-      <dl class="stats" data-stagger>
-        <div class="reveal"><dt>Вузов</dt><dd data-stat="vuz">0</dd></div>
-        <div class="reveal"><dt>Колледжей и техникумов</dt><dd data-stat="college">0</dd></div>
-        <div class="reveal"><dt>Городов</dt><dd data-stat="cities">0</dd></div>
-        <div class="reveal"><dt>Тем для подготовки</dt><dd data-stat="topics">0</dd></div>
-      </dl>
+    <!-- PHILOSOPHY / QUOTES SECTION -->
+    <section class="philosophy">
+      <div class="wrap">
+        <div class="quote-card reveal-side left">
+          <div class="quote-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Mendeleev_1897.jpg/440px-Mendeleev_1897.jpg')"></div>
+          <div class="quote-body">
+            <blockquote>«Гений — это терпение мысли, сосредоточенной в известном направлении».</blockquote>
+            <cite>Дмитрий Менделеев</cite>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="quote-card reverse reveal-side right">
+          <div class="quote-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Lomonosov_MV.jpg/440px-Lomonosov_MV.jpg')"></div>
+          <div class="quote-body">
+            <blockquote>«Широко простирает химия руки свои в дела человеческие... Куда ни посмотрим, везде она перед очами нашими».</blockquote>
+            <cite>Михаил Ломоносов</cite>
+          </div>
+        </div>
+        
+        <div class="spacer"></div>
+
+        <div class="quote-card reveal-side left">
+          <div class="quote-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Pavlov_Ivan_Petrovich.jpg/440px-Pavlov_Ivan_Petrovich.jpg')"></div>
+          <div class="quote-body">
+            <blockquote>«Никогда не давайте праздности овладеть вами. Праздный человек — ржавчина ума».</blockquote>
+            <cite>Иван Павлов</cite>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ========== НАПРАВЛЕНИЯ ========== -->
-    <section class="wrap section">
-      <div class="section-head reveal">
+    <!-- STATS & DIRECTIONS -->
+    <section class="wrap section-dark">
+      <div class="section-head reveal-up">
         <h2>Направления</h2>
-        <a href="vuzi.html">Все заведения →</a>
+        <a href="vuzi.html" class="link-arrow">Смотреть все →</a>
       </div>
-      <ul class="dirs" id="dirList" data-stagger></ul>
+      <ul class="dirs-glass" id="dirList"></ul>
+    </section>
+    
+    <section class="wrap stats-section">
+       <div class="stats-glass reveal-up">
+         <div><b data-stat="vuz">0</b><span>Вузов</span></div>
+         <div><b data-stat="college">0</b><span>Колледжей</span></div>
+         <div><b data-stat="cities">0</b><span>Городов</span></div>
+       </div>
     </section>
 
-    <!-- ========== КАК ПОЛЬЗОВАТЬСЯ ========== -->
-    <section class="wrap section">
-      <div class="section-head reveal">
-        <h2>Как пользоваться</h2>
-      </div>
-      <ol class="steps" data-stagger>
-        <li class="reveal">
-          <h3>Введи свои баллы</h3>
-          <p>Пробные или реальные баллы ЕГЭ, для колледжей средний балл аттестата. <a href="vuzi.html">Открыть список</a></p>
-        </li>
-        <li class="reveal">
-          <h3>Сравни с проходными</h3>
-          <p>На каждой карточке видно, проходишь ли ты и сколько баллов не хватает. Подходящие можно поднять наверх.</p>
-        </li>
-        <li class="reveal">
-          <h3>Закрой пробелы</h3>
-          <p>Отмечай пройденные темы по предметам и тренируйся на заданиях ФИПИ и «Решу ЕГЭ». <a href="exams.html">К подготовке</a></p>
-        </li>
-      </ol>
-    </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer glass-top">
     <div class="wrap footer-in">
-      <p>© 2026 Навигатор выпускника · Индивидуальный проект</p>
-      <nav aria-label="Навигация в подвале">
-        <a href="vuzi.html">Вузы и колледжи</a>
-        <a href="exams.html">Подготовка</a>
-      </nav>
+      <p>© 2026 Навигатор выпускника</p>
+      <div class="footer-links">
+        <a href="vuzi.html">Каталог</a>
+        <a href="exams.html">Экзамены</a>
+      </div>
     </div>
   </footer>
 
