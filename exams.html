@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подготовка к ОГЭ и ЕГЭ | Навигатор выпускника</title>
+  <meta name="description" content="Чек-лист тем по предметам для подготовки к ОГЭ и ЕГЭ: отмечай пройденное и следи за прогрессом.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232340c9'/%3E%3Cpath d='M22 10l-3.5 8.5L10 22l3.5-8.5z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="exams">
+  <script src="assets/icons.js"></script>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <header class="site-header">
+    <div class="wrap header-in">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
+        <span class="logo-text">Навигатор выпускника</span>
+      </a>
+      <nav class="main-nav" aria-label="Основное меню">
+        <a href="index.html">Главная</a>
+        <a href="vuzi.html">Вузы</a>
+        <a href="exams.html" aria-current="page">Подготовка</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap page">
+    <header class="page-head">
+      <h1>Подготовка к экзаменам</h1>
+      <p class="lead">Чек-лист тем по предметам. Отмечай то, что уже повторил, — прогресс сохраняется в браузере.</p>
+    </header>
+
+    <div class="overall">
+      <div class="overall-text">
+        <b id="overallPct">0%</b>
+        <span id="overallLabel">пройдено тем из 0</span>
+      </div>
+      <div class="bar" aria-hidden="true"><span id="overallBar"></span></div>
+      <button type="button" class="btn" id="resetTopics">Сбросить всё</button>
+    </div>
+
+    <div class="exams">
+      <nav class="subject-list" id="subjectList" aria-label="Предметы"></nav>
+      <section class="subject-panel" id="subjectPanel" aria-live="polite"></section>
+    </div>
+
+    <section class="section" aria-labelledby="resTitle">
+      <div class="section-head"><h2 id="resTitle">Где тренироваться</h2></div>
+      <ul class="resources">
+        <li class="resource">
+          <h3>ФИПИ</h3>
+          <p>Официальные демоверсии, кодификаторы и открытый банк заданий.</p>
+          <a href="https://fipi.ru" target="_blank" rel="noopener">fipi.ru <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </li>
+        <li class="resource">
+          <h3>Решу ЕГЭ</h3>
+          <p>Тренажёр заданий с проверкой по всем предметам ЕГЭ.</p>
+          <a href="https://ege.sdamgia.ru" target="_blank" rel="noopener">ege.sdamgia.ru <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </li>
+        <li class="resource">
+          <h3>Решу ОГЭ</h3>
+          <p>Задания для девятиклассников по всем предметам ОГЭ.</p>
+          <a href="https://oge.sdamgia.ru" target="_blank" rel="noopener">oge.sdamgia.ru <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-in">
+      <span>© 2026 Навигатор выпускника · Индивидуальный проект</span>
+      <nav aria-label="Ссылки в подвале">
+        <a href="index.html">Главная</a>
+        <a href="vuzi.html">Вузы и колледжи</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/data.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

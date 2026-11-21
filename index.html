@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Навигатор выпускника — выбор вуза и подготовка к ОГЭ/ЕГЭ</title>
+  <meta name="description" content="Вузы и колледжи России с проходными баллами, расчёт шансов по твоим баллам и план подготовки к ОГЭ/ЕГЭ.">
+  <meta property="og:title" content="Навигатор выпускника">
+  <meta property="og:description" content="Проходные баллы, расчёт шансов и план подготовки к экзаменам.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232340c9'/%3E%3Cpath d='M22 10l-3.5 8.5L10 22l3.5-8.5z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+<body data-page="home">
+  <script src="assets/icons.js"></script>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <header class="site-header">
+    <div class="wrap header-in">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
+        <span class="logo-text">Навигатор выпускника</span>
+      </a>
+      <nav class="main-nav" aria-label="Основное меню">
+        <a href="index.html" aria-current="page">Главная</a>
+        <a href="vuzi.html">Вузы</a>
+        <a href="exams.html">Подготовка</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="wrap hero">
+      <div>
+        <p class="kicker">Для 9 и 11 классов</p>
+        <h1>Куда поступать и&nbsp;как к&nbsp;этому подготовиться</h1>
+        <p class="lead">Проходные баллы вузов и колледжей, расчёт шансов по твоим баллам и чек-лист тем к ОГЭ и ЕГЭ. Без регистрации, всё сохраняется в браузере.</p>
+
+        <form class="hero-search" action="vuzi.html" method="get" role="search">
+          <label class="visually-hidden" for="heroQ">Поиск учебного заведения</label>
+          <input id="heroQ" name="q" type="search" placeholder="Название или город, например «Томск»" autocomplete="off">
+          <button class="btn btn-primary" type="submit">Найти</button>
+        </form>
+
+        <p class="hero-links">
+          <a href="vuzi.html">Все заведения →</a>
+          <a href="exams.html">План подготовки →</a>
+        </p>
+      </div>
+
+      <aside class="side-box" aria-labelledby="topTitle">
+        <h2 class="side-title" id="topTitle">Самые высокие проходные баллы</h2>
+        <ol class="top-list" id="topList"></ol>
+        <p class="fine">Сумма баллов ЕГЭ по трём предметам, ориентир по прошлым годам.</p>
+      </aside>
+    </section>
+
+    <section class="wrap" aria-label="Цифры">
+      <dl class="stats">
+        <div><dt>Вузов</dt><dd data-stat="vuz">0</dd></div>
+        <div><dt>Колледжей и техникумов</dt><dd data-stat="college">0</dd></div>
+        <div><dt>Городов</dt><dd data-stat="cities">0</dd></div>
+        <div><dt>Тем для подготовки</dt><dd data-stat="topics">0</dd></div>
+      </dl>
+    </section>
+
+    <section class="wrap section" aria-labelledby="dirTitle">
+      <div class="section-head">
+        <h2 id="dirTitle">Направления</h2>
+        <a href="vuzi.html">Все заведения →</a>
+      </div>
+      <ul class="dirs" id="dirList"></ul>
+    </section>
+
+    <section class="wrap section" aria-labelledby="howTitle">
+      <div class="section-head"><h2 id="howTitle">Как пользоваться</h2></div>
+      <ol class="steps">
+        <li>
+          <h3>Введи свои баллы</h3>
+          <p>Пробные или реальные баллы ЕГЭ, для колледжей средний балл аттестата. <a href="vuzi.html">Открыть список</a></p>
+        </li>
+        <li>
+          <h3>Сравни с проходными</h3>
+          <p>На каждой карточке видно, проходишь ли ты и сколько баллов не хватает. Подходящие можно поднять наверх.</p>
+        </li>
+        <li>
+          <h3>Закрой пробелы</h3>
+          <p>Отмечай пройденные темы по предметам и тренируйся на заданиях ФИПИ и «Решу ЕГЭ». <a href="exams.html">К подготовке</a></p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-in">
+      <span>© 2026 Навигатор выпускника · Индивидуальный проект</span>
+      <nav aria-label="Ссылки в подвале">
+        <a href="vuzi.html">Вузы и колледжи</a>
+        <a href="exams.html">Подготовка</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/data.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
