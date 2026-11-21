@@ -18,9 +18,7 @@
   <header class="site-header">
     <div class="wrap header-in">
       <a class="logo" href="index.html">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 16 16" shape-rendering="crispEdges"><g fill="currentColor"><rect x="8" width="1" height="1"/><rect x="12" width="1" height="1"/><rect x="7" y="1" width="3" height="3"/><rect x="12" y="1" width="2" height="1"/><rect x="11" y="2" width="3" height="2"/><rect x="6" y="4" width="8" height="1"/><rect x="5" y="5" width="9" height="2"/><rect x="4" y="7" width="10" height="2"/><rect x="1" y="9" width="13" height="1"/><rect x="1" y="10" width="3" height="1"/><rect x="4" y="10" width="9" height="1"/><rect x="5" y="11" width="8" height="1"/><rect x="6" y="12" width="6" height="1"/></g><g fill="#0b0d12"><rect x="7" y="8" width="2" height="1"/><rect x="11" y="8" width="2" height="1"/></g></svg>
-        </span>
+        <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
         <span class="logo-text">Навигатор выпускника</span>
       </a>
       <nav class="main-nav" aria-label="Основная навигация">
@@ -39,6 +37,7 @@
         <p class="lead">Проходные баллы прошлых лет и нужные экзамены. Введи свои баллы, и на карточках появится оценка шансов.</p>
       </header>
 
+      <!-- Мои баллы -->
       <details class="scores" id="scoresPanel">
         <summary>Мои баллы <span class="muted" id="scoresSummary">· не указаны</span></summary>
         <div class="scores-body">
@@ -61,6 +60,7 @@
         </div>
       </details>
 
+      <!-- Фильтры -->
       <section class="filters" aria-label="Фильтры списка">
         <div class="filters-row">
           <div class="search-field">
@@ -90,15 +90,16 @@
           <div class="chips" id="catChips" role="group" aria-labelledby="catLabel"></div>
         </div>
         <div class="chip-group">
-          <span class="chip-label" id="subjLabel">Есть предмет</span>
-          <div class="chips" id="subjChips" role="group" aria-labelledby="subjLabel"></div>
-        </div>
-        <div class="chip-group">
           <span class="chip-label" id="cityLabel">Город</span>
           <div class="chips" id="cityChips" role="group" aria-labelledby="cityLabel"></div>
         </div>
+        <div class="chip-group">
+          <span class="chip-label" id="subjLabel">Есть предмет</span>
+          <div class="chips" id="subjChips" role="group" aria-labelledby="subjLabel"></div>
+        </div>
       </section>
 
+      <!-- Результаты -->
       <div class="results-bar">
         <p>Найдено <b id="found">0</b> из <span data-stat="total">0</span></p>
         <div class="results-actions">
