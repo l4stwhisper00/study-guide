@@ -1,27 +1,28 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="ru" class="no-js">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Вузы и колледжи | Навигатор выпускника</title>
-  <meta name="description" content="Вузы и колледжи России: проходные баллы, предметы, фильтры и расчёт шансов по твоим баллам.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232340c9'/%3E%3Cpath d='M22 10l-3.5 8.5L10 22l3.5-8.5z' fill='%23fff'/%3E%3C/svg%3E">
+  <meta name="description" content="Проходные баллы вузов и колледжей, нужные экзамены и расчёт шансов по твоим баллам. Фильтры, поиск и избранное — всё сохраняется в браузере.">
+  <link rel="icon" type="image/png" href="assets/cat-icon.png">
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="vuzi">
-  <script src="assets/icons.js"></script>
   <a class="skip-link" href="#main">К содержанию</a>
 
   <header class="site-header">
     <div class="wrap header-in">
-      <a href="index.html" class="logo">
+      <a class="logo" href="index.html">
         <span class="logo-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span>
         <span class="logo-text">Навигатор выпускника</span>
       </a>
-      <nav class="main-nav" aria-label="Основное меню">
+      <nav class="main-nav" aria-label="Основная навигация">
         <a href="index.html">Главная</a>
         <a href="vuzi.html" aria-current="page">Вузы</a>
         <a href="exams.html">Подготовка</a>
@@ -29,76 +30,85 @@
     </div>
   </header>
 
-  <main id="main" class="wrap page">
-    <header class="page-head">
-      <h1>Вузы и колледжи</h1>
-      <p class="lead">Проходные баллы прошлых лет и нужные экзамены. Введи свои баллы, и на карточках появится оценка шансов.</p>
-    </header>
+  <main id="main">
+    <div class="wrap page">
+      <header class="page-head reveal">
+        <h1>Вузы и колледжи</h1>
+        <p class="lead">Проходные баллы прошлых лет и нужные экзамены. Введи свои баллы, и на карточках появится оценка шансов.</p>
+      </header>
 
-    <details class="scores" id="scoresPanel">
-      <summary>Мои баллы <span class="muted" id="scoresSummary"></span></summary>
-      <div class="scores-body">
-        <fieldset>
-          <legend>ЕГЭ, от 0 до 100</legend>
-          <div class="scores-grid" id="egeInputs"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Для колледжей</legend>
-          <div class="scores-grid">
-            <label class="score-field">
-              <span>Средний балл аттестата</span>
-              <input id="gpaInput" type="number" min="2" max="5" step="0.1" inputmode="decimal" placeholder="4.3">
-            </label>
+      <!-- Мои баллы -->
+      <details class="scores" id="scoresPanel">
+        <summary>Мои баллы <span class="muted" id="scoresSummary">· не указаны</span></summary>
+        <div class="scores-body">
+          <fieldset>
+            <legend>ЕГЭ, от 0 до 100</legend>
+            <div class="scores-grid" id="egeInputs"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Для колледжей</legend>
+            <div class="scores-grid">
+              <label class="score-field">
+                <span>Средний балл аттестата</span>
+                <input type="number" id="gpaInput" min="2" max="5" step="0.1" placeholder="—" inputmode="decimal">
+              </label>
+            </div>
+          </fieldset>
+          <div>
+            <button type="button" class="link-btn danger" id="clearScores">Очистить баллы</button>
           </div>
-        </fieldset>
-        <p><button type="button" class="link-btn danger" id="clearScores">Очистить баллы</button></p>
-      </div>
-    </details>
-
-    <section class="filters" aria-label="Фильтры">
-      <div class="filters-row">
-        <div class="search-field">
-          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
-          <label class="visually-hidden" for="q">Поиск</label>
-          <input type="search" id="q" placeholder="Название или город (клавиша /)" autocomplete="off">
         </div>
-        <div class="seg" id="typeSeg" role="group" aria-label="Тип заведения">
-          <button type="button" data-type="all" aria-pressed="true">Все</button>
-          <button type="button" data-type="vuz" aria-pressed="false">Вузы</button>
-          <button type="button" data-type="college" aria-pressed="false">Колледжи</button>
-        </div>
-        <label class="visually-hidden" for="sort">Сортировка</label>
-        <select id="sort">
-          <option value="default">По умолчанию</option>
-          <option value="chance">Сначала подходящие мне</option>
-          <option value="score-desc">Балл: по убыванию</option>
-          <option value="score-asc">Балл: по возрастанию</option>
-          <option value="name">По названию</option>
-          <option value="city">По городу</option>
-        </select>
-      </div>
-      <div class="chip-group">
-        <span class="chip-label" id="catLabel">Направление</span>
-        <div class="chips" id="catChips" role="group" aria-labelledby="catLabel"></div>
-      </div>
-      <div class="chip-group">
-        <span class="chip-label" id="subjLabel">Есть предмет</span>
-        <div class="chips" id="subjChips" role="group" aria-labelledby="subjLabel"></div>
-      </div>
-    </section>
+      </details>
 
-    <div class="results-bar">
-      <p aria-live="polite">Найдено <b id="found">0</b> из <span data-stat="total">0</span></p>
-      <div class="results-actions">
-        <button type="button" class="link-btn" id="resetFilters" hidden>Сбросить фильтры</button>
-        <button type="button" class="chip" id="favToggle" aria-pressed="false">
-          <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
-          Избранное <span class="count" id="favCount">0</span>
-        </button>
+      <!-- Фильтры -->
+      <section class="filters" aria-label="Фильтры списка">
+        <div class="filters-row">
+          <div class="search-field">
+            <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <label class="visually-hidden" for="q">Поиск учебного заведения</label>
+            <input type="search" id="q" placeholder="Поиск" autocomplete="off">
+          </div>
+          <div class="seg" id="typeSeg" role="group" aria-label="Тип заведения">
+            <button type="button" data-type="all" aria-pressed="true">Все</button>
+            <button type="button" data-type="vuz" aria-pressed="false">Вузы</button>
+            <button type="button" data-type="college" aria-pressed="false">Колледжи</button>
+          </div>
+          <div>
+            <label class="visually-hidden" for="sort">Сортировка</label>
+            <select id="sort">
+              <option value="default">По умолчанию</option>
+              <option value="chance">Сначала подходящие мне</option>
+              <option value="score-desc">Балл: по убыванию</option>
+              <option value="score-asc">Балл: по возрастанию</option>
+              <option value="name">По названию</option>
+              <option value="city">По городу</option>
+            </select>
+          </div>
+        </div>
+        <div class="chip-group">
+          <span class="chip-label" id="catLabel">Направление</span>
+          <div class="chips" id="catChips" role="group" aria-labelledby="catLabel"></div>
+        </div>
+        <div class="chip-group">
+          <span class="chip-label" id="subjLabel">Есть предмет</span>
+          <div class="chips" id="subjChips" role="group" aria-labelledby="subjLabel"></div>
+        </div>
+      </section>
+
+      <!-- Результаты -->
+      <div class="results-bar">
+        <p>Найдено <b id="found">0</b> из <span data-stat="total">0</span></p>
+        <div class="results-actions">
+          <button type="button" class="link-btn" id="resetFilters" hidden>Сбросить фильтры</button>
+          <button type="button" class="btn" id="favToggle" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+            Избранное <span id="favCount">0</span>
+          </button>
+        </div>
       </div>
+
+      <div class="cards" id="cards"></div>
     </div>
-
-    <div class="cards" id="cards"></div>
   </main>
 
   <dialog class="dialog" id="schoolDialog" aria-labelledby="dlgTitle">
@@ -107,15 +117,16 @@
 
   <footer class="site-footer">
     <div class="wrap footer-in">
-      <span>© 2026 Навигатор выпускника · Данные ориентировочные</span>
-      <nav aria-label="Ссылки в подвале">
+      <p>© 2026 Навигатор выпускника · Данные ориентировочные</p>
+      <nav aria-label="Навигация в подвале">
         <a href="index.html">Главная</a>
         <a href="exams.html">Подготовка</a>
       </nav>
     </div>
   </footer>
 
-  <script src="assets/data.js" defer></script>
-  <script src="assets/app.js" defer></script>
+  <script src="icons.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
