@@ -1,5 +1,8 @@
-/* Навигатор выпускника: логика */
+/* Навигатор выпускника: логика + анимации (vanilla, IntersectionObserver only) */
 'use strict';
+
+/* Снимаем no-js как можно раньше, чтобы reveal-состояния не мигали */
+document.documentElement.classList.remove('no-js');
 
 /* ---------- Хранилище ---------- */
 const store = {
@@ -15,12 +18,11 @@ const store = {
 };
 
 /* ---------- Общие ---------- */
-const $ = sel => document.querySelector(sel);
+const $  = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 const escapeHtml = s => String(s).replace(/[&<>"']/g, ch => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
 ));
-
 const TYPE_LABEL = { vuz: 'Вуз', college: 'Колледж' };
 const TYPE_CLASS = { vuz: 'tag-vuz', college: 'tag-college' };
 
@@ -30,7 +32,7 @@ function chanceInfo(school) {
     const gpa = Number(scores.gpa);
     if (!gpa) return { cls: 'chance-unknown', text: 'Укажи балл аттестата' };
     const diff = school.s - gpa;
-    if (diff <= 0) return { cls: 'chance-ok', text: 'Проходишь с запасом' };
+    if (diff <= 0)   return { cls: 'chance-ok',    text: 'Проходишь с запасом' };
     if (diff <= 0.4) return { cls: 'chance-close', text: `Не хватает ~${diff.toFixed(1)} балла` };
     return { cls: 'chance-low', text: `Не хватает ${diff.toFixed(1)} балла` };
   }
@@ -38,7 +40,7 @@ function chanceInfo(school) {
     .reduce((n, k) => n + (Number(scores[k]) || 0), 0);
   if (!sum) return { cls: 'chance-unknown', text: 'Укажи свои баллы ЕГЭ' };
   const diff = school.s - sum;
-  if (diff <= 0) return { cls: 'chance-ok', text: `Проходишь (+${-diff})` };
+  if (diff <= 0)  return { cls: 'chance-ok',    text: `Проходишь (+${-diff})` };
   if (diff <= 20) return { cls: 'chance-close', text: `Не хватает ${diff} б.` };
   return { cls: 'chance-low', text: `Не хватает ${diff} б.` };
 }
@@ -57,10 +59,50 @@ function icon(name, cls = 'icon') {
   return `<svg class="${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
 }
 
+/* ---------- Scroll-reveal: только IntersectionObserver ---------- */
+function initReveal() {
+  /* stagger-задержки для детей групп */
+  $$('[data-stagger]').forEach(group => {
+    Array.from(group.children).forEach((child, i) => {
+      child.style.setProperty('--rd', (Math.min(i, 12) * 70) + 'ms');
+    });
+  });
+
+  const items = $$('.reveal');
+  if (!items.length) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce.matches) {
+    items.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) {
+        el.classList.add('is-visible');          // въезд при скролле вниз
+      } else {
+        el.classList.remove('is-visible');       // красивый выезд при скролле вверх
+        el.style.willChange = '';                // возвращаем will-change из CSS
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  items.forEach(el => {
+    /* снимаем will-change после завершения анимации */
+    el.addEventListener('transitionend', e => {
+      if (e.target === el && e.propertyName === 'transform' && el.classList.contains('is-visible')) {
+        el.style.willChange = 'auto';
+      }
+    });
+    io.observe(el);
+  });
+}
+
 /* ---------- Главная ---------- */
 function initHome() {
   renderStats();
-
   const top = SCHOOLS.filter(s => s.t === 'vuz').sort((a, b) => b.s - a.s).slice(0, 5);
   $('#topList').innerHTML = top.map((s, i) => `
     <li>
@@ -73,16 +115,17 @@ function initHome() {
   const catCount = {};
   SCHOOLS.forEach(s => { catCount[s.cat] = (catCount[s.cat] || 0) + 1; });
   $('#dirList').innerHTML = CATEGORIES.filter(c => catCount[c.key]).map(c => `
-    <li><a class="dir" href="vuzi.html?cat=${c.key}">
-      ${icon(c.icon)}
-      <span><b>${c.name}</b><span>${catCount[c.key]} заведения</span></span>
-    </a></li>`).join('');
+    <li class="reveal">
+      <a class="dir" href="vuzi.html?cat=${c.key}">
+        ${icon(c.icon)}
+        <span><b>${c.name}</b><span>${catCount[c.key]} заведения</span></span>
+      </a>
+    </li>`).join('');
 }
 
 /* ---------- Страница вузов ---------- */
 function initVuzi() {
   renderStats();
-
   const state = {
     q: new URLSearchParams(location.search).get('q') || '',
     type: 'all',
@@ -93,7 +136,7 @@ function initVuzi() {
     fav: store.get('fav', []),
   };
 
-  // Мои баллы
+  /* Мои баллы */
   const egeKeys = ['rus', 'math', 'phys', 'inf', 'soc', 'hist', 'eng', 'chem', 'bio'];
   const egeInputs = $('#egeInputs');
   egeInputs.innerHTML = egeKeys.map(k => `
@@ -102,7 +145,6 @@ function initVuzi() {
       <input type="number" min="0" max="100" data-ege="${k}" placeholder="—" inputmode="numeric">
     </label>`).join('');
 
-  const scoresPanel = $('#scoresPanel');
   const updateSummary = () => {
     const s = store.get('scores', {});
     const filled = egeKeys.filter(k => Number(s[k]) > 0).length;
@@ -110,7 +152,6 @@ function initVuzi() {
       ? `· ${filled} предм. ЕГЭ${s.gpa ? ' + аттестат' : ''}`
       : (s.gpa ? '· аттестат указан' : '· не указаны');
   };
-
   const fillScores = () => {
     const s = store.get('scores', {});
     egeInputs.querySelectorAll('input').forEach(inp => { inp.value = s[inp.dataset.ege] ?? ''; });
@@ -122,7 +163,7 @@ function initVuzi() {
   egeInputs.addEventListener('input', () => {
     const s = store.get('scores', {});
     egeInputs.querySelectorAll('input').forEach(inp => {
-      let v = inp.value === '' ? 0 : Math.max(0, Math.min(100, Number(inp.value) || 0));
+      const v = inp.value === '' ? 0 : Math.max(0, Math.min(100, Number(inp.value) || 0));
       s[inp.dataset.ege] = v;
     });
     store.set('scores', s); updateSummary(); render();
@@ -136,13 +177,14 @@ function initVuzi() {
     store.set('scores', {}); fillScores(); render();
   });
 
-  // Чипсы направлений
+  /* Чипсы направлений */
   const catChips = $('#catChips');
   const catCount = {};
   SCHOOLS.forEach(s => { catCount[s.cat] = (catCount[s.cat] || 0) + 1; });
-  catChips.innerHTML = `<button type="button" data-cat="" aria-pressed="${state.cat === ''}">Все</button>` +
+  catChips.innerHTML =
+    `<button type="button" class="chip" data-cat="" aria-pressed="${state.cat === ''}">Все</button>` +
     CATEGORIES.filter(c => catCount[c.key]).map(c => `
-      <button type="button" data-cat="${c.key}" aria-pressed="${state.cat === c.key}">
+      <button type="button" class="chip" data-cat="${c.key}" aria-pressed="${state.cat === c.key}">
         ${c.name} <span class="count">${catCount[c.key]}</span>
       </button>`).join('');
   catChips.addEventListener('click', e => {
@@ -153,12 +195,12 @@ function initVuzi() {
     render();
   });
 
-  // Чипсы предметов
+  /* Чипсы предметов */
   const subjChips = $('#subjChips');
   const subjCount = {};
   SCHOOLS.forEach(s => s.sub.forEach(k => { subjCount[k] = (subjCount[k] || 0) + 1; }));
   subjChips.innerHTML = Object.keys(SUBJECTS).filter(k => subjCount[k]).map(k => `
-    <button type="button" data-subj="${k}" aria-pressed="false">${SUBJECTS[k]}</button>`).join('');
+    <button type="button" class="chip" data-subj="${k}" aria-pressed="false">${SUBJECTS[k]}</button>`).join('');
   subjChips.addEventListener('click', e => {
     const btn = e.target.closest('[data-subj]');
     if (!btn) return;
@@ -172,7 +214,7 @@ function initVuzi() {
       b.setAttribute('aria-pressed', String(b.getAttribute(attr) === active)));
   }
 
-  // Тип и сортировка
+  /* Тип и сортировка */
   $('#typeSeg').addEventListener('click', e => {
     const btn = e.target.closest('[data-type]');
     if (!btn) return;
@@ -183,7 +225,7 @@ function initVuzi() {
   });
   $('#sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
 
-  // Поиск
+  /* Поиск */
   const qInput = $('#q');
   qInput.value = state.q;
   qInput.addEventListener('input', () => { state.q = qInput.value; render(); });
@@ -191,7 +233,7 @@ function initVuzi() {
     if (e.key === '/' && document.activeElement !== qInput) { e.preventDefault(); qInput.focus(); }
   });
 
-  // Избранное
+  /* Избранное */
   const favToggle = $('#favToggle');
   const syncFav = () => {
     $('#favCount').textContent = state.fav.length;
@@ -215,22 +257,20 @@ function initVuzi() {
     render();
   });
 
-  // Диалог
+  /* Диалог */
   const dialog = $('#schoolDialog');
-  const closeBtn = () => `
-    <button type="button" class="dialog-close" data-close aria-label="Закрыть">
-      ${icon('i-x')}</button>`;
   const openDialog = school => {
     const ch = chanceInfo(school);
-    $('#dlgTitle') && ($('#dlgTitle').id = 'dlgTitle');
     $('#dialogBody').innerHTML = `
+      <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d)}</p>
       <dl class="d-grid">
         <div class="d-cell"><dt>Проходной балл</dt>
           <dd>${school.s}<small>${school.t === 'college' ? ' аттестат' : ' ЕГЭ'}</small></dd></div>
-        <div class="d-cell"><dt>Шансы</dt><dd style="font-size:1rem" class="chance ${ch.cls}">${ch.text}</dd></div>
+        <div class="d-cell"><dt>Шансы</dt>
+          <dd class="chance ${ch.cls}" style="font-size:1rem">${ch.text}</dd></div>
       </dl>
       <table class="d-table">
         <caption>Нужные экзамены</caption>
@@ -239,7 +279,7 @@ function initVuzi() {
       </table>
       <div class="dialog-actions">
         <a class="btn btn-primary" href="https://${school.u}" target="_blank" rel="noopener">
-          Сайт вуза ${icon('i-ext')}</a>
+          Сайт ${school.t === 'college' ? 'колледжа' : 'вуза'} ${icon('i-ext')}</a>
         <button type="button" class="btn" data-close>Закрыть</button>
       </div>`;
     dialog.showModal();
@@ -248,7 +288,7 @@ function initVuzi() {
     if (e.target.closest('[data-close]') || e.target === dialog) dialog.close();
   });
 
-  // Рендер карточек
+  /* Рендер карточек */
   const cards = $('#cards');
   function render() {
     const q = state.q.trim().toLowerCase();
@@ -261,14 +301,13 @@ function initVuzi() {
       return true;
     });
 
-    const scores = store.get('scores', {});
     const sorters = {
-      default: (a, b) => (state.fav.includes(b.id) - state.fav.includes(a.id)) || b.s - a.s,
-      chance: (a, b) => (state.fav.includes(b.id) - state.fav.includes(a.id)) || a.s - b.s,
+      default:      (a, b) => (state.fav.includes(b.id) - state.fav.includes(a.id)) || b.s - a.s,
+      chance:       (a, b) => (state.fav.includes(b.id) - state.fav.includes(a.id)) || a.s - b.s,
       'score-desc': (a, b) => b.s - a.s,
-      'score-asc': (a, b) => a.s - b.s,
-      name: (a, b) => a.n.localeCompare(b.n, 'ru'),
-      city: (a, b) => a.c.localeCompare(b.c, 'ru') || a.n.localeCompare(b.n, 'ru'),
+      'score-asc':  (a, b) => a.s - b.s,
+      name:         (a, b) => a.n.localeCompare(b.n, 'ru'),
+      city:         (a, b) => a.c.localeCompare(b.c, 'ru') || a.n.localeCompare(b.n, 'ru'),
     };
     list.sort(sorters[state.sort] || sorters.default);
 
@@ -281,12 +320,12 @@ function initVuzi() {
       return;
     }
 
-    cards.innerHTML = list.map(s => {
+    cards.innerHTML = list.map((s, i) => {
       const ch = chanceInfo(s);
       const isFav = state.fav.includes(s.id);
       const cat = CATEGORIES.find(c => c.key === s.cat);
       return `
-      <article class="card">
+      <article class="card" style="--i:${i}">
         <div class="card-top">
           <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
           ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
@@ -322,22 +361,21 @@ function initVuzi() {
     }
   });
 
-  // Открытие конкретного заведения из ссылки на главной
+  /* Открытие конкретного заведения из ссылки на главной */
   const schoolParam = new URLSearchParams(location.search).get('school');
   if (schoolParam) {
     const school = SCHOOLS.find(s => s.id === schoolParam);
     if (school) setTimeout(() => openDialog(school), 100);
   }
-
   render();
 }
 
 /* ---------- Страница подготовки ---------- */
 function initExams() {
   renderStats();
-
   const done = store.get('done', {});
   let current = Object.keys(EXAM_TOPICS)[0];
+  let sidebarAnim = true; /* stagger только при первой отрисовке списка */
 
   const subjectList = $('#subjectList');
   const panel = $('#subjectPanel');
@@ -349,12 +387,16 @@ function initExams() {
   }
 
   function renderSidebar() {
-    subjectList.innerHTML = Object.entries(EXAM_TOPICS).map(([key, sub]) => {
+    subjectList.innerHTML = Object.entries(EXAM_TOPICS).map(([key, sub], i) => {
       const { n, total } = subjectMeta(key);
-      return `<button type="button" class="subject-btn ${n === total ? 'done' : ''}"
+      return `
+      <button type="button" style="--i:${i}"
+        class="subject-btn ${n === total ? 'done' : ''}${sidebarAnim ? ' in' : ''}"
         data-sub="${key}" aria-current="${key === current}">
-        <span>${sub.name}</span><span class="cnt">${n}/${total}</span></button>`;
+        <span>${sub.name}</span><span class="cnt">${n}/${total}</span>
+      </button>`;
     }).join('');
+    sidebarAnim = false;
   }
 
   function renderPanel() {
@@ -366,17 +408,19 @@ function initExams() {
         <span class="muted">${n} из ${total}</span>
       </div>
       <ul class="topics">
-        ${sub.topics.map(t => {
+        ${sub.topics.map((t, i) => {
           const key = current + ':' + t;
           const checked = done[key] ? 'checked' : '';
-          return `<li><label class="topic">
-            <input type="checkbox" data-topic="${escapeHtml(key)}" ${checked}>
-            <span class="box">${icon('i-check')}</span>
-            <span class="topic-text"><span class="topic-name">${t}</span></span>
-          </label></li>`;
+          return `
+          <li style="--i:${i}">
+            <label class="topic">
+              <input type="checkbox" data-topic="${escapeHtml(key)}" ${checked}>
+              <span class="box">${icon('i-check')}</span>
+              <span class="topic-text"><span class="topic-name">${t}</span></span>
+            </label>
+          </li>`;
         }).join('')}
       </ul>`;
-
     panel.querySelectorAll('[data-topic]').forEach(inp => {
       inp.addEventListener('change', () => {
         done[inp.dataset.topic] = inp.checked;
@@ -392,7 +436,7 @@ function initExams() {
     const pct = total ? Math.round(n / total * 100) : 0;
     $('#overallPct').textContent = pct + '%';
     $('#overallLabel').textContent = `пройдено тем из ${total}`;
-    $('#overallBar').style.width = pct + '%';
+    $('#overallBar').style.transform = `scaleX(${pct / 100})`; /* GPU, без layout */
   }
 
   subjectList.addEventListener('click', e => {
@@ -417,4 +461,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'home') initHome();
   else if (page === 'vuzi') initVuzi();
   else if (page === 'exams') initExams();
+  initReveal();
 });
