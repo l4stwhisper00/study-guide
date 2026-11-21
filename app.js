@@ -54,9 +54,36 @@ function renderStats() {
   const college = SCHOOLS.filter(s => s.t === 'college').length;
   $$('[data-stat="vuz"]').forEach(el => el.textContent = vuz);
   $$('[data-stat="college"]').forEach(el => el.textContent = college);
-  $$('[data-stat="cities"]').forEach(el => el.textContent = citiesCount);
-  $$('[data-stat="topics"]').forEach(el => el.textContent = topicsCount);
+  $$('[data-stat="cities"]').forEach(el => el.textContent = new Set(SCHOOLS.map(s => s.c)).size);
+  $$('[data-stat="topics"]').forEach(el => el.textContent = Object.values(EXAM_TOPICS).reduce((n, s) => n + s.topics.length, 0));
   $$('[data-stat="total"]').forEach(el => el.textContent = SCHOOLS.length);
+}
+
+/* ---------- Кастомный select ---------- */
+function initCustomSelect(sel, onChange) {
+  const wrap = document.createElement('div');
+  wrap.className = 'cselect';
+  sel.parentNode.insertBefore(wrap, sel);
+  wrap.appendChild(sel);
+  const btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'cselect-btn';
+  btn.setAttribute('aria-haspopup', 'listbox');
+  const list = document.createElement('div');
+  list.className = 'cselect-list';
+  list.innerHTML = Array.from(sel.options).map(o =>
+    `<button type="button" role="option" data-v="${o.value}" aria-selected="${o.value === sel.value}">${o.text}</button>`).join('');
+  wrap.append(btn, list);
+  const setLabel = () => { btn.textContent = sel.options[sel.selectedIndex].text; };
+  setLabel();
+  btn.addEventListener('click', () => wrap.classList.toggle('open'));
+  list.addEventListener('click', e => {
+    const opt = e.target.closest('[data-v]');
+    if (!opt) return;
+    sel.value = opt.dataset.v;
+    list.querySelectorAll('[role=option]').forEach(b => b.setAttribute('aria-selected', String(b === opt)));
+    wrap.classList.remove('open'); setLabel(); onChange(sel.value);
+  });
+  document.addEventListener('click', e => { if (!wrap.contains(e.target)) wrap.classList.remove('open'); });
 }
 
 /* ---------- Scroll-reveal (двусторонний, только IO) ---------- */
@@ -173,11 +200,13 @@ function initVuzi() {
     type: 'all',
     sort: 'default',
     cat: new URLSearchParams(location.search).get('cat') || '',
+    city: new URLSearchParams(location.search).get('city') || '',
     subj: '',
     favOnly: false,
     fav: store.get('fav', []),
   };
 
+  /* Мои баллы */
   const egeKeys = ['rus', 'math', 'phys', 'inf', 'soc', 'hist', 'eng', 'chem', 'bio'];
   const egeInputs = $('#egeInputs');
   egeInputs.innerHTML = egeKeys.map(k => `
@@ -215,6 +244,7 @@ function initVuzi() {
   });
   $('#clearScores').addEventListener('click', () => { store.set('scores', {}); fillScores(); render(); });
 
+  /* Чипсы направлений */
   const catChips = $('#catChips');
   const catCount = {};
   SCHOOLS.forEach(s => { catCount[s.cat] = (catCount[s.cat] || 0) + 1; });
@@ -232,6 +262,27 @@ function initVuzi() {
     render();
   });
 
+  /* Чипсы городов */
+  const cityChips = $('#cityChips');
+  const cityCount = {};
+  SCHOOLS.forEach(s => { cityCount[s.c] = (cityCount[s.c] || 0) + 1; });
+  const topCities = Object.keys(cityCount).filter(c => cityCount[c] >= 2)
+    .sort((a, b) => cityCount[b] - cityCount[a]).slice(0, 14);
+  cityChips.innerHTML =
+    `<button type="button" class="chip" data-city="" aria-pressed="${state.city === ''}">Все</button>` +
+    topCities.map(c => `
+      <button type="button" class="chip" data-city="${escapeHtml(c)}" aria-pressed="${state.city === c}">
+        ${escapeHtml(c)} <span class="count">${cityCount[c]}</span>
+      </button>`).join('');
+  cityChips.addEventListener('click', e => {
+    const btn = e.target.closest('[data-city]');
+    if (!btn) return;
+    state.city = state.city === btn.dataset.city ? '' : btn.dataset.city;
+    syncChips(cityChips, 'data-city', state.city);
+    render();
+  });
+
+  /* Чипсы предметов */
   const subjChips = $('#subjChips');
   const subjCount = {};
   SCHOOLS.forEach(s => s.sub.forEach(k => { subjCount[k] = (subjCount[k] || 0) + 1; }));
@@ -250,6 +301,7 @@ function initVuzi() {
       b.setAttribute('aria-pressed', String(b.getAttribute(attr) === active)));
   }
 
+  /* Тип и сортировка */
   $('#typeSeg').addEventListener('click', e => {
     const btn = e.target.closest('[data-type]');
     if (!btn) return;
@@ -258,8 +310,9 @@ function initVuzi() {
       b.setAttribute('aria-pressed', String(b.dataset.type === state.type)));
     render();
   });
-  $('#sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
+  initCustomSelect($('#sort'), v => { state.sort = v; render(); });
 
+  /* Поиск */
   const qInput = $('#q');
   qInput.value = state.q;
   qInput.addEventListener('input', () => { state.q = qInput.value; render(); });
@@ -267,6 +320,7 @@ function initVuzi() {
     if (e.key === '/' && document.activeElement !== qInput) { e.preventDefault(); qInput.focus(); }
   });
 
+  /* Избранное */
   const favToggle = $('#favToggle');
   favToggle.addEventListener('click', () => {
     state.favOnly = !state.favOnly;
@@ -277,9 +331,10 @@ function initVuzi() {
   favToggle.setAttribute('aria-pressed', String(state.favOnly));
 
   $('#resetFilters').addEventListener('click', () => {
-    Object.assign(state, { q: '', type: 'all', cat: '', subj: '', favOnly: false, sort: 'default' });
-    qInput.value = ''; $('#sort').value = 'default';
+    Object.assign(state, { q: '', type: 'all', cat: '', city: '', subj: '', favOnly: false, sort: 'default' });
+    qInput.value = ''; 
     syncChips(catChips, 'data-cat', '');
+    syncChips(cityChips, 'data-city', '');
     syncChips(subjChips, 'data-subj', '');
     $$('#typeSeg [data-type]').forEach(b =>
       b.setAttribute('aria-pressed', String(b.dataset.type === 'all')));
@@ -287,6 +342,7 @@ function initVuzi() {
     render();
   });
 
+  /* Диалог */
   const dialog = $('#schoolDialog');
   const openDialog = school => {
     const ch = chanceInfo(school);
@@ -317,12 +373,14 @@ function initVuzi() {
     if (e.target.closest('[data-close]') || e.target === dialog) dialog.close();
   });
 
+  /* Рендер карточек */
   const cards = $('#cards');
   function render() {
     const q = state.q.trim().toLowerCase();
     const list = SCHOOLS.filter(s => {
       if (state.type !== 'all' && s.t !== state.type) return false;
       if (state.cat && s.cat !== state.cat) return false;
+      if (state.city && s.c !== state.city) return false;
       if (state.subj && !s.sub.includes(state.subj)) return false;
       if (state.favOnly && !state.fav.includes(s.id)) return false;
       if (q && !(s.n.toLowerCase().includes(q) || s.c.toLowerCase().includes(q))) return false;
@@ -339,7 +397,7 @@ function initVuzi() {
     list.sort(sorters[state.sort] || sorters.default);
 
     $('#found').textContent = list.length;
-    $('#resetFilters').hidden = !(state.q || state.type !== 'all' || state.cat || state.subj || state.favOnly);
+    $('#resetFilters').hidden = !(state.q || state.type !== 'all' || state.cat || state.city || state.subj || state.favOnly);
 
     if (!list.length) {
       cards.innerHTML = `<div class="empty"><b>Ничего не найдено.</b><br>
@@ -394,6 +452,7 @@ function initVuzi() {
     }
   });
 
+  /* Открытие конкретного заведения из ссылки */
   const schoolParam = new URLSearchParams(location.search).get('school');
   if (schoolParam) {
     const school = SCHOOLS.find(s => s.id === schoolParam);
@@ -443,11 +502,14 @@ function initExams() {
           const checked = done[key] ? 'checked' : '';
           return `
           <li style="--i:${i}">
-            <label class="topic">
-              <input type="checkbox" data-topic="${escapeHtml(key)}" ${checked}>
-              <span class="box">${icon('i-check')}</span>
-              <span class="topic-text"><span class="topic-name">${t}</span></span>
-            </label>
+            <div class="topic-row">
+              <label class="topic">
+                <input type="checkbox" data-topic="${escapeHtml(key)}" ${checked}>
+                <span class="box">${icon('i-check')}</span>
+                <span class="topic-text"><span class="topic-name">${t}</span></span>
+              </label>
+              <button type="button" class="drill-btn" data-drill="${escapeHtml(key)}">конспект + практика</button>
+            </div>
           </li>`;
         }).join('')}
       </ul>`;
@@ -474,6 +536,11 @@ function initExams() {
     if (!btn) return;
     current = btn.dataset.sub;
     renderSidebar(); renderPanel();
+  });
+
+  panel.addEventListener('click', e => {
+    const b = e.target.closest('[data-drill]');
+    if (b && window.openDrill) openDrill(b.dataset.drill);
   });
 
   $('#resetTopics').addEventListener('click', () => {
