@@ -104,7 +104,7 @@
   }
 
   function validatePassword(password) {
-    if (password.length < 12) return 'Пароль должен содержать не менее 12 символов.';
+    if (password.length < 6) return 'Пароль должен содержать не менее 6 символов.';
     if (password.length > 128) return 'Пароль должен быть не длиннее 128 символов.';
     if (!/[a-zа-я]/.test(password) || !/[A-ZА-Я]/.test(password) || !/[0-9]/.test(password)) {
       return 'Добавь в пароль строчную и заглавную букву и хотя бы одну цифру.';
@@ -493,7 +493,7 @@
         item.setAttribute('aria-pressed', String(item === button)));
       $('#pass2Wrap').hidden = authMode !== 'reg';
       $('#authPass').autocomplete = authMode === 'login' ? 'current-password' : 'new-password';
-      $('#authPass').minLength = authMode === 'login' ? 1 : 12;
+      $('#authPass').minLength = authMode === 'login' ? 1 : 6;
       $('#authSubmit').textContent = authMode === 'login' ? 'Войти' : 'Создать аккаунт';
       $('#forgotPassword').hidden = authMode !== 'login';
       setMessage('#authMsg', '');
