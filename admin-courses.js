@@ -16,11 +16,14 @@
   $('#moduleCourse').innerHTML=opts;$('#publishCourse').innerHTML=opts;
   const m=await db.from('course_modules').select('id,title,course_id').order('sort_order');modules=m.data||[];
   $('#lessonModule').innerHTML=modules.map(x=>'<option value="'+x.id+'">'+x.title+'</option>').join('');
+  const lessons=await db.from('course_lessons').select('id,title').order('title');
+  $('#exerciseLesson').innerHTML=(lessons.data||[]).map(x=>'<option value="'+x.id+'">'+x.title+'</option>').join('');
   $('#adminCourses').innerHTML=courses.map(x=>'<div class="admin-course"><strong>'+x.exam_type+' '+x.exam_year+' · '+x.subject_name+'</strong><p>'+x.title+' — '+x.status+'</p></div>').join('');
  }
  $('#courseForm').addEventListener('submit',async e=>{e.preventDefault();try{const v=formData(e.target);v.exam_year=Number(v.exam_year);v.created_by=user.id;const {error}=await db.from('exam_courses').insert(v);if(error)throw error;e.target.reset();await refresh();status('Черновик курса создан.');}catch(err){status(err.message)}});
  $('#moduleForm').addEventListener('submit',async e=>{e.preventDefault();const v=formData(e.target);const {error}=await db.from('course_modules').insert(v);status(error?error.message:'Модуль создан.');if(!error){e.target.reset();await refresh();}});
  $('#lessonForm').addEventListener('submit',async e=>{e.preventDefault();try{const v=formData(e.target);v.key_definitions=parseJson(v.key_definitions);v.formulas=parseJson(v.formulas);v.worked_steps=parseJson(v.worked_steps);v.is_published=e.target.elements.is_published.checked;const {error}=await db.from('course_lessons').insert(v);if(error)throw error;e.target.reset();status('Урок сохранён как черновик.');}catch(err){status(err.message)}});
+ $('#exerciseForm').addEventListener('submit',async e=>{e.preventDefault();try{const v=formData(e.target);v.options=parseJson(v.options);v.correct_answer=parseJson(v.correct_answer,null);v.difficulty=Number(v.difficulty||1);const {error}=await db.from('lesson_exercises').insert(v);if(error)throw error;e.target.reset();status('Упражнение добавлено.');}catch(err){status(err.message)}});
  $('#publishForm').addEventListener('submit',async e=>{e.preventDefault();const v=formData(e.target),id=v.course_id;const {error}=await db.from('exam_courses').update({status:e.target.publish.checked?'published':'draft',updated_at:new Date().toISOString()}).eq('id',id);status(error?error.message:'Статус курса обновлён. Убедись, что уроки также опубликованы.');await refresh();});
  await refresh();
 })();
