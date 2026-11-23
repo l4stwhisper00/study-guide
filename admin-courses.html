@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Редактор курсов | Навигатор выпускника</title><link rel="stylesheet" href="styles.css">
+<style>.admin-wrap{padding:40px 0 80px}.admin-box{margin:18px 0}.admin-form{display:grid;gap:12px}.admin-form label{display:grid;gap:6px;color:#cbd2e3}.admin-form input,.admin-form select,.admin-form textarea{background:#171b27;color:#fff;border:1px solid #343b50;border-radius:12px;padding:12px;font:inherit}.admin-form textarea{min-height:120px}.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.admin-msg{padding:12px;border-radius:10px;background:#28243c;color:#ddd}.admin-course{padding:12px;border:1px solid #384158;border-radius:12px;margin:8px 0}</style></head>
+<body><header class="site-header"><div class="wrap header-in"><a class="logo" href="index.html"><span class="logo-text">Навигатор выпускника</span></a><nav class="main-nav"><a href="courses.html">Курсы</a><a href="account.html">Кабинет</a></nav></div></header>
+<main class="wrap admin-wrap"><header class="page-head"><span class="badge">Панель автора</span><h1>Создание и управление курсами</h1><p class="lead">Создавай курсы, модули, уроки и упражнения. Черновики не видны ученикам, пока ты не опубликуешь курс и уроки.</p></header>
+<div id="adminStatus" class="admin-msg">Проверяем права доступа…</div>
+<section id="adminApp" class="hidden">
+<div class="admin-grid">
+<div class="admin-box"><h2>Новый курс</h2><form id="courseForm" class="admin-form">
+<label>Экзамен<select name="exam_type"><option value="OGE">ОГЭ</option><option value="EGE">ЕГЭ</option></select></label>
+<label>Год<input name="exam_year" type="number" value="2027" min="2026" required></label>
+<label>Код предмета<input name="subject_code" placeholder="например math" required></label>
+<label>Название предмета<input name="subject_name" required></label>
+<label>Название курса<input name="title" required></label>
+<label>Описание<textarea name="description"></textarea></label>
+<label>Ссылка на ФИПИ<input name="fipi_url" type="url"></label>
+<button class="btn btn-primary">Создать черновик</button></form></div>
+<div class="admin-box"><h2>Новый модуль</h2><form id="moduleForm" class="admin-form"><label>Курс<select name="course_id" id="moduleCourse" required></select></label><label>Название модуля<input name="title" required></label><label>Краткое описание<textarea name="description"></textarea></label><button class="btn btn-primary">Добавить модуль</button></form></div>
+<div class="admin-box"><h2>Новый урок</h2><form id="lessonForm" class="admin-form"><label>Модуль<select name="module_id" id="lessonModule" required></select></label><label>Название урока<input name="title" required></label><label>Тип<select name="lesson_type"><option value="theory">Теория</option><option value="definition">Определения</option><option value="worked_example">Разобранный пример</option><option value="practice">Практика</option><option value="exam_strategy">Стратегия экзамена</option></select></label><label>Текст урока (Markdown)<textarea name="content_md" required></textarea></label><label>Определения (JSON-массив)<textarea name="key_definitions" placeholder='[{"term":"Термин","definition":"Объяснение"}]'></textarea></label><label>Формулы (JSON-массив)<textarea name="formulas" placeholder='[{"name":"Площадь","value":"S = a · h","note":"..."}]'></textarea></label><label>Разбор решения (JSON-массив шагов)<textarea name="worked_steps" placeholder='["Сначала...","Затем..."]'></textarea></label><button class="btn btn-primary">Сохранить урок как черновик</button></form></div>
+</div>
+<div class="admin-box"><h2>Публикация курса</h2><form id="publishForm" class="admin-form"><label>Курс<select id="publishCourse" name="course_id"></select></label><label><input type="checkbox" name="publish" checked> Опубликовать курс (только проверенный материал)</label><button class="btn btn-primary">Сохранить статус</button></form><div id="adminCourses"></div></div>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script><script src="supabase-config.js"></script><script src="admin-courses.js"></script></body></html>
