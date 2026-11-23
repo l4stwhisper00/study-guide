@@ -11,6 +11,10 @@
 ## Backend
 Отдельный Supabase-проект `study-guide`. Публичная конфигурация находится в `supabase-config.js`; там только URL проекта и publishable key. Секретные ключи не добавлять в репозиторий.
 
-Настройки Data API, Auth URL, SMTP и выдача прав автора описаны в [SUPABASE_SETUP.md](SUPABASE_SETUP.md).
+Настройки Data API, Auth URL, SMTP и выдача прав автора описаны в [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md).
 
 Код Edge Functions хранится в `supabase/functions/`.
+
+## Документация
+- [Структура репозитория](docs/PROJECT_STRUCTURE.md)
+- [Настройка Supabase, авторизации и SMTP](docs/SUPABASE_SETUP.md)
