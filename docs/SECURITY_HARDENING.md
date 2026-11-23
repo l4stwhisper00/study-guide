@@ -9,6 +9,7 @@ Last reviewed: 2026-11-23
 - Course read policies restrict learners to published courses, modules, lessons, and exercises. Admin writes are checked against the `site_admins` allowlist.
 - Correct exercise answers are stored in the private schema. The answer-key RPCs are executable only by `service_role`.
 - Public table grants have been reduced to the minimum required: anonymous users can read the public course catalogue only; signed-in users can perform the learning operations required by the site; only the backend role can manage private answer keys.
+- PostgreSQL's default privileges for future objects created by the migration role in `public` now revoke table/sequence access and function execution from browser roles (and `PUBLIC` for functions), so new app objects do not silently inherit the previous broad grants. Supabase-managed `supabase_admin` defaults are provider-owned and were not changed; keep application schema changes in migrations executed by the project migration role.
 - Answer checking now has a per-user limit of 30 requests per 60-second window, bounded request bodies, UUID and answer-size validation, published-content checks, and non-cacheable responses.
 - Saving answer keys checks the JWT and server-side admin allowlist, enforces request limits, validates input, and avoids returning raw database errors.
 - Supabase Security and Health Advisors returned no remaining lints after the final policy adjustment.
