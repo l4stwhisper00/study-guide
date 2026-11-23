@@ -6,6 +6,7 @@
  const state={courses:[],course:null,module:null};
  const status=(t,bad=false)=>{const n=$('#courseStatus');n.textContent=t;n.classList.toggle('bad',bad)};
  const safe=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const fipiHref=(value)=>{try{const u=new URL(value);return u.protocol==='https:'&&['fipi.ru','www.fipi.ru'].includes(u.hostname)?safe(u.href):'';}catch{return '';}};
  const fmt=(s)=>String(s||'').replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h2>$1</h2>').replace(/^# (.*)$/gm,'<h2>$1</h2>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>');
  async function load(){
   status('Загружаем каталог курсов…');
@@ -21,7 +22,7 @@
   const all=state.courses.filter(c=>c.exam_type===exam);
   const latest=all.reduce((m,c)=>Math.max(m,c.exam_year),0);
   const list=all.filter(c=>(year==='latest'?c.exam_year===latest:c.exam_year===Number(year))&&(c.subject_name+' '+c.title).toLowerCase().includes(term));
-  $('#courseGrid').innerHTML=list.map(c=>'<article class="course-card"><span class="course-meta">'+c.exam_type+' · '+c.exam_year+(c.variant?' · '+safe(c.variant):'')+'</span><h3>'+safe(c.subject_name)+'</h3><p>'+safe(c.description)+'</p><button class="btn btn-primary course-open" data-course="'+c.id+'">Открыть курс →</button></article>').join('');
+  $('#courseGrid').innerHTML=list.map(c=>'<article class="course-card"><span class="course-meta">'+c.exam_type+' · '+c.exam_year+(c.variant?' · '+safe(c.variant):'')+'</span><h3>'+safe(c.subject_name)+'</h3><p>'+safe(c.description)+'</p><button class="btn btn-primary course-open" data-course="'+safe(c.id)+'">Открыть курс →</button></article>').join('');
   status(list.length?('Доступно курсов: '+list.length):'Опубликованных курсов пока нет. Содержание появится после редакторской проверки.');
  }
  async function openCourse(id){
@@ -30,7 +31,7 @@
   const {data,error}=await client.from('course_modules').select('id,title,description,sort_order,course_lessons(id,title,lesson_type,estimated_minutes,sort_order,is_published)').eq('course_id',id).order('sort_order');
   if(error){$('#lessonReader').textContent=error.message;return;}
   const modules=(data||[]).map(m=>({...m,course_lessons:(m.course_lessons||[]).filter(l=>l.is_published).sort((a,b)=>a.sort_order-b.sort_order)}));
-  $('#moduleList').innerHTML='<h3>'+safe(course.subject_name)+'</h3>'+modules.map(m=>'<div><button class="module-btn" data-module="'+m.id+'">'+safe(m.title)+'</button><div class="lesson-list">'+(m.course_lessons.length?m.course_lessons.map(l=>'<a href="#" class="lesson-link" data-lesson="'+l.id+'">'+safe(l.title)+' <small>· '+l.estimated_minutes+' мин</small></a>').join(''):'<p class="muted">Уроки этого модуля готовятся и появятся после проверки.</p>')+'</div></div>').join('')+(course.fipi_url?'<a href="'+safe(course.fipi_url)+'" target="_blank" rel="noopener">Документы ФИПИ ↗</a>':'');
+  $('#moduleList').innerHTML='<h3>'+safe(course.subject_name)+'</h3>'+modules.map(m=>'<div><button class="module-btn" data-module="'+m.id+'">'+safe(m.title)+'</button><div class="lesson-list">'+(m.course_lessons.length?m.course_lessons.map(l=>'<a href="#" class="lesson-link" data-lesson="'+safe(l.id)+'">'+safe(l.title)+' <small>· '+l.estimated_minutes+' мин</small></a>').join(''):'<p class="muted">Уроки этого модуля готовятся и появятся после проверки.</p>')+'</div></div>').join('')+(fipiHref(course.fipi_url)?'<a href="'+fipiHref(course.fipi_url)+'" target="_blank" rel="noopener noreferrer">Документы ФИПИ ↗</a>':'');
   $('#moduleList').dataset.modules=JSON.stringify(modules);
   $('#lessonReader').innerHTML='<h2>'+safe(course.title)+'</h2><p class="muted">Выбери урок слева. Уроки содержат объяснение, определения, примеры и упражнения.</p>';
  }
