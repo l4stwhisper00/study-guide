@@ -205,7 +205,7 @@
   async function ensureProfile(user) {
     const { data: existing, error } = await supabase
       .from('study_profiles')
-      .select('user_id,display_name,bio,avatar_path,cover_index,course_plan,exam_scores,exam_progress,created_at,updated_at')
+      .select('user_id,display_name,bio,avatar_path,cover_index,course_plan,exam_scores,exam_progress,theme_settings,created_at,updated_at')
       .eq('user_id', user.id)
       .maybeSingle();
     if (error) throw error;
