@@ -513,6 +513,13 @@ body {
   transition: background-color .25s ease, color .25s ease;
 }
 .site-header { background: color-mix(in srgb, var(--bg) 82%, transparent); }
+.cselect-list { background: var(--bg); }
+.dialog { color: var(--ink); background: var(--bg); border-color: var(--border-strong); }
+@media (max-width: 640px) {
+  .header-in { flex-wrap: wrap; height: auto; min-height: 64px; padding-top: 9px; padding-bottom: 9px; }
+  .main-nav { margin-left: auto; gap: 0; }
+  .main-nav a { padding: 7px 8px; font-size: .82rem; }
+}
 .logo-mark { box-shadow: 0 8px 24px -8px var(--theme-glow, rgba(108,92,231,.65)); }
 .hero-card, .quote-card, .card, .resource, .subject-panel, .subject-list,
 .auth-card, .acc-pane, .scores, .stats-glass, .dir-card, .steps-glass li {
