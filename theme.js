@@ -73,6 +73,7 @@
     root.style.setProperty('--faint', faint);
     root.style.setProperty('--accent', settings.accent);
     root.style.setProperty('--accent-2', accent2);
+    root.style.setProperty('--accent-ink', luminance(settings.accent) > .48 ? '#171923' : '#ffffff');
     root.style.setProperty('--grad', 'linear-gradient(135deg, ' + settings.accent + ', ' + accent2 + ')');
     root.style.setProperty('--surface', rgba(ink, light ? .055 : .045));
     root.style.setProperty('--surface-2', rgba(ink, light ? .085 : .075));
