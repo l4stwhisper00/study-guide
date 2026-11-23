@@ -167,13 +167,24 @@
 
     if (error) throw error;
 
-    if ((!rows || !rows.length) && Array.isArray(legacyUser?.notes) && legacyUser.notes.length) {
-      const imported = legacyUser.notes.slice(0, MAX_NOTES_TO_IMPORT).map((note) => ({
-        user_id: userId,
-        title: 'Заметка',
-        body: String(note?.text || '').slice(0, MAX_NOTE_LENGTH),
-        created_at: Number.isFinite(Number(note?.at)) ? new Date(Number(note.at)).toISOString() : new Date().toISOString()
-      })).filter((note) => note.body.trim());
+    if (Array.isArray(legacyUser?.notes) && legacyUser.notes.length) {
+      const signature = (body, date) => body + '|' + new Date(date).getTime();
+      const known = new Set((rows || []).map((note) => signature(note.body || '', note.created_at)));
+      const imported = legacyUser.notes.slice(0, MAX_NOTES_TO_IMPORT).map((note) => {
+        const createdAt = Number.isFinite(Number(note?.at)) ? new Date(Number(note.at)).toISOString() : new Date().toISOString();
+        return {
+          user_id: userId,
+          title: 'Заметка',
+          body: String(note?.text || '').slice(0, MAX_NOTE_LENGTH),
+          created_at: createdAt
+        };
+      }).filter((note) => {
+        if (!note.body.trim()) return false;
+        const key = signature(note.body, note.created_at);
+        if (known.has(key)) return false;
+        known.add(key);
+        return true;
+      });
 
       if (imported.length) {
         const inserted = await supabase.from('study_notes').insert(imported);
@@ -203,16 +214,18 @@
     const legacy = localUsers[String(user.email || '').toLowerCase()] || null;
     let avatarPath = existing?.avatar_path || null;
     let createdProfile = existing;
+    let legacyAvatarFailed = false;
+
+    if (legacy?.profile?.avatar && !avatarPath) {
+      try {
+        avatarPath = await uploadLegacyAvatar(legacy.profile.avatar, user.id);
+      } catch (error) {
+        legacyAvatarFailed = true;
+        console.warn('Старый аватар не удалось перенести:', error.message);
+      }
+    }
 
     if (!existing) {
-      if (legacy?.profile?.avatar) {
-        try {
-          avatarPath = await uploadLegacyAvatar(legacy.profile.avatar, user.id);
-        } catch (error) {
-          console.warn('Старый аватар не удалось перенести:', error.message);
-        }
-      }
-
       const draft = {
         user_id: user.id,
         display_name: String(legacy?.profile?.display_name || '').slice(0, 80),
@@ -227,12 +240,20 @@
       const saved = await supabase.from('study_profiles').upsert(draft, { onConflict: 'user_id' }).select().single();
       if (saved.error) throw saved.error;
       createdProfile = saved.data;
+    } else if (avatarPath && avatarPath !== existing.avatar_path) {
+      const saved = await supabase.from('study_profiles')
+        .update({ avatar_path: avatarPath, updated_at: new Date().toISOString() })
+        .eq('user_id', user.id)
+        .select()
+        .single();
+      if (saved.error) throw saved.error;
+      createdProfile = saved.data;
     }
 
     if (!createdProfile) throw new Error('Не удалось создать профиль пользователя.');
     await loadNotesAndImportLegacy(legacy, user.id);
 
-    if (legacy) {
+    if (legacy && !legacyAvatarFailed) {
       // Remove the obsolete browser password hash only after cloud profile and notes are safe.
       removeLegacyUser(String(user.email || '').toLowerCase());
     }
