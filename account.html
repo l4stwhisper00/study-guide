@@ -24,6 +24,7 @@
         <a href="index.html">Главная</a>
         <a href="vuzi.html">Вузы</a>
         <a href="exams.html">Подготовка</a>
+        <a href="courses.html">Курсы</a>
         <a href="account.html" aria-current="page">Кабинет</a>
       </nav>
     </div>
@@ -34,16 +35,17 @@
       <!-- Вход / регистрация -->
       <section class="auth-card" id="authView">
         <h1>Личный кабинет</h1>
-        <p class="muted">Демо-режим: аккаунт хранится в твоём браузере (без сервера и писем). Для защиты проекта этого достаточно.</p>
+        <p class="muted">Регистрация защищена сервером. Подтверди почту по ссылке из письма, чтобы активировать аккаунт.</p>
         <div class="seg" id="authSeg" role="group" aria-label="Режим входа">
           <button type="button" data-mode="login" aria-pressed="true">Вход</button>
           <button type="button" data-mode="reg" aria-pressed="false">Регистрация</button>
         </div>
         <form id="authForm" class="auth-form" novalidate>
           <label class="score-field"><span>Почта</span><input type="email" id="authEmail" required autocomplete="email"></label>
-          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="6" autocomplete="current-password"></label>
+          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="8" autocomplete="current-password"></label>
           <label class="score-field" id="pass2Wrap" hidden><span>Повтори пароль</span><input type="password" id="authPass2" autocomplete="new-password"></label>
           <button class="btn btn-primary" type="submit" id="authSubmit">Войти</button>
+          <button class="link-btn" id="forgotPassword" type="button">Забыли пароль?</button>
           <p class="drill-msg" id="authMsg" role="status"></p>
         </form>
       </section>
@@ -123,6 +125,8 @@
   <script src="icons.js"></script>
   <script src="data.js"></script>
   <script src="data-extra.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script>
+  <script src="supabase-config.js"></script>
   <script src="account.js"></script>
 </body>
 </html>

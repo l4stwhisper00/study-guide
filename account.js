@@ -1,55 +1,60 @@
-/* Личный кабинет: локальная авторизация, профиль, заметки, калькулятор, курс */
+/* Личный кабинет: Supabase Auth + локальные настройки интерфейса */
 'use strict';
 const $a = s => document.querySelector(s);
+const authClient = window.supabase.createClient(window.STUDY_GUIDE_SUPABASE.url, window.STUDY_GUIDE_SUPABASE.publishableKey);
 const users = () => JSON.parse(localStorage.getItem('nav_users') || '{}');
 const saveUsers = u => localStorage.setItem('nav_users', JSON.stringify(u));
 const session = () => localStorage.getItem('nav_session');
 const setSession = e => e ? localStorage.setItem('nav_session', e) : localStorage.removeItem('nav_session');
-
-async function sha256(s) {
-  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('');
-}
-const COVERS = [
-  'linear-gradient(135deg,#6c5ce7,#a29bfe)', 'linear-gradient(135deg,#0f766e,#5fcf8a)',
-  'linear-gradient(135deg,#b42318,#f0b35a)', 'linear-gradient(135deg,#1d4ed8,#60a5fa)',
-  'linear-gradient(135deg,#7c3aed,#ec4899)', 'linear-gradient(135deg,#334155,#94a3b8)'];
+const ensureLocalUser = email => {
+  const u=users();
+  if(!u[email]) u[email]={profile:{avatar:'',cover:0,bio:''},notes:[],courses:[]};
+  saveUsers(u);
+  return u[email];
+};
+const me = () => ensureLocalUser(session());
+const patchMe = patch => { const u=users(); u[session()]=Object.assign(ensureLocalUser(session()),patch); saveUsers(u); };
 
 let mode = 'login';
-const me = () => users()[session()];
-const patchMe = patch => { const u = users(); Object.assign(u[session()], patch); saveUsers(u); };
-
-/* ---------- Вход / регистрация ---------- */
 function initAuth() {
   $a('#authSeg').addEventListener('click', e => {
-    const b = e.target.closest('[data-mode]');
-    if (!b) return;
-    mode = b.dataset.mode;
-    $a('#authSeg').querySelectorAll('[data-mode]').forEach(x =>
-      x.setAttribute('aria-pressed', String(x === b)));
-    $a('#pass2Wrap').hidden = mode === 'login';
-    $a('#authSubmit').textContent = mode === 'login' ? 'Войти' : 'Создать аккаунт';
+    const b=e.target.closest('[data-mode]'); if(!b)return;
+    mode=b.dataset.mode;
+    $a('#authSeg').querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+    $a('#pass2Wrap').hidden=mode==='login';
+    $a('#authSubmit').textContent=mode==='login'?'Войти':'Создать аккаунт';
+    $a('#authPass').autocomplete=mode==='login'?'current-password':'new-password';
   });
-  $a('#authForm').addEventListener('submit', async e => {
+  $a('#authForm').addEventListener('submit',async e=>{
     e.preventDefault();
-    const msg = $a('#authMsg'); msg.className = 'drill-msg'; msg.textContent = '';
-    const fail = t => { msg.textContent = t; msg.className = 'drill-msg bad'; };
-    const email = $a('#authEmail').value.trim().toLowerCase();
-    const pass = $a('#authPass').value;
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail('Похоже, в почте опечатка.');
-    if (pass.length < 6) return fail('Пароль короче 6 символов.');
-    const u = users();
-    if (mode === 'reg') {
-      if (u[email]) return fail('Такая почта уже зарегистрирована.');
-      if (pass !== $a('#authPass2').value) return fail('Пароли не совпадают.');
-      const salt = Math.random().toString(16).slice(2, 10);
-      u[email] = { salt, hash: await sha256(salt + pass), profile: { avatar: '', cover: 0, bio: '' }, notes: [], courses: [] };
-      saveUsers(u); setSession(email);
-      return enter();
-    }
-    if (!u[email]) return fail('Аккаунт не найден — зарегистрируйся.');
-    if (u[email].hash !== await sha256(u[email].salt + pass)) return fail('Неверный пароль.');
-    setSession(email); enter();
+    const msg=$a('#authMsg');msg.className='drill-msg';msg.textContent='';
+    const fail=t=>{msg.textContent=t;msg.className='drill-msg bad';};
+    const email=$a('#authEmail').value.trim().toLowerCase(),password=$a('#authPass').value;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return fail('Проверь адрес электронной почты.');
+    if(password.length<8)return fail('Пароль должен содержать не менее 8 символов.');
+    try{
+      if(mode==='reg'){
+        if(password!==$a('#authPass2').value)return fail('Пароли не совпадают.');
+        const {data,error}=await authClient.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin+'/account.html'}});
+        if(error)throw error;
+        if(data.session){setSession(email);ensureLocalUser(email);enter();}
+        else{msg.textContent='Письмо для подтверждения отправлено на '+email+'. Открой ссылку в письме, затем вернись сюда и войди.';msg.className='drill-msg good';}
+      }else{
+        const {data,error}=await authClient.auth.signInWithPassword({email,password});
+        if(error)throw error;
+        setSession(data.user.email.toLowerCase());ensureLocalUser(data.user.email.toLowerCase());enter();
+      }
+    }catch(err){fail(err.message||'Не удалось выполнить запрос. Попробуй ещё раз.');}
+  });
+  $a('#forgotPassword').addEventListener('click',async()=>{
+    const email=$a('#authEmail').value.trim().toLowerCase(),msg=$a('#authMsg');
+    if(!email){msg.textContent='Сначала укажи почту.';msg.className='drill-msg bad';return;}
+    const {error}=await authClient.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/account.html'});
+    msg.textContent=error?error.message:'Если аккаунт существует, письмо для сброса пароля отправлено.';msg.className='drill-msg';
+  });
+  authClient.auth.onAuthStateChange((event,sessionData)=>{
+    if(sessionData?.user?.email){const email=sessionData.user.email.toLowerCase();setSession(email);ensureLocalUser(email);$a('#authView').hidden=true;$a('#dashView').hidden=false;renderProfile();renderProgress();renderNotes();}
+    else if(event==='SIGNED_OUT'){setSession(null);}
   });
 }
 
@@ -137,7 +142,7 @@ function initCourse() {
 
 /* ---------- Слушатели кабинета ---------- */
 function initDash() {
-  $a('#logoutBtn').addEventListener('click', () => { setSession(null); location.reload(); });
+  $a('#logoutBtn').addEventListener('click', async () => { await authClient.auth.signOut(); setSession(null); location.reload(); });
   $a('#accTabs').addEventListener('click', e => {
     const b = e.target.closest('[data-tab]');
     if (!b) return;
@@ -176,7 +181,8 @@ function initDash() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   initAuth(); initDash();
-  if (session() && users()[session()]) enter();
+  const {data:{session:current}}=await authClient.auth.getSession();
+  if(current?.user?.email){const email=current.user.email.toLowerCase();setSession(email);ensureLocalUser(email);enter();}
 });
