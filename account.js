@@ -181,7 +181,8 @@ function initDash() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   initAuth(); initDash();
-  if (session() && users()[session()]) enter();
+  const {data:{session:current}}=await authClient.auth.getSession();
+  if(current?.user?.email){const email=current.user.email.toLowerCase();setSession(email);ensureLocalUser(email);enter();}
 });
