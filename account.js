@@ -106,7 +106,7 @@
   function validatePassword(password) {
     if (password.length < 12) return 'Пароль должен содержать не менее 12 символов.';
     if (password.length > 128) return 'Пароль должен быть не длиннее 128 символов.';
-    if (!/[a-zа-я]/i.test(password) || !/[A-ZА-Я]/.test(password) || !/[0-9]/.test(password)) {
+    if (!/[a-zа-я]/.test(password) || !/[A-ZА-Я]/.test(password) || !/[0-9]/.test(password)) {
       return 'Добавь в пароль строчную и заглавную букву и хотя бы одну цифру.';
     }
     return '';
@@ -571,6 +571,13 @@
       } finally {
         setBusy(button, false);
       }
+    });
+
+    $('#backToLogin').addEventListener('click', () => {
+      resetMode = false;
+      clearAuthUrl();
+      setMessage('#authMsg', '');
+      showAuth();
     });
 
     $('#passwordResetForm').addEventListener('submit', async (event) => {
