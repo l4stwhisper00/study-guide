@@ -534,6 +534,7 @@ body {
   box-shadow: 0 10px 26px -14px var(--theme-glow, rgba(108,92,231,.7));
 }
 .btn-primary:hover, .btn-glass.primary:hover { filter: saturate(1.12) brightness(1.06); }
+.btn-primary, .btn-glass.primary, .seg button[aria-pressed="true"], .chip[aria-pressed="true"] { color: var(--accent-ink, #fff); }
 input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
 select, textarea {
   width: 100%; min-height: 44px; padding: 11px 13px;
