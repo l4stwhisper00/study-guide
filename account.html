@@ -34,17 +34,31 @@
       <!-- Вход / регистрация -->
       <section class="auth-card" id="authView">
         <h1>Личный кабинет</h1>
-        <p class="muted"><strong>Временный локальный демо-режим.</strong> Профиль и учётные данные хранятся только в этом браузере и не проверяются сервером. Это не защищённый аккаунт и не синхронизация между устройствами. Не используй пароль с других сайтов и не сохраняй здесь личные или конфиденциальные сведения. Для реальных пользователей нужна отдельная серверная авторизация.</p>
+        <p class="muted">Один аккаунт для профиля, заметок и прогресса подготовки. Пароли проверяет Supabase Auth; почту нужно подтвердить.</p>
         <div class="seg" id="authSeg" role="group" aria-label="Режим входа">
           <button type="button" data-mode="login" aria-pressed="true">Вход</button>
           <button type="button" data-mode="reg" aria-pressed="false">Регистрация</button>
         </div>
         <form id="authForm" class="auth-form" novalidate>
-          <label class="score-field"><span>Почта</span><input type="email" id="authEmail" required autocomplete="email"></label>
-          <label class="score-field"><span>Пароль для демо-профиля</span><input type="password" id="authPass" required minlength="6" maxlength="128" autocomplete="current-password"></label>
-          <label class="score-field" id="pass2Wrap" hidden><span>Повтори пароль</span><input type="password" id="authPass2" autocomplete="new-password"></label>
+          <label class="score-field"><span>Электронная почта</span><input type="email" id="authEmail" required maxlength="254" autocomplete="email"></label>
+          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="8" maxlength="128" autocomplete="current-password"></label>
+          <label class="score-field" id="pass2Wrap" hidden><span>Повтори пароль</span><input type="password" id="authPass2" autocomplete="new-password" maxlength="128"></label>
           <button class="btn btn-primary" type="submit" id="authSubmit">Войти</button>
-          <p class="drill-msg" id="authMsg" role="status"></p>
+          <button class="link-btn" id="forgotPassword" type="button">Забыли пароль?</button>
+          <button class="link-btn" id="resendConfirmation" type="button" hidden>Отправить письмо подтверждения повторно</button>
+          <p class="drill-msg" id="authMsg" role="status" aria-live="polite"></p>
+          <p class="muted" id="passwordHint">Для нового аккаунта используй пароль от 12 символов, со строчными и заглавными буквами и цифрой.</p>
+        </form>
+      </section>
+
+      <section class="auth-card" id="passwordResetView" hidden>
+        <h1>Новый пароль</h1>
+        <p class="muted">Придумай новый пароль для своего аккаунта.</p>
+        <form id="passwordResetForm" class="auth-form" novalidate>
+          <label class="score-field"><span>Новый пароль</span><input type="password" id="newResetPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
+          <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmResetPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
+          <button class="btn btn-primary" type="submit" id="resetPasswordSubmit">Сохранить пароль</button>
+          <p class="drill-msg" id="resetMsg" role="status" aria-live="polite"></p>
         </form>
       </section>
 
@@ -71,11 +85,28 @@
 
         <section class="acc-pane" data-pane="profile">
           <h2>Профиль</h2>
-          <label class="score-field"><span>Аватар (файл до 400 КБ)</span><input type="file" id="avatarInput" accept="image/*"></label>
-          <label class="score-field"><span>О себе</span><textarea id="bioInput" rows="3" placeholder="Класс, цель, любимая тема…"></textarea></label>
+          <label class="score-field"><span>Отображаемое имя</span><input type="text" id="displayNameInput" maxlength="80" autocomplete="nickname"></label>
+          <label class="score-field"><span>О себе</span><textarea id="bioInput" rows="3" maxlength="500" placeholder="Класс, цель, любимая тема…"></textarea></label>
+          <label class="score-field"><span>Аватар (JPG, PNG, WebP или GIF до 400 КБ)</span><input type="file" id="avatarInput" accept="image/jpeg,image/png,image/webp,image/gif"></label>
           <p class="muted">Фон профиля</p>
           <div class="covers" id="coverPicker"></div>
-          <button class="btn btn-primary" id="saveProfile" type="button">Сохранить</button>
+          <button class="btn btn-primary" id="saveProfile" type="button">Сохранить профиль</button>
+          <p class="drill-msg" id="profileStatus" role="status" aria-live="polite"></p>
+          <section class="account-security">
+            <h3>Безопасность аккаунта</h3>
+            <p class="muted">Подтверждённый адрес: <strong id="currentAccountEmail"></strong>. <span id="emailConfirmedLabel"></span></p>
+            <form id="changeEmailForm" class="auth-form" novalidate>
+              <label class="score-field"><span>Новая почта</span><input type="email" id="newEmail" required maxlength="254" autocomplete="email"></label>
+              <button class="btn" id="changeEmailSubmit" type="submit">Изменить почту</button>
+            </form>
+            <form id="changePasswordForm" class="auth-form" novalidate>
+              <label class="score-field"><span>Текущий пароль</span><input type="password" id="currentPassword" required autocomplete="current-password" maxlength="128"></label>
+              <label class="score-field"><span>Новый пароль</span><input type="password" id="newPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
+              <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmNewPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
+              <button class="btn" id="changePasswordSubmit" type="submit">Изменить пароль</button>
+            </form>
+            <p class="drill-msg" id="securityStatus" role="status" aria-live="polite"></p>
+          </section>
         </section>
 
         <section class="acc-pane" data-pane="progress" hidden>
@@ -85,8 +116,9 @@
 
         <section class="acc-pane" data-pane="notes" hidden>
           <h2>Заметки</h2>
-          <textarea id="noteInput" rows="2" placeholder="Например: повторить логарифмы к пятнице"></textarea>
+          <textarea id="noteInput" rows="2" maxlength="10000" placeholder="Например: повторить логарифмы к пятнице"></textarea>
           <button class="btn btn-primary" id="addNote" type="button">Добавить</button>
+          <p class="drill-msg" id="notesStatus" role="status" aria-live="polite"></p>
           <ul class="notes" id="notesList"></ul>
         </section>
 
@@ -123,6 +155,9 @@
   <script src="icons.js"></script>
   <script src="data.js"></script>
   <script src="data-extra.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script>
+  <script src="supabase-config.js"></script>
+  <script src="supabase-client.js"></script>
   <script src="account.js"></script>
 </body>
 </html>
