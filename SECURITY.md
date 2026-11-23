@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please report suspected security issues privately through GitHub Security Advisories:
+Please report suspected security issues privately through GitHub Security Advisories. The repository owner must enable **Private vulnerability reporting** in GitHub Settings → Security & analysis for this link to accept private reports:
 
 https://github.com/l4stwhisper00/study-guide/security/advisories/new
 
