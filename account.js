@@ -641,7 +641,14 @@
           return;
         }
         if (session?.user) {
-          if (event === 'USER_UPDATED' && currentUser?.id === session.user.id) currentUser = session.user;
+          if (event === 'USER_UPDATED' && currentUser?.id === session.user.id) {
+            currentUser = session.user;
+            $('#currentAccountEmail').textContent = currentUser.email || '';
+            $('#emailConfirmedLabel').textContent = currentUser.email_confirmed_at
+              ? 'Почта подтверждена'
+              : 'Ожидает подтверждения почты';
+            if (profile) renderProfile();
+          }
           void openDashboard(session.user);
         } else if (event === 'SIGNED_OUT') {
           currentUser = null;
