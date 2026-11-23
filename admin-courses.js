@@ -2,6 +2,7 @@
 (async()=>{
  const cfg=window.STUDY_GUIDE_SUPABASE,db=window.supabase.createClient(cfg.url,cfg.publishableKey),$=s=>document.querySelector(s),status=t=>$('#adminStatus').textContent=t;
  const formData=f=>Object.fromEntries(new FormData(f).entries());
+ const esc=(value='')=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const parseJson=(v,fallback=[])=>{if(!v)return fallback;try{return JSON.parse(v)}catch{throw new Error('Проверь JSON в полях определений, формул или шагов решения.')}};
  const {data:{user}}=await db.auth.getUser();
  if(!user){status('Сначала войди через личный кабинет.');return;}
@@ -12,13 +13,13 @@
  async function refresh(){
   const c=await db.from('exam_courses').select('id,title,subject_name,exam_type,exam_year,status').order('exam_type').order('sort_order');
   if(c.error){status(c.error.message);return;}courses=c.data||[];
-  const opts=courses.map(x=>'<option value="'+x.id+'">'+x.exam_type+' '+x.exam_year+' · '+x.subject_name+' · '+x.status+'</option>').join('');
+  const opts=courses.map(x=>'<option value="'+esc(x.id)+'">'+esc(x.exam_type)+' '+esc(x.exam_year)+' · '+esc(x.subject_name)+' · '+esc(x.status)+'</option>').join('');
   $('#moduleCourse').innerHTML=opts;$('#publishCourse').innerHTML=opts;
   const m=await db.from('course_modules').select('id,title,course_id').order('sort_order');modules=m.data||[];
-  $('#lessonModule').innerHTML=modules.map(x=>'<option value="'+x.id+'">'+x.title+'</option>').join('');
+  $('#lessonModule').innerHTML=modules.map(x=>'<option value="'+esc(x.id)+'">'+esc(x.title)+'</option>').join('');
   const lessons=await db.from('course_lessons').select('id,title').order('title');
-  $('#exerciseLesson').innerHTML=(lessons.data||[]).map(x=>'<option value="'+x.id+'">'+x.title+'</option>').join('');
-  $('#adminCourses').innerHTML=courses.map(x=>'<div class="admin-course"><strong>'+x.exam_type+' '+x.exam_year+' · '+x.subject_name+'</strong><p>'+x.title+' — '+x.status+'</p></div>').join('');
+  $('#exerciseLesson').innerHTML=(lessons.data||[]).map(x=>'<option value="'+esc(x.id)+'">'+esc(x.title)+'</option>').join('');
+  $('#adminCourses').innerHTML=courses.map(x=>'<div class="admin-course"><strong>'+esc(x.exam_type)+' '+esc(x.exam_year)+' · '+esc(x.subject_name)+'</strong><p>'+esc(x.title)+' — '+esc(x.status)+'</p></div>').join('');
  }
  $('#courseForm').addEventListener('submit',async e=>{e.preventDefault();try{const v=formData(e.target);v.exam_year=Number(v.exam_year);v.created_by=user.id;const {error}=await db.from('exam_courses').insert(v);if(error)throw error;e.target.reset();await refresh();status('Черновик курса создан.');}catch(err){status(err.message)}});
  $('#moduleForm').addEventListener('submit',async e=>{e.preventDefault();const v=formData(e.target);const {error}=await db.from('course_modules').insert(v);status(error?error.message:'Модуль создан.');if(!error){e.target.reset();await refresh();}});
