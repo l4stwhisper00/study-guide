@@ -1,22 +1,123 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.119.2";
-const corsHeaders={"Access-Control-Allow-Origin":"https://navigator.devs.li","Access-Control-Allow-Headers":"authorization, x-client-info, apikey, content-type","Access-Control-Allow-Methods":"POST, OPTIONS"};
-const json=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:{...corsHeaders,"Content-Type":"application/json"}});
-Deno.serve(async(req)=>{
- if(req.method==="OPTIONS")return new Response("ok",{headers:corsHeaders});
- if(req.method!=="POST")return json({error:"Method not allowed"},405);
- const token=(req.headers.get("Authorization")||"").replace(/^Bearer\s+/i,"");
- if(!token)return json({error:"Sign in to check and save your answers"},401);
- const url=Deno.env.get("SUPABASE_URL"),key=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
- if(!url||!key)return json({error:"Server configuration is incomplete"},500);
- const admin=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
- const {data:userData,error:authError}=await admin.auth.getUser(token);
- if(authError||!userData.user)return json({error:"Invalid session"},401);
- let body:{exercise_id?:string;answer?:unknown};
- try{body=await req.json()}catch{return json({error:"Invalid JSON"},400)}
- if(!body.exercise_id||body.answer===undefined)return json({error:"exercise_id and answer are required"},400);
- const {data,error}=await admin.rpc("check_exercise_answer",{p_exercise_id:body.exercise_id,p_answer:body.answer});
- if(error)return json({error:error.message},400);
- const result=Array.isArray(data)?data[0]:data;
- if(!result)return json({error:"Answer key is not available for this exercise yet"},404);
- return json({correct:!!result.is_correct,explanation:result.explanation_md||""});
+
+const siteOrigin = "https://navigator.devs.li";
+const corsHeaders = {
+  "Access-Control-Allow-Origin": siteOrigin,
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Max-Age": "86400",
+  "Vary": "Origin",
+};
+
+const json = (body: unknown, status = 200, extraHeaders: Record<string, string> = {}) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      ...corsHeaders,
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff",
+      ...extraHeaders,
+    },
+  });
+
+async function readJsonBody(req: Request, maxBytes: number): Promise<{ body?: unknown; error?: "too_large" | "invalid" }> {
+  const contentLength = Number(req.headers.get("content-length") || 0);
+  if (contentLength > maxBytes) return { error: "too_large" };
+  if (!req.headers.get("content-type")?.toLowerCase().includes("application/json")) return { error: "invalid" };
+  if (!req.body) return { error: "invalid" };
+
+  const reader = req.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      total += value.byteLength;
+      if (total > maxBytes) {
+        await reader.cancel();
+        return { error: "too_large" };
+      }
+      chunks.push(value);
+    }
+  } catch {
+    return { error: "invalid" };
+  }
+
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  try {
+    return { body: JSON.parse(new TextDecoder().decode(bytes)) as unknown };
+  } catch {
+    return { error: "invalid" };
+  }
+}
+
+const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders });
+  if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+  const origin = req.headers.get("Origin");
+  if (origin && origin !== siteOrigin) return json({ error: "Origin not allowed" }, 403);
+
+  const token = (req.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+  if (!token) return json({ error: "Sign in to check your answers" }, 401);
+
+  const url = Deno.env.get("SUPABASE_URL");
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!url || !serviceKey) return json({ error: "Server configuration is incomplete" }, 500);
+
+  const admin = createClient(url, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  const { data: userData, error: authError } = await admin.auth.getUser(token);
+  if (authError || !userData.user) return json({ error: "Invalid session" }, 401);
+
+  const parsed = await readJsonBody(req, 4096);
+  if (parsed.error === "too_large") return json({ error: "Request body is too large" }, 413);
+  if (parsed.error || !parsed.body || typeof parsed.body !== "object" || Array.isArray(parsed.body)) {
+    return json({ error: "Invalid JSON request" }, 400);
+  }
+
+  const body = parsed.body as { exercise_id?: unknown; answer?: unknown };
+  if (typeof body.exercise_id !== "string" || !uuidPattern.test(body.exercise_id) ||
+      !Object.prototype.hasOwnProperty.call(body, "answer")) {
+    return json({ error: "A valid exercise_id and answer are required" }, 400);
+  }
+
+  let answerSize = 0;
+  try {
+    answerSize = new TextEncoder().encode(JSON.stringify(body.answer)).byteLength;
+  } catch {
+    return json({ error: "Invalid answer format" }, 400);
+  }
+  if (answerSize > 2048) return json({ error: "Answer is too large" }, 413);
+
+  const { data: allowed, error: rateError } = await admin.rpc("consume_exercise_check_rate_limit", {
+    p_user_id: userData.user.id,
+  });
+  if (rateError) {
+    console.error("Exercise rate-limit check failed", rateError.code || "unknown");
+    return json({ error: "Answer checking is temporarily unavailable" }, 503);
+  }
+  if (allowed !== true) {
+    return json({ error: "Too many attempts. Try again in a minute." }, 429, { "Retry-After": "60" });
+  }
+
+  const { data, error } = await admin.rpc("check_exercise_answer", {
+    p_exercise_id: body.exercise_id,
+    p_answer: body.answer,
+  });
+  if (error) {
+    console.error("Exercise answer check failed", error.code || "unknown");
+    return json({ error: "Unable to check this answer right now" }, 500);
+  }
+
+  const result = Array.isArray(data) ? data[0] : data;
+  if (!result) return json({ error: "This exercise is not available for checking" }, 404);
+  return json({ correct: !!result.is_correct, explanation: result.explanation_md || "" });
 });
