@@ -1,0 +1,23 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate static site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+      - name: Show runtime
+        run: node --version
+      - name: Validate pages, assets, scripts and catalogue
+        run: node scripts/validate-site.mjs
