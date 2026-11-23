@@ -142,7 +142,7 @@ function initCourse() {
 
 /* ---------- Слушатели кабинета ---------- */
 function initDash() {
-  $a('#logoutBtn').addEventListener('click', () => { setSession(null); location.reload(); });
+  $a('#logoutBtn').addEventListener('click', async () => { await authClient.auth.signOut(); setSession(null); location.reload(); });
   $a('#accTabs').addEventListener('click', e => {
     const b = e.target.closest('[data-tab]');
     if (!b) return;
