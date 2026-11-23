@@ -4,6 +4,15 @@ Last reviewed: 2026-11-23
 
 ## What has been checked
 
+## Authentication implementation
+
+The live branch now uses Supabase Auth for email/password registration and sign-in, email verification, resend confirmation, password recovery, password change and email change. Session restoration is shared across the static site's core pages. User profiles, notes, exam scores, topic progress and study plans are stored per user in Supabase; the account page can import matching legacy browser profile and notes data once after successful sign-in.
+
+A new `study_profiles` table uses owner-only RLS. The private `study-avatars` Storage bucket restricts each user's objects to their own UUID folder. The client uses only the public publishable key; no service-role key is present in the browser.
+
+**Still required before public launch:** set the Supabase Auth Site URL and exact redirect allowlist, keep email confirmation enabled, set the minimum password length, configure custom SMTP, and expose the `public` schema in Data API settings. Those Dashboard settings cannot be independently read or changed with the connected database tools. A real-mailbox and two-account isolation test remains outstanding.
+
+
 - Supabase is a separate project from GameClub. Browser configuration contains a publishable key only; no service-role key was found in the public repository search.
 - RLS is enabled on the eight public application tables and the private exercise-answer table.
 - Course read policies restrict learners to published courses, modules, lessons, and exercises. Admin writes are checked against the `site_admins` allowlist.
