@@ -68,7 +68,7 @@
     const message = String(error?.message || '');
     if (/Invalid login credentials/i.test(message)) return 'Неверная почта или пароль.';
     if (/Email not confirmed/i.test(message)) return 'Сначала подтверди почту по ссылке из письма.';
-    if (/Password should be at least/i.test(message)) return 'Пароль слишком короткий.';
+    if (/Password should be at least/i.test(message)) return 'Supabase отклонил пароль. Проверь минимальную длину в настройках Auth.';
     if (/User already registered/i.test(message)) return 'Аккаунт с такой почтой уже существует. Попробуй войти.';
     if (/rate limit|too many requests/i.test(message)) return 'Слишком много запросов. Подожди немного и попробуй снова.';
     if (/redirect.*not allowed|not allowed.*redirect/i.test(message)) {
@@ -104,11 +104,8 @@
   }
 
   function validatePassword(password) {
-    if (password.length < 6) return 'Пароль должен содержать не менее 6 символов.';
-    if (password.length > 128) return 'Пароль должен быть не длиннее 128 символов.';
-    if (!/[a-zа-я]/.test(password) || !/[A-ZА-Я]/.test(password) || !/[0-9]/.test(password)) {
-      return 'Добавь в пароль строчную и заглавную букву и хотя бы одну цифру.';
-    }
+    if (password.length < 6) return 'Нужно минимум 6 символов.';
+    if (password.length > 128) return 'Максимум 128 символов.';
     return '';
   }
 
