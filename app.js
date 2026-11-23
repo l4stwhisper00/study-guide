@@ -32,6 +32,9 @@ function icon(name, cls = 'icon') {
 
 function chanceInfo(school) {
   const scores = store.get('scores', {});
+  if (school.s == null || !Number.isFinite(Number(school.s))) {
+    return { cls: 'chance-unknown', text: 'Нет подтверждённого ориентира' };
+  }
   if (school.t === 'college') {
     const gpa = Number(scores.gpa);
     if (!gpa) return { cls: 'chance-unknown', text: 'Укажи балл аттестата' };
@@ -40,13 +43,15 @@ function chanceInfo(school) {
     if (diff <= 0.4) return { cls: 'chance-close', text: `Не хватает ~${diff.toFixed(1)} балла` };
     return { cls: 'chance-low', text: `Не хватает ${diff.toFixed(1)} балла` };
   }
-  const sum = ['rus', 'math', 'phys', 'inf', 'soc', 'hist', 'eng', 'chem', 'bio', 'geo', 'lit']
-    .reduce((n, k) => n + (Number(scores[k]) || 0), 0);
-  if (!sum) return { cls: 'chance-unknown', text: 'Укажи свои баллы ЕГЭ' };
+  const required = school.sub || [];
+  if (!required.length || required.some(k => !(Number(scores[k]) > 0))) {
+    return { cls: 'chance-unknown', text: 'Укажи баллы по всем нужным ЕГЭ' };
+  }
+  const sum = required.reduce((n, k) => n + Number(scores[k]), 0);
   const diff = school.s - sum;
-  if (diff <= 0)  return { cls: 'chance-ok',    text: `Проходишь (+${-diff})` };
-  if (diff <= 20) return { cls: 'chance-close', text: `Не хватает ${diff} б.` };
-  return { cls: 'chance-low', text: `Не хватает ${diff} б.` };
+  if (diff <= 0)  return { cls: 'chance-ok',    text: `Проходишь по ориентиру (+${-diff})` };
+  if (diff <= 20) return { cls: 'chance-close', text: `Не хватает ${diff} б. по ориентиру` };
+  return { cls: 'chance-low', text: `Не хватает ${diff} б. по ориентиру` };
 }
 
 function renderStats() {
@@ -170,13 +175,13 @@ function initCardPhotos() {
 /* ---------- Главная ---------- */
 function initHome() {
   renderStats();
-  const top = SCHOOLS.filter(s => s.t === 'vuz').sort((a, b) => b.s - a.s).slice(0, 5);
+  const top = SCHOOLS.filter(s => s.t === 'vuz' && s.s != null).sort((a, b) => b.s - a.s).slice(0, 5);
   $('#topList').innerHTML = top.map((s, i) => `
     <li>
       <span class="n">${i + 1}.</span>
       <span><a href="vuzi.html?school=${encodeURIComponent(s.id)}">${escapeHtml(s.n)}</a>
         <small>${escapeHtml(s.c)}</small></span>
-      <span class="sc">${s.s}<small> б.</small></span>
+      <span class="sc">${s.s}<small> б. · ориентир</small></span>
     </li>`).join('');
 
   const catCount = {};
@@ -352,8 +357,8 @@ function initVuzi() {
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d)}</p>
       <dl class="d-grid">
-        <div class="d-cell"><dt>Проходной балл</dt>
-          <dd>${school.s}<small>${school.t === 'college' ? ' аттестат' : ' ЕГЭ'}</small></dd></div>
+        <div class="d-cell"><dt>${school.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'}</dt>
+          <dd>${school.s == null ? 'Нет проверенных данных' : `${school.s}<small>${school.t === 'college' ? ' аттестат' : ' ЕГЭ'}</small>`}</dd></div>
         <div class="d-cell"><dt>Шансы</dt>
           <dd class="chance ${ch.cls}" style="font-size:1rem">${ch.text}</dd></div>
       </dl>
@@ -424,8 +429,8 @@ function initVuzi() {
           </div>
           <button type="button" class="card-open" data-open="${s.id}">${escapeHtml(s.n)}</button>
           <dl class="facts">
-            <div><dt>${s.t === 'college' ? 'Балл аттестата' : 'Проходной ЕГЭ'}</dt>
-              <dd class="score">${s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
+            <div><dt>${s.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'}</dt>
+              <dd class="score">${s.s == null ? '—' : s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
             <div><dt class="chance ${ch.cls}">${ch.text}</dt></div>
           </dl>
         </div>
