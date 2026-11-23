@@ -6,9 +6,43 @@ const saveUsers = u => localStorage.setItem('nav_users', JSON.stringify(u));
 const session = () => localStorage.getItem('nav_session');
 const setSession = e => e ? localStorage.setItem('nav_session', e) : localStorage.removeItem('nav_session');
 
+// Legacy SHA-256 is kept only to upgrade existing demo accounts at their next login.
 async function sha256(s) {
   const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
   return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+
+const PBKDF2_ITERATIONS = 600000;
+
+function bytesToHex(bytes) {
+  return [...bytes].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+
+function createSalt() {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return bytesToHex(bytes);
+}
+
+async function deriveDemoPasswordHash(password, saltHex) {
+  if (!/^(?:[0-9a-f]{2}){16}$/i.test(saltHex)) {
+    throw new Error('Некорректная локальная запись аккаунта.');
+  }
+  const salt = new Uint8Array(saltHex.match(/.{2}/g).map(byte => parseInt(byte, 16)));
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(password),
+    'PBKDF2',
+    false,
+    ['deriveBits']
+  );
+  const bits = await crypto.subtle.deriveBits({
+    name: 'PBKDF2',
+    salt,
+    iterations: PBKDF2_ITERATIONS,
+    hash: 'SHA-256'
+  }, key, 256);
+  return bytesToHex(new Uint8Array(bits));
 }
 const COVERS = [
   'linear-gradient(135deg,#6c5ce7,#a29bfe)', 'linear-gradient(135deg,#0f766e,#5fcf8a)',
@@ -41,14 +75,32 @@ function initAuth() {
     const u = users();
     if (mode === 'reg') {
       if (u[email]) return fail('Такая почта уже зарегистрирована.');
+      if (pass.length < 12) return fail('Для нового демо-профиля задай пароль минимум из 12 символов.');
+      if (pass.length > 128) return fail('Пароль должен быть не длиннее 128 символов.');
       if (pass !== $a('#authPass2').value) return fail('Пароли не совпадают.');
-      const salt = Math.random().toString(16).slice(2, 10);
-      u[email] = { salt, hash: await sha256(salt + pass), profile: { avatar: '', cover: 0, bio: '' }, notes: [], courses: [] };
+      if (!crypto.subtle || !crypto.getRandomValues) return fail('Безопасное хеширование недоступно в этом браузере.');
+      const salt = createSalt();
+      const hash = await deriveDemoPasswordHash(pass, salt);
+      u[email] = { hashVersion: 2, salt, hash, profile: { avatar: '', cover: 0, bio: '' }, notes: [], courses: [] };
       saveUsers(u); setSession(email);
       return enter();
     }
     if (!u[email]) return fail('Аккаунт не найден — зарегистрируйся.');
-    if (u[email].hash !== await sha256(u[email].salt + pass)) return fail('Неверный пароль.');
+    if (!crypto.subtle) return fail('Безопасная проверка пароля недоступна в этом браузере.');
+
+    let passwordValid = false;
+    if (u[email].hashVersion === 2) {
+      passwordValid = u[email].hash === await deriveDemoPasswordHash(pass, u[email].salt);
+    } else {
+      // Backward-compatible check for old browser-only demo accounts.
+      passwordValid = u[email].hash === await sha256(String(u[email].salt || '') + pass);
+      if (passwordValid) {
+        const salt = createSalt();
+        u[email] = { ...u[email], hashVersion: 2, salt, hash: await deriveDemoPasswordHash(pass, salt) };
+        saveUsers(u);
+      }
+    }
+    if (!passwordValid) return fail('Неверный пароль.');
     setSession(email); enter();
   });
 }
