@@ -34,14 +34,14 @@
       <!-- Вход / регистрация -->
       <section class="auth-card" id="authView">
         <h1>Личный кабинет</h1>
-        <p class="muted">Демо-режим: аккаунт хранится в твоём браузере (без сервера и писем). Для защиты проекта этого достаточно.</p>
+        <p class="muted"><strong>Временный локальный демо-режим.</strong> Профиль и учётные данные хранятся только в этом браузере и не проверяются сервером. Это не защищённый аккаунт и не синхронизация между устройствами. Не используй пароль с других сайтов и не сохраняй здесь личные или конфиденциальные сведения. Для реальных пользователей нужна отдельная серверная авторизация.</p>
         <div class="seg" id="authSeg" role="group" aria-label="Режим входа">
           <button type="button" data-mode="login" aria-pressed="true">Вход</button>
           <button type="button" data-mode="reg" aria-pressed="false">Регистрация</button>
         </div>
         <form id="authForm" class="auth-form" novalidate>
           <label class="score-field"><span>Почта</span><input type="email" id="authEmail" required autocomplete="email"></label>
-          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="6" autocomplete="current-password"></label>
+          <label class="score-field"><span>Пароль для демо-профиля</span><input type="password" id="authPass" required minlength="6" maxlength="128" autocomplete="current-password"></label>
           <label class="score-field" id="pass2Wrap" hidden><span>Повтори пароль</span><input type="password" id="authPass2" autocomplete="new-password"></label>
           <button class="btn btn-primary" type="submit" id="authSubmit">Войти</button>
           <p class="drill-msg" id="authMsg" role="status"></p>
