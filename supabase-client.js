@@ -70,9 +70,10 @@
   });
 
   window.studyGuideAuthReady = client.auth.getSession()
-    .then(({ data, error }) => {
+    .then(async ({ data, error }) => {
       if (error) throw error;
-      return queueSync(data.session);
+      await queueSync(data.session);
+      return data.session;
     })
     .catch((error) => {
       console.warn('Study Guide could not restore the saved session:', error);
