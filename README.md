@@ -7,3 +7,5 @@
 - [Security review and production checklist](docs/SECURITY_HARDENING.md)
 
 Automated validation and CodeQL scans run through GitHub Actions.
+
+- [Настройка Supabase Auth и аккаунтов](docs/SUPABASE_SETUP.md)
