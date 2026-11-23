@@ -12,7 +12,12 @@ const store = {
     } catch { return fallback; }
   },
   set(key, value) {
-    try { localStorage.setItem('nav_' + key, JSON.stringify(value)); } catch {}
+    try {
+      localStorage.setItem('nav_' + key, JSON.stringify(value));
+      if (typeof window.studyGuidePersist === 'function') {
+        void window.studyGuidePersist(key, value);
+      }
+    } catch {}
   },
 };
 
@@ -558,7 +563,11 @@ function initExams() {
 }
 
 /* ---------- Точка входа ---------- */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Restore authenticated users' cloud scores/progress before rendering page state.
+  if (window.studyGuideAuthReady) {
+    try { await window.studyGuideAuthReady; } catch {}
+  }
   const page = document.body.dataset.page;
   if (page === 'home') initHome();
   else if (page === 'vuzi') initVuzi();
