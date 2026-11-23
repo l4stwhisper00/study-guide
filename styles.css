@@ -652,3 +652,19 @@ h1, h2, h3 { text-wrap: balance; }
   .auth-card { padding: 24px 20px; }
   .page:has(#authView) { align-content: start; }
 }
+
+
+/* A quieter finish: let the content lead. */
+:root { --radius: 10px; }
+.card, .hero-card, .quote-card, .resource, .auth-card, .acc-pane,
+.scores, .subject-panel, .subject-list, .dir-card, .steps-glass li {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+}
+.logo-mark { box-shadow: none; }
+.hero-card, .quote-card, .card { backdrop-filter: none; }
+.theme-eyebrow { letter-spacing: .08em; font-weight: 700; }
+.btn-glass::before { display: none; }
+.btn-primary, .btn-glass.primary { box-shadow: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
