@@ -35,4 +35,4 @@ The Edge Functions `save-exercise-answer` and `check-exercise-answer` require a 
 
 ## Exam-year policy
 
-The initial catalogue is versioned for 2027, based on the approved FIPI demo materials, specifications and codifiers. Update the year and source links when FIPI publishes the next approved set. Do not copy third-party exam variants into the site; link to external practice platforms such as Reshu OGE/EGE instead.
+The initial catalogue contains 30 course entries (14 OGE and 16 EGE), 207 syllabus modules, and a first original theory lesson plus a practice exercise for each course. It is a starter content batch, not yet a complete textbook: the remaining lessons and exercise sets still need to be authored and reviewed. The catalogue is versioned for 2027, based on the approved FIPI demo materials, specifications and codifiers. Update the year and source links when FIPI publishes the next approved set. Do not copy third-party exam variants into the site; link to external practice platforms such as Reshu OGE/EGE instead.
