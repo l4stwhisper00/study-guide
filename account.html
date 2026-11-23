@@ -41,13 +41,13 @@
         </div>
         <form id="authForm" class="auth-form" novalidate>
           <label class="score-field"><span>Электронная почта</span><input type="email" id="authEmail" required maxlength="254" autocomplete="email"></label>
-          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="8" maxlength="128" autocomplete="current-password"></label>
+          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="6" maxlength="128" autocomplete="current-password"></label>
           <label class="score-field" id="pass2Wrap" hidden><span>Повтори пароль</span><input type="password" id="authPass2" autocomplete="new-password" maxlength="128"></label>
           <button class="btn btn-primary" type="submit" id="authSubmit">Войти</button>
           <button class="link-btn" id="forgotPassword" type="button">Забыли пароль?</button>
           <button class="link-btn" id="resendConfirmation" type="button" hidden>Отправить письмо подтверждения повторно</button>
           <p class="drill-msg" id="authMsg" role="status" aria-live="polite"></p>
-          <p class="muted" id="passwordHint">Для нового аккаунта используй пароль от 12 символов, со строчными и заглавными буквами и цифрой.</p>
+          <p class="muted" id="passwordHint">Для нового аккаунта используй пароль от 6 символов, со строчными и заглавными буквами и цифрой.</p>
         </form>
       </section>
 
@@ -55,8 +55,8 @@
         <h1>Новый пароль</h1>
         <p class="muted">Придумай новый пароль для своего аккаунта.</p>
         <form id="passwordResetForm" class="auth-form" novalidate>
-          <label class="score-field"><span>Новый пароль</span><input type="password" id="newResetPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
-          <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmResetPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
+          <label class="score-field"><span>Новый пароль</span><input type="password" id="newResetPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
+          <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmResetPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
           <button class="btn btn-primary" type="submit" id="resetPasswordSubmit">Сохранить пароль</button>
           <button class="link-btn" type="button" id="backToLogin">Вернуться ко входу</button>
           <p class="drill-msg" id="resetMsg" role="status" aria-live="polite"></p>
@@ -102,8 +102,8 @@
             </form>
             <form id="changePasswordForm" class="auth-form" novalidate>
               <label class="score-field"><span>Текущий пароль</span><input type="password" id="currentPassword" required autocomplete="current-password" maxlength="128"></label>
-              <label class="score-field"><span>Новый пароль</span><input type="password" id="newPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
-              <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmNewPassword" required minlength="12" maxlength="128" autocomplete="new-password"></label>
+              <label class="score-field"><span>Новый пароль</span><input type="password" id="newPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
+              <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmNewPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
               <button class="btn" id="changePasswordSubmit" type="submit">Изменить пароль</button>
             </form>
             <p class="drill-msg" id="securityStatus" role="status" aria-live="polite"></p>
