@@ -30,7 +30,7 @@ function initAuth() {
     const msg=$a('#authMsg');msg.className='drill-msg';msg.textContent='';
     const fail=t=>{msg.textContent=t;msg.className='drill-msg bad';};
     const email=$a('#authEmail').value.trim().toLowerCase(),password=$a('#authPass').value;
-    if(!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email))return fail('Проверь адрес электронной почты.');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return fail('Проверь адрес электронной почты.');
     if(password.length<8)return fail('Пароль должен содержать не менее 8 символов.');
     try{
       if(mode==='reg'){
