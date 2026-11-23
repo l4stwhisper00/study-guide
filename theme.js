@@ -126,6 +126,7 @@
   }
   function openPanel(open) {
     panel?.classList.toggle('is-open', open);
+    panel?.setAttribute('aria-hidden', String(!open));
     overlay?.classList.toggle('is-visible', open);
     trigger?.setAttribute('aria-expanded', String(open));
     if (open) panel?.querySelector('button, input')?.focus();
