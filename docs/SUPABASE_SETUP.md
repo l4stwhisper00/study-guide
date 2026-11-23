@@ -28,7 +28,7 @@ These settings cannot be verified or changed through the connected database inte
 1. **Authentication → Providers → Email**
    - Keep Email enabled.
    - Keep **Confirm email** enabled.
-   - Set the minimum password length to at least 12 characters.
+   - Set the minimum password length to 6 characters (matching the site forms).
    - Enable leaked-password protection if available on the project's plan.
 
 2. **Authentication → URL Configuration**
