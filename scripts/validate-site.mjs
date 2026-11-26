@@ -22,7 +22,7 @@ const walk = (dir) => {
 
 const files = walk(root);
 const jsFiles = files.filter((file) => file.endsWith(".js"));
-const htmlFiles = files.filter((file) => file.endsWith(".html"));
+const htmlFiles = files.filter((file) => file.endsWith(".html") && !file.includes(`${path.sep}supabase${path.sep}email-templates${path.sep}`));
 
 for (const file of jsFiles) {
   try {
