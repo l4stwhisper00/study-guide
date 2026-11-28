@@ -196,8 +196,8 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const latitude = clean(get(row, 'latitude'));
   const longitude = clean(get(row, 'longitude'));
   const coordinatePair = latitude && longitude ? `${latitude},${longitude}`
-    : (rawCoordinates.match(/-?\\d+(?:\\.\\d+)?\\s*[,; ]\\s*-?\\d+(?:\\.\\d+)?/) || [])[0] || '';
-  const coordinates = coordinatePair.replace(/\\s+/g, '');
+    : (rawCoordinates.match(/-?\d+(?:\.\d+)?\s*[,; ]\s*-?\d+(?:\.\d+)?/) || [])[0] || '';
+  const coordinates = coordinatePair.replace(/\s+/g, '');
   const coordinatesAvailable = clean(get(row, 'coordinatesAvailable')) ||
     (coordinates || /^(есть|да|true|yes)$/i.test(rawCoordinates) ? 'Есть' : '');
   const kind = locationKind(get(row, 'locationKind') + ' ' + get(row, 'isBranch'), name, parent);
