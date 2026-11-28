@@ -7,6 +7,11 @@ const CATALOG_DETAILS = {
     programs: [],
     budgetPlaces: [],
     tuition: [],
+    minimumScores: [],
+    passingScores: [],
+    description: '',
+    descriptionSourceUrl: null,
+    ownershipConfidence: 'unknown',
     verifiedAt: null,
     sourceUrl: null
   },
@@ -189,17 +194,52 @@ const CATALOG_DETAILS = {
         { program: 'Юриспруденция (бакалавриат, очная)', year: 2026, annualRub: 478000, monthlyRub: 39833.33, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год, до возможной поддержки/скидки', sourceUrl: 'https://mi.university/sveden/files/signed/Prikaz_stoimosti_2026-2027.pdf' },
         { program: 'Реклама и связи с общественностью (бакалавриат, очная)', year: 2026, annualRub: 510000, monthlyRub: 42500, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год, до возможной поддержки/скидки', sourceUrl: 'https://mi.university/sveden/files/signed/Prikaz_stoimosti_2026-2027.pdf' }
       ]
+    },
+    kfu: {
+      ownership: 'public',
+      ownershipSource: 'Федеральный государственный университет; форма подтверждается официальным названием и приёмным порталом',
+      ownershipConfidence: 'official-name',
+      sourceUrl: 'https://admissions.kpfu.ru/dokumenty/bakalavriat-specialitet/itogi-priyoma/',
+      verifiedAt: '2026-11-28',
+      description: 'Казанский федеральный университет — крупный классический университет с программами в области медицины, биологии, экологии, геологии, математики, компьютерных наук, информационной безопасности, физики, химии, права, международных отношений и гуманитарных дисциплин. В официальных итогах приёма за 2026 год опубликованы минимальные баллы зачисленных отдельно для бюджетного и платного конкурсов; показатели различаются по направлению и форме обучения.',
+      descriptionSourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf',
+      passingScores: [
+        { program: 'Биология', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 227, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Биология', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 171, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Лечебное дело', year: 2026, form: 'Очная, специалитет', basis: 'budget', score: 276, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Лечебное дело', year: 2026, form: 'Очная, специалитет', basis: 'paid', score: 172, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Стоматология', year: 2026, form: 'Очная, специалитет', basis: 'paid', score: 196, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Фармация', year: 2026, form: 'Очная, специалитет', basis: 'budget', score: 217, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Фармация', year: 2026, form: 'Очная, специалитет', basis: 'paid', score: 127, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Прикладная математика и информатика', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 262, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Прикладная математика и информатика', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 178, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Информационные системы и технологии', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 257, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Информационные системы и технологии', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 140, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Прикладная информатика', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 253, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Прикладная информатика', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 140, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Информационная безопасность', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 263, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Информационная безопасность', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 177, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Юриспруденция', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 256, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
+        { program: 'Юриспруденция', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 149, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' }
+      ]
     }
   }
 };
 
 function mergeVerifiedRows(staticRows, liveRows) {
   const merged = new Map();
+  const keyOf = row => [
+    row.program || '',
+    row.year || '',
+    row.subject || '',
+    row.basis || '',
+    row.form || ''
+  ].join('|');
   for (const row of Array.isArray(staticRows) ? staticRows : []) {
-    merged.set(row.program + '|' + (row.year || ''), { ...row });
+    merged.set(keyOf(row), { ...row });
   }
   for (const row of Array.isArray(liveRows) ? liveRows : []) {
-    const key = row.program + '|' + (row.year || '');
+    const key = keyOf(row);
     merged.set(key, { ...(merged.get(key) || {}), ...row });
   }
   return [...merged.values()].sort((a, b) =>
@@ -222,6 +262,12 @@ function getCatalogDetails(school) {
       : (specific.programs || []),
     budgetPlaces: mergeVerifiedRows(specific.budgetPlaces, liveDetails.budgetPlaces),
     tuition: mergeVerifiedRows(specific.tuition, liveDetails.tuition),
+    minimumScores: mergeVerifiedRows(specific.minimumScores, liveDetails.minimumScores),
+    passingScores: mergeVerifiedRows(specific.passingScores, liveDetails.passingScores),
+    description: liveDetails.description || specific.description || '',
+    descriptionSourceUrl: liveDetails.descriptionSourceUrl || specific.descriptionSourceUrl || null,
+    ownershipSource: liveDetails.ownershipSource || specific.ownershipSource || '',
+    ownershipConfidence: liveDetails.ownershipConfidence || specific.ownershipConfidence || 'unknown',
     sourceUrl: liveDetails.sourceUrl || specific.sourceUrl || (school.u ? 'https://' + school.u : null)
   };
 }
