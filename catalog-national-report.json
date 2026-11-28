@@ -1,21 +1,29 @@
 {
   "generatedAt": "2026-11-28",
-  "source": "Тут виднее; первоисточник — Реестр лицензий на осуществление образовательной деятельности, Рособрнадзор",
-  "snapshotDate": "2026-09-06",
-  "inputRows": 5,
-  "importedRecords": 5,
-  "uniqueCities": 3,
+  "sources": [
+    {
+      "name": "Тут виднее / реестр лицензий Рособрнадзора",
+      "snapshotDate": "2026-09-06",
+      "records": 5,
+      "url": "https://tutvidnee.ru/data/"
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025",
+      "snapshotDate": "2025",
+      "records": 31,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+    }
+  ],
+  "inputRows": 43,
+  "importedRecords": 36,
+  "uniqueCities": 14,
   "byType": {
-    "vuz": 0,
-    "college": 5
+    "vuz": 6,
+    "college": 30
   },
   "skipped": {
-    "missingName": 0,
-    "missingCity": 0,
-    "unsupportedType": 0,
-    "inactiveLicense": 0,
-    "duplicate": 0,
-    "currentCatalogueMatch": 0
+    "duplicateBaseRows": 7,
+    "recordsAddedFromRyazanMinistryMonitoring": 31
   },
-  "needsReview": []
+  "note": "Минпросвещения указывает расхождения в статистических показателях у 31 из 38 организаций/филиалов Рязанской области; использовать названия и адреса как публикацию мониторинга 2025 года, не как подтверждение приёмных показателей."
 }
