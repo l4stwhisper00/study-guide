@@ -14,7 +14,8 @@ function decode(s) {
     .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 function attr(attrs, key) {
-  const m = attrs.match(new RegExp("(?:^|\\\\s)" + key + "\\\\s*=\\\\s*(?:'([^']*)'|\\\"([^\\\"]*)\\\"|([^\\\\s>]+))", "i"));
+  const re = new RegExp("\\b" + key + "\\s*=\\s*(?:'([^']*)'|\"([^\"]*)\"|([^\\s>]+))", "i");
+  const m = attrs.match(re);
   return m ? (m[1] ?? m[2] ?? m[3] ?? "") : "";
 }
 const regionUrl = "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10402&type=2";
@@ -27,29 +28,41 @@ const records = anchors.map(match => {
   const tdStart = html.lastIndexOf("<td", index);
   const openEnd = html.indexOf(">", tdStart);
   const tdEnd = html.indexOf("</td>", index);
-  const attrs = tdStart >= 0 && openEnd >= 0 ? html.slice(tdStart, openEnd + 1) : "";
+  const rawTag = tdStart >= 0 && openEnd >= 0 ? html.slice(tdStart, openEnd + 1) : "";
   const body = tdEnd >= 0 && openEnd >= 0 ? html.slice(openEnd + 1, tdEnd) : "";
   const addressBox = body.match(/<div\b[^>]*class=['"]adr['"][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
   const paragraphs = [...addressBox.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map(x => decode(x[1]));
   return {
-    id: attr(attrs, "id"),
-    icon: attr(attrs, "icon"),
-    city: attr(attrs, "city"),
-    coordinates: attr(attrs, "coordinates"),
+    id: attr(rawTag, "id"),
+    icon: attr(rawTag, "icon"),
+    city: attr(rawTag, "city"),
+    coordinates: attr(rawTag, "coordinates"),
     linkId: match[1],
     name: decode(match[2]),
-    address: paragraphs[1] ?? ""
+    address: paragraphs[1] ?? "",
+    rawTag
   };
 });
+console.log("RAW_TAG_FIRST", records[0]?.rawTag);
 console.log("ICON_COUNTS", JSON.stringify(records.reduce((a,x)=>(a[x.icon]=(a[x.icon]||0)+1,a),{})));
 for (const icon of [...new Set(records.map(x=>x.icon))]) {
   console.log("ICON_SAMPLE", icon, JSON.stringify(records.filter(x=>x.icon===icon).slice(0,8).map(x=>({id:x.id,name:x.name,city:x.city,address:x.address}))));
 }
-console.log("SAMPLE", JSON.stringify(records.slice(0,5)));
-const rootUrl = "https://monitoring.miccedu.ru/?m=spo&year=2025";
-const root = await get(rootUrl);
-console.log("ROOT_BYTES", Buffer.byteLength(root));
-console.log("ROOT_MATERIAL_COUNT", (root.match(/material\.php/gi) || []).length);
-const regionPos = root.indexOf("Белгородская область");
-console.log("ROOT_REGION_SNIPPET", root.slice(Math.max(0,regionPos-600), regionPos+1000).replace(/\\s+/g," ").slice(0,1800));
-console.log("ROOT_HREF_SNIPPETS", [...root.matchAll(/<a\b[^>]*href=['"][^'"]+['"][^>]*>[\s\S]{0,150}?(?:Белгородская область|г\.Москва|Кировская область)[\s\S]{0,100}?<\/a>/gi)].slice(0,10).map(x=>x[0].slice(0,400)));
+console.log("SAMPLE", JSON.stringify(records.slice(0,5).map(({rawTag,...x})=>x)));
+const rootUrls = [
+  "https://monitoring.miccedu.ru/?m=spo&year=2025",
+  "https://monitoring.miccedu.ru/?m=spo",
+  "https://monitoring.miccedu.ru/?m=vpo&year=2025",
+  "https://monitoring.miccedu.ru/iam/2025/_spo/"
+];
+for (const rootUrl of rootUrls) {
+  try {
+    const root = await get(rootUrl);
+    const allLinks = [...root.matchAll(/<a\b[^>]*href=['"]([^'"]*material\.php\?[^'"]*)['"][^>]*>([\s\S]*?)<\/a>/gi)]
+      .map(m => ({ href:m[1], name:decode(m[2]) }));
+    console.log("ROOT", rootUrl, "BYTES",Buffer.byteLength(root),"MATERIAL", (root.match(/material\.php/gi)||[]).length, "REGION_LINKS", allLinks.length);
+    console.log("ROOT_LINKS", JSON.stringify(allLinks.slice(0,8)));
+    const regionPos = root.indexOf("Белгородская область");
+    console.log("ROOT_REGION_SNIPPET",root.slice(Math.max(0,regionPos-250),regionPos+350).replace(/\s+/g," ").slice(0,800));
+  } catch(e) { console.log("ROOT_ERROR",rootUrl,String(e)); }
+}
