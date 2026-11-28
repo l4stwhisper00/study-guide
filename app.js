@@ -449,7 +449,7 @@ function initVuzi() {
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
-      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное</span>' : ''}
+      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
@@ -574,7 +574,7 @@ function initVuzi() {
         <div class="card-body">
           <div class="card-top">
             <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
-            ${details.ownership === "private" ? "<span class=\"ownership-tag\">Частное</span>" : ""}
+      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
             ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
             <button type="button" class="fav-btn" data-fav="${s.id}" aria-pressed="${isFav}"
               aria-label="В избранное">${icon('i-star')}</button>
