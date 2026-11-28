@@ -41,9 +41,50 @@ function schoolMapLinks(school) {
     yandex: 'https://yandex.ru/maps/?text=' + query,
     twoGis: 'https://2gis.ru/search/' + query,
     admissions: 'https://yandex.ru/search/?text=' + encodeURIComponent(
-      school.n + ' ' + school.c + ' проходные баллы 2025 приёмная комиссия'
+      school.n + ' ' + school.c + ' приёмная комиссия бюджетные места стоимость обучения 2027'
     ),
   };
+}
+
+function getSchoolDetails(school) {
+  return typeof getCatalogDetails === 'function'
+    ? getCatalogDetails(school)
+    : { ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [], verifiedAt: null, sourceUrl: school.u ? 'https://' + school.u : null };
+}
+
+function money(value) {
+  return Number.isFinite(Number(value))
+    ? new Intl.NumberFormat('ru-RU').format(Number(value)) + ' ₽'
+    : 'Нет подтверждённых данных';
+}
+
+function renderBudgetPlaces(details) {
+  const rows = (details.budgetPlaces || []).filter(item => Number.isFinite(Number(item.count)));
+  if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённого количества бюджетных мест по программам текущего набора. Не подставляем общую цифру вместо официальных данных.</p>';
+  return '<ul class="catalog-data-list">' + rows.map(item =>
+    '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
+    escapeHtml(String(item.count)) + ' мест · ' + escapeHtml(String(item.year || 'год не указан')) +
+    '</span></li>'
+  ).join('') + '</ul>';
+}
+
+function renderTuition(details) {
+  const rows = (details.tuition || []).filter(item =>
+    Number.isFinite(Number(item.annualRub)) || Number.isFinite(Number(item.monthlyRub))
+  );
+  if (!rows.length) return '<p class="catalog-data-empty">Стоимость платного обучения пока не подтверждена официальным документом для конкретной программы. Проверь цену на сайте приёмной комиссии.</p>';
+  return '<div class="catalog-tuition-list">' + rows.map(item => {
+    const monthly = Number.isFinite(Number(item.monthlyRub))
+      ? money(item.monthlyRub)
+      : Number.isFinite(Number(item.annualRub)) ? money(Number(item.annualRub) / 12) + ' (эквивалент)' : 'Не опубликовано';
+    const annual = Number.isFinite(Number(item.annualRub)) ? money(item.annualRub) : 'Не опубликовано';
+    return '<article class="catalog-tuition-row"><b>' + escapeHtml(item.program || 'Программа не указана') +
+      '</b><div><span>В месяц</span><strong>' + escapeHtml(monthly) + '</strong></div><div><span>В год</span><strong>' +
+      escapeHtml(annual) + '</strong></div><small>' + escapeHtml(String(item.year || 'Год набора не указан')) +
+      (item.paymentPeriod ? ' · ' + escapeHtml(item.paymentPeriod) : '') +
+      (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
+      '</small></article>';
+  }).join('') + '</div>';
 }
 
 function scoreMeta(school) {
@@ -403,6 +444,24 @@ function initVuzi() {
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
           <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
         </dl>
+      </section>
+
+      <section class="school-profile-section" aria-label="Образовательные программы">
+        <h3>Чему здесь обучают</h3>
+        ${(details.programs || []).length
+          ? '<ul class="catalog-program-list">' + details.programs.map(program => '<li>' + escapeHtml(program) + '</li>').join('') + '</ul>'
+          : '<p class="school-profile-hint">' + escapeHtml(school.d || 'Перечень программ уточняется на официальном сайте учреждения.') + '</p>'}
+      </section>
+
+      <section class="school-profile-section" aria-label="Бюджетные места">
+        <h3>Бюджетные места</h3>
+        ${renderBudgetPlaces(details)}
+      </section>
+
+      <section class="school-profile-section" aria-label="Стоимость платного обучения">
+        <h3>Платное обучение</h3>
+        ${renderTuition(details)}
+        <p class="school-profile-hint">Если опубликована только годовая цена, месячная сумма показана как расчётный эквивалент (годовая стоимость ÷ 12), а не как обещание ежемесячной оплаты. Фактический график платежей смотрите в договоре.</p>
       </section>
 
       <section class="school-profile-section" aria-label="Информация о поступлении">
