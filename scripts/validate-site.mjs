@@ -101,8 +101,9 @@ try {
   for (const record of CATALOG_NATIONAL.records) {
     pass(["vuz", "college"].includes(record.t), `${record.id}: imported record must be a university or college`);
     pass(typeof record.catalogSource === "string" && record.catalogSource.length > 0, `${record.id}: missing data source name`);
-    pass(/^\d{4}-\d{2}-\d{2}$/.test(record.sourceSnapshot || ""), `${record.id}: missing source snapshot date`);
+    pass(/^(?:\d{4}|\d{4}-\d{2}-\d{2})$/.test(record.sourceSnapshot || ""), `${record.id}: missing source snapshot date`);
     pass(["institution", "branch", "campus"].includes(record.locationKind), `${record.id}: invalid location kind`);
+    if (record.addressSnapshot) pass(/^(?:\d{4}|\d{4}-\d{2}-\d{2})$/.test(record.addressSnapshot), `${record.id}: invalid address snapshot`);
     pass(typeof record.c === "string" && record.c.trim().length > 0, `${record.id}: missing city`);
   }
   pass(Array.isArray(SCHOOLS) && SCHOOLS.length > 0, "Catalogue is empty or invalid");
