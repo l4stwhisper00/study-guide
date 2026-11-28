@@ -18,6 +18,7 @@ try {
   ].join('\n');
   const inputPath = path.join(temp, 'input.csv');
   const outputPath = path.join(temp, 'catalog-national.js');
+  const yearOutputPath = path.join(temp, 'catalog-national-year.js');
   writeFileSync(inputPath, csv, 'utf8');
 
   execFileSync(process.execPath, [
@@ -28,6 +29,21 @@ try {
     '--source-url', 'https://tutvidnee.ru/data/',
     '--output', outputPath
   ], { cwd: root, stdio: 'pipe' });
+
+  execFileSync(process.execPath, [
+    path.join(root, 'scripts/import-national-catalog.mjs'),
+    '--input', inputPath,
+    '--source', 'Годовой источник',
+    '--snapshot', '2025',
+    '--source-url', 'https://monitoring.miccedu.ru/',
+    '--output', yearOutputPath
+  ], { cwd: root, stdio: 'pipe' });
+
+  const yearContext = {};
+  vm.runInNewContext(readFileSync(yearOutputPath, 'utf8') + '\\n;globalThis.__year = CATALOG_NATIONAL;', yearContext, { timeout: 5000 });
+  if (!yearContext.__year.records.every(record => record.sourceSnapshot === '2025')) {
+    throw new Error('Year-only source snapshot was not preserved');
+  }
 
   const context = {};
   const code = readFileSync(path.join(root, 'data.js'), 'utf8') + '\n' +
