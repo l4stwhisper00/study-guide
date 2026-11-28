@@ -26,14 +26,15 @@ function getAttribute(tag, key) {
 }
 
 export function parseMonitoringRecords(html) {
-  const anchors = [...String(html).matchAll(/<a\b[^>]*href=['"][^'"]*inst\.php\?id=(\d+)[^'"]*['"][^>]*>([\s\S]*?)<\/a>/gi)];
+  const source = String(html);
+  const anchors = [...source.matchAll(/<a\b[^>]*href=['"][^'"]*inst\.php\?id=(\d+)[^'"]*['"][^>]*>([\s\S]*?)<\/a>/gi)];
   return anchors.map(match => {
     const index = match.index ?? 0;
-    const tdStart = String(html).lastIndexOf("<td", index);
-    const openEnd = String(html).indexOf(">", tdStart);
-    const tdEnd = String(html).indexOf("</td>", index);
-    const rawTag = tdStart >= 0 && openEnd >= 0 ? String(html).slice(tdStart, openEnd + 1) : "";
-    const body = tdEnd >= 0 && openEnd >= 0 ? String(html).slice(openEnd + 1, tdEnd) : "";
+    const tdStart = source.lastIndexOf("<td", index);
+    const openEnd = source.indexOf(">", tdStart);
+    const tdEnd = source.indexOf("</td>", index);
+    const rawTag = tdStart >= 0 && openEnd >= 0 ? source.slice(tdStart, openEnd + 1) : "";
+    const body = tdEnd >= 0 && openEnd >= 0 ? source.slice(openEnd + 1, tdEnd) : "";
     const addressBox = body.match(/<div\b[^>]*class=['"]adr['"][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
     const paragraphs = [...addressBox.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map(item => decodeHtml(item[1]));
     return {
@@ -57,10 +58,15 @@ export function normalizeSettlement(value) {
 export function classifyMonitoringRecord(record, { pageType, vpoIds = new Set() } = {}) {
   const icon = String(record.icon ?? "").trim();
   const isBranch = icon === "_0";
+  const name = String(record.name ?? "");
   let type = "";
   if (icon === "_2") type = "vuz";
   else if (icon === "_1") type = "college";
-  else if (isBranch) type = pageType === "vpo" || vpoIds.has(String(record.id)) ? "vuz" : "college";
+  else if (isBranch) {
+    if (pageType === "vpo" || vpoIds.has(String(record.id))) type = "vuz";
+    else if (/(университет|академ|высшего образования|высшего профессион)/i.test(name)) type = "vuz";
+    else if (/(колледж|техникум|училищ|профессиональн|среднего профессион)/i.test(name)) type = "college";
+  }
   return {
     ...record,
     type,
