@@ -17,7 +17,7 @@ function readPreviousLive() {
 }
 
 const previous = readPreviousLive();
-if (!force && previous.generatedAt && now.getTime() - Date.parse(previous.generatedAt) < intervalMs) {
+const lastAttempt = previous.lastAttemptedAt || previous.generatedAt;\nif (!force && lastAttempt && now.getTime() - Date.parse(lastAttempt) < intervalMs) {
   console.log('Official admissions-data refresh skipped: last refresh is less than 14 days old.');
   process.exit(0);
 }
@@ -199,12 +199,11 @@ function numberFromCell(text) {
 }
 
 function academicYear(text) {
-  const full = String(text).match(/\b(20\d{2})\s*[\/–-]\s*(20\d{2}|\d{2})\b/);
-  if (full) return Number(full[1]);
-  const short = String(text).match(/\b(20\d{2})\s*[–-]\s*(\d{2})\b/);
-  if (short) return Number(short[1]);
-  const year = String(text).match(/\b(20\d{2})\b/);
-  return year ? Number(year[1]) : null;
+  const values = [...String(text).matchAll(/\\b(20\\d{2})\\s*[\\/–-]\\s*(20\\d{2}|\\d{2})\\b/g)]
+    .map(match => Number(match[1]));
+  if (values.length) return Math.max(...values);
+  const years = [...String(text).matchAll(/\\b(20\\d{2})\\b/g)].map(match => Number(match[1]));
+  return years.length ? Math.max(...years) : null;
 }
 
 function findMatchingRows(tables, alias) {
@@ -246,14 +245,15 @@ function extractRosnouBudget(tables, alias) {
 }
 
 function semesterMinimum(text, label) {
-  const start = normalize(text).indexOf(normalize('Стоимость за семестр'));
-  const search = start >= 0 ? text.slice(start) : text;
-  const at = normalize(search).indexOf(normalize(label));
-  if (at < 0) return null;
-  const fragment = search.slice(at, at + 260);
-  const match = fragment.match(/от\s*(\d[\d\s\u00a0]*)\s*₽/i);
+  const plain = stripHtml(text);
+  const lower = plain.toLocaleLowerCase('ru-RU');
+  const labelAt = lower.indexOf(String(label).toLocaleLowerCase('ru-RU'));
+  if (labelAt < 0) return null;
+  const fragment = plain.slice(labelAt, labelAt + 320);
+  const match = fragment.match(/от\\s*(\\d[\\d\\s\\u00a0]*)\\s*₽/i);
   if (!match) return null;
-  return Number(match[1].replace(/[\s\u00a0]/g, ''));
+  const value = Number(match[1].replace(/[\\s\\u00a0]/g, ''));
+  return Number.isFinite(value) ? value : null;
 }
 
 function thousandsNearForm(text, form) {
@@ -460,7 +460,7 @@ const report = {
   needsReview,
   updatedPrices,
   updatedBudgetPlaces,
-  note: 'Automatic values are imported only when the configured official page contains a matching program row and a readable current-year amount/count. Missing or changed layouts are flagged for review; previously verified values are preserved.'
+  note: 'Automatic values are imported only when the configured official page contains a matching program row and a readable current-year amount/count. Monthly values are calculated as annual amount divided by 12 and are not an instalment schedule. Missing or changed layouts are flagged for review; previously verified values are preserved.',\n  sourceResults: results
 };
 
 console.log('Official admissions sources: ' + okSources + '/' + results.length + ' parsed; ' +
