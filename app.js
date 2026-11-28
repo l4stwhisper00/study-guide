@@ -337,8 +337,8 @@ function scoreMeta(school) {
   }
   return {
     value: String(school.s) + (school.t === 'college' ? ' / 5' : ' баллов'),
-    label: school.t === 'college' ? 'Ориентир среднего балла аттестата' : 'Ориентир суммы ЕГЭ',
-    note: 'Это ориентир из текущей версии каталога, а не подтверждённый официальный проходной балл. Год, конкурсная группа и программа требуют проверки в приёмной комиссии.',
+    label: school.t === 'college' ? 'Справочный ориентир среднего балла аттестата' : 'Справочный ориентир суммы ЕГЭ',
+    note: 'Это прежний ориентир каталога, не официальный проходной балл и не минимальный порог для подачи. Точные итоги зачисления показываются отдельно только при наличии опубликованного источника.',
   };
 }
 
@@ -680,23 +680,28 @@ function initVuzi() {
     const score = scoreMeta(school);
     const details = getSchoolDetails(school);
     const category = CATEGORIES.find(c => c.key === school.cat);
+    const description = schoolDescription(school, details, category);
     const examRows = (school.sub || []).map(k =>
       `<tr><td>${escapeHtml(SUBJECTS[k] || k)}</td></tr>`
     ).join('');
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
-      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
+      ${ownershipBadge(details)}
       ${school.locationKind === 'branch' ? '<span class="location-tag">Филиал</span>' : school.locationKind === 'campus' ? '<span class="location-tag">Учебная площадка</span>' : ''}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
-      <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
-      <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
+      <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}${school.region ? ' · ' + escapeHtml(school.region) : ''}</p>
+      <p class="dialog-desc">${escapeHtml(description.text)}</p>
+      ${description.generated ? '<p class="school-profile-hint">Профиль сформирован по названию и классификации каталога. Это справочное описание, а не утверждённый список образовательных программ.</p>' : ''}
+      ${description.sourceUrl ? '<p class="school-profile-hint">Источник описания: <a href="' + escapeHtml(description.sourceUrl) + '" target="_blank" rel="noopener noreferrer">официальная страница / документ</a>.</p>' : ''}
 
       <section class="school-profile-section" aria-label="Основная информация">
         <h3>О заведении</h3>
         <dl class="school-profile-grid">
           <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
-          <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Требует подтверждения'}</dd></div>
+          <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Не подтверждена'}</dd></div>
+          ${details.ownershipConfidence === 'name-inferred' ? '<div><dt>Основание классификации</dt><dd>Предварительно определено по формулировке названия; требует сверки с юридическим реестром</dd></div>' : ''}
+          ${details.ownershipSource ? '<div><dt>Подтверждение формы собственности</dt><dd>' + escapeHtml(details.ownershipSource) + '</dd></div>' : ''}
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           ${school.region ? '<div><dt>Регион</dt><dd>' + escapeHtml(school.region) + '</dd></div>' : ''}
           ${school.address ? '<div><dt>Адрес учебной площадки</dt><dd>' + escapeHtml(school.address) + '</dd></div>' : ''}
@@ -723,7 +728,7 @@ function initVuzi() {
         <h3>Чему здесь обучают</h3>
         ${(details.programs || []).length
           ? '<ul class="catalog-program-list">' + details.programs.map(program => '<li>' + escapeHtml(program) + '</li>').join('') + '</ul>'
-          : '<p class="school-profile-hint">' + escapeHtml(school.d || 'Перечень программ уточняется на официальном сайте учреждения.') + '</p>'}
+          : '<p class="school-profile-hint">Перечень конкретных специальностей и образовательных программ пока не подтверждён в каталоге. Смотри актуальный перечень на официальном сайте учреждения.</p>'}
       </section>
 
       <section class="school-profile-section" aria-label="Бюджетные места">
@@ -738,7 +743,10 @@ function initVuzi() {
       </section>
 
       <section class="school-profile-section" aria-label="Информация о поступлении">
-        <h3>Поступление и баллы</h3>
+        <h3>Минимальные и проходные баллы</h3>
+        ${renderMinimumScores(details)}
+        <h4>Минимальный балл среди зачисленных по программам</h4>
+        ${renderPassingScores(details, school)}
         <div class="d-grid">
           <div class="d-cell">
             <dt>${escapeHtml(score.label)}</dt>
@@ -746,12 +754,12 @@ function initVuzi() {
             <p class="score-source-note">${escapeHtml(score.note)}</p>
           </div>
           <div class="d-cell">
-            <dt>Оценка твоих шансов</dt>
+            <dt>Оценка твоих шансов по справочному ориентиру</dt>
             <dd class="chance ${ch.cls}" style="font-size:1rem">${escapeHtml(ch.text)}</dd>
           </div>
         </div>
-        <p class="school-profile-hint">Проходной балл — это результат последнего зачисленного абитуриента. Он отличается по направлению, форме обучения, основе (бюджет/платное) и году приёма. Для колледжей конкурс обычно зависит от среднего балла аттестата и правил конкретного набора.</p>
-        <a class="link-btn" href="${maps.admissions}" target="_blank" rel="noopener noreferrer">Найти официальные проходные баллы и правила приёма ${icon('i-ext')}</a>
+        <p class="school-profile-hint">Минимальный балл ЕГЭ для допуска к конкурсу, минимальный проходной результат последнего зачисленного и средний балл аттестата — разные показатели. Сравнивай только одну программу, форму и основу обучения, за один и тот же год. Для колледжей обычно важен средний балл аттестата.</p>
+        <a class="link-btn" href="${maps.admissions}" target="_blank" rel="noopener noreferrer">Открыть официальные правила приёма и результаты зачисления ${icon('i-ext')}</a>
       </section>
 
       <section class="school-profile-section">
@@ -828,16 +836,17 @@ function initVuzi() {
         <div class="card-body">
           <div class="card-top">
             <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
-      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
+            ${ownershipBadge(details)}
             ${s.locationKind === 'branch' ? '<span class="location-tag">Филиал</span>' : s.locationKind === 'campus' ? '<span class="location-tag">Площадка</span>' : ''}
             ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
             <button type="button" class="fav-btn" data-fav="${s.id}" aria-pressed="${isFav}"
               aria-label="В избранное">${icon('i-star')}</button>
           </div>
           <button type="button" class="card-open" data-open="${s.id}">${escapeHtml(s.n)}</button>
+          ${renderCardAdmissionSummary(details, s)}
           <dl class="facts">
-            <div><dt>${s.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'} · требует проверки</dt>
-              <dd class="score">${s.s == null ? '—' : s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
+            <div><dt>${s.t === 'college' ? 'Справочный балл аттестата' : 'Справочная сумма ЕГЭ'} · не официальный проходной</dt>
+              <dd class="score">${s.s == null ? 'Нет данных' : s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
             <div><dt class="chance ${ch.cls}">${ch.text}</dt></div>
           </dl>
         </div>
