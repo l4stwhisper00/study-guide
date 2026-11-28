@@ -4,7 +4,7 @@ The public account form uses a nickname and password only. Users are never asked
 
 ## How identity works
 
-Supabase Auth's password provider requires an email or phone identifier. To preserve Supabase's password hashing, session issuance, refresh tokens, and account isolation without collecting a real address, the server derives a non-deliverable address in the reserved \`.invalid\` domain from the normalized nickname. It is generated and used only inside the trusted Edge Function; it is never shown in the UI or sent by email.
+Supabase Auth's password provider requires an email or phone identifier. To preserve Supabase's password hashing, session issuance, refresh tokens, and account isolation without collecting a real address, the server creates a random opaque identifier under the reserved \`.invalid\` domain for each account. The alias is stored in the protected \`public.account_usernames\` table. It is not derived from the nickname, is never displayed in the UI, and cannot be enumerated through the browser Data API.
 
 Nicknames are stored in \`public.account_usernames\`, with a unique normalized value. The Edge Function sets the canonical nickname in \`app_metadata.username\`; user-editable metadata is not used as the source of truth for the displayed account nickname.
 
