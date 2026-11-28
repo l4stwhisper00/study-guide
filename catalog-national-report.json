@@ -134,7 +134,7 @@
       "name": "Минобрнауки РФ — мониторинг вузов 2025, Московская область",
       "snapshotDate": "2026-02-03",
       "listedRows": 55,
-      "records": 7,
+      "records": 6,
       "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10302&type=2",
       "note": "Two exact name/city duplicates were skipped because the records were already present in the SPO-based catalogue."
     },
@@ -142,7 +142,7 @@
       "name": "Минобрнауки РФ — мониторинг вузов 2025, Санкт-Петербург",
       "snapshotDate": "2026-02-03",
       "listedRows": 64,
-      "records": 7,
+      "records": 4,
       "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10201&type=2"
     },
     {
