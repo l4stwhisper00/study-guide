@@ -1,91 +1,84 @@
-# Study Guide — Supabase production setup
+# School Navigator — Supabase production setup
 
-The production identity provider and account database are isolated in the **Study Guide** Supabase project:
+The production identity provider and account database are isolated in the **School Navigator** Supabase project:
 
-- Project: `study-guide`
-- Region: `eu-west-1`
-- Project ref: `wedtrxpibedovdiwdoor`
-- Website: `https://navigator.devs.li`
+- Project: \`study-guide\`
+- Region: \`eu-west-1\`
+- Project ref: \`wedtrxpibedovdiwdoor\`
+- Website: \`https://navigator.devs.li\`
 
-This is separate from GameClub. Do not copy keys, SQL or data between the projects.
+This project is separate from GameClub. Do not copy keys, SQL, or data between projects.
 
-## What is implemented
+## Authentication
 
-- Email/password registration and login using Supabase Auth.
-- Email verification and resend-confirmation flow.
-- Password reset by email, password update, and email-change confirmation.
-- Persistent Supabase sessions across the site's static pages.
-- Per-user profile, notes, exam scores, exam-topic progress and generated study plans.
-- Private avatar bucket with a per-user folder policy.
-- Legacy browser demo profile/note import on the first successful login with the same email. The old browser password hash is removed only after the profile and notes have been copied successfully. Passwords themselves are never migrated from browser storage.
+The website's public registration and login forms use **nickname + password only**. Users are not asked for an email address, and the account flow does not send confirmation, recovery, or email-change messages.
 
-The browser contains only the project's public publishable key. A publishable key is expected in a browser app; it is not a secret. Never add a service-role or secret key to repository files.
+Supabase Auth's password provider still requires an email or phone identifier internally. The trusted \`username-auth\` Edge Function therefore generates a random, opaque address under the reserved \`.invalid\` domain for each account. It is stored in the protected \`account_usernames\` table and is never displayed to users or used to send mail. The random alias prevents a visitor from deriving another user's Auth identifier from their nickname and calling the password endpoint directly to bypass the CAPTCHA.
 
-## Required Supabase Dashboard settings
+Required settings:
 
-These settings cannot be verified or changed through the connected database interface and must be confirmed in the Supabase Dashboard before relying on email flows in production.
+1. Keep **Authentication → Providers → Email** enabled, because Supabase Auth uses the internal opaque identifier for password hashing and session issuance.
+2. Email confirmation can remain enabled globally: the trusted Edge Function creates users as already confirmed. No confirmation mail is needed.
+3. Set the minimum password length to at least 8 characters (the site enforces 8–128).
+4. Do not configure SMTP for account authentication. It is not used by this flow.
+5. The public Edge Function \`username-auth\` must have JWT verification disabled because registration and login are public actions. It validates input and origin, applies rate limits, validates CAPTCHA challenges, and uses the service role only on the server.
+6. Never expose the service-role key or other secret keys in browser code.
 
-1. **Authentication → Providers → Email**
-   - Keep Email enabled.
-   - Keep **Confirm email** enabled.
-   - Set the minimum password length to 6 characters (matching the site forms).
-   - Enable leaked-password protection if available on the project's plan.
+Protection:
+- Nicknames are case-insensitive and unique; 3–24 Unicode letters/digits plus \`_\`, \`-\`, or \`.\`.
+- Registration is limited to five accounts per IP hash per hour.
+- Failed logins are counted per nickname and IP hash over 15 minutes.
+- Starting with the third incorrect password, every further attempt requires a fresh server-validated arithmetic CAPTCHA.
+- CAPTCHA challenges expire after five minutes and can be used once.
+- Authentication tracking tables have RLS enabled and no grants to \`anon\` or \`authenticated\`.
 
-2. **Authentication → URL Configuration**
-   - Site URL: `https://navigator.devs.li`
-   - Add this Redirect URL: `https://navigator.devs.li/account.html`
-   - If a staging domain is used, add only that exact staging callback too. Avoid a broad wildcard unless it is required.
+**Password recovery limitation:** no real email or recovery channel is collected. Users can change their password while signed in. If they forget it, self-service recovery is unavailable.
 
-3. **Authentication → SMTP Settings**
-   - Configure a custom SMTP sender and verify the sending domain (SPF/DKIM/DMARC).
-   - The built-in Supabase email sender is only suitable for testing and has a strict sending limit. Do not launch public registration with the default sender.
+## Browser configuration and data access
 
-4. **Project Settings → API → Data API**
-   - Enable the Data API.
-   - Expose the `public` schema.
-   - The project has explicit RLS and grants for browser-accessible tables.
+The browser contains only the project's public publishable key. This key is designed for public clients; it is not a secret.
 
-5. **Storage**
-   - Confirm that the private `study-avatars` bucket exists.
-   - Do not make it public. Policies restrict every object operation to the folder named after the authenticated user's UUID.
-
-## Account bootstrap
-
-The site is ready for users to self-register. No owner email has been hard-coded and no account has been granted admin rights automatically.
-
-After the owner has registered and confirmed the email address, give the owner author access with this SQL (replace the address):
-
-```sql
-insert into public.site_admins(user_id)
-select id
-from auth.users
-where lower(email) = lower('OWNER_EMAIL')
-on conflict (user_id) do nothing;
-```
-
-Never expose insert/update/delete access to `site_admins` through the browser API. Only the trusted project owner should be added.
-
-## Data protection
-
-- `study_profiles`: RLS restricts every row to its owner.
-- `study_notes`: RLS restricts every row to its owner.
-- `lesson_progress` and `course_enrollments`: existing ownership policies remain in place.
-- `study-avatars`: private bucket; users can read, upload, update and delete only files under their own UUID folder.
+- Expose the \`public\` schema in Project Settings → API → Data API.
+- Keep RLS enabled on all public application tables.
+- The private \`study-avatars\` Storage bucket must remain private. Policies restrict each object to the folder named after the authenticated user's UUID.
 - Correct exercise answers remain in the private schema and are checked through authenticated Edge Functions.
-- Do not use user-editable `user_metadata` for admin or access-control decisions.
+- Do not use user-editable \`user_metadata\` for authorization decisions. The nickname displayed by the account page comes from server-controlled \`app_metadata.username\`.
+
+## Owner account bootstrap
+
+Register the owner's account normally using the chosen nickname. Then grant author access in the Supabase SQL editor:
+
+\`\`\`sql
+insert into public.site_admins(user_id)
+select user_id
+from public.account_usernames
+where username_normalized = lower('OWNER_USERNAME')
+on conflict (user_id) do nothing;
+\`\`\`
+
+Replace \`OWNER_USERNAME\` with the exact chosen nickname. Never grant admin rights automatically during public registration. Never expose write access to \`site_admins\` through the browser API.
+
+## Existing learning data
+
+The following content is independent of authentication and must be preserved:
+
+- 30 exam courses
+- 207 course modules
+- 30 course lessons
+
+User profiles, notes, scores, progress, and course plans remain scoped by \`auth.uid()\` through their existing RLS policies. The new username tables do not grant browser access to those records.
 
 ## Verification checklist
 
-After Dashboard setup:
+After the username-auth changes are published:
 
-1. Register a new test account and confirm the email arrives.
-2. Confirm the link returns to `/account.html` and the account becomes signed in.
-3. Sign out, sign back in, and refresh the page; the session should be restored.
-4. Request password reset and confirm the link opens the new-password form.
-5. Change the email and confirm the new address according to the configured confirmation flow.
-6. Add a note and edit the profile; sign in from another browser and verify that data appears.
-7. Upload an avatar; check that its storage object is private and that a different user cannot read or delete it.
-8. Create a second test user and verify that the first user's profile, notes, progress, and avatar are not accessible to the second user.
-9. Run Supabase Security and Health Advisors after any further RLS/storage change.
+1. Register with a nickname and password; no email field or email should appear.
+2. Register the same nickname with different letter casing and verify it is rejected as already taken.
+3. Sign out, sign in with the nickname, and refresh the page; the session should restore.
+4. Enter an incorrect password three times and verify a CAPTCHA appears before the next attempt.
+5. Submit an incorrect CAPTCHA and verify the login is rejected; solve a fresh CAPTCHA and verify the next password attempt is processed.
+6. Change the password while signed in, then verify the new password works.
+7. Create a second test user and verify that the first user's profile, notes, progress, and avatar are inaccessible to the second user.
+8. Run Supabase Security and Performance Advisors after schema changes.
 
-The repository's automated checks do not replace these email-delivery, browser-session and cross-account isolation tests. No end-to-end test using a real mailbox has been completed yet.
+No real-browser end-to-end test has been completed yet. Do not claim the flow is production-verified until these checks pass.
