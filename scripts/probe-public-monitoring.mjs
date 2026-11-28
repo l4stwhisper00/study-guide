@@ -12,17 +12,17 @@ function decode(s) {
     .replace(/&nbsp;/gi, " ").replace(/&ndash;/gi, "–").replace(/&mdash;/gi, "—")
     .replace(/&quot;/gi, '"').replace(/&#39;|&apos;/gi, "'").replace(/&amp;/gi, "&")
     .replace(/&lt;/gi, "<").replace(/&gt;/gi, ">")
-    .replace(/&#(\\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
     .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/<[^>]+>/g, " ").replace(/\\s+/g, " ").trim();
+    .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 function attr(attrs, key) {
-  const re = new RegExp("\\b" + key + "\\s*=\\s*(?:'([^']*)'|\"([^\"]*)\"|([^\\s>]+))", "i");
+  const re = new RegExp("\\b" + key + "\\s*=\\s*(?:'([^']*)'|\\"([^\\"]*)\\"|([^\\s>]+))", "i");
   const m = attrs.match(re);
   return m ? (m[1] ?? m[2] ?? m[3] ?? "") : "";
 }
 function parseRecords(html) {
-  const anchors = [...html.matchAll(/<a\\b[^>]*href=['"][^'"]*inst\\.php\\?id=(\\d+)[^'"]*['"][^>]*>([\\s\\S]*?)<\\/a>/gi)];
+  const anchors = [...html.matchAll(/<a\b[^>]*href=['"][^'"]*inst\.php\?id=(\d+)[^'"]*['"][^>]*>([\s\S]*?)<\/a>/gi)];
   return anchors.map(match => {
     const index = match.index ?? 0;
     const tdStart = html.lastIndexOf("<td", index);
@@ -30,8 +30,8 @@ function parseRecords(html) {
     const tdEnd = html.indexOf("</td>", index);
     const rawTag = tdStart >= 0 && openEnd >= 0 ? html.slice(tdStart, openEnd + 1) : "";
     const body = tdEnd >= 0 && openEnd >= 0 ? html.slice(openEnd + 1, tdEnd) : "";
-    const addressBox = body.match(/<div\\b[^>]*class=['"]adr['"][^>]*>([\\s\\S]*?)<\\/div>/i)?.[1] ?? "";
-    const paragraphs = [...addressBox.matchAll(/<p\\b[^>]*>([\\s\\S]*?)<\\/p>/gi)].map(x => decode(x[1]));
+    const addressBox = body.match(/<div\b[^>]*class=['"]adr['"][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
+    const paragraphs = [...addressBox.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map(x => decode(x[1]));
     return {
       id: attr(rawTag, "id") || match[1],
       icon: attr(rawTag, "icon"),
@@ -56,11 +56,11 @@ function summarize(rows) {
 }
 
 const root = await get(rootUrl);
-const links = [...root.matchAll(/<a\\b[^>]*href=['"]([^'"]*material\\.php\\?[^'"]*)['"][^>]*>([\\s\\S]*?)<\\/a>/gi)]
+const links = [...root.matchAll(/<a\b[^>]*href=['"]([^'"]*material\.php\?[^'"]*)['"][^>]*>([\s\S]*?)<\/a>/gi)]
   .map(m => ({ href: m[1], name: decode(m[2]) }));
 const regions = new Map();
 for (const item of links) {
-  const id = item.href.match(/[?&]id=(\\d+)/)?.[1];
+  const id = item.href.match(/[?&]id=(\d+)/)?.[1];
   if (id && !regions.has(id)) regions.set(id, { ...item, id });
 }
 console.log("ROOT", JSON.stringify({ links: links.length, uniqueRegions: regions.size }));
