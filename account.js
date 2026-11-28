@@ -380,10 +380,15 @@
     list.className = 'cselect-list';
     list.id = 'calcSubjOptions';
     list.setAttribute('role', 'listbox');
-    list.innerHTML = Array.from(select.options).map((option) =>
-      '<button type="button" role="option" data-v="' + option.value +
-      '" aria-selected="' + String(option.value === select.value) + '">' + option.textContent + '</button>'
-    ).join('');
+    Array.from(select.options).forEach((option) => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.setAttribute('role', 'option');
+      item.dataset.v = option.value;
+      item.setAttribute('aria-selected', String(option.value === select.value));
+      item.textContent = option.textContent;
+      list.appendChild(item);
+    });
     wrapper.append(trigger, list);
 
     const syncSubjectSelect = () => {
