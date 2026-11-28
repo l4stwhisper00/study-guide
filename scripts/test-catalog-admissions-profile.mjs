@@ -194,6 +194,47 @@ assert(itmo.tuition.find(row => row.program.startsWith('Разработка п�
   'ITMO Software Engineering tuition changed unexpectedly');
 assert(itmo.passingScores.length === 0, 'ITMO must not show unverified exact admitted totals as passing scores');
 
+const mpei = getCatalogDetails(school('mges'));
+assert(mpei.ownership === 'public', 'MPEI ownership is not marked public');
+assert(mpei.ownershipConfidence === 'official-name', 'MPEI ownership must be tied to its official legal name');
+assert(mpei.description && mpei.description.length > 150, 'MPEI profile description is too short');
+assert(mpei.description.includes('выборка из 12 очных конкурсных групп'), 'MPEI description must disclose subset-only data coverage');
+assertRows(mpei.budgetPlaces, 'MPEI 2026 budget seats', {
+  field: 'count',
+  test: row => Number.isInteger(row.count) && row.count > 0 && row.year === 2026 &&
+    row.sourceUrl === 'https://pk.mpei.ru/info/speclist_pos.html'
+});
+assert(mpei.budgetPlaces.length === 12, 'MPEI selected-programme budget-place coverage changed unexpectedly');
+assert(mpei.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 628, 'MPEI selected-programme budget-place total changed unexpectedly');
+assert(mpei.budgetPlaces.find(row => row.program.includes('Вычислительные машины, комплексы, системы и сети'))?.count === 185,
+  'MPEI 2026 IT and Computer Technology budget-place count changed unexpectedly');
+assert(mpei.budgetPlaces.find(row => row.program.startsWith('Информационная безопасность'))?.count === 53,
+  'MPEI 2026 Information Security budget-place count changed unexpectedly');
+assertRows(mpei.minimumScores, 'MPEI 2026 subject thresholds', {
+  field: 'score',
+  test: row => row.score >= 40 && row.score <= 100 && row.subject && row.year === 2026 &&
+    row.sourceUrl === 'https://pk.mpei.ru/info/speclist_simple'
+});
+assert(mpei.minimumScores.length === 50, 'MPEI minimum-score coverage changed unexpectedly');
+assertRows(mpei.passingScores, 'MPEI 2025 admitted scores', {
+  field: 'score',
+  test: row => row.score > 0 && row.basis === 'budget' && row.year === 2025 &&
+    row.scoreKind === 'minimum-admitted-total' && row.sourceUrl === 'https://pk.mpei.ru/info/speclist_pos.html'
+});
+assert(mpei.passingScores.length === 11, 'MPEI exact 2025 admitted-score coverage changed unexpectedly');
+assert(mpei.passingScores.find(row => row.program.startsWith('Информационная безопасность'))?.score === 261,
+  'MPEI Information Security 2025 admitted minimum changed unexpectedly');
+assert(mpei.passingScores.every(row => row.form.includes('бюджетный конкурс')),
+  'MPEI historical passing scores must be labelled as budget competition');
+assertRows(mpei.tuition, 'MPEI 2026 tuition', {
+  field: 'annualRub',
+  test: row => row.annualRub > 0 && row.monthlyIsEquivalent === true &&
+    Math.abs(row.annualRub / 12 - row.monthlyRub) < 0.01 && row.year === 2026
+});
+assert(mpei.tuition.length === 12, 'MPEI annual tuition coverage changed unexpectedly');
+assert(mpei.tuition.find(row => row.program.startsWith('Ядерная энергетика'))?.annualRub === 474000,
+  'MPEI Nuclear Energy 2026 annual tuition changed unexpectedly');
+
 const unknownEntry = { id: '__unknown_test__', n: 'Учебное заведение без источников', t: 'vuz', c: 'Тестоград' };
 const empty = getCatalogDetails(unknownEntry);
 assert(empty.ownership === 'unknown', 'Unknown ownership must not be guessed as public/private');
