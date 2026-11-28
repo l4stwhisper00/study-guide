@@ -125,6 +125,37 @@ const mfua = getCatalogDetails(school('mfua'));
 assert(mfua.ownership === 'private', 'MFUA should be marked private');
 assert(mfua.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 10, 'MFUA published budget-seat total changed unexpectedly');
 
+const mgu = getCatalogDetails(school('mgu'));
+assert(mgu.ownership === 'public', 'MSU ownership is not marked public');
+assert(mgu.ownershipConfidence === 'official-name', 'MSU ownership must be tied to its official legal name');
+assert(mgu.description && mgu.description.length > 150, 'MSU profile description is too short');
+assert(mgu.description.includes('выбранным программам'), 'MSU description must disclose that its data covers a subset of programmes');
+assertRows(mgu.budgetPlaces, 'MSU 2026 budget seats', {
+  field: 'count',
+  test: row => Number.isInteger(row.count) && row.count > 0 && row.year === 2026 &&
+    row.sourceUrl === 'https://cpk.msu.ru/files/2026/kcp_bak.pdf'
+});
+assert(mgu.budgetPlaces.length === 12, 'MSU programme-level budget-place coverage changed unexpectedly');
+assert(mgu.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 1638, 'MSU selected-programme budget-seat total changed unexpectedly');
+assert(mgu.budgetPlaces.find(row => row.program === 'Прикладная математика и информатика')?.count === 312,
+  'MSU 2026 Applied Mathematics and Informatics budget count changed unexpectedly');
+assert(mgu.budgetPlaces.find(row => row.program === 'Юриспруденция')?.count === 305,
+  'MSU 2026 Law budget count changed unexpectedly');
+assertRows(mgu.minimumScores, 'MSU 2026 subject thresholds', {
+  field: 'score',
+  test: row => row.score >= 40 && row.score <= 100 && row.subject && row.year === 2026
+});
+assert(mgu.minimumScores.length === 25, 'MSU explicit 2026 subject-threshold coverage changed unexpectedly');
+assertRows(mgu.tuition, 'MSU 2026 tuition', {
+  field: 'annualRub',
+  test: row => row.annualRub > 0 && row.monthlyIsEquivalent === true &&
+    Math.abs(row.annualRub / 12 - row.monthlyRub) < 0.01 && row.year === 2026
+});
+assert(mgu.tuition.length === 7, 'MSU 2026 tuition coverage changed unexpectedly');
+assert(mgu.tuition.find(row => row.program === 'Юриспруденция')?.annualRub === 660000,
+  'MSU Law 2026 annual tuition changed unexpectedly');
+assert(mgu.passingScores.length === 0, 'MSU must not show unverified exact admitted totals as passing scores');
+
 const unknownEntry = { id: '__unknown_test__', n: 'Учебное заведение без источников', t: 'vuz', c: 'Тестоград' };
 const empty = getCatalogDetails(unknownEntry);
 assert(empty.ownership === 'unknown', 'Unknown ownership must not be guessed as public/private');
