@@ -17,9 +17,10 @@ function decode(s) {
     .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 function attr(attrs, key) {
-  const re = new RegExp("\\b" + key + "\\s*=\\s*(?:'([^']*)'|\\"([^\\"]*)\\"|([^\\s>]+))", "i");
-  const m = attrs.match(re);
-  return m ? (m[1] ?? m[2] ?? m[3] ?? "") : "";
+  const quoted = attrs.match(new RegExp(\`(?:^|\\s)\${key}\\s*=\\s*["']([^"']*)["']\`, "i"));
+  if (quoted) return quoted[1];
+  const bare = attrs.match(new RegExp(\`(?:^|\\s)\${key}\\s*=\\s*([^\\s>]+)\`, "i"));
+  return bare?.[1] ?? "";
 }
 function parseRecords(html) {
   const anchors = [...html.matchAll(/<a\b[^>]*href=['"][^'"]*inst\.php\?id=(\d+)[^'"]*['"][^>]*>([\s\S]*?)<\/a>/gi)];
