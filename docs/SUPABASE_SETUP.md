@@ -18,12 +18,13 @@ Supabase Auth's password provider still requires an email or phone identifier in
 Required settings:
 
 1. Keep **Authentication → Providers → Email** enabled, because Supabase Auth uses the internal opaque identifier for password hashing and session issuance.
-2. Email confirmation can remain enabled globally: the trusted Edge Function creates users as already confirmed. No confirmation mail is needed.
-3. Set the minimum password length to at least 8 characters (the site enforces 8–128).
-4. Enable leaked-password protection if available on the project's plan. The current Supabase Security Advisor reports this protection as disabled.
-5. Do not configure SMTP for account authentication. It is not used by this flow.
-6. The public Edge Function \`username-auth\` must have JWT verification disabled because registration and login are public actions. It validates input and origin, applies rate limits, validates CAPTCHA challenges, and uses the service role only on the server.
-7. Never expose the service-role key or other secret keys in browser code.
+2. Disable public self-service signups in Supabase Auth settings. The Edge Function creates nickname accounts through the Admin API, so website registration continues to work; this prevents direct email-based signup through the public Auth endpoint.
+3. Email confirmation can remain enabled globally: the trusted Edge Function creates users as already confirmed. No confirmation mail is needed.
+4. Set the minimum password length to at least 8 characters (the site enforces 8–128).
+5. Enable leaked-password protection if available on the project's plan. The current Supabase Security Advisor reports this protection as disabled.
+6. Do not configure SMTP for account authentication. It is not used by this flow.
+7. The public Edge Function \`username-auth\` must have JWT verification disabled because registration and login are public actions. It validates input and origin, applies rate limits, validates CAPTCHA challenges, and uses the service role only on the server.
+8. Never expose the service-role key or other secret keys in browser code.
 
 Protection:
 - Nicknames are case-insensitive and unique; 3–24 Unicode letters/digits plus \`_\`, \`-\`, or \`.\`.
