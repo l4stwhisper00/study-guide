@@ -29,3 +29,7 @@ coverage/
 # Do not commit raw bulk source exports unless their terms explicitly permit redistribution.
 /data/incoming*.csv
 /data/raw-national-*.csv
+
+# Raw national register exports: keep out of Git unless redistribution is explicitly permitted.
+/data/incoming*.csv
+/data/raw-national-*.csv
