@@ -255,7 +255,7 @@ function renderCardAdmissionSummary(details, school) {
   const tuition = tuitionSummary(details);
   const score = passingScoreSummary(details);
   const budgetText = budget
-    ? budget.count + ' мест · ' + budget.year
+    ? budget.count + ' мест по ' + budget.programs + ' указанным программам · ' + budget.year
     : 'Нет подтверждённых данных';
   const tuitionText = tuition
     ? (tuition.annualRub !== null ? 'от ' + money(tuition.annualRub) + '/год' : 'Цена за месяц: ' + money(tuition.monthlyRub)) +
@@ -292,7 +292,9 @@ function renderBudgetPlaces(details) {
 
 function renderMinimumScores(details) {
   const rows = latestYearRows((details.minimumScores || []).filter(item => hasNumber(item.score)));
-  if (!rows.length) return '';
+  if (!rows.length) {
+    return '<div class="catalog-score-block"><h4>Минимальные пороги для подачи</h4><p class="catalog-data-empty">Нет подтверждённых минимальных баллов по отдельным вступительным испытаниям. Это не означает, что порог равен нулю.</p></div>';
+  }
   return '<div class="catalog-score-block"><h4>Минимальные пороги для подачи</h4>' +
     '<p class="school-profile-hint">Это минимумы по отдельным вступительным испытаниям, а не проходной балл конкурса.</p>' +
     '<ul class="catalog-data-list">' + rows.map(item =>
