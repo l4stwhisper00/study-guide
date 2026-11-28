@@ -463,6 +463,7 @@ function initVuzi() {
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
           <div><dt>Последняя проверка карточки</dt><dd>${details.verifiedAt ? escapeHtml(new Date(details.verifiedAt + "T00:00:00").toLocaleDateString("ru-RU")) : "Дата проверки не указана"}</dd></div>
+          <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Официальный источник</a>' : 'Не указан'}</dd></div>
           <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
         </dl>
       </section>
