@@ -21,7 +21,7 @@ const walk = (dir) => {
 };
 
 const files = walk(root);
-const jsFiles = files.filter((file) => file.endsWith(".js"));
+const jsFiles = files.filter((file) => file.endsWith(".js") || file.endsWith(".mjs"));
 const htmlFiles = files.filter((file) => file.endsWith(".html") && !file.includes(`${path.sep}supabase${path.sep}email-templates${path.sep}`));
 
 for (const file of jsFiles) {
@@ -114,6 +114,59 @@ try {
   }
 } catch (error) {
   errors.push(`Catalogue validation failed: ${error.message}`);
+}
+
+// Validate the structured institution profile metadata and merged live data.
+try {
+  const data = readFileSync(path.join(root, "data.js"), "utf8") + "\n" +
+    readFileSync(path.join(root, "data-extra.js"), "utf8") + "\n" +
+    readFileSync(path.join(root, "catalog-data-live.js"), "utf8") + "\n" +
+    readFileSync(path.join(root, "catalog-details.js"), "utf8") +
+    "\n;globalThis.__catalogCheck = { SCHOOLS, CATALOG_DETAILS, CATALOG_LIVE_DETAILS, getCatalogDetails };";
+  const context = {};
+  vm.runInNewContext(data, context, { timeout: 5000 });
+  const catalog = context.__catalogCheck;
+  const ids = new Set(catalog.SCHOOLS.map((school) => school.id));
+  pass(ids.size === catalog.SCHOOLS.length, "Catalogue contains duplicate institution IDs");
+  pass(typeof catalog.getCatalogDetails === "function", "catalog-details.js must expose getCatalogDetails");
+  pass(catalog.CATALOG_LIVE_DETAILS && typeof catalog.CATALOG_LIVE_DETAILS.schools === "object", "catalog-data-live.js must expose the generated school map");
+
+  for (const [id, item] of Object.entries(catalog.CATALOG_DETAILS.schools)) {
+    pass(ids.has(id), `catalog-details.js references unknown institution: ${id}`);
+    pass(["private", "public", "unknown"].includes(item.ownership || "unknown"), `${id}: invalid ownership value`);
+    pass(Array.isArray(item.programs || []), `${id}: programs must be an array`);
+    pass(Array.isArray(item.budgetPlaces || []), `${id}: budgetPlaces must be an array`);
+    pass(Array.isArray(item.tuition || []), `${id}: tuition must be an array`);
+  }
+
+  for (const school of catalog.SCHOOLS) {
+    const details = catalog.getCatalogDetails(school);
+    for (const program of details.programs || []) {
+      pass(typeof program === "string" && program.trim().length > 0, `${school.id}: program name must be a non-empty string`);
+    }
+    for (const place of details.budgetPlaces || []) {
+      pass(typeof place.program === "string" && place.program.trim().length > 0, `${school.id}: funded-place record is missing a programme name`);
+      pass(place.count !== null && place.count !== undefined && Number.isInteger(Number(place.count)) && Number(place.count) >= 0, `${school.id}: budget place count must be a non-negative integer`);
+      pass(Number.isInteger(Number(place.year)) && Number(place.year) >= 2020, `${school.id}: budget place year must be a valid academic year`);
+      pass(typeof place.sourceUrl === "string" && /^https:\/\//.test(place.sourceUrl), `${school.id}: budget place must have an official HTTPS source URL`);
+    }
+    for (const price of details.tuition || []) {
+      pass(typeof price.program === "string" && price.program.trim().length > 0, `${school.id}: tuition record is missing a programme name`);
+      pass(Number.isFinite(Number(price.annualRub)) && Number(price.annualRub) > 0, `${school.id}: tuition must have a positive annual amount`);
+      pass(Number.isFinite(Number(price.monthlyRub)) && Number(price.monthlyRub) > 0, `${school.id}: tuition must have a positive monthly amount or equivalent`);
+      pass(Number.isInteger(Number(price.year)) && Number(price.year) >= 2020, `${school.id}: tuition year must be a valid academic year`);
+      pass(typeof price.sourceUrl === "string" && /^https:\/\//.test(price.sourceUrl), `${school.id}: tuition must have an official HTTPS source URL`);
+    }
+  }
+
+  const sourceStatusPath = path.join(root, "catalog-data-status.json");
+  const sourceStatus = JSON.parse(readFileSync(sourceStatusPath, "utf8"));
+  pass(Number.isInteger(sourceStatus.intervalDays) && sourceStatus.intervalDays === 14, "Admissions refresh interval must be 14 days");
+  for (const field of ["sources", "successfulSources", "needsReview", "updatedPrices", "updatedBudgetPlaces"]) {
+    if (sourceStatus[field] !== undefined) pass(Number.isFinite(Number(sourceStatus[field])) && Number(sourceStatus[field]) >= 0, `catalog-data-status.json: ${field} must be a non-negative number`);
+  }
+} catch (error) {
+  errors.push(`Institution profile metadata validation failed: ${error.message}`);
 }
 
 // Fail if an actual Supabase secret has accidentally been committed.

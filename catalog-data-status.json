@@ -1,0 +1,11 @@
+{
+  "checkedAt": null,
+  "lastSuccessfulDataAt": null,
+  "intervalDays": 14,
+  "sources": 0,
+  "successfulSources": 0,
+  "needsReview": 0,
+  "updatedPrices": 0,
+  "updatedBudgetPlaces": 0,
+  "note": "The first scheduled admissions-data refresh has not run yet."
+}

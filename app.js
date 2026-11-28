@@ -31,6 +31,51 @@ const TYPE_LABEL = { vuz: 'Вуз', college: 'Колледж' };
 const TYPE_CLASS = { vuz: 'tag-vuz', college: 'tag-college' };
 const HUES = { it: 255, eng: 210, med: 350, econ: 140, law: 45, hum: 285, sci: 190, agro: 95, edu: 320, art: 20 };
 
+async function updateCatalogFreshness() {
+  const element = $('#catalogFreshness');
+  if (!element) return;
+  const formatDate = value => {
+    if (!value) return null;
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date.toLocaleDateString('ru-RU');
+  };
+  try {
+    const [siteResponse, dataResponse] = await Promise.all([
+      fetch('catalog-source-status.json', { cache: 'no-store' }).catch(() => null),
+      fetch('catalog-data-status.json', { cache: 'no-store' }).catch(() => null)
+    ]);
+    const reports = await Promise.all([
+      siteResponse?.ok ? siteResponse.json().catch(() => null) : null,
+      dataResponse?.ok ? dataResponse.json().catch(() => null) : null
+    ]);
+    const [siteReport, dataReport] = reports;
+    const messages = [];
+    if (siteReport?.checkedAt) {
+      messages.push(`Проверка официальных сайтов и документов: ${formatDate(siteReport.checkedAt)} · доступны ${siteReport.reachable} из ${siteReport.total} ссылок.`);
+    } else {
+      messages.push('Плановая проверка официальных ссылок ещё не выполнялась.');
+    }
+    if (dataReport?.checkedAt) {
+      const updated = (Number(dataReport.updatedPrices) || 0) + (Number(dataReport.updatedBudgetPlaces) || 0);
+      messages.push(`Проверка приёмных данных: ${formatDate(dataReport.checkedAt)} · обновлено цен: ${Number(dataReport.updatedPrices) || 0}, сведений о бюджетных/субсидируемых местах: ${Number(dataReport.updatedBudgetPlaces) || 0}.`);
+      if (dataReport.lastSuccessfulDataAt) {
+        messages.push(`Последнее успешное обновление цифр: ${formatDate(dataReport.lastSuccessfulDataAt)}.`);
+      } else if (updated === 0) {
+        messages.push('В последней проверке новые цифры автоматически не извлечены — старые значения не перезаписывались, источники требуют проверки.');
+      }
+      if (Number(dataReport.needsReview) > 0) {
+        messages.push(`Источников требуют ручной проверки: ${Number(dataReport.needsReview)}.`);
+      }
+    } else {
+      messages.push('Автоматическое обновление цен и бюджетных мест ожидает первого запуска.');
+    }
+    messages.push('Доступность ссылки не означает, что опубликованные учреждением условия не изменились. Каждая цена и цифра мест должна открываться в своём официальном источнике.');
+    element.textContent = messages.join(' ');
+  } catch {
+    element.textContent = 'Плановая проверка источников выполняется раз в 14 дней. Данные без подтверждённой программы, года и официальной ссылки не показываются как точные.';
+  }
+}
+updateCatalogFreshness();
 function icon(name, cls = 'icon') {
   return `<svg class="${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
 }
@@ -41,9 +86,54 @@ function schoolMapLinks(school) {
     yandex: 'https://yandex.ru/maps/?text=' + query,
     twoGis: 'https://2gis.ru/search/' + query,
     admissions: 'https://yandex.ru/search/?text=' + encodeURIComponent(
-      school.n + ' ' + school.c + ' проходные баллы 2025 приёмная комиссия'
+      school.n + ' ' + school.c + ' приёмная комиссия бюджетные места стоимость обучения 2027'
     ),
   };
+}
+
+function getSchoolDetails(school) {
+  return typeof getCatalogDetails === 'function'
+    ? getCatalogDetails(school)
+    : { ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [], verifiedAt: null, sourceUrl: school.u ? 'https://' + school.u : null };
+}
+
+function hasNumber(value) { return value !== null && value !== undefined && value !== '' && Number.isFinite(Number(value)); }
+
+function money(value) {
+  return hasNumber(value)
+    ? new Intl.NumberFormat('ru-RU').format(Number(value)) + ' ₽'
+    : 'Нет подтверждённых данных';
+}
+
+function renderBudgetPlaces(details) {
+  const rows = (details.budgetPlaces || []).filter(item => hasNumber(item.count));
+  if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённого количества бюджетных мест по программам текущего набора. Не подставляем общую цифру вместо официальных данных.</p>';
+  return '<ul class="catalog-data-list">' + rows.map(item =>
+    '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
+    escapeHtml(String(item.count)) + ' мест · ' + escapeHtml(String(item.year || 'год не указан')) +
+    (item.fundingType ? ' · ' + escapeHtml(item.fundingType) : '') +
+    (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
+    '</span></li>'
+  ).join('') + '</ul>';
+}
+
+function renderTuition(details) {
+  const rows = (details.tuition || []).filter(item =>
+    hasNumber(item.annualRub) || hasNumber(item.monthlyRub)
+  );
+  if (!rows.length) return '<p class="catalog-data-empty">Стоимость платного обучения пока не подтверждена официальным документом для конкретной программы. Проверь цену на сайте приёмной комиссии.</p>';
+  return '<div class="catalog-tuition-list">' + rows.map(item => {
+    const monthly = hasNumber(item.monthlyRub)
+      ? money(item.monthlyRub) + (item.monthlyIsEquivalent ? ' (эквивалент)' : '')
+      : hasNumber(item.annualRub) ? money(Number(item.annualRub) / 12) + ' (эквивалент)' : 'Не опубликовано';
+    const annual = hasNumber(item.annualRub) ? money(item.annualRub) : 'Не опубликовано';
+    return '<article class="catalog-tuition-row"><b>' + escapeHtml(item.program || 'Программа не указана') +
+      '</b><div><span>В месяц</span><strong>' + escapeHtml(monthly) + '</strong></div><div><span>В год</span><strong>' +
+      escapeHtml(annual) + '</strong></div><small>' + escapeHtml(String(item.year || 'Год набора не указан')) +
+      (item.paymentPeriod ? ' · ' + escapeHtml(item.paymentPeriod) : '') +
+      (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
+      '</small></article>';
+  }).join('') + '</div>';
 }
 
 function scoreMeta(school) {
@@ -384,6 +474,7 @@ function initVuzi() {
     const ch = chanceInfo(school);
     const maps = schoolMapLinks(school);
     const score = scoreMeta(school);
+    const details = getSchoolDetails(school);
     const category = CATEGORIES.find(c => c.key === school.cat);
     const examRows = (school.sub || []).map(k =>
       `<tr><td>${escapeHtml(SUBJECTS[k] || k)}</td></tr>`
@@ -391,6 +482,7 @@ function initVuzi() {
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
+      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
@@ -399,10 +491,31 @@ function initVuzi() {
         <h3>О заведении</h3>
         <dl class="school-profile-grid">
           <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
+          <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Требует подтверждения'}</dd></div>
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
+          <div><dt>Последняя проверка карточки</dt><dd>${details.verifiedAt ? escapeHtml(new Date(details.verifiedAt + "T00:00:00").toLocaleDateString("ru-RU")) : "Дата проверки не указана"}</dd></div>
+          <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Официальный источник</a>' : 'Не указан'}</dd></div>
           <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
         </dl>
+      </section>
+
+      <section class="school-profile-section" aria-label="Образовательные программы">
+        <h3>Чему здесь обучают</h3>
+        ${(details.programs || []).length
+          ? '<ul class="catalog-program-list">' + details.programs.map(program => '<li>' + escapeHtml(program) + '</li>').join('') + '</ul>'
+          : '<p class="school-profile-hint">' + escapeHtml(school.d || 'Перечень программ уточняется на официальном сайте учреждения.') + '</p>'}
+      </section>
+
+      <section class="school-profile-section" aria-label="Бюджетные места">
+        <h3>Бюджетные места</h3>
+        ${renderBudgetPlaces(details)}
+      </section>
+
+      <section class="school-profile-section" aria-label="Стоимость платного обучения">
+        <h3>Платное обучение</h3>
+        ${renderTuition(details)}
+        <p class="school-profile-hint">Если опубликована только годовая цена, месячная сумма показана как расчётный эквивалент (годовая стоимость ÷ 12), а не как обещание ежемесячной оплаты. Фактический график платежей смотрите в договоре.</p>
       </section>
 
       <section class="school-profile-section" aria-label="Информация о поступлении">
@@ -486,6 +599,7 @@ function initVuzi() {
       const ch = chanceInfo(s);
       const isFav = state.fav.includes(s.id);
       const cat = CATEGORIES.find(c => c.key === s.cat);
+      const details = getSchoolDetails(s);
       return `
       <article class="card" style="--i:${i}">
         <div class="card-cover" data-photo="${escapeHtml(s.n)}" style="--hue:${HUES[s.cat] ?? 250}">
@@ -495,6 +609,7 @@ function initVuzi() {
         <div class="card-body">
           <div class="card-top">
             <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
+      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
             ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
             <button type="button" class="fav-btn" data-fav="${s.id}" aria-pressed="${isFav}"
               aria-label="В избранное">${icon('i-star')}</button>
