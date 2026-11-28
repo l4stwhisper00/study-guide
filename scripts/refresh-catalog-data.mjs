@@ -465,7 +465,8 @@ const report = {
   needsReview,
   updatedPrices,
   updatedBudgetPlaces,
-  note: 'Automatic values are imported only when the configured official page contains a matching program row and a readable current-year amount/count. Monthly values are calculated as annual amount divided by 12 and are not an instalment schedule. Missing or changed layouts are flagged for review; previously verified values are preserved.',\n  sourceResults: results
+  note: 'Automatic values are imported only when the configured official page contains a matching program row and a readable current-year amount/count. Monthly values are calculated as annual amount divided by 12 and are not an instalment schedule. Missing or changed layouts are flagged for review; previously verified values are preserved.',
+  sourceResults: results
 };
 
 console.log('Official admissions sources: ' + okSources + '/' + results.length + ' parsed; ' +
