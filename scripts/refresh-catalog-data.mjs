@@ -260,19 +260,18 @@ function semesterMinimum(text, label) {
 }
 
 function miktAnnualPrice(text, form, sourceKind) {
-  const clean = stripHtml(text).replace(/[\\u00a0]/g, ' ').replace(/\\s+/g, ' ');
+  const clean = stripHtml(text).replace(/\u00a0/g, ' ').replace(/\s+/g, ' ');
   const patterns = {
-    fulltime: /очная форма\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i,
-    parttime: /заочная и очно-заочная формы\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i,
-    design: /очная форма\\s*\\(\\s*направление\\s*["«]?дизайн["»]?\\s*\\)\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i,
-    graphic: /очная форма\\s*\\(\\s*профессия\\s*["«]?графический дизайнер["»]?\\s*\\)\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i
+    fulltime: /очная форма\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i,
+    parttime: /заочная и очно-заочная формы\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i,
+    design: /очная форма\s*\(\s*направление\s*["«]?дизайн["»]?\s*\)\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i,
+    graphic: /очная форма\s*\(\s*профессия\s*["«]?графический дизайнер["»]?\s*\)\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i
   };
   const pattern = patterns[form];
   if (!pattern) return null;
-  const section = sourceKind === 'mikt-college-price'
-    ? clean.slice(clean.toLocaleLowerCase('ru-RU').indexOf('стоимость обучения в 2026'))
-    : clean.slice(clean.toLocaleLowerCase('ru-RU').indexOf('стоимость обучения в 2026'));
-  const match = (section || clean).match(pattern);
+  const header = clean.toLocaleLowerCase('ru-RU').indexOf('стоимость обучения в 2026');
+  const section = header >= 0 ? clean.slice(header) : clean;
+  const match = section.match(pattern);
   return match ? Math.round(Number(match[1].replace(',', '.')) * 1000) : null;
 }
 
