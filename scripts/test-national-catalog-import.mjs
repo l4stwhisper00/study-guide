@@ -40,7 +40,11 @@ try {
   ], { cwd: root, stdio: 'pipe' });
 
   const yearContext = {};
-  vm.runInNewContext(readFileSync(yearOutputPath, 'utf8') + '\n;globalThis.__year = CATALOG_NATIONAL;', yearContext, { timeout: 5000 });
+  const yearCode = readFileSync(path.join(root, 'data.js'), 'utf8') + '\n' +
+    readFileSync(path.join(root, 'data-extra.js'), 'utf8') + '\n' +
+    readFileSync(yearOutputPath, 'utf8') +
+    '\n;globalThis.__year = CATALOG_NATIONAL;';
+  vm.runInNewContext(yearCode, yearContext, { timeout: 5000 });
   if (!yearContext.__year.records.every(record => record.sourceSnapshot === '2025')) {
     throw new Error('Year-only source snapshot was not preserved');
   }
