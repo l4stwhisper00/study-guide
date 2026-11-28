@@ -1,0 +1,65 @@
+name: Rebuild catalogue preview from verified crawl
+
+on:
+  push:
+    branches: [feature/national-monitoring-catalog-crawl]
+    paths:
+      - ".github/workflows/national-catalog-rebuild-from-crawl.yml"
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  validate-importer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test national catalogue importer and merge mode
+        run: node scripts/test-national-catalog-import.mjs
+
+  rebuild-preview:
+    needs: validate-importer
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download verified 89-region crawl artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: national-monitoring-2025-crawl-part-*
+          run-id: 46136778162
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: data/incoming/parts
+          merge-multiple: true
+      - name: Merge and validate all regional pages
+        run: node scripts/merge-national-monitoring-crawl.mjs
+      - name: Build merged catalogue preview while preserving current records
+        run: >
+          node scripts/import-national-catalog.mjs
+          --input data/incoming/national-monitoring-2025-combined.csv
+          --source "Минпросвещения РФ — СПО-мониторинг 2025 + Минобрнауки РФ — мониторинг ВО 2025 (89 регионов)"
+          --snapshot 2025
+          --source-url "https://monitoring.miccedu.ru/?m=spo&year=2025"
+          --preserve-existing-national true
+          --output data/incoming/catalog-national-preview.js
+      - name: Validate generated catalogue and report
+        run: node scripts/validate-national-catalog-preview.mjs
+      - name: Upload combined data and catalogue preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: national-monitoring-2025-catalogue-preview
+          path: |
+            data/incoming/national-monitoring-2025-combined.csv
+            data/incoming/national-monitoring-2025-combined-report.json
+            data/incoming/catalog-national-preview.js
+            data/incoming/catalog-national-preview-report.json
+          if-no-files-found: warn
+          retention-days: 7
