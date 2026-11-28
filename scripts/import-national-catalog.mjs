@@ -351,9 +351,11 @@ const previousSources = Array.isArray(previousReport.sources) ? previousReport.s
 const currentSourceEntry = {
   name: source,
   snapshotDate: snapshot,
+  sourceSnapshots: ['2025', '2026-02-03'],
   listedRows: rows.length - 1,
   records: newlyImported.length,
-  url: sourceUrl
+  url: sourceUrl,
+  note: 'СПО-страницы относятся к мониторингу 2025 года; страницы ВО обновлены 03.02.2026.'
 };
 const sources = preserveExistingNational
   ? previousSources.filter(item => item.name !== source).concat(currentSourceEntry)
