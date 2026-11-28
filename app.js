@@ -69,6 +69,14 @@ async function updateCatalogFreshness() {
     } else {
       messages.push('Автоматическое обновление цен и бюджетных мест ожидает первого запуска.');
     }
+    if (typeof CATALOG_NATIONAL !== 'undefined') {
+      const imported = Number(CATALOG_NATIONAL.importedRecords) || 0;
+      if (imported > 0) {
+        messages.push(`Национальный список площадок: ${imported} записей в ${Number(CATALOG_NATIONAL.uniqueCities) || 0} городах; источник — ${CATALOG_NATIONAL.source || 'не указан'}, снимок ${CATALOG_NATIONAL.snapshotDate || 'не указан'}.`);
+      } else {
+        messages.push('Массовый национальный набор пока не подключён: в каталоге остаётся базовый список учреждений. Новые записи будут добавлены после получения разрешённой выгрузки и проверки дублей.');
+      }
+    }
     messages.push('Доступность ссылки не означает, что опубликованные учреждением условия не изменились. Каждая цена и цифра мест должна открываться в своём официальном источнике.');
     element.textContent = messages.join(' ');
   } catch {
@@ -532,7 +540,7 @@ function initVuzi() {
           ${school.accreditationStatus ? '<div><dt>Аккредитация</dt><dd>' + escapeHtml(school.accreditationStatus) + '</dd></div>' : ''}
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
           <div><dt>Последняя проверка карточки</dt><dd>${details.verifiedAt ? escapeHtml(new Date(details.verifiedAt + "T00:00:00").toLocaleDateString("ru-RU")) : "Дата проверки не указана"}</dd></div>
-          <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.catalogSource || 'Источник данных') + '</a>' : 'Не указан'}</dd></div>
+          <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.catalogSource || 'Источник данных') + '</a>' : escapeHtml(school.catalogSource || 'Не указан')}</dd></div>
           ${school.sourceSnapshot ? '<div><dt>Дата снимка источника</dt><dd>' + escapeHtml(school.sourceSnapshot) + '</dd></div>' : ''}
           ${schoolOfficialUrl(school) ? '<div><dt>Официальный сайт</dt><dd><a href="' + escapeHtml(schoolOfficialUrl(school)) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.u || schoolOfficialUrl(school)) + ' ' + icon('i-ext') + '</a></dd></div>' : '<div><dt>Официальный сайт</dt><dd>Не опубликован в источнике</dd></div>'}
         </dl>
