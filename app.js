@@ -189,11 +189,15 @@ function passingScoreSummary(details) {
   const programs = new Set(rows.map(item => item.program || 'Программа не указана'));
   const minimumRows = latestYearRows((details.minimumScores || []).filter(item => hasNumber(item.score)));
   if (!rows.length && !minimumRows.length) return null;
+  const budgetScores = rows.filter(item => item.basis === 'budget').map(item => Number(item.score));
+  const paidScores = rows.filter(item => item.basis === 'paid').map(item => Number(item.score));
   return {
     year: Number((rows[0] || minimumRows[0]).year),
     programs: programs.size,
     minimumRows: minimumRows.length,
-    hasPassingScores: rows.length > 0
+    hasPassingScores: rows.length > 0,
+    minBudget: budgetScores.length ? Math.min(...budgetScores) : null,
+    minPaid: paidScores.length ? Math.min(...paidScores) : null
   };
 }
 
@@ -272,8 +276,11 @@ function renderCardAdmissionSummary(details, school) {
     : 'Нет подтверждённых данных';
   const scoreText = score
     ? (score.hasPassingScores
-      ? 'Подтверждены по ' + score.programs + ' программам · ' + score.year
-      : 'Только минимальные пороги · ' + score.year)
+      ? [
+        score.minBudget !== null ? 'бюджет от ' + score.minBudget : '',
+        score.minPaid !== null ? 'платное от ' + score.minPaid : ''
+      ].filter(Boolean).join(' / ') + ' баллов · ' + score.programs + ' программ · ' + score.year
+      : 'Есть только пороги ЕГЭ для подачи · ' + score.year)
     : 'Нет подтверждённых данных';
   return '<div class="card-admission-summary">' +
     '<p><span>Бюджетные места</span><b>' + escapeHtml(budgetText) + '</b></p>' +
