@@ -23,3 +23,4 @@ jobs:
         run: |
           node scripts/validate-site.mjs
           node scripts/test-national-catalog-import.mjs
+          node scripts/test-catalog-admissions-profile.mjs
