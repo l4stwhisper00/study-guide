@@ -527,10 +527,85 @@ const CATALOG_DETAILS = {
         { program: 'Юриспруденция', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 256, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' },
         { program: 'Юриспруденция', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 149, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/10/itogi-priema-kazan.pdf' }
       ]
+    },
+    mgu: {
+      ownership: 'public',
+      ownershipSource: 'Федеральное государственное бюджетное образовательное учреждение высшего образования «Московский государственный университет имени М.В. Ломоносова»',
+      ownershipConfidence: 'official-name',
+      sourceUrl: 'https://cpk.msu.ru/',
+      verifiedAt: '2026-11-28',
+      description: 'Московский государственный университет имени М.В. Ломоносова — федеральный государственный бюджетный университет с крупными факультетами естественно-научного, математического, гуманитарного, социального и правового профиля. Центральная приёмная комиссия публикует отдельный план бюджетных и договорных мест по программам, перечни вступительных испытаний и минимальные баллы. В карточке приведены проверенные данные по выбранным программам нескольких факультетов; это не полный свод мест и цен по всем подразделениям МГУ.',
+      descriptionSourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf',
+      programs: [
+        'Фундаментальная математика и механика — Математика',
+        'Фундаментальная математика и механика — Механика',
+        'Фундаментальная математика и механика — Фундаментальная математика и математическая физика',
+        'Прикладная математика и информатика',
+        'Фундаментальная информатика и информационные технологии',
+        'Фундаментальная и прикладная физика',
+        'Физика частиц и экстремальных состояний материи',
+        'Теоретическая и математическая физика',
+        'Астрономия',
+        'Экономика',
+        'Менеджмент',
+        'Юриспруденция',
+        'Международно-правовая программа',
+        'Экология и природопользование'
+      ],
+      budgetPlaces: [
+        { program: 'Фундаментальная математика и механика — Математика', year: 2026, count: 250, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 50 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Фундаментальная математика и механика — Механика', year: 2026, count: 100, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 20 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Фундаментальная математика и механика — Фундаментальная математика и математическая физика', year: 2026, count: 40, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 10 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Прикладная математика и информатика', year: 2026, count: 312, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 120 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Фундаментальная информатика и информационные технологии', year: 2026, count: 19, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 3 договорных места', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Фундаментальная и прикладная физика', year: 2026, count: 347, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 75 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Теоретическая и математическая физика', year: 2026, count: 25, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 5 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Физика частиц и экстремальных состояний материи', year: 2026, count: 24, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 5 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Астрономия', year: 2026, count: 20, form: 'Очная, специалитет', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 10 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Экономика', year: 2026, count: 170, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 195 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Менеджмент', year: 2026, count: 26, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 220 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' },
+        { program: 'Юриспруденция', year: 2026, count: 305, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма 2026 года; отдельно предусмотрено 280 договорных мест', sourceUrl: 'https://cpk.msu.ru/files/2026/kcp_bak.pdf' }
+      ],
+      tuition: [
+        { program: 'Математика (механико-математический факультет)', year: 2026, annualRub: 557580, monthlyRub: 46465, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026 году; оплата по семестрам', form: 'Очная, специалитет', sourceUrl: 'https://pk.math.msu.ru/abiturientam/speczialitet/kontraktnoe-obuchenie/' },
+        { program: 'Механика (механико-математический факультет)', year: 2026, annualRub: 557580, monthlyRub: 46465, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026 году; оплата по семестрам', form: 'Очная, специалитет', sourceUrl: 'https://pk.math.msu.ru/abiturientam/speczialitet/kontraktnoe-obuchenie/' },
+        { program: 'Фундаментальная математика и математическая физика (механико-математический факультет)', year: 2026, annualRub: 557580, monthlyRub: 46465, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026 году; оплата по семестрам', form: 'Очная, специалитет', sourceUrl: 'https://pk.math.msu.ru/abiturientam/speczialitet/kontraktnoe-obuchenie/' },
+        { program: 'Прикладная математика и информатика (факультет ВМК)', year: 2026, annualRub: 557580, monthlyRub: 46465, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026 году; оплата равными частями по семестрам', form: 'Очная, бакалавриат', sourceUrl: 'https://pk.cs.msu.ru/index.php/contract' },
+        { program: 'Юриспруденция', year: 2026, annualRub: 660000, monthlyRub: 55000, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026 году; оплата по семестрам', form: 'Очная, бакалавриат', sourceUrl: 'https://priem.law.msu.ru/bachelor' },
+        { program: 'Международно-правовая программа', year: 2026, annualRub: 750000, monthlyRub: 62500, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026 году; оплата по семестрам', form: 'Очная, бакалавриат', sourceUrl: 'https://priem.law.msu.ru/bachelor' },
+        { program: 'Экология и природопользование (биологический факультет)', year: 2026, annualRub: 593530, monthlyRub: 49460.83, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость обучения в 2026/2027 учебном году', form: 'Очная, бакалавриат', sourceUrl: 'https://bio.msu.ru/incoming/bachelor_course/' }
+      ],
+      minimumScores: [
+        { program: 'Фундаментальная математика и механика — Математика', subject: 'Математика (ЕГЭ)', year: 2026, score: 70, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Математика', subject: 'Физика (ЕГЭ)', year: 2026, score: 55, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Математика', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Математика', subject: 'Математика (ДВИ)', year: 2026, score: 50, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Механика', subject: 'Математика (ЕГЭ)', year: 2026, score: 70, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Механика', subject: 'Физика (ЕГЭ)', year: 2026, score: 55, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Механика', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Механика', subject: 'Математика (ДВИ)', year: 2026, score: 50, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Фундаментальная математика и математическая физика', subject: 'Математика (ЕГЭ)', year: 2026, score: 70, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Фундаментальная математика и математическая физика', subject: 'Физика (ЕГЭ)', year: 2026, score: 55, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Фундаментальная математика и математическая физика', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная математика и механика — Фундаментальная математика и математическая физика', subject: 'Математика (ДВИ)', year: 2026, score: 50, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Прикладная математика и информатика', subject: 'Математика (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Прикладная математика и информатика', subject: 'Физика (ЕГЭ)', year: 2026, score: 55, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Прикладная математика и информатика', subject: 'Информатика (ЕГЭ)', year: 2026, score: 65, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Прикладная математика и информатика', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная информатика и информационные технологии', subject: 'Математика (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная информатика и информационные технологии', subject: 'Физика (ЕГЭ)', year: 2026, score: 55, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная информатика и информационные технологии', subject: 'Информатика (ЕГЭ)', year: 2026, score: 65, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Фундаментальная информатика и информационные технологии', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Экономика', subject: 'Математика (ЕГЭ)', year: 2026, score: 70, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Экономика', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Экономика', subject: 'Математика (ДВИ)', year: 2026, score: 50, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Менеджмент', subject: 'Математика (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' },
+        { program: 'Менеджмент', subject: 'Русский язык (ЕГЭ)', year: 2026, score: 60, sourceUrl: 'https://cpk.msu.ru/files/2026/minimum.pdf' }
+      ]
     }
   }
 };
-
+  
 function mergeVerifiedRows(staticRows, liveRows) {
   const merged = new Map();
   const keyOf = row => [
