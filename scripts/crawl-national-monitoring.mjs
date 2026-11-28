@@ -84,7 +84,7 @@ function csvCell(value) {
 
 function toCsv(rows) {
   const columns = [
-    "sourceId", "name", "type", "city", "region", "address",
+    "sourceId", "regionId", "name", "type", "city", "region", "address",
     "locationKind", "parentName", "sourceUrl", "snapshotDate",
     "coordinates", "coordinatesAvailable", "ownership"
   ];
@@ -168,6 +168,7 @@ function addRows(rows, regionResult, pageType, pageUrl) {
     }
     const record = {
       sourceId: String(row.id),
+      regionId: String(regionResult.region.id),
       name: row.name,
       type: classified.type,
       city,
@@ -208,6 +209,7 @@ const outputRows = [...records.values()]
     || a.name.localeCompare(b.name, "ru"));
 
 const cities = new Set(outputRows.map(row => row.city));
+const settlementLocations = new Set(outputRows.map(row => row.region + "|" + row.city));
 const byType = {
   vuz: outputRows.filter(row => row.type === "vuz").length,
   college: outputRows.filter(row => row.type === "college").length
@@ -240,7 +242,8 @@ const report = {
   rawVpoRows,
   rawSpoRows,
   uniqueRecords: outputRows.length,
-  uniqueSettlements: cities.size,
+  uniqueSettlements: settlementLocations.size,
+  uniqueCityNames: cities.size,
   byType,
   byLocationKind,
   skipped,
@@ -264,7 +267,8 @@ console.log("CRAWL_SUMMARY " + JSON.stringify({
   rawVpoRows,
   rawSpoRows,
   uniqueRecords: outputRows.length,
-  uniqueSettlements: cities.size,
+  uniqueSettlements: settlementLocations.size,
+  uniqueCityNames: cities.size,
   byType,
   byLocationKind,
   skipped,
