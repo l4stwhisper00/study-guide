@@ -116,6 +116,28 @@ try {
   errors.push(`Catalogue validation failed: ${error.message}`);
 }
 
+// Validate the structured institution profile metadata and its references.
+try {
+  const data = readFileSync(path.join(root, "data.js"), "utf8") + "\\n" +
+    readFileSync(path.join(root, "data-extra.js"), "utf8") +
+    "\\n" + readFileSync(path.join(root, "catalog-details.js"), "utf8") +
+    "\\n;globalThis.__catalogDetailsCheck = { getCatalogDetails, CATALOG_DETAILS };";
+  const context = {};
+  vm.runInNewContext(data, context, { timeout: 3000 });
+  const ids = new Set(context.__studyGuideData?.SCHOOLS?.map((school) => school.id) || []);
+  const details = context.__catalogDetailsCheck;
+  pass(typeof details.getCatalogDetails === "function", "catalog-details.js must expose getCatalogDetails");
+  for (const [id, item] of Object.entries(details.CATALOG_DETAILS.schools)) {
+    pass(ids.has(id), `catalog-details.js references unknown institution: ${id}`);
+    pass(["private", "public", "unknown"].includes(item.ownership || "unknown"), `${id}: invalid ownership value`);
+    pass(Array.isArray(item.programs || []), `${id}: programs must be an array`);
+    pass(Array.isArray(item.budgetPlaces || []), `${id}: budgetPlaces must be an array`);
+    pass(Array.isArray(item.tuition || []), `${id}: tuition must be an array`);
+  }
+} catch (error) {
+  errors.push(`Institution profile metadata validation failed: ${error.message}`);
+}
+
 // Fail if an actual Supabase secret has accidentally been committed.
 for (const file of files.filter((file) => /\.(?:js|ts|json|html)$/i.test(file))) {
   const source = readFileSync(file, "utf8");
