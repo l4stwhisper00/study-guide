@@ -65,20 +65,20 @@ function parseRows(text, delimiter) {
 }
 
 const fieldAliases = {
-  sourceId: ['org_id','record_id','source_id','schoolguid','sysguid','guid','id','код_организации'],
+  sourceId: ['org_id','record_id','source_id','sourceid','schoolguid','sysguid','guid','id','код_организации'],
   name: ['наименование','наименование_организации','название','полное_наименование','краткое_наименование','shortname','name','org_name'],
   type: ['ступени','ступень','уровень_образования','вид_организации','тип_организации','тип','type','level','education_level','schooltypename'],
   city: ['населённый_пункт','населенный_пункт','город','city','locality','settlement'],
   region: ['субъект','субъект_рф','регион','region','subject'],
   address: ['адрес_места_осуществления_образовательной_деятельности','адрес_филиала','адрес_обучения','адрес','место_нахождения','address'],
-  parent: ['головная_организация','родительская_организация','parent_name','parent_organization','legal_entity_name'],
+  parent: ['головная_организация','родительская_организация','parent_name','parentname','parent_organization','legal_entity_name'],
   legalEntityStatus: ['юридическое_лицо','состояние_юрлица','статус_юридического_лица','legal_entity_status'],
   legalEntityCheckedAt: ['сверено_егрюл','дата_сверки_егрюл','egul_checked_at','legal_entity_checked_at'],
   territoryCode: ['октмо','код_октмо','territory_code','oktmo'],
-  coordinatesAvailable: ['координаты_доступны','есть_координаты','coordinates_available'],
+  coordinatesAvailable: ['координаты_доступны','есть_координаты','coordinates_available','coordinatesavailable'],
   latitude: ['широта','latitude','lat'],
   longitude: ['долгота','longitude','lon','lng'],
-  locationKind: ['тип_площадки','тип_объекта','вид_места_обучения','branch_type','location_type'],
+  locationKind: ['тип_площадки','тип_объекта','вид_места_обучения','branch_type','location_type','locationkind'],
   isBranch: ['филиал','это_филиал','is_branch','branch'],
   inn: ['инн','inn'], ogrn: ['огрн','ogrn'],
   website: ['официальный_сайт','сайт','сайт_организации','website','official_site','url'],
@@ -86,8 +86,8 @@ const fieldAliases = {
   accreditation: ['аккредитация','статус_аккредитации','accreditation','accreditation_status'],
   ownership: ['форма_собственности','собственность','ownership','ownership_type','окфс'],
   programs: ['специальности','программы','направления_подготовки','licensedprograms','programs','specialties'],
-  sourceUrl: ['ссылка_на_источник','url_источника','источник','source_url'],
-  sourceSnapshot: ['source_snapshot','snapshot_date','sourcesnapshot'],
+  sourceUrl: ['ссылка_на_источник','url_источника','источник','source_url','sourceurl'],
+  sourceSnapshot: ['source_snapshot','snapshot_date','snapshotdate','sourcesnapshot'],
   catalogSource: ['catalog_source','source_name','catalogsource'],
   coordinates: ['координаты','coordinates','геокоординаты']
 };
