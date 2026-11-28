@@ -137,8 +137,8 @@ function category(name, programs) {
 }
 function ownership(value) {
   const v = keyText(value);
-  if (/(частн|негосудар|ооо|ано|ноу|чоу|акционерн)/i.test(v)) return 'private';
-  if (/(государств|муницип|федеральн|казенн|бюджетн|гбоу)/i.test(v)) return 'public';
+  if (/^(private)$/.test(v) || /(частн|негосудар|ооо|ано|ноу|чоу|акционерн)/i.test(v)) return 'private';
+  if (/^(public)$/.test(v) || /(государств|муницип|федеральн|казенн|бюджетн|гбоу)/i.test(v)) return 'public';
   return 'unknown';
 }
 function website(value) {
