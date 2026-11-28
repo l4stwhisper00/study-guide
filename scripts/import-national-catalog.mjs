@@ -113,7 +113,7 @@ function rejectedStatus(value) {
 function category(name, programs) {
   const value = keyText(name + ' ' + programs);
   const rules = [
-    ['it', /(информат|программирован|кибербезопас|информационн|разработк|вычислительн|компьютер)/],
+    ['it', /(информат|программ|кибербезопас|информационн|разработк|вычислительн|компьютер)/],
     ['med', /(медицин|лечебное дело|педиатр|фармац|стоматолог|сестрин|лабораторн)/],
     ['agro', /(аграр|агроном|сельскохозяй|ветеринар|лесное хозяй|землеустрой)/],
     ['edu', /(педагог|образовани|учитель|логопед|дефектолог)/],
@@ -190,7 +190,7 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
     const id = 'national-' + hash(identity);
     const duplicateKey = [duplicateBase, type, keyText(city), keyText(address || name)].join('|');
     if (records.has(duplicateKey)) { skipped.duplicate++; continue; }
-    if (existingKeys.has(keyText(name) + '|' + keyText(city)) && kind === 'institution') {
+    if (existingKeys.has(keyText(name) + '|' + keyText(city))) {
       skipped.currentCatalogueMatch++;
       continue;
     }
