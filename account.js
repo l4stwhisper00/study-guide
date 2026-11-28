@@ -360,9 +360,15 @@
     select.innerHTML = Object.keys(RAW).map((key) => '<option value="' + key + '">' + SUBJECTS[key] + '</option>').join('');
     const update = () => {
       const key = select.value;
-      const raw = Number($('#calcRaw').value) || 0;
-      const score = Math.round(Math.min(raw, RAW[key]) / RAW[key] * 100);
-      $('#calcTest').textContent = raw ? score : '—';
+      const maxRaw = RAW[key];
+      const input = $('#calcRaw');
+      input.min = '0';
+      input.max = String(maxRaw);
+      input.step = '1';
+      const entered = input.value === '' ? 0 : Number(input.value);
+      const raw = Number.isFinite(entered) ? Math.max(0, Math.min(entered, maxRaw)) : 0;
+      const score = Math.round(raw / maxRaw * 100);
+      $('#calcTest').textContent = input.value.trim() ? score : '—';
       const scores = parseStored('nav_scores', {});
       const sum = Object.keys(RAW).reduce((total, subject) => total + (Number(scores[subject]) || 0), 0);
       $('#calcSum').textContent = sum

@@ -74,8 +74,11 @@ function validPassword(value: unknown, forRegistration = false): value is string
 }
 
 function getClientIp(req: Request): string {
-  const forwarded = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return req.headers.get("cf-connecting-ip")?.trim() || forwarded || req.headers.get("x-real-ip")?.trim() || "unknown";
+  // Do not trust caller-controlled X-Forwarded-For / X-Real-IP values for
+  // abuse controls. Hosted Supabase requests pass through Cloudflare; use
+  // its client-IP header only and fail closed to a shared bucket if absent.
+  const cloudflareIp = req.headers.get("cf-connecting-ip")?.trim();
+  return cloudflareIp && cloudflareIp.length <= 64 ? cloudflareIp : "unknown";
 }
 
 Deno.serve(async (req) => {
@@ -107,6 +110,9 @@ Deno.serve(async (req) => {
   const auth = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
   const ip = getClientIp(req);
   const ipHash = await sha256(serviceKey + ":" + ip);
+  // A second counter shared across all IPs prevents distributed password
+  // guessing from bypassing the CAPTCHA threshold for one username.
+  const accountWideAttemptKey = "account-wide";
 
   if (action === "challenge") {
     const recentCutoff = new Date(Date.now() - 5 * 60 * 1000).toISOString();
@@ -224,16 +230,46 @@ Deno.serve(async (req) => {
   if (action === "login") {
     if (!validPassword(body.password)) return json({ error: "Введи пароль." }, 400);
 
-    const { data: attempts, error: attemptsError } = await admin.rpc("get_auth_login_attempts", {
-      p_username_normalized: username.normalized,
+    // Bound attempts across arbitrary usernames so attackers cannot evade
+    // per-account CAPTCHA by spraying random names and growing tracking rows.
+    const ipThrottleKey = "__ip_login_throttle__";
+    const { data: ipRequestCount, error: ipThrottleLookupError } = await admin.rpc("get_auth_login_attempts", {
+      p_username_normalized: ipThrottleKey,
       p_ip_hash: ipHash,
     });
-    if (attemptsError) {
-      console.error("Login attempt lookup failed", attemptsError.code || "unknown");
+    if (ipThrottleLookupError) {
+      console.error("Login IP throttle lookup failed", ipThrottleLookupError.code || "unknown");
       return json({ error: "Вход временно недоступен." }, 503);
     }
+    if (Number(ipRequestCount) >= 60) {
+      return json({ error: "Слишком много попыток входа с этого подключения. Подожди 15 минут." }, 429);
+    }
+    const { error: ipThrottleRecordError } = await admin.rpc("record_auth_login_failure", {
+      p_username_normalized: ipThrottleKey,
+      p_ip_hash: ipHash,
+    });
+    if (ipThrottleRecordError) {
+      console.error("Login IP throttle update failed", ipThrottleRecordError.code || "unknown");
+      return json({ error: "Не удалось проверить вход. Попробуй позже." }, 503);
+    }
 
-    if (Number(attempts) >= 3) {
+    const [ipAttemptsResult, accountAttemptsResult] = await Promise.all([
+      admin.rpc("get_auth_login_attempts", {
+        p_username_normalized: username.normalized,
+        p_ip_hash: ipHash,
+      }),
+      admin.rpc("get_auth_login_attempts", {
+        p_username_normalized: username.normalized,
+        p_ip_hash: accountWideAttemptKey,
+      }),
+    ]);
+    if (ipAttemptsResult.error || accountAttemptsResult.error) {
+      console.error("Login attempt lookup failed", ipAttemptsResult.error?.code || accountAttemptsResult.error?.code || "unknown");
+      return json({ error: "Вход временно недоступен." }, 503);
+    }
+    const attempts = Math.max(Number(ipAttemptsResult.data) || 0, Number(accountAttemptsResult.data) || 0);
+
+    if (attempts >= 3) {
       const challengeId = typeof body.challenge_id === "string" ? body.challenge_id : "";
       const answer = typeof body.captcha_answer === "string" ? body.captcha_answer.trim() : "";
       if (!challengeId || !/^\d{1,3}$/.test(answer)) {
@@ -269,25 +305,39 @@ Deno.serve(async (req) => {
       password: body.password as string,
     });
     if (signInError || !signedIn.session || !signedIn.user) {
-      const { data: nextAttempts, error: recordError } = await admin.rpc("record_auth_login_failure", {
-        p_username_normalized: username.normalized,
-        p_ip_hash: ipHash,
-      });
-      if (recordError) {
-        console.error("Login failure counter update failed", recordError.code || "unknown");
+      const [ipFailureResult, accountFailureResult] = await Promise.all([
+        admin.rpc("record_auth_login_failure", {
+          p_username_normalized: username.normalized,
+          p_ip_hash: ipHash,
+        }),
+        admin.rpc("record_auth_login_failure", {
+          p_username_normalized: username.normalized,
+          p_ip_hash: accountWideAttemptKey,
+        }),
+      ]);
+      if (ipFailureResult.error || accountFailureResult.error) {
+        console.error("Login failure counter update failed", ipFailureResult.error?.code || accountFailureResult.error?.code || "unknown");
         return json({ error: "Не удалось проверить вход. Попробуй позже." }, 503);
       }
+      const nextAttempts = Math.max(Number(ipFailureResult.data) || 0, Number(accountFailureResult.data) || 0);
       return json({
         error: "Неверный ник или пароль.",
-        attempts: Number(nextAttempts) || 0,
-        captcha_required: Number(nextAttempts) >= 3,
+        attempts: nextAttempts,
+        captcha_required: nextAttempts >= 3,
       }, 401);
     }
 
-    const { error: resetError } = await admin.rpc("reset_auth_login_attempts", {
-      p_username_normalized: username.normalized,
-      p_ip_hash: ipHash,
-    });
+    const resetResults = await Promise.all([
+      admin.rpc("reset_auth_login_attempts", {
+        p_username_normalized: username.normalized,
+        p_ip_hash: ipHash,
+      }),
+      admin.rpc("reset_auth_login_attempts", {
+        p_username_normalized: username.normalized,
+        p_ip_hash: accountWideAttemptKey,
+      }),
+    ]);
+    const resetError = resetResults.find((result) => result.error)?.error;
     if (resetError) console.warn("Could not clear login attempt counter", resetError.code || "unknown");
     return json({ session: signedIn.session, user: signedIn.user });
   }
