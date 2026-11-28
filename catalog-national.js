@@ -203,7 +203,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-06",
@@ -227,7 +228,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-07",
@@ -251,7 +253,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-09",
@@ -275,7 +278,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-10",
@@ -299,7 +303,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-11",
@@ -323,7 +328,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-12",
@@ -347,7 +353,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-13",
@@ -371,7 +378,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-14",
@@ -395,7 +403,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-15",
@@ -419,7 +428,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-16",
@@ -443,7 +453,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-17",
@@ -467,7 +478,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-18",
@@ -491,7 +503,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-19",
@@ -515,7 +528,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-20",
@@ -539,7 +553,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-21",
@@ -563,7 +578,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-22",
@@ -587,7 +603,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-23",
@@ -611,7 +628,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-25",
@@ -635,7 +653,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-26",
@@ -659,7 +678,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-27",
@@ -683,7 +703,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-28",
@@ -707,7 +728,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-29",
@@ -731,7 +753,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-31",
@@ -755,7 +778,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-32",
@@ -779,7 +803,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-33",
@@ -803,7 +828,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-34",
@@ -827,7 +853,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-35",
@@ -851,7 +878,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-36",
@@ -875,7 +903,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-37",
@@ -899,7 +928,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10310-38",
@@ -923,7 +953,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов Рязанской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-001",
@@ -947,7 +978,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-002",
@@ -971,7 +1003,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-003",
@@ -995,7 +1028,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-004",
@@ -1004,7 +1038,7 @@ var CATALOG_NATIONAL = {
       "c": "Волоколамск",
       "region": "Московская область",
       "address": "143604, Московская область, г. Волоколамск, ул. Заводская, д. 23",
-      "parentName": "Российская международная академия туризма",
+      "parentName": "",
       "locationKind": "institution",
       "cat": "econ",
       "ownership": "unknown",
@@ -1019,7 +1053,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-005",
@@ -1043,7 +1078,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-006",
@@ -1067,7 +1103,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-007",
@@ -1076,7 +1113,7 @@ var CATALOG_NATIONAL = {
       "c": "Подольск",
       "region": "Московская область",
       "address": "142103, Московская область, г. Подольск, ул. Рощинская, д. 22",
-      "parentName": "Московский областной гуманитарный институт",
+      "parentName": "",
       "locationKind": "institution",
       "cat": "it",
       "ownership": "unknown",
@@ -1091,7 +1128,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-008",
@@ -1115,7 +1153,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-009",
@@ -1124,7 +1163,7 @@ var CATALOG_NATIONAL = {
       "c": "Сергиев Посад",
       "region": "Московская область",
       "address": "141313, Московская область, г. Сергиев Посад, Московское шоссе, д. 12а",
-      "parentName": "Сергиево-Посадский гуманитарный институт",
+      "parentName": "",
       "locationKind": "institution",
       "cat": "hum",
       "ownership": "unknown",
@@ -1139,7 +1178,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-010",
@@ -1163,7 +1203,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-011",
@@ -1187,7 +1228,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-012",
@@ -1211,7 +1253,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-013",
@@ -1235,7 +1278,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-014",
@@ -1246,7 +1290,7 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, г.о. Подольск, г. Подольск, ул. Халатова, д. 3",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "unknown",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -1259,7 +1303,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-015",
@@ -1283,7 +1328,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-016",
@@ -1307,7 +1353,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-017",
@@ -1331,7 +1378,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-018",
@@ -1355,7 +1403,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-019",
@@ -1379,7 +1428,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-020",
@@ -1403,7 +1453,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-021",
@@ -1427,7 +1478,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-022",
@@ -1451,7 +1503,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-023",
@@ -1475,7 +1528,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-024",
@@ -1499,7 +1553,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-025",
@@ -1523,7 +1578,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-026",
@@ -1547,7 +1603,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-027",
@@ -1571,7 +1628,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-028",
@@ -1595,7 +1653,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-029",
@@ -1619,7 +1678,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-030",
@@ -1643,7 +1703,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-031",
@@ -1667,7 +1728,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-032",
@@ -1691,7 +1753,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-033",
@@ -1715,7 +1778,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-034",
@@ -1739,7 +1803,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-035",
@@ -1763,7 +1828,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-036",
@@ -1787,7 +1853,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-037",
@@ -1811,7 +1878,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-038",
@@ -1835,7 +1903,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-039",
@@ -1859,7 +1928,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-040",
@@ -1883,7 +1953,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-041",
@@ -1907,7 +1978,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-042",
@@ -1931,7 +2003,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-043",
@@ -1942,7 +2015,7 @@ var CATALOG_NATIONAL = {
       "address": "143090, Московская область, г. Краснознаменск, ул. Краснознамённая, д. 9",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -1955,7 +2028,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-044",
@@ -1966,7 +2040,7 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, Одинцовский район, г. Звенигород, ул. Чайковского, д. 59/32",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -1979,7 +2053,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-045",
@@ -1990,7 +2065,7 @@ var CATALOG_NATIONAL = {
       "address": "142300, Московская область, г. Чехов, ул. Мира, д. 9А",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -2003,7 +2078,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-046",
@@ -2027,7 +2103,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-047",
@@ -2051,7 +2128,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-048",
@@ -2075,7 +2153,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-049",
@@ -2099,7 +2178,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-050",
@@ -2123,7 +2203,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-051",
@@ -2147,7 +2228,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-052",
@@ -2171,7 +2253,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-053",
@@ -2195,7 +2278,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-054",
@@ -2219,7 +2303,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-055",
@@ -2230,7 +2315,7 @@ var CATALOG_NATIONAL = {
       "address": "140300, Московская область, г. Егорьевск, ул. Южная, д. 2",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -2243,7 +2328,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-056",
@@ -2254,7 +2340,7 @@ var CATALOG_NATIONAL = {
       "address": "141408, Московская область, г. Химки, мкр. Планерная, владение 1",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -2267,7 +2353,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-057",
@@ -2291,7 +2378,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-058",
@@ -2315,7 +2403,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-059",
@@ -2339,7 +2428,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-060",
@@ -2363,7 +2453,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-061",
@@ -2387,7 +2478,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-062",
@@ -2411,7 +2503,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-063",
@@ -2435,7 +2528,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-064",
@@ -2459,7 +2553,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-065",
@@ -2483,7 +2578,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-066",
@@ -2507,7 +2603,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-067",
@@ -2531,7 +2628,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-068",
@@ -2555,7 +2653,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-069",
@@ -2579,7 +2678,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-070",
@@ -2603,7 +2703,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-071",
@@ -2627,7 +2728,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-072",
@@ -2651,7 +2753,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-073",
@@ -2675,7 +2778,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-074",
@@ -2686,7 +2790,7 @@ var CATALOG_NATIONAL = {
       "address": "140170, Московская область, г. Бронницы, ул. Красная, д. 53",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -2699,7 +2803,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-075",
@@ -2710,7 +2815,7 @@ var CATALOG_NATIONAL = {
       "address": "141100, Московская область, г. Щёлково, ул. Молодёжная, д. 98",
       "parentName": "",
       "locationKind": "institution",
-      "cat": "sport",
+      "cat": "other",
       "ownership": "public",
       "d": "Организация, включённая в открытый мониторинг СПО Минпросвещения РФ за 2025 год. Условия приёма и программы уточняются по официальным документам.",
       "u": "",
@@ -2723,7 +2828,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-076",
@@ -2747,7 +2853,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-077",
@@ -2771,7 +2878,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-078",
@@ -2795,7 +2903,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-079",
@@ -2819,7 +2928,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-080",
@@ -2843,7 +2953,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-081",
@@ -2854,8 +2965,8 @@ var CATALOG_NATIONAL = {
       "address": "141981, Московская область, г.о. Дубна, г. Дубна, ул. Энтузиастов, д. 21",
       "parentName": "Подмосковный политехнический колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Подмосковный политехнический колледж.",
       "u": "",
       "officialUrl": "",
@@ -2867,7 +2978,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-082",
@@ -2878,8 +2990,8 @@ var CATALOG_NATIONAL = {
       "address": "140081, Московская область, г.о. Лыткарино, г. Лыткарино, ул. Ухтомского, д. 1",
       "parentName": "Подмосковный политехнический колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Подмосковный политехнический колледж.",
       "u": "",
       "officialUrl": "",
@@ -2891,7 +3003,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-083",
@@ -2902,8 +3015,8 @@ var CATALOG_NATIONAL = {
       "address": "141370, Московская область, г. Хотьково, Художественный проезд, д. 1",
       "parentName": "Российский государственный художественно-промышленный университет имени С.Г. Строганова",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский государственный художественно-промышленный университет имени С.Г. Строганова.",
       "u": "",
       "officialUrl": "",
@@ -2915,7 +3028,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-084",
@@ -2926,8 +3040,8 @@ var CATALOG_NATIONAL = {
       "address": "141342, Московская область, Сергиево-Посадский г.о., р.п. Богородское, двлд. 51",
       "parentName": "Российский университет традиционных художественных промыслов",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский университет традиционных художественных промыслов.",
       "u": "",
       "officialUrl": "",
@@ -2939,7 +3053,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-085",
@@ -2950,8 +3065,8 @@ var CATALOG_NATIONAL = {
       "address": "143603, Московская область, г.о. Волоколамский, г. Волоколамск, ул. Шоссейная, д. 7; пер. Ново-Солдатский, д. 3; пер. Панфилова, д. 15",
       "parentName": "Красногорский колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Красногорский колледж.",
       "u": "",
       "officialUrl": "",
@@ -2963,7 +3078,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-086",
@@ -2974,8 +3090,8 @@ var CATALOG_NATIONAL = {
       "address": "г. Воскресенск, ул. Советская, д. 9",
       "parentName": "Российская международная академия туризма",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "econ",
+      "cat": "econ",
+      "ownership": "private",
       "d": "Филиал образовательной организации. Головная организация: Российская международная академия туризма.",
       "u": "",
       "officialUrl": "",
@@ -2987,7 +3103,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-087",
@@ -2998,8 +3115,8 @@ var CATALOG_NATIONAL = {
       "address": "143160, Московская область, Рузский район, п. Дорохово, ул. Школьная, д. 12А",
       "parentName": "Московский Губернский колледж искусств",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский Губернский колледж искусств.",
       "u": "",
       "officialUrl": "",
@@ -3011,7 +3128,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-088",
@@ -3022,8 +3140,8 @@ var CATALOG_NATIONAL = {
       "address": "141821, Московская область, Дмитровский г.о., пос. Рыбное, д. 36",
       "parentName": "Астраханский государственный технический университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "agro",
+      "cat": "agro",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Астраханский государственный технический университет.",
       "u": "",
       "officialUrl": "",
@@ -3035,7 +3153,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-089",
@@ -3046,8 +3165,8 @@ var CATALOG_NATIONAL = {
       "address": "141804, Московская область, г. Дмитров, ул. 2-я Инженерная, д. 42А",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3059,7 +3178,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-090",
@@ -3070,8 +3190,8 @@ var CATALOG_NATIONAL = {
       "address": "142003, Московская область, г. Домодедово, мкр. Западный, ул. Талалихина, д. 6",
       "parentName": "Российский новый университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "private",
       "d": "Филиал образовательной организации. Головная организация: Российский новый университет.",
       "u": "",
       "officialUrl": "",
@@ -3083,7 +3203,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-091",
@@ -3094,8 +3215,8 @@ var CATALOG_NATIONAL = {
       "address": "140305, Московская область, г. Егорьевск, ул. Владимирская, д. 2",
       "parentName": "Московский государственный технический университет гражданской авиации",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский государственный технический университет гражданской авиации.",
       "u": "",
       "officialUrl": "",
@@ -3107,7 +3228,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-092",
@@ -3118,8 +3240,8 @@ var CATALOG_NATIONAL = {
       "address": "140301, Московская область, г. Егорьевск, ул. Лейтенанта Шмидта, д. 23с1",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3131,7 +3253,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-093",
@@ -3142,8 +3265,8 @@ var CATALOG_NATIONAL = {
       "address": "143050, Московская область, г. Одинцово, п/о Большие Вязёмы, а/я 39",
       "parentName": "Российская международная академия туризма",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "econ",
+      "cat": "econ",
+      "ownership": "private",
       "d": "Филиал образовательной организации. Головная организация: Российская международная академия туризма.",
       "u": "",
       "officialUrl": "",
@@ -3155,7 +3278,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-094",
@@ -3166,8 +3290,8 @@ var CATALOG_NATIONAL = {
       "address": "143180, Московская область, г.о. Одинцовский, г. Звенигород, ш. Нахабинское, д. 15",
       "parentName": "Красногорский колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Красногорский колледж.",
       "u": "",
       "officialUrl": "",
@@ -3179,7 +3303,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-095",
@@ -3190,8 +3315,8 @@ var CATALOG_NATIONAL = {
       "address": "143185, Московская область, г. Звенигород, ул. Спортивная, д. 1",
       "parentName": "Финансовый университет при Правительстве Российской Федерации",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "econ",
+      "cat": "econ",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Финансовый университет при Правительстве Российской Федерации.",
       "u": "",
       "officialUrl": "",
@@ -3203,7 +3328,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-096",
@@ -3214,8 +3340,8 @@ var CATALOG_NATIONAL = {
       "address": "141280, Московская область, г. Ивантеевка, ул. Первомайская, д. 37",
       "parentName": "Московский политехнический университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский политехнический университет.",
       "u": "",
       "officialUrl": "",
@@ -3227,7 +3353,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-097",
@@ -3238,8 +3365,8 @@ var CATALOG_NATIONAL = {
       "address": "143500, Московская область, г.о. Истра, г. Истра, ул. 9-й Гвардейской дивизии, д. 33а",
       "parentName": "Государственный гуманитарно-технологический университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "edu",
+      "cat": "edu",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Государственный гуманитарно-технологический университет.",
       "u": "",
       "officialUrl": "",
@@ -3251,7 +3378,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-098",
@@ -3262,8 +3390,8 @@ var CATALOG_NATIONAL = {
       "address": "143500, Московская область, г.о. Истра, г. Истра, ул. Босова, д. 9",
       "parentName": "Красногорский колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Красногорский колледж.",
       "u": "",
       "officialUrl": "",
@@ -3275,7 +3403,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-099",
@@ -3286,8 +3415,8 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, г. Кашира, ул. Ильича, д. 61",
       "parentName": "Красногорский экономико-правовой техникум",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "unknown",
       "d": "Филиал образовательной организации. Головная организация: Красногорский экономико-правовой техникум.",
       "u": "",
       "officialUrl": "",
@@ -3299,7 +3428,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-100",
@@ -3310,8 +3440,8 @@ var CATALOG_NATIONAL = {
       "address": "140400, Московская область, г. Коломна, ул. Пушкина, д. 13",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3323,7 +3453,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-101",
@@ -3334,8 +3465,8 @@ var CATALOG_NATIONAL = {
       "address": "141070, Московская область, г. Королёв, ул. Пионерская, д. 19а",
       "parentName": "Международный юридический институт",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "private",
       "d": "Филиал образовательной организации. Головная организация: Международный юридический институт.",
       "u": "",
       "officialUrl": "",
@@ -3347,7 +3478,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-102",
@@ -3358,8 +3490,8 @@ var CATALOG_NATIONAL = {
       "address": "143408, Московская область, г.о. Красногорск, г. Красногорск, б-р Космонавтов, д. 8А",
       "parentName": "Московский Губернский колледж искусств",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский Губернский колледж искусств.",
       "u": "",
       "officialUrl": "",
@@ -3371,7 +3503,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-103",
@@ -3382,8 +3515,8 @@ var CATALOG_NATIONAL = {
       "address": "143400, Московская область, г. Красногорск, Волоколамское шоссе, д. 9",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3395,7 +3528,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-104",
@@ -3406,8 +3540,8 @@ var CATALOG_NATIONAL = {
       "address": "142670, Московская область, Орехово-Зуевский г.о., г. Ликино-Дулёво, Первомайский переулок, д. 11",
       "parentName": "Государственный гуманитарно-технологический университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Государственный гуманитарно-технологический университет.",
       "u": "",
       "officialUrl": "",
@@ -3419,7 +3553,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-105",
@@ -3430,8 +3565,8 @@ var CATALOG_NATIONAL = {
       "address": "140000, Московская область, г. Люберцы, ул. Мира, д. 6А",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3443,7 +3578,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-106",
@@ -3454,8 +3590,8 @@ var CATALOG_NATIONAL = {
       "address": "142360, Московская область, Чеховский район, пос. Мещерское, ул. Школьная, д. 1",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3467,7 +3603,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-107",
@@ -3478,8 +3615,8 @@ var CATALOG_NATIONAL = {
       "address": "143600, Московская область, г. Волоколамск, ул. Ново-Солдатская, стр. 29",
       "parentName": "Московский государственный университет технологий и управления имени К.Г. Разумовского",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский государственный университет технологий и управления имени К.Г. Разумовского.",
       "u": "",
       "officialUrl": "",
@@ -3491,7 +3628,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-108",
@@ -3502,8 +3640,8 @@ var CATALOG_NATIONAL = {
       "address": "144000, Московская область, г. Электросталь, пр-т Ленина, д. 41",
       "parentName": "Национальный исследовательский ядерный университет МИФИ",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Национальный исследовательский ядерный университет МИФИ.",
       "u": "",
       "officialUrl": "",
@@ -3515,7 +3653,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-109",
@@ -3526,8 +3665,8 @@ var CATALOG_NATIONAL = {
       "address": "141009, Московская область, г. Мытищи, 2-й Первомайский проезд, д. 1",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3539,7 +3678,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-110",
@@ -3550,8 +3690,8 @@ var CATALOG_NATIONAL = {
       "address": "143300, Московская область, г. Наро-Фоминск, ул. Погодина, д. 93А",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3563,7 +3703,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-111",
@@ -3574,8 +3715,8 @@ var CATALOG_NATIONAL = {
       "address": "142410, Московская область, г. Ногинск, Электростальское шоссе, д. 1",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3587,7 +3728,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-112",
@@ -3598,8 +3740,8 @@ var CATALOG_NATIONAL = {
       "address": "142400, Московская область, г. Ногинск, ул. 3-го Интернационала, д. 117",
       "parentName": "Государственный университет просвещения",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "edu",
+      "cat": "edu",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Государственный университет просвещения.",
       "u": "",
       "officialUrl": "",
@@ -3611,7 +3753,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-113",
@@ -3622,8 +3765,8 @@ var CATALOG_NATIONAL = {
       "address": "143002, Московская область, г. Одинцово, ул. Пионерская, д. 3",
       "parentName": "Международный юридический институт",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "private",
       "d": "Филиал образовательной организации. Головная организация: Международный юридический институт.",
       "u": "",
       "officialUrl": "",
@@ -3635,7 +3778,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-114",
@@ -3646,8 +3790,8 @@ var CATALOG_NATIONAL = {
       "address": "143007, Московская область, г. Одинцово, ул. Новоспортивная, д. 3",
       "parentName": "Московский государственный институт международных отношений (университет) МИД Российской Федерации",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский государственный институт международных отношений (университет) МИД Российской Федерации.",
       "u": "",
       "officialUrl": "",
@@ -3659,7 +3803,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-115",
@@ -3670,8 +3815,8 @@ var CATALOG_NATIONAL = {
       "address": "142921, Московская область, г. Кашира, мкр. Ожерелье, ул. Студенческая, д. 7",
       "parentName": "Петербургский государственный университет путей сообщения Императора Александра I",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Петербургский государственный университет путей сообщения Императора Александра I.",
       "u": "",
       "officialUrl": "",
@@ -3683,7 +3828,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-116",
@@ -3694,8 +3840,8 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, г. Озёры, ул. Ленина, д. 65",
       "parentName": "Красногорский экономико-правовой техникум",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "unknown",
       "d": "Филиал образовательной организации. Головная организация: Красногорский экономико-правовой техникум.",
       "u": "",
       "officialUrl": "",
@@ -3707,7 +3853,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-117",
@@ -3718,8 +3865,8 @@ var CATALOG_NATIONAL = {
       "address": "142605, Московская область, г. Орехово-Зуево, ул. Красноармейская, д. 11А",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3731,7 +3878,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-118",
@@ -3742,8 +3890,8 @@ var CATALOG_NATIONAL = {
       "address": "142100, Московская область, г. Подольск, ул. Караваева, д. 8",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3755,7 +3903,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-119",
@@ -3766,8 +3915,8 @@ var CATALOG_NATIONAL = {
       "address": "141206, Московская область, г. Пушкино, ул. Авиационная, д. 29",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3779,7 +3928,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-120",
@@ -3790,8 +3940,8 @@ var CATALOG_NATIONAL = {
       "address": "140104, Московская область, г. Раменское, ул. Высоковольтная, д. 4А",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3803,7 +3953,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-121",
@@ -3814,8 +3965,8 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, г. Раменское, ул. Михалевича, д. 58",
       "parentName": "Авиационный техникум имени В.А. Казакова",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Авиационный техникум имени В.А. Казакова.",
       "u": "",
       "officialUrl": "",
@@ -3827,7 +3978,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-122",
@@ -3838,8 +3990,8 @@ var CATALOG_NATIONAL = {
       "address": "143100, Московская область, г. Руза, Площадь Партизан, д. 9",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3851,7 +4003,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-123",
@@ -3862,8 +4015,8 @@ var CATALOG_NATIONAL = {
       "address": "141310, Московская область, г. Сергиев Посад, проезд Северный, д. 5",
       "parentName": "Российский университет традиционных художественных промыслов",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский университет традиционных художественных промыслов.",
       "u": "",
       "officialUrl": "",
@@ -3875,7 +4028,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-124",
@@ -3886,8 +4040,8 @@ var CATALOG_NATIONAL = {
       "address": "141304, Московская область, г. Сергиев Посад, Московское шоссе, д. 22А",
       "parentName": "Московский областной финансово-юридический институт",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "unknown",
       "d": "Филиал образовательной организации. Головная организация: Московский областной финансово-юридический институт.",
       "u": "",
       "officialUrl": "",
@@ -3899,7 +4053,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-125",
@@ -3910,8 +4065,8 @@ var CATALOG_NATIONAL = {
       "address": "141309, Московская область, г. Сергиев Посад, ул. Кирова, д. 87",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3923,7 +4078,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-126",
@@ -3934,8 +4090,8 @@ var CATALOG_NATIONAL = {
       "address": "141310, Московская область, Сергиево-Посадский г.о., г. Сергиев Посад, проспект Красной Армии, д. 193",
       "parentName": "Всероссийский государственный университет кинематографии имени С.А. Герасимова",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Всероссийский государственный университет кинематографии имени С.А. Герасимова.",
       "u": "",
       "officialUrl": "",
@@ -3947,7 +4103,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-127",
@@ -3958,8 +4115,8 @@ var CATALOG_NATIONAL = {
       "address": "142209, Московская область, г. Серпухов, ул. Пролетарская, д. 78",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3971,7 +4128,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-128",
@@ -3982,8 +4140,8 @@ var CATALOG_NATIONAL = {
       "address": "142800, Московская область, г. Ступино, ул. Горького, д. 21",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -3995,7 +4153,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-129",
@@ -4004,10 +4163,10 @@ var CATALOG_NATIONAL = {
       "c": "Талдом",
       "region": "Московская область",
       "address": "141900, Московская область, г. Талдом, ул. Победы, 29",
-      "parentName": "Московский Губернский колледж искусств",
+      "parentName": "",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский Губернский колледж искусств.",
       "u": "",
       "officialUrl": "",
@@ -4019,7 +4178,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-130",
@@ -4030,8 +4190,8 @@ var CATALOG_NATIONAL = {
       "address": "143130, Московская область, г.о. Рузский, р.п. Тучково, ул. Восточная, д. 25, стр. 10",
       "parentName": "Красногорский колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Красногорский колледж.",
       "u": "",
       "officialUrl": "",
@@ -4043,7 +4203,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-131",
@@ -4054,8 +4215,8 @@ var CATALOG_NATIONAL = {
       "address": "143130, Московская область, г. Руза, р.п. Тучково, ул. Студенческая, д. 1",
       "parentName": "Московский политехнический университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский политехнический университет.",
       "u": "",
       "officialUrl": "",
@@ -4067,7 +4228,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-132",
@@ -4078,8 +4240,8 @@ var CATALOG_NATIONAL = {
       "address": "141052, Московская область, Мытищинский район, с. Федоскино",
       "parentName": "Российский университет традиционных художественных промыслов",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "art",
+      "cat": "art",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский университет традиционных художественных промыслов.",
       "u": "",
       "officialUrl": "",
@@ -4091,7 +4253,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-133",
@@ -4102,8 +4265,8 @@ var CATALOG_NATIONAL = {
       "address": "140560, Московская область, г. Озёры, ул. Ленина, д. 65",
       "parentName": "Егорьевский техникум",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Егорьевский техникум.",
       "u": "",
       "officialUrl": "",
@@ -4115,7 +4278,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-134",
@@ -4126,8 +4290,8 @@ var CATALOG_NATIONAL = {
       "address": "141400, Московская область, г. Химки, ул. Репина, д. 3",
       "parentName": "Московский авиационный институт",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "eng",
+      "cat": "eng",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский авиационный институт.",
       "u": "",
       "officialUrl": "",
@@ -4139,7 +4303,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-135",
@@ -4150,8 +4315,8 @@ var CATALOG_NATIONAL = {
       "address": "140300, Московская область, г. Егорьевск, ул. Советская, д. 193",
       "parentName": "Государственный социально-гуманитарный университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "edu",
+      "cat": "edu",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Государственный социально-гуманитарный университет.",
       "u": "",
       "officialUrl": "",
@@ -4163,7 +4328,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-136",
@@ -4174,8 +4340,8 @@ var CATALOG_NATIONAL = {
       "address": "140600, Московская область, г. Зарайск, ул. Пионерская, д. 20",
       "parentName": "Государственный социально-гуманитарный университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "edu",
+      "cat": "edu",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Государственный социально-гуманитарный университет.",
       "u": "",
       "officialUrl": "",
@@ -4187,7 +4353,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-137",
@@ -4198,8 +4365,8 @@ var CATALOG_NATIONAL = {
       "address": "г. Домодедово, Каширское ш., д. 4, корп. 2",
       "parentName": "Российский государственный гуманитарный университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "hum",
+      "cat": "hum",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский государственный гуманитарный университет.",
       "u": "",
       "officialUrl": "",
@@ -4211,7 +4378,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-138",
@@ -4222,8 +4390,8 @@ var CATALOG_NATIONAL = {
       "address": "141607, Московская область, г. Клин, Волоколамское ш., д. 20/1",
       "parentName": "Российский государственный социальный университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "hum",
+      "cat": "hum",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский государственный социальный университет.",
       "u": "",
       "officialUrl": "",
@@ -4235,7 +4403,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-139",
@@ -4246,8 +4415,8 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, г. Павловский Посад, ул. Кирова, д. 67",
       "parentName": "Российский государственный социальный университет",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "hum",
+      "cat": "hum",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Российский государственный социальный университет.",
       "u": "",
       "officialUrl": "",
@@ -4259,7 +4428,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-140",
@@ -4270,8 +4440,8 @@ var CATALOG_NATIONAL = {
       "address": "141303, Московская область, г. Сергиев Посад, ул. Разина, д. 1А",
       "parentName": "Московский университет имени С.Ю. Витте",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "econ",
+      "cat": "econ",
+      "ownership": "private",
       "d": "Филиал образовательной организации. Головная организация: Московский университет имени С.Ю. Витте.",
       "u": "",
       "officialUrl": "",
@@ -4283,7 +4453,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-141",
@@ -4294,8 +4465,8 @@ var CATALOG_NATIONAL = {
       "address": "Московская область, г. Чехов, Вишнёвый бульвар, стр. 2б",
       "parentName": "Московский областной финансово-юридический институт",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "law",
+      "cat": "law",
+      "ownership": "unknown",
       "d": "Филиал образовательной организации. Головная организация: Московский областной финансово-юридический институт.",
       "u": "",
       "officialUrl": "",
@@ -4307,7 +4478,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-142",
@@ -4318,8 +4490,8 @@ var CATALOG_NATIONAL = {
       "address": "140700, Московская область, г. Шатура, Больничный проезд, д. 4А",
       "parentName": "Московский областной медицинский колледж № 1",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "med",
+      "cat": "med",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Московский областной медицинский колледж № 1.",
       "u": "",
       "officialUrl": "",
@@ -4331,7 +4503,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     },
     {
       "id": "minedu-2025-10302-143",
@@ -4342,8 +4515,8 @@ var CATALOG_NATIONAL = {
       "address": "143700, Московская область, г.о. Шаховская, р.п. Шаховская, 1-й Советский пер., д. 7",
       "parentName": "Красногорский колледж",
       "locationKind": "branch",
-      "cat": "branch",
-      "ownership": "other",
+      "cat": "other",
+      "ownership": "public",
       "d": "Филиал образовательной организации. Головная организация: Красногорский колледж.",
       "u": "",
       "officialUrl": "",
@@ -4355,7 +4528,8 @@ var CATALOG_NATIONAL = {
       "sourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
       "addressSource": "Минпросвещения РФ — СПО-мониторинг 2025",
       "addressSnapshot": "2025",
-      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "addressSourceUrl": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "sourceQualityNote": "Минпросвещения сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов Московской области. Здесь используются только опубликованные название, населённый пункт и адрес."
     }
   ]
 };
