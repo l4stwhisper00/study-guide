@@ -747,3 +747,35 @@ select option:checked {
   .dialog-body { padding: 20px 16px; }
   .dialog-actions .btn { flex: 1 1 100%; }
 }
+
+
+/* Карточки собственности и приёмных данных */
+.ownership-tag {
+  display: inline-flex; align-items: center; padding: 4px 9px; margin: 0 0 8px 7px;
+  border: 1px solid rgba(240, 179, 90, .38); border-radius: 999px;
+  background: rgba(240, 179, 90, .12); color: #ffd18a; font-size: .75rem; font-weight: 700;
+}
+.catalog-freshness {
+  margin: 18px 0 12px; padding: 12px 15px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--surface); color: var(--muted); font-size: .84rem;
+}
+.catalog-program-list, .catalog-data-list { display: grid; gap: 8px; padding-left: 18px; list-style: disc; }
+.catalog-program-list li { color: var(--ink); }
+.catalog-data-empty {
+  padding: 12px 14px; border: 1px dashed var(--border-strong); border-radius: 10px;
+  color: var(--muted); font-size: .86rem; line-height: 1.55;
+}
+.catalog-data-list li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.catalog-data-list li span { color: var(--muted); white-space: nowrap; }
+.catalog-tuition-list { display: grid; gap: 10px; }
+.catalog-tuition-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
+.catalog-tuition-row > b { grid-column: 1 / -1; }
+.catalog-tuition-row div { display: grid; gap: 3px; }
+.catalog-tuition-row div span, .catalog-tuition-row small { color: var(--muted); font-size: .78rem; }
+.catalog-tuition-row strong { font-size: .94rem; }
+.catalog-tuition-row small { grid-column: 1 / -1; }
+@media (max-width: 520px) {
+  .catalog-data-list li { flex-direction: column; gap: 3px; }
+  .catalog-tuition-row { grid-template-columns: 1fr 1fr; }
+  .catalog-tuition-row > b, .catalog-tuition-row small { grid-column: 1 / -1; }
+}
