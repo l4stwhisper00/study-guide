@@ -71,6 +71,41 @@ assert(kfu.tuition.length >= 35, 'KFU 2026/27 tuition rows are incomplete');
 assert(kfu.tuition.find(row => row.program === 'Лечебное дело')?.annualRub === 349752,
   'KFU 2026/27 General Medicine tuition changed unexpectedly');
 
+const hse = getCatalogDetails(school('hse'));
+assert(hse.ownership === 'public', 'HSE ownership is not marked public');
+assert(hse.ownershipConfidence === 'official-name', 'HSE ownership must be tied to its official institutional name');
+assert(hse.description && hse.description.length > 150, 'HSE profile description is too short');
+assert(hse.descriptionSourceUrl === 'https://ba.hse.ru/kolmest', 'HSE description source should point to its official admissions pages');
+assertRows(hse.budgetPlaces, 'HSE 2026 budget seats', {
+  field: 'count',
+  test: row => Number.isInteger(row.count) && row.count >= 0
+});
+assert(hse.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 1300, 'HSE 2026 budget-seat total for listed programs changed unexpectedly');
+assert(hse.budgetPlaces.some(row => row.program === 'Прикладной анализ данных' && row.count === 0),
+  'HSE fully paid programme must explicitly show zero budget places');
+assertRows(hse.minimumScores, 'HSE 2026 subject thresholds', {
+  field: 'score',
+  test: row => row.score >= 50 && row.score <= 100 && row.subject
+});
+assert(hse.minimumScores.length >= 36, 'HSE minimum exam thresholds are incomplete');
+assertRows(hse.passingScores, 'HSE 2026 admitted scores', {
+  field: 'score',
+  test: row => row.score > 0 && ['budget', 'paid'].includes(row.basis) && row.scoreKind === 'minimum-admitted-total'
+});
+assert(hse.passingScores.length >= 25, 'HSE exact admitted score results are incomplete');
+assert(hse.passingScores.find(row => row.program === 'Математика' && row.basis === 'budget')?.score === 297,
+  'HSE Mathematics 2026 budget passing score changed unexpectedly');
+assert(hse.passingScores.find(row => row.program === 'Программная инженерия' && row.basis === 'paid')?.score === 221,
+  'HSE Software Engineering 2026 paid passing score changed unexpectedly');
+assertRows(hse.tuition, 'HSE 2026 tuition', {
+  field: 'annualRub',
+  test: row => row.annualRub > 0 && row.monthlyIsEquivalent === true &&
+    Math.abs(row.annualRub / 12 - row.monthlyRub) < 0.01
+});
+assert(hse.tuition.length >= 17, 'HSE 2026 tuition programme rows are incomplete');
+assert(hse.tuition.find(row => row.program === 'Программная инженерия')?.annualRub === 980000,
+  'HSE 2026 Software Engineering tuition changed unexpectedly');
+
 const rosnou = getCatalogDetails(school('rosnou-moscow'));
 assertRows(rosnou.budgetPlaces, 'RosNOU budget places', {
   field: 'count',
