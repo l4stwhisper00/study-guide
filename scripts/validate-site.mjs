@@ -133,6 +133,17 @@ try {
     pass(Array.isArray(item.programs || []), `${id}: programs must be an array`);
     pass(Array.isArray(item.budgetPlaces || []), `${id}: budgetPlaces must be an array`);
     pass(Array.isArray(item.tuition || []), `${id}: tuition must be an array`);
+    for (const place of item.budgetPlaces || []) {
+      pass(place.count !== null && place.count !== undefined && Number.isInteger(Number(place.count)) && Number(place.count) >= 0, `${id}: budget place count must be a non-negative integer`);
+      pass(Number.isInteger(Number(place.year)), `${id}: budget place year must be an integer`);
+      pass(typeof place.sourceUrl === "string" && /^https:\/\//.test(place.sourceUrl), `${id}: budget place must have an official source URL`);
+    }
+    for (const price of item.tuition || []) {
+      pass(Number.isFinite(Number(price.annualRub)) && Number(price.annualRub) > 0, `${id}: tuition must have an annual amount`);
+      pass(Number.isFinite(Number(price.monthlyRub)) && Number(price.monthlyRub) > 0, `${id}: tuition must have a monthly amount or equivalent`);
+      pass(Number.isInteger(Number(price.year)), `${id}: tuition year must be an integer`);
+      pass(typeof price.sourceUrl === "string" && /^https:\/\//.test(price.sourceUrl), `${id}: tuition must have an official source URL`);
+    }
   }
 } catch (error) {
   errors.push(`Institution profile metadata validation failed: ${error.message}`);
