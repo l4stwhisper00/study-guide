@@ -118,10 +118,10 @@ try {
 
 // Validate the structured institution profile metadata and its references.
 try {
-  const data = readFileSync(path.join(root, "data.js"), "utf8") + "\\n" +
+  const data = readFileSync(path.join(root, "data.js"), "utf8") + "\n" +
     readFileSync(path.join(root, "data-extra.js"), "utf8") +
-    "\\n" + readFileSync(path.join(root, "catalog-details.js"), "utf8") +
-    "\\n;globalThis.__catalogDetailsCheck = { getCatalogDetails, CATALOG_DETAILS };";
+    "\n" + readFileSync(path.join(root, "catalog-details.js"), "utf8") +
+    "\\n;globalThis.__studyGuideData = { SCHOOLS }; globalThis.__catalogDetailsCheck = { getCatalogDetails, CATALOG_DETAILS };";
   const context = {};
   vm.runInNewContext(data, context, { timeout: 3000 });
   const ids = new Set(context.__studyGuideData?.SCHOOLS?.map((school) => school.id) || []);
