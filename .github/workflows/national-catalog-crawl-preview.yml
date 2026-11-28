@@ -1,0 +1,37 @@
+name: Preview national education catalogue crawl
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/crawl-national-monitoring.mjs"
+      - "scripts/national-monitoring-parser.mjs"
+      - "scripts/test-national-monitoring-parser.mjs"
+      - ".github/workflows/national-catalog-crawl-preview.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: national-catalog-crawl-preview
+  cancel-in-progress: true
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test parser and classification
+        run: node scripts/test-national-monitoring-parser.mjs
+      - name: Crawl all regional monitoring pages
+        run: node scripts/crawl-national-monitoring.mjs
+      - name: Upload crawl preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: national-monitoring-2025-crawl
+          path: |
+            data/incoming/national-monitoring-2025.csv
+            data/incoming/national-monitoring-2025-report.json
+          if-no-files-found: error
+          retention-days: 7
