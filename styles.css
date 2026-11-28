@@ -680,3 +680,15 @@ h1, h2, h3 { text-wrap: balance; }
 .captcha-box > p { margin: 0 0 8px; }
 .captcha-box .score-field span { color: var(--ink); font-weight: 700; }
 .account-security { display: grid; gap: 12px; }
+
+
+/* Native option menus must keep readable contrast in the dark theme. */
+select option,
+select optgroup {
+  color: var(--ink);
+  background-color: var(--bg);
+}
+select option:checked {
+  color: #fff;
+  background-color: var(--accent-2);
+}
