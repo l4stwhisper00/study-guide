@@ -17,7 +17,7 @@ const CATALOG_DETAILS = {
       sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya',
       verifiedAt: '2026-11-28',
       programs: ['Юриспруденция', 'Информационные технологии и программирование', 'Менеджмент и бизнес', 'Экономика', 'Психология', 'Дизайн', 'Педагогика', 'Медицина', 'Инженерия', 'Логистика', 'Туризм', 'Игровая индустрия и киберспорт'],
-      tuition: [{ program: 'Бакалавриат — минимальная опубликованная цена, зависит от программы и формы', year: 2026, annualRub: 38000, monthlyRub: 3166.67, paymentPeriod: 'от 19 000 ₽ за семестр; годовой эквивалент рассчитан за два семестра', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' }]
+      tuition: [{ program: 'Бакалавриат — минимальная опубликованная цена, зависит от программы и формы', year: 2026, annualRub: 38000, monthlyRub: 3166.67, monthlyIsEquivalent: true, paymentPeriod: 'от 19 000 ₽ за семестр; годовой эквивалент рассчитан за два семестра', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' }]
     },
     mfua: {
       ownership: 'private',
@@ -43,8 +43,8 @@ const CATALOG_DETAILS = {
         { program: 'Финансы и кредит (очная)', year: 2026, count: 2, sourceUrl: 'https://rosnou.ru/bak/program/' }
       ],
       tuition: [
-        { program: 'Экономика — налоги и налогообложение (очная)', year: 2026, annualRub: 240000, monthlyRub: 20000, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://rosnou.ru/bak/price/' },
-        { program: 'Экономика — налоги и налогообложение (очно-заочная)', year: 2026, annualRub: 127000, monthlyRub: 10583.33, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://rosnou.ru/bak/price/' }
+        { program: 'Экономика — налоги и налогообложение (очная)', year: 2026, annualRub: 240000, monthlyRub: 20000, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://rosnou.ru/bak/price/' },
+        { program: 'Экономика — налоги и налогообложение (очно-заочная)', year: 2026, annualRub: 127000, monthlyRub: 10583.33, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://rosnou.ru/bak/price/' }
       ]
     },
     skoltech: {
@@ -75,9 +75,9 @@ const CATALOG_DETAILS = {
         { program: 'Инфокоммуникационные технологии и системы связи (заочная)', year: 2026, count: 25, sourceUrl: 'https://abiturient.iict.ru/' }
       ],
       tuition: [
-        { program: 'Бакалавриат — очная форма (минимальная опубликованная стоимость)', year: 2026, annualRub: 101900, monthlyRub: 8491.67, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://abiturient.iict.ru/' },
-        { program: 'Бакалавриат — заочная и очно-заочная формы', year: 2026, annualRub: 59900, monthlyRub: 4991.67, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://abiturient.iict.ru/' },
-        { program: 'Дизайн (очная форма)', year: 2026, annualRub: 159900, monthlyRub: 13325, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://abiturient.iict.ru/' }
+        { program: 'Бакалавриат — очная форма (минимальная опубликованная стоимость)', year: 2026, annualRub: 101900, monthlyRub: 8491.67, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://abiturient.iict.ru/' },
+        { program: 'Бакалавриат — заочная и очно-заочная формы', year: 2026, annualRub: 59900, monthlyRub: 4991.67, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://abiturient.iict.ru/' },
+        { program: 'Дизайн (очная форма)', year: 2026, annualRub: 159900, monthlyRub: 13325, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://abiturient.iict.ru/' }
       ]
     },
     'iict-college-voronezh': {
@@ -87,8 +87,8 @@ const CATALOG_DETAILS = {
       verifiedAt: '2026-11-28',
       programs: ['Наладчик компьютерных сетей', 'Защита информации', 'Информационные системы и программирование', 'Графический дизайн'],
       tuition: [
-        { program: 'СПО — очная форма', year: 2026, annualRub: 59900, monthlyRub: 4991.67, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://college.iict.ru/' },
-        { program: 'Графический дизайнер (очная форма)', year: 2026, annualRub: 69900, monthlyRub: 5825, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://college.iict.ru/' }
+        { program: 'СПО — очная форма', year: 2026, annualRub: 59900, monthlyRub: 4991.67, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://college.iict.ru/' },
+        { program: 'Графический дизайнер (очная форма)', year: 2026, annualRub: 69900, monthlyRub: 5825, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://college.iict.ru/' }
       ]
     },
     'mip-moscow': {
@@ -101,9 +101,9 @@ const CATALOG_DETAILS = {
         { program: 'Педагогика и психология девиантного поведения (очная специалитет)', year: 2026, count: 0, sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' }
       ],
       tuition: [
-        { program: 'Педагогика и психология девиантного поведения (очная)', year: 2026, annualRub: 240000, monthlyRub: 20000, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' },
-        { program: 'Педагогика и психология девиантного поведения (очно-заочная)', year: 2026, annualRub: 180000, monthlyRub: 15000, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' },
-        { program: 'Клиническая психология (очная)', year: 2026, annualRub: 370000, monthlyRub: 30833.33, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' }
+        { program: 'Педагогика и психология девиантного поведения (очная)', year: 2026, annualRub: 240000, monthlyRub: 20000, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' },
+        { program: 'Педагогика и психология девиантного поведения (очно-заочная)', year: 2026, annualRub: 180000, monthlyRub: 15000, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' },
+        { program: 'Клиническая психология (очная)', year: 2026, annualRub: 370000, monthlyRub: 30833.33, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость за 2026/2027 учебный год', sourceUrl: 'https://inpsycho.ru/abitur/bachelor/' }
       ]
     },
     'mmiu-moscow': {
