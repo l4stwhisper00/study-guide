@@ -34,32 +34,22 @@
       <!-- Вход / регистрация -->
       <section class="auth-card" id="authView">
         <h1>Личный кабинет</h1>
-        <p class="muted">Один аккаунт для профиля, заметок и прогресса подготовки. Пароли проверяет Supabase Auth; почту нужно подтвердить.</p>
+        <p class="muted">Создай аккаунт по нику и паролю. Электронная почта не нужна — вход и регистрация работают прямо на сайте.</p>
         <div class="seg" id="authSeg" role="group" aria-label="Режим входа">
           <button type="button" data-mode="login" aria-pressed="true">Вход</button>
           <button type="button" data-mode="reg" aria-pressed="false">Регистрация</button>
         </div>
         <form id="authForm" class="auth-form" novalidate>
-          <label class="score-field"><span>Электронная почта</span><input type="email" id="authEmail" required maxlength="254" autocomplete="email"></label>
-          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="6" maxlength="128" autocomplete="current-password"></label>
+          <label class="score-field"><span>Ник</span><input type="text" id="authUsername" required minlength="3" maxlength="24" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Например, Eclipse_27"></label>
+          <label class="score-field"><span>Пароль</span><input type="password" id="authPass" required minlength="8" maxlength="128" autocomplete="current-password"></label>
           <label class="score-field" id="pass2Wrap" hidden><span>Повтори пароль</span><input type="password" id="authPass2" autocomplete="new-password" maxlength="128"></label>
           <button class="btn btn-primary" type="submit" id="authSubmit">Войти</button>
-          <button class="link-btn" id="forgotPassword" type="button">Забыли пароль?</button>
-          <button class="link-btn" id="resendConfirmation" type="button" hidden>Отправить письмо подтверждения повторно</button>
+          <div class="captcha-box" id="captchaWrap" hidden>
+            <p class="muted">Защита от подбора пароля</p>
+            <label class="score-field"><span id="captchaQuestion">Реши пример</span><input type="text" id="captchaAnswer" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="Ответ"></label>
+          </div>
           <p class="drill-msg" id="authMsg" role="status" aria-live="polite"></p>
-          <p class="muted" id="passwordHint">Для нового аккаунта подойдёт любой пароль длиной от 6 символов.</p>
-        </form>
-      </section>
-
-      <section class="auth-card" id="passwordResetView" hidden>
-        <h1>Новый пароль</h1>
-        <p class="muted">Придумай новый пароль для своего аккаунта.</p>
-        <form id="passwordResetForm" class="auth-form" novalidate>
-          <label class="score-field"><span>Новый пароль</span><input type="password" id="newResetPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
-          <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmResetPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
-          <button class="btn btn-primary" type="submit" id="resetPasswordSubmit">Сохранить пароль</button>
-          <button class="link-btn" type="button" id="backToLogin">Вернуться ко входу</button>
-          <p class="drill-msg" id="resetMsg" role="status" aria-live="polite"></p>
+          <p class="muted" id="passwordHint">Пароль — от 8 символов. Без привязки почты забытый пароль восстановить нельзя.</p>
         </form>
       </section>
 
@@ -69,7 +59,7 @@
           <div class="profile-top">
             <img class="avatar" id="avatarImg" alt="Аватар">
             <div>
-              <h1 id="profileEmail">—</h1>
+              <h1 id="profileUsername">—</h1>
               <p class="muted" id="profileBio">Расскажи о себе в настройках профиля.</p>
             </div>
             <button class="btn" id="logoutBtn" type="button">Выйти</button>
@@ -95,17 +85,14 @@
           <p class="drill-msg" id="profileStatus" role="status" aria-live="polite"></p>
           <section class="account-security">
             <h3>Безопасность аккаунта</h3>
-            <p class="muted">Подтверждённый адрес: <strong id="currentAccountEmail"></strong>. <span id="emailConfirmedLabel"></span></p>
-            <form id="changeEmailForm" class="auth-form" novalidate>
-              <label class="score-field"><span>Новая почта</span><input type="email" id="newEmail" required maxlength="254" autocomplete="email"></label>
-              <button class="btn" id="changeEmailSubmit" type="submit">Изменить почту</button>
-            </form>
+            <p class="muted">Твой ник: <strong id="currentAccountUsername"></strong></p>
             <form id="changePasswordForm" class="auth-form" novalidate>
               <label class="score-field"><span>Текущий пароль</span><input type="password" id="currentPassword" required autocomplete="current-password" maxlength="128"></label>
-              <label class="score-field"><span>Новый пароль</span><input type="password" id="newPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
-              <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmNewPassword" required minlength="6" maxlength="128" autocomplete="new-password"></label>
+              <label class="score-field"><span>Новый пароль</span><input type="password" id="newPassword" required minlength="8" maxlength="128" autocomplete="new-password"></label>
+              <label class="score-field"><span>Повтори новый пароль</span><input type="password" id="confirmNewPassword" required minlength="8" maxlength="128" autocomplete="new-password"></label>
               <button class="btn" id="changePasswordSubmit" type="submit">Изменить пароль</button>
             </form>
+            <p class="muted">Почта не используется. Если забудешь пароль, восстановить доступ без него не получится.</p>
             <p class="drill-msg" id="securityStatus" role="status" aria-live="polite"></p>
           </section>
         </section>
@@ -160,6 +147,6 @@
   <script src="supabase-config.js"></script>
   <script src="supabase-client.js"></script>
   <script src="theme.js"></script>
-  <script src="account.js?v=20261123-6char"></script>
+  <script src="account.js?v=20261128-username-auth"></script>
 </body>
 </html>
