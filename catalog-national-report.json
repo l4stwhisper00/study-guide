@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-11-28",
+  "source": "Тут виднее; первоисточник — Реестр лицензий на осуществление образовательной деятельности, Рособрнадзор",
+  "snapshotDate": "2026-09-06",
+  "inputRows": 5,
+  "importedRecords": 5,
+  "uniqueCities": 3,
+  "byType": {
+    "vuz": 0,
+    "college": 5
+  },
+  "skipped": {
+    "missingName": 0,
+    "missingCity": 0,
+    "unsupportedType": 0,
+    "inactiveLicense": 0,
+    "duplicate": 0,
+    "currentCatalogueMatch": 0
+  },
+  "needsReview": []
+}
