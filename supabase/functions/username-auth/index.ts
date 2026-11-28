@@ -124,8 +124,8 @@ Deno.serve(async (req) => {
     }
     await admin.from("auth_login_captchas").delete().lt("expires_at", new Date().toISOString());
 
-    const a = 2 + crypto.getRandomValues(new Uint32Array(1))[0] % 8;
-    const b = 2 + crypto.getRandomValues(new Uint32Array(1))[0] % 8;
+    const a = 12 + crypto.getRandomValues(new Uint32Array(1))[0] % 78;
+    const b = 12 + crypto.getRandomValues(new Uint32Array(1))[0] % 78;
     const challengeId = crypto.randomUUID();
     const answerHash = await sha256(challengeId + "|" + username.normalized + "|" + ipHash + "|" + (a + b));
     const { error } = await admin.from("auth_login_captchas").insert({
