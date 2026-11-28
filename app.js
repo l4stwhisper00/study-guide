@@ -82,7 +82,7 @@ function icon(name, cls = 'icon') {
 
 function schoolOfficialUrl(school) {
   if (school.officialUrl) return school.officialUrl;
-  if (school.u) return /^https?:\\/\\//i.test(school.u) ? school.u : 'https://' + school.u;
+  if (school.u) return /^https?:/i.test(school.u) ? school.u : 'https://' + school.u;
   return '';
 }
 
