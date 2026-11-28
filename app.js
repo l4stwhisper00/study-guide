@@ -80,6 +80,7 @@ function renderBudgetPlaces(details) {
   return '<ul class="catalog-data-list">' + rows.map(item =>
     '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
     escapeHtml(String(item.count)) + ' мест · ' + escapeHtml(String(item.year || 'год не указан')) +
+    (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
     '</span></li>'
   ).join('') + '</ul>';
 }
@@ -461,6 +462,7 @@ function initVuzi() {
           <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Требует подтверждения'}</dd></div>
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
+          <div><dt>Последняя проверка карточки</dt><dd>${details.verifiedAt ? escapeHtml(new Date(details.verifiedAt + "T00:00:00").toLocaleDateString("ru-RU")) : "Дата проверки не указана"}</dd></div>
           <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
         </dl>
       </section>
