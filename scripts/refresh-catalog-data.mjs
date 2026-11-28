@@ -17,7 +17,8 @@ function readPreviousLive() {
 }
 
 const previous = readPreviousLive();
-const lastAttempt = previous.lastAttemptedAt || previous.generatedAt;\nif (!force && lastAttempt && now.getTime() - Date.parse(lastAttempt) < intervalMs) {
+const lastAttempt = previous.lastAttemptedAt || previous.generatedAt;
+if (!force && lastAttempt && now.getTime() - Date.parse(lastAttempt) < intervalMs) {
   console.log('Official admissions-data refresh skipped: last refresh is less than 14 days old.');
   process.exit(0);
 }
@@ -199,10 +200,10 @@ function numberFromCell(text) {
 }
 
 function academicYear(text) {
-  const values = [...String(text).matchAll(/\\b(20\\d{2})\\s*[\\/–-]\\s*(20\\d{2}|\\d{2})\\b/g)]
+  const values = [...String(text).matchAll(/\b(20\d{2})\s*[\/–-]\s*(20\d{2}|\d{2})\b/g)]
     .map(match => Number(match[1]));
   if (values.length) return Math.max(...values);
-  const years = [...String(text).matchAll(/\\b(20\\d{2})\\b/g)].map(match => Number(match[1]));
+  const years = [...String(text).matchAll(/\b(20\d{2})\b/g)].map(match => Number(match[1]));
   return years.length ? Math.max(...years) : null;
 }
 
@@ -250,9 +251,9 @@ function semesterMinimum(text, label) {
   const labelAt = lower.indexOf(String(label).toLocaleLowerCase('ru-RU'));
   if (labelAt < 0) return null;
   const fragment = plain.slice(labelAt, labelAt + 320);
-  const match = fragment.match(/от\\s*(\\d[\\d\\s\\u00a0]*)\\s*₽/i);
+  const match = fragment.match(/от\s*(\d[\d\s\u00a0]*)\s*₽/i);
   if (!match) return null;
-  const value = Number(match[1].replace(/[\\s\\u00a0]/g, ''));
+  const value = Number(match[1].replace(/[\s\u00a0]/g, ''));
   return Number.isFinite(value) ? value : null;
 }
 
@@ -433,8 +434,13 @@ for (const source of sources) {
   results.push(result);
 }
 
+const updatedPrices = results.reduce((sum, item) => sum + item.extractedPrices, 0);
+const updatedBudgetPlaces = results.reduce((sum, item) => sum + item.extractedBudgetPlaces, 0);
+const hasNewData = updatedPrices + updatedBudgetPlaces > 0;
 const live = {
-  generatedAt: now.toISOString(),
+  generatedAt: hasNewData ? now.toISOString() : (previous.generatedAt || null),
+  lastAttemptedAt: now.toISOString(),
+  lastSuccessfulDataAt: hasNewData ? now.toISOString() : (previous.lastSuccessfulDataAt || previous.generatedAt || null),
   intervalDays: 14,
   schools: { ...(previous.schools || {}) }
 };
@@ -448,12 +454,11 @@ for (const [schoolId, patch] of Object.entries(updates)) {
   };
 }
 
-const updatedPrices = results.reduce((sum, item) => sum + item.extractedPrices, 0);
-const updatedBudgetPlaces = results.reduce((sum, item) => sum + item.extractedBudgetPlaces, 0);
 const okSources = results.filter(item => item.status === 'updated').length;
 const needsReview = results.filter(item => item.status !== 'updated').length;
 const report = {
   checkedAt: now.toISOString(),
+  lastSuccessfulDataAt: live.lastSuccessfulDataAt,
   intervalDays: 14,
   sources: results.length,
   successfulSources: okSources,
