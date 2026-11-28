@@ -66,14 +66,16 @@ function getSchoolDetails(school) {
     : { ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [], verifiedAt: null, sourceUrl: school.u ? 'https://' + school.u : null };
 }
 
+function hasNumber(value) { return value !== null && value !== undefined && value !== '' && Number.isFinite(Number(value)); }
+
 function money(value) {
-  return Number.isFinite(Number(value))
+  return hasNumber(value)
     ? new Intl.NumberFormat('ru-RU').format(Number(value)) + ' ₽'
     : 'Нет подтверждённых данных';
 }
 
 function renderBudgetPlaces(details) {
-  const rows = (details.budgetPlaces || []).filter(item => Number.isFinite(Number(item.count)));
+  const rows = (details.budgetPlaces || []).filter(item => hasNumber(item.count));
   if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённого количества бюджетных мест по программам текущего набора. Не подставляем общую цифру вместо официальных данных.</p>';
   return '<ul class="catalog-data-list">' + rows.map(item =>
     '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
@@ -84,14 +86,14 @@ function renderBudgetPlaces(details) {
 
 function renderTuition(details) {
   const rows = (details.tuition || []).filter(item =>
-    Number.isFinite(Number(item.annualRub)) || Number.isFinite(Number(item.monthlyRub))
+    hasNumber(item.annualRub) || hasNumber(item.monthlyRub)
   );
   if (!rows.length) return '<p class="catalog-data-empty">Стоимость платного обучения пока не подтверждена официальным документом для конкретной программы. Проверь цену на сайте приёмной комиссии.</p>';
   return '<div class="catalog-tuition-list">' + rows.map(item => {
-    const monthly = Number.isFinite(Number(item.monthlyRub))
+    const monthly = hasNumber(item.monthlyRub)
       ? money(item.monthlyRub)
-      : Number.isFinite(Number(item.annualRub)) ? money(Number(item.annualRub) / 12) + ' (эквивалент)' : 'Не опубликовано';
-    const annual = Number.isFinite(Number(item.annualRub)) ? money(item.annualRub) : 'Не опубликовано';
+      : hasNumber(item.annualRub) ? money(Number(item.annualRub) / 12) + ' (эквивалент)' : 'Не опубликовано';
+    const annual = hasNumber(item.annualRub) ? money(item.annualRub) : 'Не опубликовано';
     return '<article class="catalog-tuition-row"><b>' + escapeHtml(item.program || 'Программа не указана') +
       '</b><div><span>В месяц</span><strong>' + escapeHtml(monthly) + '</strong></div><div><span>В год</span><strong>' +
       escapeHtml(annual) + '</strong></div><small>' + escapeHtml(String(item.year || 'Год набора не указан')) +
@@ -447,7 +449,7 @@ function initVuzi() {
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
-      ${details.ownership === "private" ? "<span class=\"ownership-tag\">Частное учреждение</span>" : ""}
+      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное</span>' : ''}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
@@ -456,7 +458,7 @@ function initVuzi() {
         <h3>О заведении</h3>
         <dl class="school-profile-grid">
           <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
-          <div><dt>Форма собственности</dt><dd>${details.ownership === "private" ? "Частное" : details.ownership === "public" ? "Государственное / муниципальное" : "Требует подтверждения"}</dd></div>
+          <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Требует подтверждения'}</dd></div>
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
           <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
