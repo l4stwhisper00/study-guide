@@ -64,8 +64,8 @@ export function classifyMonitoringRecord(record, { pageType, vpoIds = new Set() 
   else if (icon === "_1") type = "college";
   else if (isBranch) {
     if (pageType === "vpo" || vpoIds.has(String(record.id))) type = "vuz";
-    else if (/(университет|академ|высшего образования|высшего профессион)/i.test(name)) type = "vuz";
-    else if (/(колледж|техникум|училищ|профессиональн|среднего профессион)/i.test(name)) type = "college";
+    else if (/(университет|академ|институт|мфюи|высшего образования|высшего профессион)/i.test(name)) type = "vuz";
+    else if (/(колледж|техникум|училищ|профессиональн|среднего профессион|гбпоу|гапоу|гпоу|обпоу|анпоо|ано по|кгбпоу|чпоу|батт?|вбмк|нтгпк|сатт|смт|чрт)/i.test(name)) type = "college";
   }
   return {
     ...record,
