@@ -74,8 +74,11 @@ function validPassword(value: unknown, forRegistration = false): value is string
 }
 
 function getClientIp(req: Request): string {
-  const forwarded = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return req.headers.get("cf-connecting-ip")?.trim() || forwarded || req.headers.get("x-real-ip")?.trim() || "unknown";
+  // Do not trust caller-controlled X-Forwarded-For / X-Real-IP values for
+  // abuse controls. Hosted Supabase requests pass through Cloudflare; use
+  // its client-IP header only and fail closed to a shared bucket if absent.
+  const cloudflareIp = req.headers.get("cf-connecting-ip")?.trim();
+  return cloudflareIp && cloudflareIp.length <= 64 ? cloudflareIp : "unknown";
 }
 
 Deno.serve(async (req) => {
