@@ -1,10 +1,7015 @@
 {
-  "checkedAt": null,
+  "checkedAt": "2026-11-28T08:32:14.599Z",
   "intervalDays": 14,
-  "total": 0,
-  "reachable": 0,
-  "unreachable": 0,
-  "unknown": 0,
-  "note": "The first scheduled check has not run yet.",
-  "sources": []
+  "organizations": 390,
+  "total": 357,
+  "admissionsReferences": 66,
+  "reachable": 183,
+  "unreachable": 11,
+  "unknown": 163,
+  "note": "This is a technical availability check for official institution and admissions URLs. It does not prove that prices or funded places are unchanged; those values are updated only by the separate official-data importer.",
+  "sources": [
+    {
+      "url": "https://msu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgu",
+          "school": "МГУ им. Ломоносова",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://msu.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://hse.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "hse",
+          "school": "НИУ ВШЭ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.hse.ru/en/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://mephi.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mifi",
+          "school": "НИУ МИФИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mephi.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://bmstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgtu",
+          "school": "МГТУ им. Баумана",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mirea.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mireа",
+          "school": "МИРЭА — Российский технологический университет",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://mirea.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": "http_error"
+    },
+    {
+      "url": "https://rtu-mirea.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgu-mos",
+          "school": "РТУ им. Сикорского",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://madi.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "madi",
+          "school": "МАДИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://madi.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mgimo.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgimo",
+          "school": "МГИМО МИД России",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mgimo.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://ranepa.ru/",
+      "referenceCount": 3,
+      "references": [
+        {
+          "schoolId": "ranepa",
+          "school": "РАНХиГС при Президенте РФ",
+          "city": "Москва",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "spgu-tour",
+          "school": "РАНХиГС, Санкт-Петербург",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-jur",
+          "school": "Юридический колледж РАНХиГС",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.ranepa.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://msal.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mseu",
+          "school": "МГЮА им. Кутафина",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://msal.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sechenov.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sechenov",
+          "school": "Сеченовский Университет",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.sechenov.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rsmu.press/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rnrmu",
+          "school": "РНИМУ им. Пирогова",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rsmu.press/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://rmapo.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "msmu",
+          "school": "РМАНПО",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rmanpo.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mgppu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bau",
+          "school": "Бауманские гуманитарные (МГППУ)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mgppu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mpgu.su/",
+      "referenceCount": 3,
+      "references": [
+        {
+          "schoolId": "mpgu",
+          "school": "МПГУ",
+          "city": "Москва",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "mospu",
+          "school": "Московский педагогический колледж-вуз МПГУ",
+          "city": "Москва",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-mpgu",
+          "school": "Педагогический колледж МПГУ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mpgu.su/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://rggu.com/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rggu",
+          "school": "РГГУ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://linguanet.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgimo-mos",
+          "school": "Московский государственный лингвистический университет",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://linguanet.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://fa.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vavilov",
+          "school": "РАГС — Финансовый университет",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.fa.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rea.ru/",
+      "referenceCount": 3,
+      "references": [
+        {
+          "schoolId": "plehanov",
+          "school": "РЭУ им. Плеханова",
+          "city": "Москва",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "reku",
+          "school": "РЭУ им. Г. В. Плеханова, филиал СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-fincol2",
+          "school": "Колледж РЭУ им. Плеханова",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rea.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://gubkin.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "gubkin",
+          "school": "ГУНИ им. Губкина",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://muctr.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mendeleev",
+          "school": "РХТУ им. Менделеева",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.muctr.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://timacad.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "timiryazev",
+          "school": "РГАУ-МСХА им. Тимирязева",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.timacad.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://marhi.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bauman-arch",
+          "school": "МАРХИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://marhi.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://surikov-vuz.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "surikov",
+          "school": "МГАХИ им. Сурикова",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://surikov-vuz.ru/vpn/en/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://vgik.info/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mosfilm",
+          "school": "ВГИК",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://vgik.info/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://gnesin-academy.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "gnesin",
+          "school": "РАМ им. Гнесиных",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://gnesin-academy.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rgutis.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rosnou",
+          "school": "РТУМИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rgutis.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://mpei.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mges",
+          "school": "МЭИ им. Ленина",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mpei.ru/Pages/default.aspx",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://miigaik.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgtu-geodez",
+          "school": "МИИГАиК",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://miigaik.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://skoltech.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "skoltech",
+          "school": "Сколтех",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.skoltech.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://mfua.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mfua",
+          "school": "МФЮА",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.mfua.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://synergy.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "synergy",
+          "school": "Университет Синергия",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://synergy.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": "http_error"
+    },
+    {
+      "url": "https://spbu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbu",
+          "school": "СПбГУ",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://spbu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://itmo.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "itmo",
+          "school": "ИТМО",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://itmo.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://etu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "lety",
+          "school": "ЛЭТИ им. Ульянова (Ленина)",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spbgmu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "spbgmu",
+          "school": "СПбГМУ им. Павлова",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-sp-med",
+          "school": "Медицинский колледж СПбГМУ",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spbstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "politex",
+          "school": "СПбПУ Петра Великого (Политех)",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.spbstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://jurist.spb.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbagu",
+          "school": "СПбГАУ им. Мечникова",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spmi.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "gornyi",
+          "school": "Горный университет",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://spmi.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mvd.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spguvd",
+          "school": "Санкт-Петербургский университет МВД",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://herzen.spb.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbped",
+          "school": "РГПУ им. Герцена",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://herzen.spb.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://spbgik.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgik",
+          "school": "СПбГИК",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://spbgik.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://gumrf.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbmarin",
+          "school": "ГУМРФ им. адмирала Макарова",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://gumrf.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://nsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nsu",
+          "school": "НГУ (Новосибирск)",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "timeout"
+    },
+    {
+      "url": "https://ngmu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "ngu-med",
+          "school": "НГМУ (Новосибирск)",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-nsk-med",
+          "school": "Медицинский колледж НГМУ",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ngmu.ru/",
+      "contentType": "text/html; charset=WINDOWS-1251",
+      "error": null
+    },
+    {
+      "url": "https://nstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nstu",
+          "school": "НГТУ НЭТИ (Новосибирск)",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://nstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tusur.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tsu",
+          "school": "ТУСУР (Томск)",
+          "city": "Томск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://tusur.ru/ru",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://tpu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "tpu",
+          "school": "ТПУ (Томск)",
+          "city": "Томск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-tomsk-pol",
+          "school": "Томский политехнический техникум",
+          "city": "Томск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://tpu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ssmu.ru/",
+      "referenceCount": 3,
+      "references": [
+        {
+          "schoolId": "tsumed",
+          "school": "СибГМУ (Томск)",
+          "city": "Томск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-tomsk-med",
+          "school": "Медицинский колледж СибГМУ",
+          "city": "Томск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "sarmed",
+          "school": "Саратовский ГМУ",
+          "city": "Саратов",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ssmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://urfu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "urfu",
+          "school": "УрФУ (Екатеринбург)",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://urfu.ru/ru/",
+      "contentType": "application/octet-stream",
+      "error": null
+    },
+    {
+      "url": "https://usmu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "ursmu",
+          "school": "УГМУ (Екатеринбург)",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-ekb-med",
+          "school": "Медицинский колледж УГМУ",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kpfu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kfu",
+          "school": "КФУ (Казань)",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kpfu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kgmu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "kmu-med",
+          "school": "КГМУ (Казань)",
+          "city": "Казань",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-kazan-med",
+          "school": "Медицинский колледж КГМУ",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kai.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kai",
+          "school": "КАИ — КНИТУ (Казань)",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kai.ru/",
+      "contentType": "text/html;charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://innopolis.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "innopolis",
+          "school": "Университет Иннополис",
+          "city": "Иннополис",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://unn.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nnovgu",
+          "school": "ННГУ Лобачевского (Нижний Новгород)",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "http://www.unn.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://nntu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nnovtech",
+          "school": "НГТУ им. Алексеева (Нижний Новгород)",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.nntu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ssau.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "samaru",
+          "school": "Самарский университет им. Королёва",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ssau.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://samsmu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "samgm",
+          "school": "СамГМУ",
+          "city": "Самара",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-samara-med",
+          "school": "Медицинский колледж СамГМУ",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://donstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "dstu",
+          "school": "ДГТУ (Ростов-на-Дону)",
+          "city": "Ростов-на-Дону",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://donstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sfedu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sfedu",
+          "school": "ЮФУ (Ростов-на-Дону)",
+          "city": "Ростов-на-Дону",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rostgmu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "rgmu",
+          "school": "РостГМУ",
+          "city": "Ростов-на-Дону",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-rostov-med",
+          "school": "Медицинский колледж РостГМУ",
+          "city": "Ростов-на-Дону",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rostgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kubsu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "kubsu",
+          "school": "КубГУ (Краснодар)",
+          "city": "Краснодар",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-krasnodar-econ",
+          "school": "Колледж экономики КубГУ",
+          "city": "Краснодар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kubsu.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://kubgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kubmed",
+          "school": "КубГМУ",
+          "city": "Краснодар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://vsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vrngu",
+          "school": "ВГУ (Воронеж)",
+          "city": "Воронеж",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.vsu.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://vrnmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vrngmu",
+          "school": "ВГМУ им. Бурденко",
+          "city": "Воронеж",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://psu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "psu",
+          "school": "ПГНИУ (Пермь)",
+          "city": "Пермь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "pgtu",
+          "school": "ПНИПУ (Пермь)",
+          "city": "Пермь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://pstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://susu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "chelu",
+          "school": "ЮУрГУ (Челябинск)",
+          "city": "Челябинск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.susu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://chelsma.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "chelmed",
+          "school": "ЮУГМУ",
+          "city": "Челябинск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-chel-med",
+          "school": "Медицинский колледж ЮУГМУ",
+          "city": "Челябинск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://susmu.su/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://omsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "omgu",
+          "school": "ОмГУ им. Достоевского",
+          "city": "Омск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://omgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ommed",
+          "school": "ОмГМУ",
+          "city": "Омск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://bashgau.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bashgu",
+          "school": "БашГУ (Уфа)",
+          "city": "Уфа",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://bashgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ufamed",
+          "school": "БГМУ (Уфа)",
+          "city": "Уфа",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://bashgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://volgmed.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "volgmed",
+          "school": "ВолгГМУ",
+          "city": "Волгоград",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-volgograd-med",
+          "school": "Медицинский колледж ВолгГМУ",
+          "city": "Волгоград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.volgmed.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sargu",
+          "school": "СГУ им. Чернышевского (Саратов)",
+          "city": "Саратов",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://sgu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://utmn.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tyumgu",
+          "school": "ТюмГУ",
+          "city": "Тюмень",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.utmn.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://isu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "irkutsk",
+          "school": "ИГУ (Иркутск)",
+          "city": "Иркутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://isu.ru/ru/index.html",
+      "contentType": "text/html;charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://dvfu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "dvfu",
+          "school": "ДВФУ (Владивосток)",
+          "city": "Владивосток",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-vladivostok-mar",
+          "school": "Морской колледж Владивостока",
+          "city": "Владивосток",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.dvfu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kantiana.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bfu",
+          "school": "БФУ им. Канта (Калининград)",
+          "city": "Калининград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kantiana.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://uniyar.ac.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "yaroslavl",
+          "school": "ЯрГУ им. Демидова",
+          "city": "Ярославль",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tsu.tula.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tulgu",
+          "school": "ТулГУ",
+          "city": "Тула",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kursksmu.net/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kurskmed",
+          "school": "Курский ГМУ",
+          "city": "Курск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://bsuet.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "belgu",
+          "school": "БелГУ",
+          "city": "Белгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://stavsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "stavgu",
+          "school": "СтГАУ / СКФУ (Ставрополь)",
+          "city": "Ставрополь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://sutr.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "sochi",
+          "school": "СГУ (Сочи)",
+          "city": "Сочи",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "k-sochi-col",
+          "school": "Колледж СГУ (Сочи)",
+          "city": "Сочи",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://narfu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "arhgu",
+          "school": "САФУ (Архангельск)",
+          "city": "Архангельск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 404,
+      "finalUrl": "https://narfu.ru/",
+      "contentType": "text/html",
+      "error": "http_error"
+    },
+    {
+      "url": "https://kemsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kemgu",
+          "school": "КемГУ",
+          "city": "Кемерово",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kemsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://asu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "altgu",
+          "school": "АлтГУ (Барнаул)",
+          "city": "Барнаул",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mk1.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-med1",
+          "school": "Медицинский колледж № 1",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://botkincollege.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-botkin",
+          "school": "Колледж им. Боткина",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://college54.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-it",
+          "school": "Колледж связи № 54",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://sputnik.msk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sputnik",
+          "school": "Колледж «Спутник»",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://sputnik.msk.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://fincol.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-econ",
+          "school": "Финансовый колледж",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://arhcol.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-arch",
+          "school": "Архитектурный колледж",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mktrans.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-rail",
+          "school": "Московский колледж транспорта",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mktrans.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://foodcol.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-food",
+          "school": "Колледж пищевых технологий",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://itspin.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sp-it",
+          "school": "Колледж ИТСПИН",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rpc-etu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sp-radio",
+          "school": "Радиополитехнический колледж",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ecospb.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sp-econ",
+          "school": "Экономический колледж СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pk8.spb.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sp-ped",
+          "school": "Педагогический колледж № 8 СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://nskit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-nsk-it",
+          "school": "Новосибирский колледж информационных технологий",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ekit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ekb-it",
+          "school": "Екатеринбургский колледж ИТ",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://uraltc.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ekb-rail",
+          "school": "Уральский колледж транспорта",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kcit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kazan-it",
+          "school": "Казанский колледж ИТ и связи",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://nngmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-nnov-med",
+          "school": "Медицинский колледж Нижнего Новгорода",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://amknnov.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-nnov-auto",
+          "school": "Автомеханический колледж",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://vkit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-voronezh-it",
+          "school": "Воронежский колледж ИТ",
+          "city": "Воронеж",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://vkit.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://psma.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "k-perm-med",
+          "school": "Медицинский колледж Перми",
+          "city": "Пермь",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "psmu",
+          "school": "ПГМУ (Пермь, медицинский)",
+          "city": "Пермь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ufkit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ufa-it",
+          "school": "Уфимский колледж ИТ",
+          "city": "Уфа",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://omskpk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-omsk-ped",
+          "school": "Педагогический колледж Омска",
+          "city": "Омск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tngcol.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-tyumen-oil",
+          "school": "Тюменский нефтегазовый колледж",
+          "city": "Тюмень",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://iek.irk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-irkutsk-energy",
+          "school": "Иркутский энергетический колледж",
+          "city": "Иркутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://dkol.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kaliningrad-art",
+          "school": "Колледж дизайна Калининграда",
+          "city": "Калининград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://yarec.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-yaroslavl-econ",
+          "school": "Ярославский экономический колледж",
+          "city": "Ярославль",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mipt.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mipt",
+          "school": "МФТИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mai.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mai",
+          "school": "МАИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mcd.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-moscow-art",
+          "school": "Московский колледж дизайна",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://unecon.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgue",
+          "school": "СПбГЭУ",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://unecon.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://spbcd.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-spb-art",
+          "school": "Колледж дизайна СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spmk1.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-spb-med2",
+          "school": "Медицинский колледж № 1 СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://sfu-kras.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sfu",
+          "school": "СФУ (Красноярск)",
+          "city": "Красноярск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://krasgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "krasmed",
+          "school": "КрасГМУ (Красноярск)",
+          "city": "Красноярск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://krasgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kitc.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kras-it",
+          "school": "Красноярский колледж ИТ",
+          "city": "Красноярск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pnu.to/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "pacific",
+          "school": "ТОГУ (Хабаровск)",
+          "city": "Хабаровск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://fesmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "khabmed",
+          "school": "Дальневосточный ГМУ (Хабаровск)",
+          "city": "Хабаровск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rsu.edu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rsru",
+          "school": "РГУ им. Есенина (Рязань)",
+          "city": "Рязань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rpk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ryazan-ped",
+          "school": "Рязанский педколледж",
+          "city": "Рязань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rpk.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://vyatsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vyatgu",
+          "school": "ВятГУ (Киров)",
+          "city": "Киров",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://old.vyatsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://chuvsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "chuvgu",
+          "school": "ЧувГУ (Чебоксары)",
+          "city": "Чебоксары",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://chmk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-cheb-med",
+          "school": "Чебоксарский медколледж",
+          "city": "Чебоксары",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pnzgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "pnzu",
+          "school": "Пензенский государственный университет",
+          "city": "Пенза",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://pnzgu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": "http_error"
+    },
+    {
+      "url": "https://istu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "isgtu",
+          "school": "ИжГТУ (Ижевск)",
+          "city": "Ижевск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://istu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tltsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tglu",
+          "school": "ТГУ (Тольятти)",
+          "city": "Тольятти",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.tltsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tatc.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-togliatti-auto",
+          "school": "Тольяттинский автоколледж",
+          "city": "Тольятти",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pimunn.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nnovmed",
+          "school": "ПИМУ (Нижний Новгород)",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://pimunn.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://nsek.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-nsk-econ",
+          "school": "Новосибирский колледж экономики",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rcit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-rostov-it",
+          "school": "Ростовский колледж ИТ",
+          "city": "Ростов-на-Дону",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://umk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ufa-med",
+          "school": "Уфимский медколледж",
+          "city": "Уфа",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pcit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-perm-it",
+          "school": "Пермский колледж ИТ",
+          "city": "Пермь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://sce.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-samara-econ",
+          "school": "Самарский колледж экономики",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://vpc.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-voronezh-ped",
+          "school": "Воронежский педколледж",
+          "city": "Воронеж",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tmk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-tyumen-med",
+          "school": "Тюменский медколледж",
+          "city": "Тюмень",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://icit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-irkutsk-it",
+          "school": "Иркутский колледж ИТ",
+          "city": "Иркутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kcit39.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kaliningrad-it",
+          "school": "Калининградский колледж ИТ",
+          "city": "Калининград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://eek.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ekb-econ",
+          "school": "Екатеринбургский колледж экономики",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rudn.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rudn",
+          "school": "РУДН",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.rudn.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mgsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgsu",
+          "school": "МГСУ (НИУ МГСУ)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mgsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://miit.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "miit",
+          "school": "Российский университет транспорта (МИИТ)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://miit.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://mtuci.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mtusi",
+          "school": "МТУСИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://mtuci.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": "http_error"
+    },
+    {
+      "url": "https://mospolytech.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "politech-mos",
+          "school": "Московский Политех",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mospolytech.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://gitis.net/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "giti",
+          "school": "ГИТИС",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://gitis.net/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mosconsv.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "conserv",
+          "school": "Московская консерватория",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mosconsv.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://msmsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "msmsu",
+          "school": "МСМСУ им. Евдокимова",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://guu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mguu",
+          "school": "ГУУ (Государственный университет управления)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rgsu.net/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rgsu",
+          "school": "РГСУ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mgri.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mgri",
+          "school": "МГРИ",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mgri.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mkem.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-mkem",
+          "school": "Московский колледж электроники и математики",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mmk2.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-med2",
+          "school": "Московский медицинский колледж № 2",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mkas.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-mkas",
+          "school": "Московский колледж архитектуры и строительства",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mpk1.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-mpk1",
+          "school": "Московский педагогический колледж № 1",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://voenmeh.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "voenmeh",
+          "school": "БГТУ «Военмех»",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://voenmeh.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sut.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgut",
+          "school": "СПбГУТ им. Бонч-Бруевича",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.sut.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://spbgasu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgasu",
+          "school": "СПбГАСУ",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.spbgasu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://szgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "szgmu",
+          "school": "СЗГМУ им. Мечникова",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://szgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://gpmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgpma",
+          "school": "СПбГПМУ (педиатрический)",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://lesgaft.org/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "lesgaft",
+          "school": "НГУ им. Лесгафта",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://lesgaft.org/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://guptid.com/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgupt",
+          "school": "СПбГУПТД",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spmk2.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-spmed2",
+          "school": "Медицинский колледж № 2 СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pk4.spb.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sp-ped4",
+          "school": "Педагогический колледж № 4 СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spekf.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sp-eco2",
+          "school": "Колледж экономики и финансов СПб",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://murgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "murgu",
+          "school": "Мурманский государственный университет",
+          "city": "Мурманск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mmk51.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-murm-med",
+          "school": "Мурманский медицинский колледж",
+          "city": "Мурманск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://petrsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "petrsu",
+          "school": "ПетрГУ",
+          "city": "Петрозаводск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://petrsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kmk10.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ptz-med",
+          "school": "Карельский медицинский колледж",
+          "city": "Петрозаводск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://syktgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "syktgu",
+          "school": "Сыктывкарский государственный университет",
+          "city": "Сыктывкар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://krmk11.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-syk-med",
+          "school": "Коми республиканский медколледж",
+          "city": "Сыктывкар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://nsmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nsmu",
+          "school": "Северный ГМУ (Архангельск)",
+          "city": "Архангельск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.nsmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://amk29.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-arh-med",
+          "school": "Архангельский медицинский колледж",
+          "city": "Архангельск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://amk29.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://vogu35.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vogu",
+          "school": "ВоГУ (Вологда)",
+          "city": "Вологда",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://vmk35.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-vol-med",
+          "school": "Вологодский медицинский колледж",
+          "city": "Вологда",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://vmk35.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://chsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "chsu",
+          "school": "Череповецкий государственный университет",
+          "city": "Череповец",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://chsu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://chmk35.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-cher-met",
+          "school": "Череповецкий металлургический колледж",
+          "city": "Череповец",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://klgtu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kgtu",
+          "school": "КГТУ (Калининград)",
+          "city": "Калининград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://klgtu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kmk39.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-klg-med",
+          "school": "Калининградский медицинский колледж",
+          "city": "Калининград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tversu.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "tvgu",
+          "school": "Тверской государственный университет",
+          "city": "Тверь",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "tversu-tver",
+          "school": "Тверской государственный университет (ТвГУ)",
+          "city": "Тверь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://tversu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://tvmk69.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-tver-med",
+          "school": "Тверской медицинский колледж",
+          "city": "Тверь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://tvmk69.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ystu.ru/",
+      "referenceCount": 3,
+      "references": [
+        {
+          "schoolId": "ystu",
+          "school": "ЯГТУ (Ярославль)",
+          "city": "Ярославль",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "ystu-yaroslavl",
+          "school": "Ярославский государственный технический университет (ЯГТУ)",
+          "city": "Ярославль",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "ystu-college",
+          "school": "Университетский колледж ЯГТУ «Политехник»",
+          "city": "Ярославль",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ystu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ysmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ysmu",
+          "school": "Ярославский ГМУ",
+          "city": "Ярославль",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ysmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ksu.edu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ksu",
+          "school": "Костромской государственный университет",
+          "city": "Кострома",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kmk44.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kost-med",
+          "school": "Костромской медицинский колледж",
+          "city": "Кострома",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kmk44.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ivgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ivgu",
+          "school": "Ивановский государственный университет",
+          "city": "Иваново",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ivmk37.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-iv-med",
+          "school": "Ивановский медицинский колледж",
+          "city": "Иваново",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ivmk37.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://vlsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vlsu",
+          "school": "ВлГУ (Владимир)",
+          "city": "Владимир",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://vpc33.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-vlad-ped",
+          "school": "Владимирский педагогический колледж",
+          "city": "Владимир",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rsreu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rsreu",
+          "school": "РГРТУ (Рязанский радиотехнический)",
+          "city": "Рязань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rsreu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://rmk62.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ryaz-med",
+          "school": "Рязанский медицинский колледж",
+          "city": "Рязань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rmk62.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tspk71.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-tul-ped",
+          "school": "Тульский государственный педколледж",
+          "city": "Тула",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ksgu.kaluga.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ksgu",
+          "school": "Калужский государственный университет",
+          "city": "Калуга",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kbmk40.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kal-med",
+          "school": "Калужский базовый медицинский колледж",
+          "city": "Калуга",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kbmk40.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://smolgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "smolgu",
+          "school": "Смоленский государственный университет",
+          "city": "Смоленск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://smolgu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sgma.info/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "smolgmu",
+          "school": "Смоленский ГМУ",
+          "city": "Смоленск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://sgma.info/en/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://brygu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "brygu",
+          "school": "Брянский государственный университет",
+          "city": "Брянск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://bmk32.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-br-med",
+          "school": "Брянский медицинский колледж",
+          "city": "Брянск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ogu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ogu",
+          "school": "Орловский государственный университет",
+          "city": "Орёл",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://opk57.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-orl-ped",
+          "school": "Орловский педагогический колледж",
+          "city": "Орёл",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://stu.lipetsk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "lgtu",
+          "school": "ЛГТУ (Липецк)",
+          "city": "Липецк",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://stu.lipetsk.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://lmk48.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-lip-med",
+          "school": "Липецкий медицинский колледж",
+          "city": "Липецк",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tsutmb.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "tsu-derzh",
+          "school": "ТГУ им. Державина (Тамбов)",
+          "city": "Тамбов",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "tsutmb-tambov",
+          "school": "Тамбовский государственный университет имени Г. Р. Державина",
+          "city": "Тамбов",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://tsutmb.ru/",
+      "contentType": "text/html",
+      "error": "http_error"
+    },
+    {
+      "url": "https://tmk68.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-tamb-med",
+          "school": "Тамбовский медицинский колледж",
+          "city": "Тамбов",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kursk-uni.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ksgu-kursk",
+          "school": "Курский государственный университет",
+          "city": "Курск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://bstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bstu",
+          "school": "БГТУ им. Шухова (Белгород)",
+          "city": "Белгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.bstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://bmk31.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-bel-med",
+          "school": "Белгородский медицинский колледж",
+          "city": "Белгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://cchgeu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vgtu",
+          "school": "ВГТУ (Воронежский технический)",
+          "city": "Воронеж",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://cchgeu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://nlu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nngu",
+          "school": "НГЛУ (Нижегородский лингвистический)",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mininuniver.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "minin",
+          "school": "Мининский университет",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mininuniver.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://nnrtc.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-nnov-radio",
+          "school": "Нижегородский радиотехнический колледж",
+          "city": "Нижний Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "knrtu",
+          "school": "КНИТУ (Казань, технологический)",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kgeu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kgeu",
+          "school": "КГЭУ (Казань, энергетический)",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kgeu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kmk16.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kzn-med",
+          "school": "Казанский медицинский колледж",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://samgtu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "samgtu",
+          "school": "СамГТУ",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://samgtu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sseu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sseu",
+          "school": "СГЭУ (Самара, экономический)",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.sseu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://samtk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sam-trans",
+          "school": "Самарский транспортный колледж",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pmk58.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-penz-med",
+          "school": "Пензенский медицинский колледж",
+          "city": "Пенза",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://pmk58.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ulsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ulgu",
+          "school": "Ульяновский государственный университет",
+          "city": "Ульяновск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ulsu.ru/ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://umk73.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-ul-med",
+          "school": "Ульяновский медицинский колледж",
+          "city": "Ульяновск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://sbmk64.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sar-med",
+          "school": "Саратовский базовый медицинский колледж",
+          "city": "Саратов",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://vstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "volggtu",
+          "school": "ВолгГТУ",
+          "city": "Волгоград",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://astrgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "astrgu",
+          "school": "Астраханский государственный университет",
+          "city": "Астрахань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://osu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "orengu",
+          "school": "Оренбургский государственный университет",
+          "city": "Оренбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "http://osu.ru/",
+      "contentType": "text/html;charset=koi8-r",
+      "error": null
+    },
+    {
+      "url": "https://omk56.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-oren-med",
+          "school": "Оренбургский медицинский колледж",
+          "city": "Оренбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ugatu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "usat",
+          "school": "УГАТУ (Уфа, авиационный)",
+          "city": "Уфа",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://pfa.ru/",
+      "referenceCount": 2,
+      "references": [
+        {
+          "schoolId": "pspa",
+          "school": "Пермская фармацевтическая академия",
+          "city": "Пермь",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "pfa-perm",
+          "school": "Пермская государственная фармацевтическая академия (ПГФА)",
+          "city": "Пермь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://pfa.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://kirovsmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kirovmed",
+          "school": "Кировский ГМУ",
+          "city": "Киров",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kmc43.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kirov-med",
+          "school": "Кировский медицинский колледж",
+          "city": "Киров",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://cspu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "cspu",
+          "school": "ЧГПУ им. Яковлева (Чебоксары)",
+          "city": "Чебоксары",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://margu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "margu",
+          "school": "МарГУ (Йошкар-Ола)",
+          "city": "Йошкар-Ола",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://yomk12.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-yo-med",
+          "school": "Медколледж Йошкар-Олы",
+          "city": "Йошкар-Ола",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://mrsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mrsu",
+          "school": "МГУ им. Огарёва (Саранск)",
+          "city": "Саранск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mrsu.ru/ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://smk13.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-sar-med2",
+          "school": "Саранский медицинский колледж",
+          "city": "Саранск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://igma.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "igma",
+          "school": "Ижевская государственная медицинская академия",
+          "city": "Ижевск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://igma.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://udsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "udgu",
+          "school": "Удмуртский государственный университет",
+          "city": "Ижевск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://udsu.ru/",
+      "contentType": "text/html;charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://usurt.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "usurt",
+          "school": "УрГУПС (Екатеринбург, транспорт)",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://usurt.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://usla.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "usla",
+          "school": "Уральский государственный юридический университет",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 202,
+      "finalUrl": "https://usla.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://uspu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "uspu",
+          "school": "УрГПУ (Екатеринбург, педагогический)",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://csu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "csu",
+          "school": "ЧелГУ (Челябинск)",
+          "city": "Челябинск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.csu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://magtu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mstu-magnit",
+          "school": "МГТУ им. Носова (Магнитогорск)",
+          "city": "Магнитогорск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.magtu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://cpk74.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-chel-ped",
+          "school": "Челябинский педагогический колледж",
+          "city": "Челябинск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tyumgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tyumgmu",
+          "school": "Тюменский ГМУ",
+          "city": "Тюмень",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tiu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tiu",
+          "school": "ТИУ (Тюменский индустриальный)",
+          "city": "Тюмень",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.tiu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kurgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ksu-kurgan",
+          "school": "Курганский государственный университет",
+          "city": "Курган",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kurgu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kmc45.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kurg-med",
+          "school": "Курганский медицинский колледж",
+          "city": "Курган",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://omgtu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "omgtu",
+          "school": "ОмГТУ",
+          "city": "Омск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://omgtu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": "http_error"
+    },
+    {
+      "url": "https://omtk55.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-om-trans",
+          "school": "Омский транспортный колледж",
+          "city": "Омск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://nspu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nspu",
+          "school": "НГПУ (Новосибирск, педагогический)",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://nspu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://nsuem.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nsuem",
+          "school": "НГУЭУ (Новосибирск)",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://nsuem.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://npc54.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-nsk-ped",
+          "school": "Новосибирский педагогический колледж",
+          "city": "Новосибирск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kuzstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kuzgtu",
+          "school": "КузГТУ (Кемерово)",
+          "city": "Кемерово",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kemgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kemgmu",
+          "school": "Кемеровский ГМУ",
+          "city": "Кемерово",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kemgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kmc42.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kem-med",
+          "school": "Кемеровский медицинский колледж",
+          "city": "Кемерово",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://agmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "agmu",
+          "school": "АГМУ (Барнаул)",
+          "city": "Барнаул",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://agmu.ru/",
+      "contentType": "text/html",
+      "error": "http_error"
+    },
+    {
+      "url": "https://altgtu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "altgtu",
+          "school": "АлтГТУ (Барнаул)",
+          "city": "Барнаул",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kspu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kspu",
+          "school": "КГПУ им. Астафьева (Красноярск)",
+          "city": "Красноярск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://krmk24.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-kras-med",
+          "school": "Красноярский медицинский колледж",
+          "city": "Красноярск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://istu.edu/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "istu-irk",
+          "school": "ИРНИТУ (Иркутск)",
+          "city": "Иркутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.istu.edu/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://igmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "irkgmu",
+          "school": "Иркутский ГМУ",
+          "city": "Иркутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://imk38.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-irk-med",
+          "school": "Иркутский медицинский колледж",
+          "city": "Иркутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://zabgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "zabgu",
+          "school": "Забайкальский государственный университет (Чита)",
+          "city": "Чита",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 503,
+      "finalUrl": "https://zabgu.ru/",
+      "contentType": "text/html",
+      "error": "http_error"
+    },
+    {
+      "url": "https://chmk75.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-chita-med",
+          "school": "Читинский медицинский колледж",
+          "city": "Чита",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://bsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bsu-buryat",
+          "school": "Бурятский государственный университет (Улан-Удэ)",
+          "city": "Улан-Удэ",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://bsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rmk03.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-uu-med",
+          "school": "Республиканский медколледж (Улан-Удэ)",
+          "city": "Улан-Удэ",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://s-vfu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nefu",
+          "school": "СВФУ им. Аммосова (Якутск)",
+          "city": "Якутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://ymk14.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-yak-med",
+          "school": "Якутский медицинский колледж",
+          "city": "Якутск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://khsue.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "khsue",
+          "school": "ХГУЭП (Хабаровск)",
+          "city": "Хабаровск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://khmk27.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-khab-med",
+          "school": "Хабаровский медицинский колледж",
+          "city": "Хабаровск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://msun.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "msu-nevelskoy",
+          "school": "МГУ им. адмирала Невельского (Владивосток)",
+          "city": "Владивосток",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://msun.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://vvsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "vvgu",
+          "school": "ВГУЭС (Владивосток)",
+          "city": "Владивосток",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.vvsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://vmk25.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-vlad-med",
+          "school": "Владивостокский медицинский колледж",
+          "city": "Владивосток",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://rsue.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rsue",
+          "school": "РГЭУ (РИНХ, Ростов-на-Дону)",
+          "city": "Ростов-на-Дону",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rsue.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kubstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kubgtu",
+          "school": "КубГТУ (Краснодар)",
+          "city": "Краснодар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kubmk23.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-krd-med",
+          "school": "Кубанский медицинский колледж",
+          "city": "Краснодар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://stgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "stgu",
+          "school": "Ставропольский государственный университет",
+          "city": "Ставрополь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://smk26.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-stav-med",
+          "school": "Ставропольский медицинский колледж",
+          "city": "Ставрополь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://dgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "dsgu",
+          "school": "Дагестанский государственный университет",
+          "city": "Махачкала",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://dgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "dgmu",
+          "school": "Дагестанский ГМУ",
+          "city": "Махачкала",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://dgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://chesu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "chesu",
+          "school": "Чеченский государственный университет (Грозный)",
+          "city": "Грозный",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://chesu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://gmk20.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "k-gr-med",
+          "school": "Грозненский медицинский колледж",
+          "city": "Грозный",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://nosu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nosu",
+          "school": "СОГУ им. Хетагурова (Владикавказ)",
+          "city": "Владикавказ",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://sakhgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sakhgu-yuzh",
+          "school": "Сахалинский государственный университет (СахГУ)",
+          "city": "Южно-Сахалинск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 502,
+      "finalUrl": "https://sakhgu.ru/",
+      "contentType": "text/html",
+      "error": "http_error"
+    },
+    {
+      "url": "https://amursu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "amursu-blag",
+          "school": "Амурский государственный университет (АмГУ)",
+          "city": "Благовещенск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://amursu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://bgpu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bgpu-blag",
+          "school": "Благовещенский государственный педагогический университет (БГПУ)",
+          "city": "Благовещенск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://bgpu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://dalgau.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "dalgau-blag",
+          "school": "Дальневосточный государственный аграрный университет (ДальГАУ)",
+          "city": "Благовещенск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://dalgau.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://novsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "novsu-vn",
+          "school": "Новгородский государственный университет имени Ярослава Мудрого (НовГУ)",
+          "city": "Великий Новгород",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://novsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://khsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "khsu-abakan",
+          "school": "Хакасский государственный университет им. Н. Ф. Катанова (ХГУ)",
+          "city": "Абакан",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://khsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kamgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kamgu-pk",
+          "school": "Камчатский государственный университет имени Витуса Беринга (КамГУ)",
+          "city": "Петропавловск-Камчатский",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kamgu.ru/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://adygnet.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "adygu-maykop",
+          "school": "Адыгейский государственный университет (АГУ)",
+          "city": "Майкоп",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://adygnet.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kalmgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kalmgu-elista",
+          "school": "Калмыцкий государственный университет имени Б. Б. Городовикова (КалмГУ)",
+          "city": "Элиста",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kalmgu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://gasu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "gasu-gorno",
+          "school": "Горно-Алтайский государственный университет (ГАГУ)",
+          "city": "Горно-Алтайск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://gasu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kbsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kbsu-nalchik",
+          "school": "Кабардино-Балкарский государственный университет им. Х. М. Бербекова (КБГУ)",
+          "city": "Нальчик",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kbsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://svgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "svgu-magadan",
+          "school": "Северо-Восточный государственный университет (СВГУ)",
+          "city": "Магадан",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kgsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kgsu-kurgan",
+          "school": "Курганский государственный университет (КГУ)",
+          "city": "Курган",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kgsu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://oreluniver.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "oreluniver-orel",
+          "school": "Орловский государственный университет имени И. С. Тургенева (ОГУ)",
+          "city": "Орёл",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://oreluniver.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://pgusa.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "pgusa-birobidzhan",
+          "school": "Приамурский государственный университет имени Шолом-Алейхема",
+          "city": "Биробиджан",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://inggu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "inggu-magas",
+          "school": "Ингушский государственный университет",
+          "city": "Магас",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://inggu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tuvsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tuvsu-kyzyl",
+          "school": "Тувинский государственный университет (ТувГУ)",
+          "city": "Кызыл",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kchgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kchgu-cherkessk",
+          "school": "Карачаево-Черкесский государственный университет имени У. Д. Алиева (КЧГУ)",
+          "city": "Черкесск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kchgu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sev.msu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sev-msu-branch",
+          "school": "Филиал МГУ имени М. В. Ломоносова в городе Севастополе",
+          "city": "Севастополь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://sev.msu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://cfuv.ru/",
+      "referenceCount": 6,
+      "references": [
+        {
+          "schoolId": "cfuv-simferopol",
+          "school": "Крымский федеральный университет имени В. И. Вернадского (КФУ)",
+          "city": "Симферополь",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "cfu-yalta-gpa",
+          "school": "Гуманитарно-педагогическая академия (филиал КФУ им. В. И. Вернадского)",
+          "city": "Ялта",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "cfu-sev-segi",
+          "school": "Севастопольский экономико-гуманитарный институт (филиал КФУ)",
+          "city": "Севастополь",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "cfu-bakh-college",
+          "school": "Бахчисарайский колледж строительства, архитектуры и дизайна",
+          "city": "Бахчисарай",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "cfu-evpatoria",
+          "school": "Евпаторийский институт социальных наук (филиал КФУ)",
+          "city": "Евпатория",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "cfu-feodosia",
+          "school": "Юго-Восточная академия (филиал КФУ им. В. И. Вернадского)",
+          "city": "Феодосия",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://cfuv.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://surgu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "surgu-surgut",
+          "school": "Сургутский государственный университет (СурГУ)",
+          "city": "Сургут",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.surgu.ru/index",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://nvsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "nvsu-nizhnevartovsk",
+          "school": "Нижневартовский государственный университет (НВГУ)",
+          "city": "Нижневартовск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://knastu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "knastu-komsomolsk",
+          "school": "Комсомольский-на-Амуре государственный университет (КнАГУ)",
+          "city": "Комсомольск-на-Амуре",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://knastu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://brstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "brstu-bratsk",
+          "school": "Братский государственный университет (БрГУ)",
+          "city": "Братск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://brstu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://angtu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "angtu-angarsk",
+          "school": "Ангарский государственный технический университет (АнГТУ)",
+          "city": "Ангарск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://angtu.ru/",
+      "contentType": "text/html; charset=windows-1251",
+      "error": null
+    },
+    {
+      "url": "https://aumsu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "aumsu-novorossiysk",
+          "school": "Государственный морской университет имени адмирала Ф. Ф. Ушакова",
+          "city": "Новороссийск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://aumsu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://bgtc.su/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bgtc-biysk",
+          "school": "Бийский государственный колледж (БГК)",
+          "city": "Бийск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.bgtc.su/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tmt-tobolsk.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tmt-tobolsk",
+          "school": "Тобольский многопрофильный техникум (ТМТ)",
+          "city": "Тобольск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://tmt-tobolsk.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ymk-salehard.ru/",
+      "referenceCount": 4,
+      "references": [
+        {
+          "schoolId": "ymk-salekhard",
+          "school": "Ямальский многопрофильный колледж (ЯМК)",
+          "city": "Салехард",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "ymk-noyabrsk",
+          "school": "Ямальский многопрофильный колледж — подразделение в Ноябрьске",
+          "city": "Ноябрьск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "ymk-nadym",
+          "school": "Ямальский многопрофильный колледж — подразделение в Надыме",
+          "city": "Надым",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "ymk-novy-urengoy",
+          "school": "Ямальский многопрофильный колледж — подразделение в Новом Уренгое",
+          "city": "Новый Уренгой",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://tspc89.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tspc-tarko-sale",
+          "school": "Тарко-Салинский профессиональный колледж",
+          "city": "Тарко-Сале",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://arz.unn.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "arz-nngu",
+          "school": "Арзамасский филиал ННГУ имени Н. И. Лобачевского",
+          "city": "Арзамас",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://arz.unn.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://sarfti.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sarfti-sarov",
+          "school": "Саровский физико-технический институт НИЯУ МИФИ (СарФТИ)",
+          "city": "Саров",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://spo.pskovedu.ru/",
+      "referenceCount": 9,
+      "references": [
+        {
+          "schoolId": "pskov-art-college",
+          "school": "Псковский областной колледж искусств имени Н. А. Римского-Корсакова",
+          "city": "Псков",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "pskov-med-college",
+          "school": "Псковский медицинский колледж",
+          "city": "Псков",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "pskov-tech-college",
+          "school": "Псковский колледж профессиональных технологий и сервиса",
+          "city": "Псков",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "velikie-luki-polytech",
+          "school": "Великолукский политехнический колледж",
+          "city": "Великие Луки",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "dno-agrotech-college",
+          "school": "Псковский агротехнический колледж",
+          "city": "Дно",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "ostrov-multicollege",
+          "school": "Островский многопрофильный колледж",
+          "city": "Остров",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "vl-mechtech-college",
+          "school": "Великолукский механико-технологический колледж",
+          "city": "Великие Луки",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "opochka-industrial-college",
+          "school": "Опочецкий индустриально-педагогический колледж",
+          "city": "Опочка",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "pytalovo-ostrov-branch",
+          "school": "Пыталовский филиал Островского многопрофильного колледжа",
+          "city": "Пыталово",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://spo.pskovedu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://kki.tuva.muzkult.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kki-kyzyl",
+          "school": "Кызылский колледж искусств имени А. Б. Чыргал-оола",
+          "city": "Кызыл",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": false,
+      "httpStatus": 403,
+      "finalUrl": "https://kki.tuva.muzkult.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": "http_error"
+    },
+    {
+      "url": "https://omgups.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "omgups-omsk",
+          "school": "Омский государственный университет путей сообщения (ОмГУПС)",
+          "city": "Омск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kgau.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kgau-krasnoyarsk",
+          "school": "Красноярский государственный аграрный университет (КрасГАУ)",
+          "city": "Красноярск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kgau.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://sstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "sstu-saratov",
+          "school": "Саратовский государственный технический университет имени Гагарина Ю. А. (СГТУ)",
+          "city": "Саратов",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.sstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://stgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "stgmu-stavropol",
+          "school": "Ставропольский государственный медицинский университет (СтГМУ)",
+          "city": "Ставрополь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://stgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rzgmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rzgmu-ryazan",
+          "school": "Рязанский государственный медицинский университет имени академика И. П. Павлова (РязГМУ)",
+          "city": "Рязань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rzgmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://bgsha.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "bgsha-ulan-ude",
+          "school": "Бурятская государственная сельскохозяйственная академия имени В. Р. Филиппова (БГСХА)",
+          "city": "Улан-Удэ",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://bgsha.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://festu.khv.ru/",
+      "referenceCount": 5,
+      "references": [
+        {
+          "schoolId": "dvgups-khabarovsk",
+          "school": "Дальневосточный государственный университет путей сообщения (ДВГУПС)",
+          "city": "Хабаровск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "dvgups-ussuriysk",
+          "school": "Уссурийский институт железнодорожного транспорта — филиал ДВГУПС",
+          "city": "Уссурийск",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "dvgups-tynda",
+          "school": "Тындинский институт железнодорожного транспорта — филиал ДВГУПС",
+          "city": "Тында",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "dvgups-svobodny",
+          "school": "Свободненский институт железнодорожного транспорта — филиал ДВГУПС",
+          "city": "Свободный",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "dvgups-yuzhno",
+          "school": "Сахалинский институт железнодорожного транспорта — филиал ДВГУПС",
+          "city": "Южно-Сахалинск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kubsau.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kubsau-krasnodar",
+          "school": "Кубанский государственный аграрный университет имени И. Т. Трубилина (КубГАУ)",
+          "city": "Краснодар",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://kubsau.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://astu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "astu-astrakhan",
+          "school": "Астраханский государственный технический университет (АГТУ)",
+          "city": "Астрахань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://astu.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://ursmu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ursmu-ekaterinburg",
+          "school": "Уральский государственный горный университет (УГГУ)",
+          "city": "Екатеринбург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.ursmu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://tsuab.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "tgasu-tomsk",
+          "school": "Томский государственный архитектурно-строительный университет (ТГАСУ)",
+          "city": "Томск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://kazgik.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "kazgik-kazan",
+          "school": "Казанский государственный институт культуры (КазГИК)",
+          "city": "Казань",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://chuvgpu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "chuvgpu-cheboksary",
+          "school": "Чувашский государственный педагогический университет имени И. Я. Яковлева (ЧГПУ)",
+          "city": "Чебоксары",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": null,
+      "httpStatus": null,
+      "finalUrl": null,
+      "contentType": null,
+      "error": "network_or_tls_error"
+    },
+    {
+      "url": "https://samgik.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "samgik-samara",
+          "school": "Самарский государственный институт культуры (СГИК)",
+          "city": "Самара",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://samgik.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://ulstu.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "ulstu-ulyanovsk",
+          "school": "Ульяновский государственный технический университет (УлГТУ)",
+          "city": "Ульяновск",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://ulstu.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://college.cfuv.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "cfu-tavrichesky-college",
+          "school": "Таврический колледж Крымского федерального университета",
+          "city": "Симферополь",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://college.cfuv.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rosnou.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rosnou-moscow",
+          "school": "Российский новый университет (РосНОУ)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rosnou.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://gup.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgup-spb",
+          "school": "Санкт-Петербургский гуманитарный университет профсоюзов (СПбГУП)",
+          "city": "Санкт-Петербург",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.gup.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://iict.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "iict-voronezh",
+          "school": "Международный институт компьютерных технологий (МИКТ)",
+          "city": "Воронеж",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://iict.ru/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://college.iict.ru/",
+      "referenceCount": 4,
+      "references": [
+        {
+          "schoolId": "iict-college-voronezh",
+          "school": "Колледж Международного института компьютерных технологий",
+          "city": "Воронеж",
+          "type": "institution_website"
+        },
+        {
+          "schoolId": "iict-college-voronezh",
+          "type": "tuition_document",
+          "program": "Колледж — очная форма (минимальная опубликованная стоимость)",
+          "year": 2026
+        },
+        {
+          "schoolId": "iict-college-voronezh",
+          "type": "tuition_document",
+          "program": "Графический дизайнер (очная форма)",
+          "year": 2026
+        },
+        {
+          "schoolId": "iict-college-voronezh",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://college.iict.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://inpsycho.ru/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mip-moscow",
+          "school": "Московский институт психоанализа (МИП)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://inpsycho.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://mi.university/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mmiu-moscow",
+          "school": "Московский международный университет (ММУ)",
+          "city": "Москва",
+          "type": "institution_website"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mi.university/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://synergy.ru/abiturientam/priemnaya_komissiya",
+      "referenceCount": 5,
+      "references": [
+        {
+          "schoolId": "synergy",
+          "type": "tuition_document",
+          "program": "Колледж — минимальная опубликованная цена",
+          "year": 2026
+        },
+        {
+          "schoolId": "synergy",
+          "type": "tuition_document",
+          "program": "Бакалавриат — минимальная опубликованная цена",
+          "year": 2026
+        },
+        {
+          "schoolId": "synergy",
+          "type": "tuition_document",
+          "program": "Специалитет — минимальная опубликованная цена",
+          "year": 2026
+        },
+        {
+          "schoolId": "synergy",
+          "type": "tuition_document",
+          "program": "Магистратура — минимальная опубликованная цена",
+          "year": 2026
+        },
+        {
+          "schoolId": "synergy",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://synergy.ru/abiturientam/priemnaya_komissiya",
+      "contentType": "text/html;charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://www.mfua.ru/types-education/vysshee-obrazovanie/bakalavriat/",
+      "referenceCount": 3,
+      "references": [
+        {
+          "schoolId": "mfua",
+          "type": "tuition_document",
+          "program": "Бакалавриат — минимальная опубликованная стоимость (зависит от программы и формы)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mfua",
+          "type": "funded_places_document",
+          "program": "Технологии цифровой трансформации и управление изменениями (прикладная информатика)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mfua",
+          "type": "funded_places_document",
+          "program": "Цифровые технологии международного бизнеса (прикладная информатика)",
+          "year": 2026
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.mfua.ru/types-education/vysshee-obrazovanie/bakalavriat/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://www.mfua.ru/abiturientu/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mfua",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.mfua.ru/abiturientu/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rosnou.ru/bak/price/",
+      "referenceCount": 14,
+      "references": [
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Математическое моделирование и вычислительная математика (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Технологии программного обеспечения (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Кибербезопасность (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Цифровые системы и технологии обмена данными (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Прикладная информатика в экономике (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Психолого-педагогическая профилактика девиантного поведения несовершеннолетних (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Психологическое консультирование (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Начальное образование (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Педагог-психолог в системе образования (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Логопедия (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Гражданско-правовая (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Организация и управление бизнесом (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "HR-менеджмент (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "tuition_document",
+          "program": "Менеджмент туристской индустрии (очная)",
+          "year": 2026
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rosnou.ru/bak/price/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rosnou.ru/bak/program/",
+      "referenceCount": 8,
+      "references": [
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Математическое моделирование и вычислительная математика (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Технологии программного обеспечения (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Цифровые системы и технологии обмена данными (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Социальная работа с различными группами населения (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Начальное образование (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Редактор средств массовой информации (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Менеджмент туристской индустрии (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "funded_places_document",
+          "program": "Финансы и кредит (очная)",
+          "year": 2026
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rosnou.ru/bak/program/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://rosnou.ru/bak/official/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "rosnou-moscow",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://rosnou.ru/bak/official/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://www.skoltech.ru/admissions",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "skoltech",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.skoltech.ru/admissions",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://www.gup.ru/enroll/help/abits/2026/enrolled/getrating/1111428527/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgup-spb",
+          "type": "funded_places_document",
+          "program": "Конфликтология — места по линии федеральной субсидии",
+          "year": 2026
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.gup.ru/enroll/help/abits/2026/enrolled/getrating/1111428527/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://www.gup.ru/uni/structure/faculties/",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "spbgup-spb",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.gup.ru/uni/structure/faculties/",
+      "contentType": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://abiturient.iict.ru/",
+      "referenceCount": 4,
+      "references": [
+        {
+          "schoolId": "iict-voronezh",
+          "type": "tuition_document",
+          "program": "Бакалавриат — очная форма (минимальная опубликованная стоимость)",
+          "year": 2026
+        },
+        {
+          "schoolId": "iict-voronezh",
+          "type": "tuition_document",
+          "program": "Бакалавриат — заочная и очно-заочная формы",
+          "year": 2026
+        },
+        {
+          "schoolId": "iict-voronezh",
+          "type": "tuition_document",
+          "program": "Дизайн (очная форма)",
+          "year": 2026
+        },
+        {
+          "schoolId": "iict-voronezh",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://abiturient.iict.ru/",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    },
+    {
+      "url": "https://inpsycho.ru/abitur/bachelor/",
+      "referenceCount": 17,
+      "references": [
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "География и психология человека (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Вычислительная биология (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Нейробиология поведения человека и животных (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Нейробиология поведения человека и животных (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Экология и эволюция человека (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Экология и эволюция человека (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Аналитика данных и ИИ в психологии и образовании (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Детское и семейное консультирование (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Клинические основы психологического здоровья человека (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Психологическое консультирование и психотерапия качества жизни (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Педагогика и психология девиантного поведения (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Педагогика и психология девиантного поведения (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Клиническая психология (очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Организационно-психологическое консультирование (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Прикладная психология и управление персоналом в цифровой среде (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "tuition_document",
+          "program": "Фундаментальные и прикладные исследования в области наук о человеке (очно-заочная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mip-moscow",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://inpsycho.ru/abitur/bachelor/",
+      "contentType": "text/html",
+      "error": null
+    },
+    {
+      "url": "https://mi.university/sveden/files/signed/Prikaz_stoimosti_2026-2027.pdf",
+      "referenceCount": 6,
+      "references": [
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "tuition_document",
+          "program": "Информационные системы и технологии (бакалавриат, очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "tuition_document",
+          "program": "Психология (бакалавриат, очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "tuition_document",
+          "program": "Экономика (бакалавриат, очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "tuition_document",
+          "program": "Менеджмент (бакалавриат, очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "tuition_document",
+          "program": "Юриспруденция (бакалавриат, очная)",
+          "year": 2026
+        },
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "tuition_document",
+          "program": "Реклама и связи с общественностью (бакалавриат, очная)",
+          "year": 2026
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mi.university/sveden/files/signed/Prikaz_stoimosti_2026-2027.pdf",
+      "contentType": "application/pdf",
+      "error": null
+    },
+    {
+      "url": "https://mi.university/postupayushchim/price-list",
+      "referenceCount": 1,
+      "references": [
+        {
+          "schoolId": "mmiu-moscow",
+          "type": "institution_profile_source"
+        }
+      ],
+      "checkedAt": "2026-11-28T08:32:14.599Z",
+      "reachable": true,
+      "httpStatus": 200,
+      "finalUrl": "https://mi.university/postupayushchim/price-list",
+      "contentType": "text/html; charset=UTF-8",
+      "error": null
+    }
+  ]
 }

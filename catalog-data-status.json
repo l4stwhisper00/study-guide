@@ -1,11 +1,197 @@
 {
-  "checkedAt": null,
-  "lastSuccessfulDataAt": null,
+  "checkedAt": "2026-11-28T08:34:59.223Z",
+  "lastSuccessfulDataAt": "2026-11-28T08:34:59.223Z",
   "intervalDays": 14,
-  "sources": 0,
-  "successfulSources": 0,
-  "needsReview": 0,
-  "updatedPrices": 0,
-  "updatedBudgetPlaces": 0,
-  "note": "The first scheduled admissions-data refresh has not run yet."
+  "sources": 8,
+  "successfulSources": 7,
+  "needsReview": 1,
+  "updatedPrices": 28,
+  "updatedBudgetPlaces": 9,
+  "note": "Automatic values are imported only when the configured official page contains a matching program row and a readable current-year amount/count. Monthly values are calculated as annual amount divided by 12 and are not an instalment schedule. Missing or changed layouts are flagged for review; previously verified values are preserved.",
+  "sourceResults": [
+    {
+      "id": "rosnou-price",
+      "schoolId": "rosnou-moscow",
+      "url": "https://rosnou.ru/bak/price/",
+      "status": "updated",
+      "extractedPrices": 12,
+      "extractedBudgetPlaces": 0,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://rosnou.ru/bak/price/",
+      "year": 2026,
+      "tableCount": 6,
+      "tableRows": 74,
+      "matchSamples": [
+        {
+          "alias": "Математическое моделирование и вычислительная математика",
+          "matchingRows": [
+            "Математическое моделирование и вычислительная математика | 230 000 ₽ |  | "
+          ],
+          "textMatches": true
+        },
+        {
+          "alias": "Технологии программного обеспечения",
+          "matchingRows": [
+            "Технологии программного обеспечения | 230 000 ₽ |  | "
+          ],
+          "textMatches": true
+        },
+        {
+          "alias": "Кибербезопасность",
+          "matchingRows": [
+            "Кибербезопасность | 280 000 ₽ |  | "
+          ],
+          "textMatches": true
+        }
+      ]
+    },
+    {
+      "id": "rosnou-budget",
+      "schoolId": "rosnou-moscow",
+      "url": "https://rosnou.ru/bak/program/",
+      "status": "updated",
+      "extractedPrices": 0,
+      "extractedBudgetPlaces": 8,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://rosnou.ru/bak/program/",
+      "year": 2026,
+      "tableCount": 11,
+      "tableRows": 150
+    },
+    {
+      "id": "mip-price",
+      "schoolId": "mip-moscow",
+      "url": "https://inpsycho.ru/abitur/bachelor/",
+      "status": "needs_review",
+      "extractedPrices": 0,
+      "extractedBudgetPlaces": 0,
+      "warnings": [
+        "no_structured_values_extracted"
+      ],
+      "httpStatus": 200,
+      "finalUrl": "https://inpsycho.ru/abitur/bachelor/",
+      "year": 2026,
+      "tableCount": 23,
+      "tableRows": 871,
+      "matchSamples": [
+        {
+          "alias": "Вычислительная биология",
+          "matchingRows": [
+            "2 | 06.03.01 Биология, образовательная программа: Вычислительная биология: моделирование и анализ данных в биологических системах |  | очная | 50 | 0 | - | - | - | - | 25"
+          ],
+          "textMatches": true
+        },
+        {
+          "alias": "Аналитика данных и искусственный интеллект в психологии и образовании",
+          "matchingRows": [
+            "5 | 09.03.03 Прикладная информатика, образовательная программа: Аналитика данных и искусственный интеллект в психологии и образовании |  | очная | 175 | 0 | - | - | - | - | 25"
+          ],
+          "textMatches": true
+        },
+        {
+          "alias": "Детское и семейное консультирование",
+          "matchingRows": [
+            "6 | 37.03.01 Психология, образовательная программа: Детское и семейное консультирование | 37.03.01 Психология/Детское и семейное консультирование | очно-заочная | 146 | 16 | 12 | 0 | 2 | 2 | 130"
+          ],
+          "textMatches": true
+        }
+      ],
+      "debugPreview": "Стоимость обучения\nСтоимость обучения\nОбразец договора об оказании платных образовательных услуг\nСтоимость обучения за год\nДокумент об утверждении стоимости обучения по каждой образовательной программе\nПриказ Об утверждении стоимости обучения для Обучающихся на программах высшего образования НОЧУ ВО Московский институт психоанализа в 2026/2027 учебном году\nПриказ Об утверждении стоимости обучения для Обучающихся на программах высшего образования НОЧУ ВО Московский институт психоанализа в 2026/2027 учебном году\nОбразец договора об оказании платных образовательных услуг\nформы договоров об оказании платных образовательных услуг аспирантура\nформы договоров об оказании платных образовательных у"
+    },
+    {
+      "id": "mmiu-price",
+      "schoolId": "mmiu-moscow",
+      "url": "https://mi.university/postupayushchim/price-list",
+      "status": "updated",
+      "extractedPrices": 6,
+      "extractedBudgetPlaces": 0,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://mi.university/postupayushchim/price-list",
+      "year": 2026,
+      "tableCount": 1,
+      "tableRows": 87,
+      "matchSamples": [
+        {
+          "alias": "Информационные системы и технологии",
+          "matchingRows": [
+            "09.03.02 Информационные системы и технологии | 255 000 | 510 000 | 50 000 | 100 000 | 205 000 | 410 000"
+          ],
+          "textMatches": true
+        },
+        {
+          "alias": "Психология",
+          "matchingRows": [
+            "37.03.01 Психология | 239 000 | 478 000 | 62 000 | 124 000 | 177 000 | 354 000"
+          ],
+          "textMatches": true
+        },
+        {
+          "alias": "Экономика",
+          "matchingRows": [
+            "38.03.01 Экономика | 239 000 | 478 000 | 62 000 | 124 000 | 177 000 | 354 000"
+          ],
+          "textMatches": true
+        }
+      ]
+    },
+    {
+      "id": "synergy-minimums",
+      "schoolId": "synergy",
+      "url": "https://synergy.ru/abiturientam/priemnaya_komissiya",
+      "status": "updated",
+      "extractedPrices": 5,
+      "extractedBudgetPlaces": 0,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://synergy.ru/abiturientam/priemnaya_komissiya",
+      "year": 2026,
+      "tableCount": 0,
+      "tableRows": 0
+    },
+    {
+      "id": "mikt-price",
+      "schoolId": "iict-voronezh",
+      "url": "https://abiturient.iict.ru/",
+      "status": "updated",
+      "extractedPrices": 3,
+      "extractedBudgetPlaces": 0,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://abiturient.iict.ru/",
+      "year": 2026,
+      "tableCount": 0,
+      "tableRows": 0
+    },
+    {
+      "id": "mikt-college-price",
+      "schoolId": "iict-college-voronezh",
+      "url": "https://college.iict.ru/",
+      "status": "updated",
+      "extractedPrices": 2,
+      "extractedBudgetPlaces": 0,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://college.iict.ru/",
+      "year": 2026,
+      "tableCount": 0,
+      "tableRows": 0
+    },
+    {
+      "id": "gup-subsidy",
+      "schoolId": "spbgup-spb",
+      "url": "https://www.gup.ru/enroll/help/abits/2026/enrolled/getrating/1111428527/",
+      "status": "updated",
+      "extractedPrices": 0,
+      "extractedBudgetPlaces": 1,
+      "warnings": [],
+      "httpStatus": 200,
+      "finalUrl": "https://www.gup.ru/enroll/help/abits/2026/enrolled/getrating/1111428527/",
+      "year": 2026,
+      "tableCount": 1,
+      "tableRows": 498
+    }
+  ]
 }
