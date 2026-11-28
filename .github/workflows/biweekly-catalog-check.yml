@@ -1,33 +1,77 @@
-name: Biweekly education catalogue source check
+name: Biweekly education catalogue refresh
 
 on:
   schedule:
     - cron: '17 5 * * 1'
   workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force a refresh even when the 14-day interval has not elapsed'
+        required: false
+        default: false
+        type: boolean
+  pull_request:
+    branches: [main]
 
-permissions:
-  contents: write
+concurrency:
+  group: education-catalogue-refresh
+  cancel-in-progress: false
 
 jobs:
-  check-official-sources:
+  test-admissions-import:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
     steps:
-      - name: Check out repository
+      - name: Check out source
         uses: actions/checkout@v7
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 22
-      - name: Check official institution websites
+      - name: Validate script syntax
+        run: |
+          node --check scripts/refresh-catalog-sources.mjs
+          node --check scripts/refresh-catalog-data.mjs
+      - name: Test official admissions-page extraction without writing data
+        env:
+          FORCE_CATALOG_REFRESH: 'true'
+          CATALOG_REFRESH_CHECK_ONLY: 'true'
+        run: node scripts/refresh-catalog-data.mjs
+      - name: Ensure the test did not modify generated files
+        run: git diff --exit-code -- catalog-data-live.js catalog-data-status.json catalog-source-status.json
+
+  refresh-catalogue:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Check institution and programme source links
+        env:
+          FORCE_CATALOG_REFRESH: ${{ github.event_name == 'workflow_dispatch' && inputs.force_refresh || false }}
         run: node scripts/refresh-catalog-sources.mjs
-      - name: Commit freshness report
+      - name: Refresh verified tuition and funded places
+        env:
+          FORCE_CATALOG_REFRESH: ${{ github.event_name == 'workflow_dispatch' && inputs.force_refresh || false }}
+        run: node scripts/refresh-catalog-data.mjs
+      - name: Commit refreshed catalogue data and reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalog-source-status.json
+          git add catalog-source-status.json catalog-data-live.js catalog-data-status.json
           if git diff --cached --quiet; then
-            echo "No catalogue freshness changes to commit."
+            echo "No catalogue data or status changes."
           else
-            git commit -m "chore: refresh education catalogue source status"
+            git commit -m "chore: refresh official education catalogue data"
             git push
           fi
