@@ -1,0 +1,16 @@
+name: Probe public monitoring HTML
+
+on:
+  push:
+    branches: [experiment/public-monitoring-scrape-probe]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Fetch and inspect one public region page
+        run: node scripts/probe-public-monitoring.mjs
