@@ -35,6 +35,32 @@ function icon(name, cls = 'icon') {
   return `<svg class="${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
 }
 
+function schoolMapLinks(school) {
+  const query = encodeURIComponent(school.n + ', ' + school.c);
+  return {
+    yandex: 'https://yandex.ru/maps/?text=' + query,
+    twoGis: 'https://2gis.ru/search/' + query,
+    admissions: 'https://yandex.ru/search/?text=' + encodeURIComponent(
+      school.n + ' ' + school.c + ' проходные баллы 2025 приёмная комиссия'
+    ),
+  };
+}
+
+function scoreMeta(school) {
+  if (school.s == null || !Number.isFinite(Number(school.s))) {
+    return {
+      value: 'Нет подтверждённых данных',
+      label: school.t === 'college' ? 'Средний балл аттестата' : 'Проходной балл ЕГЭ',
+      note: 'Значение не опубликовано в каталоге. Уточни его в приёмной комиссии по конкретной специальности и форме обучения.',
+    };
+  }
+  return {
+    value: String(school.s) + (school.t === 'college' ? ' / 5' : ' баллов'),
+    label: school.t === 'college' ? 'Ориентир среднего балла аттестата' : 'Ориентир суммы ЕГЭ',
+    note: 'Это ориентир из текущей версии каталога, а не подтверждённый официальный проходной балл. Год, конкурсная группа и программа требуют проверки в приёмной комиссии.',
+  };
+}
+
 function chanceInfo(school) {
   const scores = store.get('scores', {});
   if (school.s == null || !Number.isFinite(Number(school.s))) {
@@ -356,30 +382,71 @@ function initVuzi() {
   const dialog = $('#schoolDialog');
   const openDialog = school => {
     const ch = chanceInfo(school);
+    const maps = schoolMapLinks(school);
+    const score = scoreMeta(school);
+    const category = CATEGORIES.find(c => c.key === school.cat);
+    const examRows = (school.sub || []).map(k =>
+      `<tr><td>${escapeHtml(SUBJECTS[k] || k)}</td></tr>`
+    ).join('');
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
+      <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
-      <p class="dialog-desc">${escapeHtml(school.d)}</p>
-      <dl class="d-grid">
-        <div class="d-cell"><dt>${school.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'}</dt>
-          <dd>${school.s == null ? 'Нет проверенных данных' : `${school.s}<small>${school.t === 'college' ? ' аттестат' : ' ЕГЭ'}</small>`}</dd></div>
-        <div class="d-cell"><dt>Шансы</dt>
-          <dd class="chance ${ch.cls}" style="font-size:1rem">${ch.text}</dd></div>
-      </dl>
-      <table class="d-table">
-        <caption>Нужные экзамены</caption>
-        <tr><th>${school.t === 'college' ? 'Предметы' : 'ЕГЭ'}</th></tr>
-        ${school.sub.map(k => `<tr><td>${SUBJECTS[k]}</td></tr>`).join('')}
-      </table>
+      <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
+
+      <section class="school-profile-section" aria-label="Основная информация">
+        <h3>О заведении</h3>
+        <dl class="school-profile-grid">
+          <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
+          <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
+          <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
+          <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
+        </dl>
+      </section>
+
+      <section class="school-profile-section" aria-label="Информация о поступлении">
+        <h3>Поступление и баллы</h3>
+        <div class="d-grid">
+          <div class="d-cell">
+            <dt>${escapeHtml(score.label)}</dt>
+            <dd class="school-score-value">${escapeHtml(score.value)}</dd>
+            <p class="score-source-note">${escapeHtml(score.note)}</p>
+          </div>
+          <div class="d-cell">
+            <dt>Оценка твоих шансов</dt>
+            <dd class="chance ${ch.cls}" style="font-size:1rem">${escapeHtml(ch.text)}</dd>
+          </div>
+        </div>
+        <p class="school-profile-hint">Проходной балл — это результат последнего зачисленного абитуриента. Он отличается по направлению, форме обучения, основе (бюджет/платное) и году приёма. Для колледжей конкурс обычно зависит от среднего балла аттестата и правил конкретного набора.</p>
+        <a class="link-btn" href="${maps.admissions}" target="_blank" rel="noopener noreferrer">Найти официальные проходные баллы и правила приёма ${icon('i-ext')}</a>
+      </section>
+
+      <section class="school-profile-section">
+        <h3>Какие экзамены учитывать</h3>
+        <table class="d-table">
+          <caption>${school.t === 'college' ? 'Предметы / вступительные испытания из каталога' : 'Предметы ЕГЭ из каталога'}</caption>
+          <tbody>${examRows || '<tr><td>Уточни перечень на сайте приёмной комиссии</td></tr>'}</tbody>
+        </table>
+        <p class="school-profile-hint">Перечень предметов может отличаться в зависимости от выбранной образовательной программы. Перед подачей документов проверь правила приёма текущего года.</p>
+      </section>
+
+      <section class="school-profile-section">
+        <h3>Адрес и расположение</h3>
+        <p class="school-profile-hint">У крупных вузов и колледжей может быть несколько корпусов и кампусов. Открой поиск на карте и выбери нужный корпус по адресу из официального сайта.</p>
+        <div class="dialog-actions map-actions">
+          <a class="btn btn-primary" href="${maps.yandex}" target="_blank" rel="noopener noreferrer">Яндекс Карты ${icon('i-ext')}</a>
+          <a class="btn" href="${maps.twoGis}" target="_blank" rel="noopener noreferrer">2ГИС ${icon('i-ext')}</a>
+        </div>
+      </section>
+
       <div class="dialog-actions">
-        <a class="btn btn-primary" href="https://${school.u}" target="_blank" rel="noopener">
-          Сайт ${school.t === 'college' ? 'колледжа' : 'вуза'} ${icon('i-ext')}</a>
+        <a class="btn" href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">Официальный сайт ${icon('i-ext')}</a>
         <button type="button" class="btn" data-close>Закрыть</button>
       </div>`;
     dialog.showModal();
   };
-  dialog.addEventListener('click', e => {
+    dialog.addEventListener('click', e => {
     if (e.target.closest('[data-close]') || e.target === dialog) dialog.close();
   });
 
@@ -434,7 +501,7 @@ function initVuzi() {
           </div>
           <button type="button" class="card-open" data-open="${s.id}">${escapeHtml(s.n)}</button>
           <dl class="facts">
-            <div><dt>${s.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'}</dt>
+            <div><dt>${s.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'} · требует проверки</dt>
               <dd class="score">${s.s == null ? '—' : s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
             <div><dt class="chance ${ch.cls}">${ch.text}</dt></div>
           </dl>
