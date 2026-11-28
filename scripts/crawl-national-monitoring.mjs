@@ -9,7 +9,10 @@ import {
 
 const ROOT_URL = "https://monitoring.miccedu.ru/?m=spo&year=2025";
 const USER_AGENT = "SchoolNavigator public catalogue research/1.0";
-const CONCURRENCY = Math.max(1, Number(process.env.CRAWL_CONCURRENCY || 3));
+const CONCURRENCY = Math.max(1, Number(process.env.CRAWL_CONCURRENCY || 2));
+const REQUEST_DELAY_MS = Math.max(0, Number(process.env.CRAWL_REQUEST_DELAY_MS || 300));
+const CHUNK_INDEX = Math.max(0, Number(process.env.CRAWL_CHUNK_INDEX || 0));
+const CHUNK_COUNT = Math.max(1, Number(process.env.CRAWL_CHUNKS || 1));
 const OUTPUT_CSV = process.env.OUTPUT_CSV || "data/incoming/national-monitoring-2025.csv";
 const OUTPUT_REPORT = process.env.OUTPUT_REPORT || "data/incoming/national-monitoring-2025-report.json";
 
@@ -17,7 +20,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetchText(url) {
   let lastError;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < 4; attempt += 1) {
     try {
       const response = await fetch(url, {
         headers: { "User-Agent": USER_AGENT },
@@ -29,7 +32,10 @@ async function fetchText(url) {
       return await response.text();
     } catch (error) {
       lastError = error;
-      if (attempt < 2) await sleep(500 * (attempt + 1));
+      if (attempt < 3) {
+        const rateLimited = String(error).includes("HTTP 468");
+        await sleep(rateLimited ? 5000 * (attempt + 1) : 1000 * (attempt + 1));
+      }
     }
   }
   throw lastError;
@@ -86,13 +92,21 @@ function toCsv(rows) {
 }
 
 const rootHtml = await fetchText(ROOT_URL);
-const regions = parseRegionIndex(rootHtml);
-if (regions.length < 80) {
-  throw new Error("Expected the national index to expose at least 80 regional pages; found " + regions.length);
+const allRegions = parseRegionIndex(rootHtml);
+if (allRegions.length < 80) {
+  throw new Error("Expected the national index to expose at least 80 regional pages; found " + allRegions.length);
 }
+if (CHUNK_INDEX >= CHUNK_COUNT) {
+  throw new Error("CRAWL_CHUNK_INDEX must be smaller than CRAWL_CHUNKS.");
+}
+const chunkSize = Math.ceil(allRegions.length / CHUNK_COUNT);
+const regions = allRegions.slice(CHUNK_INDEX * chunkSize, (CHUNK_INDEX + 1) * chunkSize);
+if (!regions.length) throw new Error("The selected crawl chunk contains no regions.");
 
-console.log("REGIONS_DISCOVERED " + regions.length);
+console.log("REGIONS_DISCOVERED " + allRegions.length);
+console.log("REGIONS_SELECTED " + JSON.stringify({ chunkIndex: CHUNK_INDEX, chunkCount: CHUNK_COUNT, count: regions.length }));
 const regionResults = await mapLimit(regions, CONCURRENCY, async region => {
+  await sleep(REQUEST_DELAY_MS);
   const vpoUrl = new URL(region.href, ROOT_URL).href;
   const spoUrl = vpoUrl.replace("/_vpo/", "/_spo/");
   const pages = await Promise.all([fetchText(vpoUrl), fetchText(spoUrl)]);
@@ -217,7 +231,10 @@ const regionStats = successful.map(result => {
 const report = {
   generatedAt: new Date().toISOString(),
   sourceIndexUrl: ROOT_URL,
-  regionPagesDiscovered: regions.length,
+  regionPagesDiscovered: allRegions.length,
+  regionPagesRequested: regions.length,
+  chunkIndex: CHUNK_INDEX,
+  chunkCount: CHUNK_COUNT,
   regionPagesFetched: successful.length,
   regionFailures: failures,
   rawVpoRows,
@@ -239,6 +256,9 @@ writeFileSync(OUTPUT_REPORT, JSON.stringify(report, null, 2) + "\n", "utf8");
 
 console.log("CRAWL_SUMMARY " + JSON.stringify({
   regionPagesDiscovered: report.regionPagesDiscovered,
+  regionPagesRequested: report.regionPagesRequested,
+  chunkIndex: CHUNK_INDEX,
+  chunkCount: CHUNK_COUNT,
   regionPagesFetched: report.regionPagesFetched,
   failedRegions: failures.length,
   rawVpoRows,
@@ -250,5 +270,8 @@ console.log("CRAWL_SUMMARY " + JSON.stringify({
   skipped,
   needsReviewCount: needsReview.length
 }));
-if (failures.length) console.log("CRAWL_FAILURES " + JSON.stringify(failures));
+if (failures.length) {
+  console.log("CRAWL_FAILURES " + JSON.stringify(failures));
+  process.exitCode = 1;
+}
 console.log("CRAWL_OUTPUT " + JSON.stringify({ csv: OUTPUT_CSV, report: OUTPUT_REPORT }));
