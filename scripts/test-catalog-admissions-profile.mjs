@@ -43,7 +43,8 @@ const kfu = getCatalogDetails(school('kfu'));
 assert(kfu.ownership === 'public', 'KFU ownership is not marked public');
 assert(kfu.ownershipConfidence === 'official-name', 'KFU ownership must be marked from official name');
 assert(kfu.description && kfu.description.length > 150, 'KFU profile description is too short');
-assert(kfu.descriptionSourceUrl?.endsWith('.pdf'), 'KFU description source should point to the official 2026 result document');
+assert(kfu.descriptionSourceUrl === 'https://admissions.kpfu.ru/dokumenty/bakalavriat-specialitet/itogi-priyoma/',
+  'KFU description source should point to the official admissions page');
 assertRows(kfu.passingScores, 'KFU passing scores', {
   field: 'score',
   test: row => row.score > 0 && row.basis === 'budget' || row.score > 0 && row.basis === 'paid'
