@@ -23,7 +23,7 @@ Required settings:
 4. Enable leaked-password protection if available on the project's plan. The current Supabase Security Advisor reports this protection as disabled.
 5. Do not configure SMTP for account authentication. It is not used by this flow.
 6. The public Edge Function \`username-auth\` must have JWT verification disabled because registration and login are public actions. It validates input and origin, applies rate limits, validates CAPTCHA challenges, and uses the service role only on the server.
-6. Never expose the service-role key or other secret keys in browser code.
+7. Never expose the service-role key or other secret keys in browser code.
 
 Protection:
 - Nicknames are case-insensitive and unique; 3–24 Unicode letters/digits plus \`_\`, \`-\`, or \`.\`.
