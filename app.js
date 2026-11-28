@@ -719,7 +719,7 @@ function initVuzi() {
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}${school.region ? ' · ' + escapeHtml(school.region) : ''}</p>
       <p class="dialog-desc">${escapeHtml(description.text)}</p>
       ${description.generated ? '<p class="school-profile-hint">' + (description.programsVerified ? 'Описание собрано как краткая справка; направления обучения взяты из опубликованной страницы приёма, а не из рекламного текста.' : 'Профиль сформирован по названию и классификации каталога. Это справочное описание, а не подтверждённый перечень образовательных программ.') + '</p>' : ''}
-      ${description.sourceUrl ? '<p class="school-profile-hint">Источник описания: <a href="' + escapeHtml(description.sourceUrl) + '" target="_blank" rel="noopener noreferrer">официальная страница / документ</a>.</p>' : ''}
+      ${description.sourceUrl ? '<p class="school-profile-hint">Источник сведений об организации: <a href="' + escapeHtml(description.sourceUrl) + '" target="_blank" rel="noopener noreferrer">официальная страница / документ</a>.</p>' : ''}
 
       <section class="school-profile-section" aria-label="Основная информация">
         <h3>О заведении</h3>
