@@ -1,48 +1,49 @@
 # Security and production-readiness review
 
-Last reviewed: 2026-11-23
+Last reviewed: 2026-11-28
 
-## What has been checked
+## Authentication architecture
 
-## Authentication implementation
+The username-only authentication implementation is being introduced on the \`feature/username-password-captcha\` branch. Its additive database schema and the \`username-auth\` Edge Function have been deployed to the School Navigator Supabase project; the website files are staged on the feature branch pending review and publication.
 
-The live branch now uses Supabase Auth for email/password registration and sign-in, email verification, resend confirmation, password recovery, password change and email change. Session restoration is shared across the static site's core pages. User profiles, notes, exam scores, topic progress and study plans are stored per user in Supabase; the account page can import matching legacy browser profile and notes data once after successful sign-in.
+The public account UI asks only for a nickname and password. Supabase Auth still provides password hashing, access/refresh tokens, and session handling. The Edge Function assigns a random opaque identifier under the reserved \`.invalid\` domain internally; the identifier is not derived from the nickname and is never shown or used for mail. The nickname-to-identifier mapping is stored in a table inaccessible to browser roles.
 
-A new `study_profiles` table uses owner-only RLS. The private `study-avatars` Storage bucket restricts each user's objects to their own UUID folder. The client uses only the public publishable key; no service-role key is present in the browser.
+The Edge Function validates requests, restricts browser origins to the production site, rate-limits registrations, tracks failed login attempts by nickname and IP hash, and requires a one-time server-validated CAPTCHA after three incorrect passwords. CAPTCHA answers are stored as hashes and expire after five minutes. The Edge Function is public by design (\`verify_jwt=false\`) because it handles registration and login; privileged operations use the service-role key only server-side.
 
-**Still required before public launch:** set the Supabase Auth Site URL and exact redirect allowlist, keep email confirmation enabled, set the minimum password length to 6 characters, configure custom SMTP, and expose the `public` schema in Data API settings. Those Dashboard settings cannot be independently read or changed with the connected database tools. A real-mailbox and two-account isolation test remains outstanding.
+**Remaining Auth warning:** Supabase Security Advisor still reports leaked-password protection as disabled. Enable it in Authentication → Password Security if the project's plan supports it.
 
+**Important limitation:** there is no email address or other account-recovery channel. A user who forgets their password cannot self-recover the account. Users can change their password while signed in.
 
-- Supabase is a separate project from GameClub. Browser configuration contains a publishable key only; no service-role key was found in the public repository search.
-- RLS is enabled on the eight public application tables and the private exercise-answer table.
-- Course read policies restrict learners to published courses, modules, lessons, and exercises. Admin writes are checked against the `site_admins` allowlist.
-- Correct exercise answers are stored in the private schema. The answer-key RPCs are executable only by `service_role`.
-- Public table grants have been reduced to the minimum required: anonymous users can read the public course catalogue only; signed-in users can perform the learning operations required by the site; only the backend role can manage private answer keys.
-- PostgreSQL's default privileges for future objects created by the migration role in `public` now revoke table/sequence access and function execution from browser roles (and `PUBLIC` for functions), so new app objects do not silently inherit the previous broad grants. Supabase-managed `supabase_admin` defaults are provider-owned and were not changed; keep application schema changes in migrations executed by the project migration role.
-- Answer checking now has a per-user limit of 30 requests per 60-second window, bounded request bodies, UUID and answer-size validation, published-content checks, and non-cacheable responses.
-- Saving answer keys checks the JWT and server-side admin allowlist, enforces request limits, validates input, and avoids returning raw database errors.
-- Supabase Security and Health Advisors returned no remaining lints after the final policy adjustment.
+## Other application protections
+
+- The browser contains only the public Supabase publishable key; no service-role key is present in public client code.
+- User profiles and notes have owner-only RLS.
+- The private \`study-avatars\` Storage bucket restricts each user's objects to their own UUID folder.
+- Course read policies restrict learners to published courses, modules, lessons, and exercises. Admin writes are checked against the \`site_admins\` allowlist.
+- Correct exercise answers remain in the private schema and are checked through authenticated Edge Functions.
+- Exercise answer checking has a per-user request limit, bounded request bodies, UUID and answer-size validation, published-content checks, and non-cacheable responses.
+- Future public-schema objects created by the migration role have restrictive default privileges.
 
 ## Important limits
 
-This is a source-code and managed-database review, not a penetration test or a certification. The live site's HTTP response headers, DNS, TLS, hosting account, backups, email delivery, and browser behaviour have not been independently verified from this environment.
+This is a source-code and managed-database review, not a penetration test or certification. The live site's HTTP response headers, DNS, TLS, hosting account, backups, and browser behavior have not been independently verified from this environment.
 
-The repository contains a custom-domain `CNAME` and is structured as a GitHub Pages static site. GitHub Pages is intended for static project sites, not a paid SaaS or online business service. Before commercial operation, move the customer-facing application to a commercial host that supports server-side response headers, observability, deployment controls, and an appropriate service agreement. Do not treat a meta tag as a substitute for HTTP security headers. See GitHub's Pages terms: https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages
+The repository contains a custom-domain \`CNAME\` and is structured as a GitHub Pages static site. Before commercial operation, consider a commercial host that supports server-side response headers, observability, deployment controls, and an appropriate service agreement. Do not treat a meta tag as a substitute for HTTP security headers.
 
-## Production blockers to resolve before taking money
+## Remaining production checks
 
-1. The current `main` account page remains a browser-only demo: identity, profile and notes are stored in localStorage, with no server-side identity or access control. New demo passwords are now derived with PBKDF2-HMAC-SHA-256 (600,000 iterations, random 16-byte salt); legacy SHA-256 demo records are upgraded after a successful login. This only improves the local demo's resistance to offline guessing. It does not make localStorage private or tamper-proof, and it is not suitable for real customer accounts or sensitive personal data. See the [OWASP Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html). The Supabase-backed implementation exists on a separate draft pull request and is not yet the live site.
-2. The Supabase Auth Site URL, redirect allowlist, custom SMTP, Data API exposure, owner account and owner-admin grant must be configured and tested in the Dashboard.
-3. The new course pages and backend remain in an unmerged draft pull request. Complete browser-based end-to-end tests against staging before merging or publishing.
-4. Configure GitHub branch protection/rulesets, require successful checks before merging, and require review for production changes. The connected GitHub integration could read the repository rulesets (none were returned) but could not read the branch-protection endpoint, so protection status is not confirmed.
+1. Publish the username-auth website files only after static validation and review.
+2. Complete real-browser tests for registration, duplicate nicknames, sign-in, CAPTCHA after three failures, password change, session restore, and cross-account isolation.
+3. Run Supabase Security and Performance Advisors after the new schema changes and remediate any findings.
+4. Configure GitHub branch protection/rulesets and require successful checks before merging production changes.
 5. Configure tested database backups/PITR, perform a restore drill, and keep an incident-response and key-rotation procedure.
-6. Add production monitoring, error tracking, uptime alerts, privacy/terms/cookie notices as applicable, and a documented data-retention/deletion process.
+6. Add production monitoring, error tracking, uptime alerts, privacy/terms notices as applicable, and a documented data-retention/deletion process.
 7. Obtain an independent security review before accepting substantial payments or storing sensitive learner information.
 
 ## Deploying changes safely
 
-- Keep the production branch protected.
-- Use pull requests and run CodeQL plus the repository validation workflow.
+- Keep production changes in pull requests.
+- Run repository validation and syntax checks before merging.
 - Keep service keys only in Supabase-managed secrets or a trusted server secret store.
-- Re-run Supabase Security and Health Advisors after every schema/policy change.
-- Never merge an untested migration or deploy a new auth flow directly to paying users.
+- Re-run Supabase Security and Performance Advisors after schema/policy changes.
+- Never merge an untested migration or deploy an untested authentication flow to users.

@@ -16,7 +16,6 @@
   const MAX_AVATAR_BYTES = 400 * 1024;
   const MAX_NOTE_LENGTH = 10000;
   const MAX_NOTES_TO_IMPORT = 100;
-  const authRedirectTo = () => new URL('account.html', window.location.origin + '/').toString();
 
   let currentUser = null;
   let profile = null;
@@ -26,7 +25,6 @@
   let initializingUserId = null;
   let coursePlan = [];
   let authMode = 'login';
-  let resetMode = false;
 
   const parseStored = (key, fallback) => {
     try {
@@ -66,10 +64,10 @@
 
   const friendlyError = (error, fallback) => {
     const message = String(error?.message || '');
-    if (/Invalid login credentials/i.test(message)) return 'Неверная почта или пароль.';
-    if (/Email not confirmed/i.test(message)) return 'Сначала подтверди почту по ссылке из письма.';
+    if (/Invalid login credentials/i.test(message)) return 'Неверный ник или пароль.';
+    if (/Email not confirmed/i.test(message)) return 'Не удалось подтвердить внутренний идентификатор аккаунта. Обратись к администратору.';
     if (/Password should be at least/i.test(message)) return 'Supabase отклонил пароль. Проверь минимальную длину в настройках Auth.';
-    if (/User already registered/i.test(message)) return 'Аккаунт с такой почтой уже существует. Попробуй войти.';
+    if (/User already registered/i.test(message)) return 'Этот ник уже занят. Выбери другой.';
     if (/rate limit|too many requests/i.test(message)) return 'Слишком много запросов. Подожди немного и попробуй снова.';
     if (/redirect.*not allowed|not allowed.*redirect/i.test(message)) {
       return 'Supabase отклонил адрес возврата. Проверь Redirect URLs в настройках Auth.';
@@ -80,31 +78,15 @@
   function showAuth() {
     $('#authView').hidden = false;
     $('#dashView').hidden = true;
-    $('#passwordResetView').hidden = true;
   }
 
   function showDashboard() {
     $('#authView').hidden = true;
     $('#dashView').hidden = false;
-    $('#passwordResetView').hidden = true;
-  }
-
-  function showPasswordReset() {
-    resetMode = true;
-    $('#authView').hidden = true;
-    $('#dashView').hidden = true;
-    $('#passwordResetView').hidden = false;
-    $('#newResetPassword').focus();
-  }
-
-  function clearAuthUrl() {
-    try {
-      window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
-    } catch {}
   }
 
   function validatePassword(password) {
-    if (password.length < 6) return 'Нужно минимум 6 символов.';
+    if (Array.from(password).length < 8) return 'Нужно минимум 8 символов.';
     if (password.length > 128) return 'Максимум 128 символов.';
     return '';
   }
@@ -280,7 +262,7 @@
   }
 
   async function openDashboard(user) {
-    if (!user?.id || !user.email) {
+    if (!user?.id) {
       showAuth();
       return;
     }
@@ -303,10 +285,7 @@
         renderProgress();
         initCalc();
         initCourse();
-        $('#currentAccountEmail').textContent = user.email;
-        $('#emailConfirmedLabel').textContent = user.email_confirmed_at
-          ? 'Почта подтверждена'
-          : 'Ожидает подтверждения почты';
+        $('#currentAccountUsername').textContent = user.app_metadata?.username || user.user_metadata?.username || '—';
         $('#dashboardStatus').textContent = '';
       } catch (error) {
         console.error('Ошибка загрузки профиля:', error);
@@ -324,11 +303,11 @@
 
   function renderProfile() {
     if (!profile) return;
-    $('#profileEmail').textContent = profile.display_name || currentUser.email;
+    $('#profileUsername').textContent = profile.display_name || currentUser.app_metadata?.username || currentUser.user_metadata?.username || 'Ученик';
     $('#profileBio').textContent = profile.bio || 'Расскажи о себе в настройках профиля.';
     $('#displayNameInput').value = profile.display_name || '';
     $('#bioInput').value = profile.bio || '';
-    $('#currentAccountEmail').textContent = currentUser.email;
+    $('#currentAccountUsername').textContent = currentUser.app_metadata?.username || currentUser.user_metadata?.username || '—';
     $('#profileHero').style.background = COVERS[profile.cover_index || 0];
     $('#coverPicker').innerHTML = COVERS.map((cover, index) =>
       '<button type="button" class="cover ' + (index === (profile.cover_index || 0) ? 'sel' : '') +
@@ -482,6 +461,32 @@
   }
 
   function initAuth() {
+    let captchaChallenge = null;
+
+    async function callAuthGateway(payload) {
+      const { data, error } = await supabase.functions.invoke('username-auth', { body: payload });
+      if (error) {
+        let details = {};
+        try {
+          if (error.context?.json) details = await error.context.json();
+        } catch {}
+        const failure = new Error(details.error || error.message || 'Ошибка авторизации.');
+        failure.payload = details;
+        failure.status = error.context?.status || 0;
+        throw failure;
+      }
+      return data;
+    }
+
+    async function requestCaptcha(username) {
+      const challenge = await callAuthGateway({ action: 'challenge', username });
+      captchaChallenge = challenge;
+      $('#captchaWrap').hidden = false;
+      $('#captchaQuestion').textContent = challenge.question;
+      $('#captchaAnswer').value = '';
+      $('#captchaAnswer').focus();
+    }
+
     $('#authSeg').addEventListener('click', (event) => {
       const button = event.target.closest('[data-mode]');
       if (!button) return;
@@ -490,21 +495,22 @@
         item.setAttribute('aria-pressed', String(item === button)));
       $('#pass2Wrap').hidden = authMode !== 'reg';
       $('#authPass').autocomplete = authMode === 'login' ? 'current-password' : 'new-password';
-      $('#authPass').minLength = authMode === 'login' ? 1 : 6;
       $('#authSubmit').textContent = authMode === 'login' ? 'Войти' : 'Создать аккаунт';
-      $('#forgotPassword').hidden = authMode !== 'login';
+      captchaChallenge = null;
+      $('#captchaWrap').hidden = true;
       setMessage('#authMsg', '');
     });
 
     $('#authForm').addEventListener('submit', async (event) => {
       event.preventDefault();
       const button = $('#authSubmit');
-      const email = $('#authEmail').value.trim().toLowerCase();
+      const username = $('#authUsername').value.trim().normalize('NFC');
       const password = $('#authPass').value;
       setMessage('#authMsg', '');
 
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        setMessage('#authMsg', 'Проверь адрес электронной почты.', 'bad');
+      if (!/^[\p{L}\p{N}][\p{L}\p{N}_.-]{2,23}$/u.test(username)) {
+        setMessage('#authMsg', 'Ник должен содержать от 3 до 24 символов: буквы, цифры, точку, дефис или подчёркивание.', 'bad');
+        $('#authUsername').focus();
         return;
       }
       if (!password) {
@@ -525,125 +531,61 @@
 
       setBusy(button, true, authMode === 'login' ? 'Входим…' : 'Создаём аккаунт…');
       try {
-        if (authMode === 'reg') {
-          const { data, error } = await supabase.auth.signUp({
-            email,
-            password,
-            options: { emailRedirectTo: authRedirectTo() }
-          });
-          if (error) throw error;
-          if (data.session?.user) {
-            await openDashboard(data.session.user);
-          } else {
-            $('#resendConfirmation').hidden = false;
-            $('#resendConfirmation').dataset.email = email;
-            setMessage('#authMsg', 'Аккаунт создан. Проверь почту и перейди по ссылке подтверждения, затем вернись на сайт для входа.', 'ok');
-          }
-        } else {
-          const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-          if (error) throw error;
-          await openDashboard(data.user);
+        const payload = {
+          action: authMode === 'reg' ? 'register' : 'login',
+          username,
+          password
+        };
+        if (authMode === 'login' && captchaChallenge) {
+          payload.challenge_id = captchaChallenge.challenge_id;
+          payload.captcha_answer = $('#captchaAnswer').value.trim();
         }
-      } catch (error) {
-        setMessage('#authMsg', friendlyError(error), 'bad');
-      } finally {
-        setBusy(button, false);
-      }
-    });
 
-    $('#forgotPassword').addEventListener('click', async () => {
-      const email = $('#authEmail').value.trim().toLowerCase();
-      if (!email) {
-        setMessage('#authMsg', 'Сначала укажи почту.', 'bad');
-        $('#authEmail').focus();
-        return;
-      }
-      const button = $('#forgotPassword');
-      setBusy(button, true, 'Отправляем…');
-      try {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: authRedirectTo() });
-        if (error) throw error;
-        setMessage('#authMsg', 'Если аккаунт с таким адресом существует, письмо для восстановления отправлено.', 'ok');
-      } catch (error) {
-        setMessage('#authMsg', friendlyError(error), 'bad');
-      } finally {
-        setBusy(button, false);
-      }
-    });
-
-    $('#resendConfirmation').addEventListener('click', async () => {
-      const email = $('#resendConfirmation').dataset.email || $('#authEmail').value.trim().toLowerCase();
-      if (!email) return;
-      const button = $('#resendConfirmation');
-      setBusy(button, true, 'Отправляем…');
-      try {
-        const { error } = await supabase.auth.resend({
-          type: 'signup',
-          email,
-          options: { emailRedirectTo: authRedirectTo() }
+        const result = await callAuthGateway(payload);
+        if (!result?.session?.access_token || !result?.session?.refresh_token) {
+          throw new Error('Сервер не вернул сессию. Попробуй войти ещё раз.');
+        }
+        captchaChallenge = null;
+        $('#captchaWrap').hidden = true;
+        const { data, error } = await supabase.auth.setSession({
+          access_token: result.session.access_token,
+          refresh_token: result.session.refresh_token
         });
         if (error) throw error;
-        setMessage('#authMsg', 'Если адрес ожидает подтверждения, новое письмо отправлено.', 'ok');
+        await openDashboard(data.user || result.user);
       } catch (error) {
-        setMessage('#authMsg', friendlyError(error), 'bad');
-      } finally {
-        setBusy(button, false);
-      }
-    });
-
-    $('#backToLogin').addEventListener('click', () => {
-      resetMode = false;
-      clearAuthUrl();
-      setMessage('#authMsg', '');
-      showAuth();
-    });
-
-    $('#passwordResetForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const password = $('#newResetPassword').value;
-      const confirmation = $('#confirmResetPassword').value;
-      const validation = validatePassword(password);
-      if (validation) {
-        setMessage('#resetMsg', validation, 'bad');
-        return;
-      }
-      if (password !== confirmation) {
-        setMessage('#resetMsg', 'Пароли не совпадают.', 'bad');
-        return;
-      }
-      const button = $('#resetPasswordSubmit');
-      setBusy(button, true, 'Сохраняем…');
-      try {
-        const { error } = await supabase.auth.updateUser({ password });
-        if (error) throw error;
-        resetMode = false;
-        clearAuthUrl();
-        $('#passwordResetView').hidden = true;
-        if (currentUser) showDashboard();
-        else showAuth();
-        setMessage('#authMsg', 'Пароль обновлён. Теперь можно войти с новым паролем.', 'ok');
-      } catch (error) {
-        setMessage('#resetMsg', friendlyError(error, 'Ссылка могла устареть. Запроси восстановление пароля ещё раз.'), 'bad');
+        const details = error.payload || {};
+        if (details.captcha_required) {
+          try {
+            await requestCaptcha(username);
+            setMessage('#authMsg', details.attempts
+              ? 'Три неверные попытки. Перед следующим входом реши пример.'
+              : 'Для продолжения реши пример.', 'bad');
+          } catch (captchaError) {
+            setMessage('#authMsg', captchaError.message || 'Не удалось загрузить проверку. Попробуй ещё раз.', 'bad');
+          }
+        } else if (details.captcha_invalid) {
+          try {
+            await requestCaptcha(username);
+            setMessage('#authMsg', 'Ответ неверный. Реши новый пример.', 'bad');
+          } catch (captchaError) {
+            setMessage('#authMsg', captchaError.message || 'Не удалось загрузить проверку.', 'bad');
+          }
+        } else {
+          setMessage('#authMsg', error.message || 'Не удалось выполнить вход.', 'bad');
+        }
       } finally {
         setBusy(button, false);
       }
     });
 
     supabase.auth.onAuthStateChange((event, session) => {
-      // Do not await Supabase calls inside this callback.
+      // Defer dashboard work until Supabase finishes its auth callback.
       setTimeout(() => {
-        if (event === 'PASSWORD_RECOVERY') {
-          if (session?.user) void openDashboard(session.user);
-          showPasswordReset();
-          return;
-        }
         if (session?.user) {
           if (event === 'USER_UPDATED' && currentUser?.id === session.user.id) {
             currentUser = session.user;
-            $('#currentAccountEmail').textContent = currentUser.email || '';
-            $('#emailConfirmedLabel').textContent = currentUser.email_confirmed_at
-              ? 'Почта подтверждена'
-              : 'Ожидает подтверждения почты';
+            $('#currentAccountUsername').textContent = currentUser.app_metadata?.username || currentUser.user_metadata?.username || '—';
             if (profile) renderProfile();
           }
           void openDashboard(session.user);
@@ -770,31 +712,6 @@
       }
     });
 
-    $('#changeEmailForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const email = $('#newEmail').value.trim().toLowerCase();
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        setMessage('#securityStatus', 'Проверь новый адрес электронной почты.', 'bad');
-        return;
-      }
-      if (email === String(currentUser.email || '').toLowerCase()) {
-        setMessage('#securityStatus', 'Это уже текущий адрес.', 'bad');
-        return;
-      }
-      const button = $('#changeEmailSubmit');
-      setBusy(button, true, 'Отправляем…');
-      try {
-        const { error } = await supabase.auth.updateUser({ email }, { emailRedirectTo: authRedirectTo() });
-        if (error) throw error;
-        $('#newEmail').value = '';
-        setMessage('#securityStatus', 'Запрос отправлен. Подтверди смену адреса по ссылкам в письмах Supabase.', 'ok');
-      } catch (error) {
-        setMessage('#securityStatus', friendlyError(error), 'bad');
-      } finally {
-        setBusy(button, false);
-      }
-    });
-
     $('#changePasswordForm').addEventListener('submit', async (event) => {
       event.preventDefault();
       const currentPassword = $('#currentPassword').value;
@@ -851,8 +768,5 @@
       showAuth();
     }
 
-    if (window.location.hash.includes('type=recovery')) {
-      showPasswordReset();
-    }
   });
 })();
