@@ -48,9 +48,19 @@ assertRows(kfu.passingScores, 'KFU passing scores', {
   field: 'score',
   test: row => row.score > 0 && row.basis === 'budget' || row.score > 0 && row.basis === 'paid'
 });
-assert(kfu.passingScores.length >= 15, 'KFU 2026 exact admitted scores are incomplete');
+assert(kfu.passingScores.length >= 70, 'KFU 2026 exact admitted scores are incomplete');
 assert(kfu.passingScores.every(row => row.scoreKind === 'minimum-admitted-total'), 'KFU scores must be labelled as minimum admitted totals');
 assert(kfu.passingScores.every(row => row.year === 2026), 'KFU scores must keep their actual admission year');
+assertRows(kfu.budgetPlaces, 'KFU budget places', {
+  field: 'count',
+  test: row => Number.isInteger(row.count) && row.count > 0 && row.fundingType.includes('2026/27')
+});
+assert(kfu.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 918, 'KFU listed 2026/27 budget-place total changed unexpectedly');
+assertRows(kfu.minimumScores, 'KFU subject minimum scores', {
+  field: 'score',
+  test: row => row.score >= 40 && row.score <= 100 && row.subject
+});
+assert(kfu.minimumScores.length >= 12, 'KFU subject minimum-score data is incomplete');
 
 const rosnou = getCatalogDetails(school('rosnou-moscow'));
 assertRows(rosnou.budgetPlaces, 'RosNOU budget places', {
