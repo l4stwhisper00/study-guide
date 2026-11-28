@@ -408,6 +408,11 @@ function initVuzi() {
   const cityChips = $('#cityChips');
   const cityCount = {};
   SCHOOLS.forEach(s => { cityCount[s.c] = (cityCount[s.c] || 0) + 1; });
+  const citySearch = $('#citySearch');
+  const cityOptions = $('#catalogCityOptions');
+  const allCities = Object.keys(cityCount).sort((a, b) => a.localeCompare(b, 'ru'));
+  citySearch.value = state.city;
+  cityOptions.innerHTML = allCities.map(city => '<option value="' + escapeHtml(city) + '"></option>').join('');
   const topCities = Object.keys(cityCount).filter(c => cityCount[c] >= 2)
     .sort((a, b) => cityCount[b] - cityCount[a]).slice(0, 14);
   cityChips.innerHTML =
@@ -420,6 +425,13 @@ function initVuzi() {
     const btn = e.target.closest('[data-city]');
     if (!btn) return;
     state.city = state.city === btn.dataset.city ? '' : btn.dataset.city;
+    citySearch.value = state.city;
+    syncChips(cityChips, 'data-city', state.city);
+    render();
+  });
+
+  citySearch.addEventListener('input', () => {
+    state.city = citySearch.value.trim();
     syncChips(cityChips, 'data-city', state.city);
     render();
   });
@@ -474,7 +486,8 @@ function initVuzi() {
 
   $('#resetFilters').addEventListener('click', () => {
     Object.assign(state, { q: '', type: 'all', cat: '', city: '', subj: '', favOnly: false, sort: 'default' });
-    qInput.value = ''; 
+    qInput.value = '';
+    citySearch.value = '';
     syncChips(catChips, 'data-cat', '');
     syncChips(cityChips, 'data-city', '');
     syncChips(subjChips, 'data-subj', '');
@@ -499,6 +512,7 @@ function initVuzi() {
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
       ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
+      ${school.locationKind === 'branch' ? '<span class="location-tag">Филиал</span>' : school.locationKind === 'campus' ? '<span class="location-tag">Учебная площадка</span>' : ''}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
@@ -509,10 +523,18 @@ function initVuzi() {
           <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
           <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Требует подтверждения'}</dd></div>
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
+          ${school.region ? '<div><dt>Регион</dt><dd>' + escapeHtml(school.region) + '</dd></div>' : ''}
+          ${school.address ? '<div><dt>Адрес учебной площадки</dt><dd>' + escapeHtml(school.address) + '</dd></div>' : ''}
+          ${school.parentName ? '<div><dt>Головная организация</dt><dd>' + escapeHtml(school.parentName) + '</dd></div>' : ''}
+          ${school.inn ? '<div><dt>ИНН</dt><dd>' + escapeHtml(school.inn) + '</dd></div>' : ''}
+          ${school.ogrn ? '<div><dt>ОГРН</dt><dd>' + escapeHtml(school.ogrn) + '</dd></div>' : ''}
+          ${school.licenseStatus ? '<div><dt>Лицензия</dt><dd>' + escapeHtml(school.licenseStatus) + '</dd></div>' : ''}
+          ${school.accreditationStatus ? '<div><dt>Аккредитация</dt><dd>' + escapeHtml(school.accreditationStatus) + '</dd></div>' : ''}
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
           <div><dt>Последняя проверка карточки</dt><dd>${details.verifiedAt ? escapeHtml(new Date(details.verifiedAt + "T00:00:00").toLocaleDateString("ru-RU")) : "Дата проверки не указана"}</dd></div>
-          <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Официальный источник</a>' : 'Не указан'}</dd></div>
-          <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
+          <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.catalogSource || 'Источник данных') + '</a>' : 'Не указан'}</dd></div>
+          ${school.sourceSnapshot ? '<div><dt>Дата снимка источника</dt><dd>' + escapeHtml(school.sourceSnapshot) + '</dd></div>' : ''}
+          ${schoolOfficialUrl(school) ? '<div><dt>Официальный сайт</dt><dd><a href="' + escapeHtml(schoolOfficialUrl(school)) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.u || schoolOfficialUrl(school)) + ' ' + icon('i-ext') + '</a></dd></div>' : '<div><dt>Официальный сайт</dt><dd>Не опубликован в источнике</dd></div>'}
         </dl>
       </section>
 
@@ -570,7 +592,7 @@ function initVuzi() {
       </section>
 
       <div class="dialog-actions">
-        <a class="btn" href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">Официальный сайт ${icon('i-ext')}</a>
+        ${schoolOfficialUrl(school) ? '<a class="btn" href="' + escapeHtml(schoolOfficialUrl(school)) + '" target="_blank" rel="noopener noreferrer">Официальный сайт ' + icon('i-ext') + '</a>' : ''}
         <button type="button" class="btn" data-close>Закрыть</button>
       </div>`;
     dialog.showModal();
@@ -586,10 +608,10 @@ function initVuzi() {
     const list = SCHOOLS.filter(s => {
       if (state.type !== 'all' && s.t !== state.type) return false;
       if (state.cat && s.cat !== state.cat) return false;
-      if (state.city && s.c !== state.city) return false;
+      if (state.city && !String(s.c || '').toLocaleLowerCase('ru-RU').includes(state.city.toLocaleLowerCase('ru-RU'))) return false;
       if (state.subj && !s.sub.includes(state.subj)) return false;
       if (state.favOnly && !state.fav.includes(s.id)) return false;
-      if (q && !(s.n.toLowerCase().includes(q) || s.c.toLowerCase().includes(q))) return false;
+      if (q && ![s.n, s.c, s.region, s.address, s.parentName].some(value => String(value || '').toLocaleLowerCase('ru-RU').includes(q))) return false;
       return true;
     });
     const sorters = {
@@ -626,6 +648,7 @@ function initVuzi() {
           <div class="card-top">
             <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
       ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
+            ${s.locationKind === 'branch' ? '<span class="location-tag">Филиал</span>' : s.locationKind === 'campus' ? '<span class="location-tag">Площадка</span>' : ''}
             ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
             <button type="button" class="fav-btn" data-fav="${s.id}" aria-pressed="${isFav}"
               aria-label="В избранное">${icon('i-star')}</button>
