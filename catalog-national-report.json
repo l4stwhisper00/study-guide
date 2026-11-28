@@ -1,10 +1,10 @@
 {
   "generatedAt": "2026-11-28",
   "totals": {
-    "nationalLayerRecords": 270,
-    "nationalLayerSettlements": 91,
-    "combinedCatalogueRecords": 660,
-    "combinedCatalogueSettlements": 198,
+    "nationalLayerRecords": 314,
+    "nationalLayerSettlements": 119,
+    "combinedCatalogueRecords": 704,
+    "combinedCatalogueSettlements": 219,
     "baseMainRecords": 390,
     "baseMainSettlements": 111
   },
@@ -21,7 +21,7 @@
       "listedRows": 38,
       "records": 31,
       "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
-      "note": "31 new records; five Tutvidnee entries received address enrichment from the same regional page. Statistical discrepancies: 31/38; incomplete: 11/38."
+      "note": "31 new records plus address enrichment for five Tutvidnee entries. Discrepancies: 31/38; incomplete: 11/38."
     },
     {
       "name": "Минпросвещения РФ — СПО-мониторинг 2025, Московская область",
@@ -29,7 +29,7 @@
       "listedRows": 143,
       "records": 143,
       "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
-      "note": "Statistical discrepancies: 115/143; incomplete: 43/143."
+      "note": "Discrepancies: 115/143; incomplete: 43/143."
     },
     {
       "name": "Минпросвещения РФ — СПО-мониторинг 2025, г. Москва",
@@ -37,7 +37,7 @@
       "listedRows": 159,
       "records": 22,
       "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10301&type=2",
-      "note": "22 rows selected from the 159-row list. Statistical discrepancies: 140/159; incomplete: 33/159."
+      "note": "22 rows selected. Discrepancies: 140/159; incomplete: 33/159."
     },
     {
       "name": "Минпросвещения РФ — СПО-мониторинг 2025, Санкт-Петербург",
@@ -45,7 +45,7 @@
       "listedRows": 110,
       "records": 41,
       "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10201&type=2",
-      "note": "41 rows selected from the 110-row list. Statistical discrepancies: 93/110; incomplete: 42/110."
+      "note": "41 rows selected. Discrepancies: 93/110; incomplete: 42/110."
     },
     {
       "name": "Минпросвещения РФ — СПО-мониторинг 2025, Свердловская область",
@@ -53,17 +53,54 @@
       "listedRows": 163,
       "records": 28,
       "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10804&type=2",
-      "note": "28 rows selected from the 163-row list. Statistical discrepancies: 142/163; incomplete: 39/163."
+      "note": "28 rows selected. Discrepancies: 142/163; incomplete: 39/163."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Новосибирская область",
+      "snapshotDate": "2025",
+      "listedRows": 87,
+      "records": 8,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10903&type=2",
+      "note": "8 rows selected. Discrepancies: 76/87; incomplete: 23/87."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Ростовская область",
+      "snapshotDate": "2025",
+      "listedRows": 142,
+      "records": 9,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10703&type=2",
+      "note": "9 rows selected. Discrepancies: 112/142; incomplete: 52/142."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Самарская область",
+      "snapshotDate": "2025",
+      "listedRows": 94,
+      "records": 9,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10603&type=2",
+      "note": "9 rows selected. Discrepancies: 57/94; incomplete: 3/94."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Краснодарский край",
+      "snapshotDate": "2025",
+      "listedRows": 166,
+      "records": 10,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10701&type=2",
+      "note": "10 rows selected. Discrepancies: 120/166; incomplete: 5/166."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Республика Татарстан",
+      "snapshotDate": "2025",
+      "listedRows": 132,
+      "records": 8,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10608&type=2",
+      "note": "8 rows selected. Discrepancies: 104/132; incomplete: 25/132."
     }
   ],
-  "importedRecords": 270,
-  "uniqueCities": 91,
+  "importedRecords": 314,
+  "uniqueCities": 119,
   "byType": {
-    "vuz": 56,
-    "college": 214
-  },
-  "skipped": {
-    "duplicateBaseRowsRyazan": 7
+    "vuz": 60,
+    "college": 254
   },
   "quality": {
     "duplicateNormalizedNameCityPairsAcrossMainAndNationalLayer": 0,
@@ -80,10 +117,10 @@
     ]
   },
   "caveats": [
-    "В региональных страницах мониторинга выявлены расхождения в статистических показателях. Импортируются только название, населённый пункт и опубликованный адрес; приёмные показатели, стоимость обучения, бюджетные места и статусы лицензии из этих таблиц не выводятся.",
-    "Часть строк — филиалы, а не самостоятельные юридические лица; карточки отражают учебные площадки, а не только число организаций/юрлиц.",
+    "В региональных страницах мониторинга выявлены расхождения в статистических показателях. Импортируются только названия, населённые пункты и опубликованные адреса; приёмные показатели, стоимость обучения, бюджетные места и статусы лицензии из этих таблиц не выводятся.",
+    "Часть строк — филиалы, а не самостоятельные юридические лица; карточки отражают учебные площадки, а не число уникальных юридических лиц.",
     "Год снимка отображается как 2025, без выдуманной точной даты.",
-    "Санкт-Петербург, Свердловская область и город Москва представлены частичными выборками: 41/110, 28/163 и 22/159 соответственно.",
+    "Санкт-Петербург, Свердловская область и город Москва представлены частичными выборками; для Новосибирской, Ростовской, Самарской областей, Краснодарского края и Татарстана внесены начальные выборки, а не полные региональные списки.",
     "Цель 4 000+ заведений и 1 000+ городов пока не достигнута."
   ]
 }
