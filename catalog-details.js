@@ -20,6 +20,7 @@ const CATALOG_DETAILS = {
       tuition: [
         { program: 'Колледж — минимальная опубликованная цена', year: 2026, annualRub: 30000, monthlyRub: 2500, monthlyIsEquivalent: true, paymentPeriod: 'От 15 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' },
         { program: 'Бакалавриат — минимальная опубликованная цена', year: 2026, annualRub: 38000, monthlyRub: 3166.67, monthlyIsEquivalent: true, paymentPeriod: 'От 19 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' },
+      { program: 'Специалитет — минимальная опубликованная цена', year: 2026, annualRub: 38000, monthlyRub: 3166.67, monthlyIsEquivalent: true, paymentPeriod: 'От 19 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' },
         { program: 'Магистратура — минимальная опубликованная цена', year: 2026, annualRub: 56000, monthlyRub: 4666.67, monthlyIsEquivalent: true, paymentPeriod: 'От 28 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' }
       ]
     },
