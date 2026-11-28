@@ -22,7 +22,7 @@ const source = options.source;
 const snapshot = options.snapshot;
 const defaultType = options.type || '';
 const output = options.output || path.join(root, 'catalog-national.js');
-if (!input || !source || !/^\d{4}-\d{2}-\d{2}$/.test(snapshot || '')) {
+if (!input || !source || !/^(?:\d{4}|\d{4}-\d{2}-\d{2})$/.test(snapshot || '')) {
   throw new Error('Usage: node scripts/import-national-catalog.mjs --input data/incoming.csv --source "Top100 Digital" --snapshot 2026-08-31 [--type college|vuz]');
 }
 
