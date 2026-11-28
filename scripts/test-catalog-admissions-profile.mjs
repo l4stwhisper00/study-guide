@@ -156,6 +156,44 @@ assert(mgu.tuition.find(row => row.program === 'Юриспруденция')?.an
   'MSU Law 2026 annual tuition changed unexpectedly');
 assert(mgu.passingScores.length === 0, 'MSU must not show unverified exact admitted totals as passing scores');
 
+const itmo = getCatalogDetails(school('itmo'));
+assert(itmo.ownership === 'public', 'ITMO ownership is not marked public');
+assert(itmo.ownershipConfidence === 'official-name', 'ITMO ownership must be tied to its official legal name');
+assert(itmo.description && itmo.description.length > 150, 'ITMO profile description is too short');
+assert(itmo.description.includes('выборка из шести программ'), 'ITMO description must disclose subset-only data coverage');
+assertRows(itmo.budgetPlaces, 'ITMO 2026 budget seats', {
+  field: 'count',
+  test: row => Number.isInteger(row.count) && row.count > 0 && row.year === 2026 &&
+    row.sourceUrl.startsWith('https://abit.itmo.ru/program/bachelor/')
+});
+assert(itmo.budgetPlaces.length === 6, 'ITMO selected-programme budget-place coverage changed unexpectedly');
+assert(itmo.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 529, 'ITMO selected-programme budget-place total changed unexpectedly');
+assert(itmo.budgetPlaces.find(row => row.program.startsWith('Компьютерные технологии'))?.count === 144,
+  'ITMO 2026 Computer Technologies budget-place count changed unexpectedly');
+assert(itmo.budgetPlaces.find(row => row.program.startsWith('Инженерия искусственного интеллекта — 11.03.02'))?.count === 95,
+  'ITMO 2026 AI Engineering 11.03.02 budget-place count changed unexpectedly');
+assert(itmo.budgetPlaces.find(row => row.program.startsWith('Управление эксплуатацией систем ИИ'))?.count === 30,
+  'ITMO 2026 AI Operations budget-place count changed unexpectedly');
+assertRows(itmo.minimumScores, 'ITMO 2026 subject thresholds', {
+  field: 'score',
+  test: row => row.score >= 40 && row.score <= 100 && row.subject && row.year === 2026 &&
+    row.sourceUrl === 'https://abit.itmo.ru/page/73'
+});
+assert(itmo.minimumScores.length === 15, 'ITMO minimum-score coverage changed unexpectedly');
+assert(itmo.minimumScores.filter(row => row.program.startsWith('Компьютерные технологии')).length === 3,
+  'ITMO Computer Technologies exception thresholds must remain separate from common thresholds');
+assertRows(itmo.tuition, 'ITMO 2026 tuition', {
+  field: 'annualRub',
+  test: row => row.annualRub > 0 && row.monthlyIsEquivalent === true &&
+    Math.abs(row.annualRub / 12 - row.monthlyRub) < 0.01 && row.year === 2026
+});
+assert(itmo.tuition.length === 6, 'ITMO annual tuition coverage changed unexpectedly');
+assert(itmo.tuition.find(row => row.program.startsWith('Компьютерные технологии'))?.annualRub === 649000,
+  'ITMO Computer Technologies tuition changed unexpectedly');
+assert(itmo.tuition.find(row => row.program.startsWith('Разработка программного обеспечения'))?.annualRub === 599000,
+  'ITMO Software Engineering tuition changed unexpectedly');
+assert(itmo.passingScores.length === 0, 'ITMO must not show unverified exact admitted totals as passing scores');
+
 const unknownEntry = { id: '__unknown_test__', n: 'Учебное заведение без источников', t: 'vuz', c: 'Тестоград' };
 const empty = getCatalogDetails(unknownEntry);
 assert(empty.ownership === 'unknown', 'Unknown ownership must not be guessed as public/private');
