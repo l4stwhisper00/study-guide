@@ -54,7 +54,11 @@ assert(kfu.passingScores.every(row => row.scoreKind === 'minimum-admitted-total'
 assert(kfu.passingScores.every(row => row.year === 2026), 'KFU scores must keep their actual admission year');
 assertRows(kfu.budgetPlaces, 'KFU budget places', {
   field: 'count',
-  test: row => Number.isInteger(row.count) && row.count > 0 && row.fundingType.includes('2026/27')
+  test: row => Number.isInteger(row.count) && (
+    row.count === 0
+      ? /не предусмотрен/i.test(row.fundingType)
+      : row.count > 0 && row.fundingType.includes('2026/27')
+  )
 });
 assert(kfu.budgetPlaces.reduce((sum, row) => sum + row.count, 0) === 918, 'KFU listed 2026/27 budget-place total changed unexpectedly');
 assertRows(kfu.minimumScores, 'KFU subject minimum scores', {
