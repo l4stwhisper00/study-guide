@@ -90,7 +90,7 @@ Deno.serve(async (req) => {
   if (origin && origin !== siteOrigin) return json({ error: "Источник запроса не разрешён." }, 403);
 
   const url = Deno.env.get("SUPABASE_URL");
-  const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
+  const anonKey = Deno.env.get("SUPABASE_ANON_KEY") || Deno.env.get("SUPABASE_PUBLISHABLE_KEY");
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if (!url || !anonKey || !serviceKey) return json({ error: "Сервер авторизации пока не настроен." }, 500);
 
@@ -107,7 +107,6 @@ Deno.serve(async (req) => {
   const auth = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
   const ip = getClientIp(req);
   const ipHash = await sha256(serviceKey + ":" + ip);
-  const syntheticEmail = "u-" + await sha256(username.normalized) + "@accounts.navigator.invalid";
 
   if (action === "challenge") {
     const a = 2 + crypto.getRandomValues(new Uint32Array(1))[0] % 8;
@@ -153,6 +152,7 @@ Deno.serve(async (req) => {
     }
     if (existing) return json({ error: "Этот ник уже занят. Выбери другой." }, 409);
 
+    const syntheticEmail = crypto.randomUUID() + "@accounts.navigator.invalid";
     const { data: created, error: createError } = await admin.auth.admin.createUser({
       email: syntheticEmail,
       password: body.password,
@@ -173,6 +173,7 @@ Deno.serve(async (req) => {
       user_id: userId,
       username: username.display,
       username_normalized: username.normalized,
+      auth_email: syntheticEmail,
     });
     if (usernameError) {
       await admin.auth.admin.deleteUser(userId);
@@ -236,6 +237,17 @@ Deno.serve(async (req) => {
       }
       if (captchaValid !== true) return json({ error: "Ответ на проверку неверный или время проверки истекло.", captcha_invalid: true }, 400);
     }
+
+    const { data: account, error: accountLookupError } = await admin
+      .from("account_usernames")
+      .select("auth_email")
+      .eq("username_normalized", username.normalized)
+      .maybeSingle();
+    if (accountLookupError) {
+      console.error("Username auth lookup failed", accountLookupError.code || "unknown");
+      return json({ error: "Вход временно недоступен." }, 503);
+    }
+    const syntheticEmail = account?.auth_email || (crypto.randomUUID() + "@accounts.navigator.invalid");
 
     const { data: signedIn, error: signInError } = await auth.auth.signInWithPassword({
       email: syntheticEmail,
