@@ -230,6 +230,29 @@ Deno.serve(async (req) => {
   if (action === "login") {
     if (!validPassword(body.password)) return json({ error: "Введи пароль." }, 400);
 
+    // Bound attempts across arbitrary usernames so attackers cannot evade
+    // per-account CAPTCHA by spraying random names and growing tracking rows.
+    const ipThrottleKey = "__ip_login_throttle__";
+    const { data: ipRequestCount, error: ipThrottleLookupError } = await admin.rpc("get_auth_login_attempts", {
+      p_username_normalized: ipThrottleKey,
+      p_ip_hash: ipHash,
+    });
+    if (ipThrottleLookupError) {
+      console.error("Login IP throttle lookup failed", ipThrottleLookupError.code || "unknown");
+      return json({ error: "Вход временно недоступен." }, 503);
+    }
+    if (Number(ipRequestCount) >= 60) {
+      return json({ error: "Слишком много попыток входа с этого подключения. Подожди 15 минут." }, 429);
+    }
+    const { error: ipThrottleRecordError } = await admin.rpc("record_auth_login_failure", {
+      p_username_normalized: ipThrottleKey,
+      p_ip_hash: ipHash,
+    });
+    if (ipThrottleRecordError) {
+      console.error("Login IP throttle update failed", ipThrottleRecordError.code || "unknown");
+      return json({ error: "Не удалось проверить вход. Попробуй позже." }, 503);
+    }
+
     const [ipAttemptsResult, accountAttemptsResult] = await Promise.all([
       admin.rpc("get_auth_login_attempts", {
         p_username_normalized: username.normalized,
