@@ -25,3 +25,7 @@ pnpm-debug.log*
 dist/
 build/
 coverage/
+
+# Do not commit raw bulk source exports unless their terms explicitly permit redistribution.
+/data/incoming*.csv
+/data/raw-national-*.csv
