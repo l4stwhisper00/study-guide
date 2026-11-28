@@ -71,8 +71,9 @@ async function updateCatalogFreshness() {
     }
     if (typeof CATALOG_NATIONAL !== 'undefined') {
       const imported = Number(CATALOG_NATIONAL.importedRecords) || 0;
+      const settlements = Number(CATALOG_NATIONAL.uniqueSettlements) || Number(CATALOG_NATIONAL.uniqueCities) || 0;
       if (imported > 0) {
-        messages.push(`Национальный список площадок: ${imported} записей в ${Number(CATALOG_NATIONAL.uniqueCities) || 0} городах; источник — ${CATALOG_NATIONAL.source || 'не указан'}, снимок ${CATALOG_NATIONAL.snapshotDate || 'не указан'}.`);
+        messages.push(`Национальный список площадок: ${imported} записей в ${settlements} населённых пунктах; источник — ${CATALOG_NATIONAL.source || 'не указан'}, снимок ${CATALOG_NATIONAL.snapshotDate || 'не указан'}.`);
       } else {
         messages.push('Массовый национальный набор пока не подключён: в каталоге остаётся базовый список учреждений. Новые записи будут добавлены после получения разрешённой выгрузки и проверки дублей.');
       }
