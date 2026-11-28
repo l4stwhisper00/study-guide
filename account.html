@@ -113,11 +113,11 @@
 
         <section class="acc-pane" data-pane="calc" hidden>
           <h2>Калькулятор баллов ЕГЭ</h2>
-          <p class="muted">Перевод первичного балла в тестовый (ориентировочно, для самопроверки).</p>
+          <p class="muted">Показывает долю от максимального первичного балла. Это не официальный перевод ФИПИ в тестовый балл.</p>
           <div class="calc-row">
             <label class="score-field"><span>Предмет</span><select id="calcSubj"></select></label>
             <label class="score-field"><span>Первичный балл</span><input type="number" id="calcRaw" min="0" inputmode="numeric"></label>
-            <div class="calc-out"><b id="calcTest">—</b><span>тестовый балл</span></div>
+            <div class="calc-out"><b id="calcTest">—</b><span>% от максимума</span></div>
           </div>
           <p class="muted" id="calcSum"></p>
         </section>
