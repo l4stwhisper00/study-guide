@@ -694,3 +694,56 @@ select option:checked {
   color: #fff;
   background-color: var(--accent-2);
 }
+
+
+/* ---------- Расширенная карточка учебного заведения ---------- */
+.school-profile-section {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.school-profile-section h3 { margin-bottom: 12px; }
+.school-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.school-profile-grid > div {
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface);
+}
+.school-profile-grid dt {
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: .78rem;
+}
+.school-profile-grid dd {
+  overflow-wrap: anywhere;
+  font-size: .92rem;
+  font-weight: 600;
+}
+.school-profile-grid a { text-decoration: none; }
+.school-profile-grid a:hover { text-decoration: underline; }
+.school-score-value { margin-top: 2px; font-size: 1.25rem !important; }
+.score-source-note {
+  margin-top: 8px;
+  color: var(--warn);
+  font-size: .78rem;
+  line-height: 1.45;
+  font-weight: 400;
+}
+.school-profile-hint {
+  margin: 10px 0;
+  color: var(--muted);
+  font-size: .84rem;
+  line-height: 1.55;
+}
+.map-actions { margin-top: 12px; }
+@media (max-width: 520px) {
+  .school-profile-grid { grid-template-columns: 1fr; }
+  .dialog-body { padding: 20px 16px; }
+  .dialog-actions .btn { flex: 1 1 100%; }
+}
