@@ -106,6 +106,7 @@ jobs:
       - name: Validate generated catalogue and report
         run: node scripts/validate-national-catalog-preview.mjs
       - name: Upload combined data and catalogue preview
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: national-monitoring-2025-catalogue-preview
@@ -114,5 +115,5 @@ jobs:
             data/incoming/national-monitoring-2025-combined-report.json
             data/incoming/catalog-national-preview.js
             data/incoming/catalog-national-preview-report.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 7
