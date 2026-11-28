@@ -682,6 +682,8 @@ h1, h2, h3 { text-wrap: balance; }
 .account-security { display: grid; gap: 12px; }
 
 
+.calc-subject-select { width: 100%; min-width: 0; }
+.calc-subject-select .cselect-list { max-height: 260px; overflow-y: auto; }
 /* Native option menus must keep readable contrast in the dark theme. */
 select option,
 select optgroup {
