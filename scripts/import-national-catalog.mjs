@@ -161,7 +161,23 @@ const existingContext = {};
 const existingText = readFileSync(path.join(root, 'data.js'), 'utf8') + '\n' +
   readFileSync(path.join(root, 'data-extra.js'), 'utf8') + '\n;globalThis.__schools = SCHOOLS;';
 vm.runInNewContext(existingText, existingContext, { timeout: 5000 });
-const existingKeys = new Set(existingContext.__schools.map(item => keyText(item.n) + '|' + keyText(item.c)));
+const existingByNameCity = new Map();
+for (const item of existingContext.__schools) {
+  const key = keyText(item.n) + '|' + keyText(item.c);
+  if (!existingByNameCity.has(key)) existingByNameCity.set(key, []);
+  existingByNameCity.get(key).push({
+    type: keyText(item.t),
+    address: keyText(item.address)
+  });
+}
+function matchesExistingBase(type, name, city, address) {
+  const candidates = existingByNameCity.get(keyText(name) + '|' + keyText(city)) || [];
+  const incomingAddress = keyText(address);
+  return candidates.some(item =>
+    (!item.type || item.type === keyText(type)) &&
+    (!item.address || !incomingAddress || item.address === incomingAddress)
+  );
+}
 
 const preserveExistingNational = ['true', '1', 'yes'].includes(String(options['preserve-existing-national'] || '').toLowerCase());
 let existingNationalRecords = [];
@@ -290,7 +306,7 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
         continue;
       }
     }
-    if (existingKeys.has(keyText(name) + '|' + keyText(city))) {
+    if (matchesExistingBase(type, name, city, address)) {
       skipped.currentCatalogueMatch++;
       continue;
     }
