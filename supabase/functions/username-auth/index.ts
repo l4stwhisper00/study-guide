@@ -109,6 +109,21 @@ Deno.serve(async (req) => {
   const ipHash = await sha256(serviceKey + ":" + ip);
 
   if (action === "challenge") {
+    const recentCutoff = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+    const { count: recentChallenges, error: challengeRateError } = await admin
+      .from("auth_login_captchas")
+      .select("id", { count: "exact", head: true })
+      .eq("ip_hash", ipHash)
+      .gte("created_at", recentCutoff);
+    if (challengeRateError) {
+      console.error("Challenge rate-limit check failed", challengeRateError.code || "unknown");
+      return json({ error: "Проверка временно недоступна." }, 503);
+    }
+    if ((recentChallenges || 0) >= 20) {
+      return json({ error: "Слишком много проверок. Подожди несколько минут." }, 429);
+    }
+    await admin.from("auth_login_captchas").delete().lt("expires_at", new Date().toISOString());
+
     const a = 2 + crypto.getRandomValues(new Uint32Array(1))[0] % 8;
     const b = 2 + crypto.getRandomValues(new Uint32Array(1))[0] % 8;
     const challengeId = crypto.randomUUID();
