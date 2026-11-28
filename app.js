@@ -123,8 +123,9 @@ function getSchoolDetails(school) {
     ...details,
     ownership,
     ownershipSource: details.ownershipSource || school.ownershipSource || '',
-    ownershipConfidence: details.ownershipConfidence ||
-      (details.ownershipSource || school.ownershipSource ? 'official-name' : ownership === 'unknown' ? 'unknown' : 'name-inferred'),
+    ownershipConfidence: details.ownershipConfidence && details.ownershipConfidence !== 'unknown'
+      ? details.ownershipConfidence
+      : (details.ownershipSource || school.ownershipSource ? 'official-name' : ownership === 'unknown' ? 'unknown' : 'name-inferred'),
     programs: details.programs?.length ? details.programs : (school.programs || []),
     sourceUrl: details.sourceUrl || school.sourceUrl || null,
     verifiedAt: details.verifiedAt || (/^\d{4}-\d{2}-\d{2}$/.test(school.sourceSnapshot || "") ? school.sourceSnapshot : null),
@@ -166,10 +167,21 @@ function tuitionSummary(details) {
   if (!rows.length) return null;
   const annualValues = rows.filter(item => hasNumber(item.annualRub)).map(item => Number(item.annualRub));
   const monthlyValues = rows.filter(item => hasNumber(item.monthlyRub)).map(item => Number(item.monthlyRub));
-  const annualRub = annualValues.length ? Math.min(...annualValues) : null;
-  const monthlyRub = monthlyValues.length ? Math.min(...monthlyValues)
+  const cheapest = annualValues.length
+    ? rows.filter(item => hasNumber(item.annualRub)).sort((a, b) => Number(a.annualRub) - Number(b.annualRub))[0]
+    : rows.filter(item => hasNumber(item.monthlyRub)).sort((a, b) => Number(a.monthlyRub) - Number(b.monthlyRub))[0];
+  const annualRub = hasNumber(cheapest?.annualRub) ? Number(cheapest.annualRub) : null;
+  const monthlyRub = hasNumber(cheapest?.monthlyRub)
+    ? Number(cheapest.monthlyRub)
     : annualRub !== null ? Math.round((annualRub / 12) * 100) / 100 : null;
-  return { year: Number(rows[0].year), annualRub, monthlyRub, programs: new Set(rows.map(item => item.program || '')).size };
+  return {
+    year: Number(rows[0].year),
+    annualRub,
+    monthlyRub,
+    monthlyIsEquivalent: cheapest?.monthlyIsEquivalent === true || (!hasNumber(cheapest?.monthlyRub) && annualRub !== null),
+    programs: new Set(rows.map(item => item.program || '')).size,
+    program: cheapest?.program || ''
+  };
 }
 
 function passingScoreSummary(details) {
@@ -180,7 +192,8 @@ function passingScoreSummary(details) {
   return {
     year: Number((rows[0] || minimumRows[0]).year),
     programs: programs.size,
-    minimumRows: minimumRows.length
+    minimumRows: minimumRows.length,
+    hasPassingScores: rows.length > 0
   };
 }
 
@@ -219,7 +232,7 @@ function schoolDescription(school, details, category) {
   }
   const raw = String(school.d || '').trim();
   const isGeneric = !raw ||
-    /условия приёма и программы уточняются|перечень программ уточняется|филиал образовательной организации|образовательная организация\. условия приёма/i.test(raw);
+    /условия приёма и программы уточняются|перечень программ уточняется|филиал образовательной организации|образовательная организация\. условия приёма|отдельная учебная площадка|учебная площадка\s*\/\s*кампус/i.test(raw);
   if (!isGeneric) {
     return { text: raw, sourceUrl: details.sourceUrl, generated: false };
   }
@@ -246,10 +259,12 @@ function renderCardAdmissionSummary(details, school) {
     : 'Нет подтверждённых данных';
   const tuitionText = tuition
     ? (tuition.annualRub !== null ? 'от ' + money(tuition.annualRub) + '/год' : 'Цена за месяц: ' + money(tuition.monthlyRub)) +
-      (tuition.monthlyRub !== null ? ' · ' + money(tuition.monthlyRub) + '/мес.' : '') + ' · ' + tuition.year
+      (tuition.monthlyRub !== null ? ' · ' + money(tuition.monthlyRub) + '/мес.' + (tuition.monthlyIsEquivalent ? ' (экв.)' : '') : '') + ' · ' + tuition.year
     : 'Нет подтверждённых данных';
   const scoreText = score
-    ? score.programs + ' программ · ' + score.year
+    ? (score.hasPassingScores
+      ? score.programs + ' программ · ' + score.year
+      : 'Только минимальные пороги · ' + score.year)
     : 'Нет подтверждённых данных';
   return '<div class="card-admission-summary">' +
     '<p><span>Бюджетные места</span><b>' + escapeHtml(budgetText) + '</b></p>' +
@@ -294,7 +309,7 @@ function renderPassingScores(details, school) {
   if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённых проходных баллов по программам и конкурсам. Старый ориентир каталога не подменяет результаты официального зачисления.</p>';
   return '<ul class="catalog-data-list">' + rows.map(item => {
     const basis = item.basis === 'budget' ? 'Бюджет' : item.basis === 'paid' ? 'Платное' : 'Условия не уточнены';
-    const scale = item.scoreScale === 'five' || school.t === 'college' ? ' / 5' : ' баллов';
+    const scale = item.scoreScale === 'five' || item.scoreKind === 'certificate-average' ? ' / 5' : ' баллов';
     const kind = item.scoreKind === 'minimum-admitted-total'
       ? 'Минимальный балл среди зачисленных'
       : item.scoreKind === 'certificate-average'
