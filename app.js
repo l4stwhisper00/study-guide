@@ -92,7 +92,7 @@ function renderTuition(details) {
   if (!rows.length) return '<p class="catalog-data-empty">Стоимость платного обучения пока не подтверждена официальным документом для конкретной программы. Проверь цену на сайте приёмной комиссии.</p>';
   return '<div class="catalog-tuition-list">' + rows.map(item => {
     const monthly = hasNumber(item.monthlyRub)
-      ? money(item.monthlyRub)
+      ? money(item.monthlyRub) + (item.monthlyIsEquivalent ? ' (эквивалент)' : '')
       : hasNumber(item.annualRub) ? money(Number(item.annualRub) / 12) + ' (эквивалент)' : 'Не опубликовано';
     const annual = hasNumber(item.annualRub) ? money(item.annualRub) : 'Не опубликовано';
     return '<article class="catalog-tuition-row"><b>' + escapeHtml(item.program || 'Программа не указана') +
