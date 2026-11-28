@@ -34,17 +34,48 @@ const HUES = { it: 255, eng: 210, med: 350, econ: 140, law: 45, hum: 285, sci: 1
 async function updateCatalogFreshness() {
   const element = $('#catalogFreshness');
   if (!element) return;
+  const formatDate = value => {
+    if (!value) return null;
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date.toLocaleDateString('ru-RU');
+  };
   try {
-    const response = await fetch('catalog-source-status.json', { cache: 'no-store' });
-    if (!response.ok) return;
-    const report = await response.json();
-    if (!report.checkedAt) return;
-    const date = new Date(report.checkedAt).toLocaleDateString('ru-RU');
-    element.textContent = `Проверка доступности официальных сайтов: ${date} · доступно ${report.reachable} из ${report.total}. Это техническая проверка ссылок, а не подтверждение цен и бюджетных мест — финансовые сведения показываются только при наличии официального источника.`;
-  } catch { /* Keep the static explanation if the report is unavailable. */ }
+    const [siteResponse, dataResponse] = await Promise.all([
+      fetch('catalog-source-status.json', { cache: 'no-store' }).catch(() => null),
+      fetch('catalog-data-status.json', { cache: 'no-store' }).catch(() => null)
+    ]);
+    const reports = await Promise.all([
+      siteResponse?.ok ? siteResponse.json().catch(() => null) : null,
+      dataResponse?.ok ? dataResponse.json().catch(() => null) : null
+    ]);
+    const [siteReport, dataReport] = reports;
+    const messages = [];
+    if (siteReport?.checkedAt) {
+      messages.push(`Проверка официальных сайтов и документов: ${formatDate(siteReport.checkedAt)} · доступны ${siteReport.reachable} из ${siteReport.total} ссылок.`);
+    } else {
+      messages.push('Плановая проверка официальных ссылок ещё не выполнялась.');
+    }
+    if (dataReport?.checkedAt) {
+      const updated = (Number(dataReport.updatedPrices) || 0) + (Number(dataReport.updatedBudgetPlaces) || 0);
+      messages.push(`Проверка приёмных данных: ${formatDate(dataReport.checkedAt)} · обновлено цен: ${Number(dataReport.updatedPrices) || 0}, сведений о бюджетных/субсидируемых местах: ${Number(dataReport.updatedBudgetPlaces) || 0}.`);
+      if (dataReport.lastSuccessfulDataAt) {
+        messages.push(`Последнее успешное обновление цифр: ${formatDate(dataReport.lastSuccessfulDataAt)}.`);
+      } else if (updated === 0) {
+        messages.push('В последней проверке новые цифры автоматически не извлечены — старые значения не перезаписывались, источники требуют проверки.');
+      }
+      if (Number(dataReport.needsReview) > 0) {
+        messages.push(`Источников требуют ручной проверки: ${Number(dataReport.needsReview)}.`);
+      }
+    } else {
+      messages.push('Автоматическое обновление цен и бюджетных мест ожидает первого запуска.');
+    }
+    messages.push('Доступность ссылки не означает, что опубликованные учреждением условия не изменились. Каждая цена и цифра мест должна открываться в своём официальном источнике.');
+    element.textContent = messages.join(' ');
+  } catch {
+    element.textContent = 'Плановая проверка источников выполняется раз в 14 дней. Данные без подтверждённой программы, года и официальной ссылки не показываются как точные.';
+  }
 }
 updateCatalogFreshness();
-
 function icon(name, cls = 'icon') {
   return `<svg class="${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
 }
