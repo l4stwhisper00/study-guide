@@ -546,6 +546,8 @@ function initVuzi() {
           <div><dt>Последняя проверка карточки</dt><dd>${details.verifiedAt ? escapeHtml(new Date(details.verifiedAt + "T00:00:00").toLocaleDateString("ru-RU")) : "Дата проверки не указана"}</dd></div>
           <div><dt>Источник сведений</dt><dd>${details.sourceUrl ? '<a href="' + escapeHtml(details.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.catalogSource || 'Источник данных') + '</a>' : escapeHtml(school.catalogSource || 'Не указан')}</dd></div>
           ${school.sourceSnapshot ? '<div><dt>Дата снимка источника</dt><dd>' + escapeHtml(school.sourceSnapshot) + '</dd></div>' : ''}
+          ${school.addressSource && school.addressSourceUrl ? '<div><dt>Источник адреса</dt><dd><a href="' + escapeHtml(school.addressSourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.addressSource) + (school.addressSnapshot ? ' (' + escapeHtml(school.addressSnapshot) + ')' : '') + '</a></dd></div>' : ''}
+          ${school.sourceQualityNote ? '<div><dt>Примечание к источнику</dt><dd>' + escapeHtml(school.sourceQualityNote) + '</dd></div>' : ''}
           ${schoolOfficialUrl(school) ? '<div><dt>Официальный сайт</dt><dd><a href="' + escapeHtml(schoolOfficialUrl(school)) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(school.u || schoolOfficialUrl(school)) + ' ' + icon('i-ext') + '</a></dd></div>' : '<div><dt>Официальный сайт</dt><dd>Не опубликован в источнике</dd></div>'}
         </dl>
       </section>
