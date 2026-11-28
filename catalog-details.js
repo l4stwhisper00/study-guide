@@ -224,6 +224,9 @@ const CATALOG_DETAILS = {
       ],
       budgetPlaces: [
         { program: 'Математика', year: 2026, count: 60, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма (КЦП)', sourceUrl: 'https://ba.hse.ru/kolmest' },
+        { program: 'Прикладной анализ данных', year: 2026, count: 0, form: 'Очная, бакалавриат', fundingType: 'Бюджетные места не предусмотрены; программа полностью платная', sourceUrl: 'https://ba.hse.ru/kolmest' },
+        { program: 'Дизайн и разработка информационных продуктов', year: 2026, count: 0, form: 'Очная, бакалавриат', fundingType: 'Бюджетные места не предусмотрены; программа полностью платная', sourceUrl: 'https://ba.hse.ru/kolmest' },
+        { program: 'Разработка игр и цифровых продуктов', year: 2026, count: 0, form: 'Очная, бакалавриат', fundingType: 'Бюджетные места не предусмотрены; программа полностью платная', sourceUrl: 'https://ba.hse.ru/kolmest' },
         { program: 'Прикладная математика и информатика', year: 2026, count: 195, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма (КЦП)', sourceUrl: 'https://ba.hse.ru/kolmest' },
         { program: 'Компьютерные науки и анализ данных', year: 2026, count: 10, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма (КЦП); онлайн-формат', sourceUrl: 'https://ba.hse.ru/kolmest' },
         { program: 'Прикладная математика', year: 2026, count: 80, form: 'Очная, бакалавриат', fundingType: 'Контрольные цифры приёма (КЦП)', sourceUrl: 'https://ba.hse.ru/kolmest' },
@@ -284,7 +287,9 @@ const CATALOG_DETAILS = {
         { program: 'Математика', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 269, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
         { program: 'Совместный бакалавриат НИУ ВШЭ и Центра педагогического мастерства', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 291, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
         { program: 'Совместный бакалавриат НИУ ВШЭ и Центра педагогического мастерства', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 232, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
+        { program: 'Прикладная математика и информатика', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 259, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
         { program: 'Прикладной анализ данных', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 207, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
+        { program: 'Компьютерные науки и анализ данных', year: 2026, form: 'Онлайн, бакалавриат', basis: 'paid', score: 206, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
         { program: 'Прикладная математика', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 310, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
         { program: 'Прикладная математика', year: 2026, form: 'Очная, бакалавриат', basis: 'paid', score: 225, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
         { program: 'Физика', year: 2026, form: 'Очная, бакалавриат', basis: 'budget', score: 274, scoreKind: 'minimum-admitted-total', sourceUrl: 'https://ba.hse.ru/result2026' },
@@ -333,6 +338,7 @@ const CATALOG_DETAILS = {
       description: 'Казанский федеральный университет — классический университет с программами в области медицины и биологии, экологии и природопользования, геологии, математики и компьютерных наук, информационных технологий и безопасности, физики, химии, права, международных отношений, истории, языков и туризма. На официальной странице приёмной комиссии опубликованы направления и вступительные испытания, контрольные цифры приёма, стоимость обучения и итоги зачисления. Минимальный результат последнего зачисленного зависит от конкретной программы, формы и основы конкурса.',
       descriptionSourceUrl: 'https://admissions.kpfu.ru/dokumenty/bakalavriat-specialitet/itogi-priyoma/',
       budgetPlaces: [
+        { program: 'Стоматология', year: 2026, count: 0, fundingType: 'Бюджетный приём по программе не предусмотрен в плане; указаны только места по договору', form: 'Очная, специалитет', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
         { program: 'Биология', year: 2026, count: 120, fundingType: 'КЦП — бюджетный план приёма на 2026/27 учебный год', form: 'Очная, бакалавриат', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
         { program: 'Педагогическое образование: биология и английский язык', year: 2026, count: 25, fundingType: 'КЦП — бюджетный план приёма на 2026/27 учебный год', form: 'Очная, бакалавриат', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
         { program: 'Лечебное дело', year: 2026, count: 150, fundingType: 'КЦП — бюджетный план приёма на 2026/27 учебный год', form: 'Очная, специалитет', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
