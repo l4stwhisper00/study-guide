@@ -21,13 +21,13 @@ function attr(attrs, key) {
 const regionUrl = "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10402&type=2";
 const html = await get(regionUrl);
 console.log("REGION_BYTES", Buffer.byteLength(html));
-const cells = [...html.matchAll(/<td\\b([^>]*)class=['"]inst['"][^>]*>([\\s\\S]*?)<\\/td>/gi)];
+const cells = [...html.matchAll(/<td\b([^>]*)class=['"]inst['"][^>]*>([\s\S]*?)<\/td>/gi)];
 console.log("INST_CELLS", cells.length);
 const records = cells.map(match => {
   const attrs = match[1], body = match[2];
-  const anchor = body.match(/<a\\b[^>]*href=['"][^'"]*inst\\.php\\?id=(\\d+)[^'"]*['"][^>]*>([\\s\\S]*?)<\\/a>/i);
-  const addressBox = body.match(/<div\\b[^>]*class=['"]adr['"][^>]*>([\\s\\S]*?)<\\/div>/i)?.[1] ?? "";
-  const paragraphs = [...addressBox.matchAll(/<p\\b[^>]*>([\\s\\S]*?)<\\/p>/gi)].map(x => decode(x[1]));
+  const anchor = body.match(/<a\b[^>]*href=['"][^'"]*inst\.php\?id=(\d+)[^'"]*['"][^>]*>([\s\S]*?)<\/a>/i);
+  const addressBox = body.match(/<div\b[^>]*class=['"]adr['"][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "";
+  const paragraphs = [...addressBox.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map(x => decode(x[1]));
   return {
     id: attr(attrs, "id"),
     icon: attr(attrs, "icon"),
@@ -46,7 +46,7 @@ console.log("SAMPLE", JSON.stringify(records.slice(0,5)));
 const rootUrl = "https://monitoring.miccedu.ru/?m=spo&year=2025";
 const root = await get(rootUrl);
 console.log("ROOT_BYTES", Buffer.byteLength(root));
-const regionLinks = [...root.matchAll(/<a\\b[^>]*href=['"]([^'"]*material\\.php\\?id=\\d+[^'"]*type=2[^'"]*)['"][^>]*>([\\s\\S]*?)<\\/a>/gi)]
+const regionLinks = [...root.matchAll(/<a\b[^>]*href=['"]([^'"]*material\.php\?id=\d+[^'"]*type=2[^'"]*)['"][^>]*>([\s\S]*?)<\/a>/gi)]
  .map(m => ({href:m[1],name:decode(m[2])}));
 console.log("ROOT_REGION_LINKS", regionLinks.length);
 console.log("ROOT_LINK_SAMPLE", JSON.stringify(regionLinks.slice(0,12)));
