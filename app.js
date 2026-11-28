@@ -70,9 +70,9 @@ function chanceInfo(school) {
     const gpa = Number(scores.gpa);
     if (!gpa) return { cls: 'chance-unknown', text: 'Укажи балл аттестата' };
     const diff = school.s - gpa;
-    if (diff <= 0)   return { cls: 'chance-ok',    text: 'Проходишь с запасом' };
-    if (diff <= 0.4) return { cls: 'chance-close', text: `Не хватает ~${diff.toFixed(1)} балла` };
-    return { cls: 'chance-low', text: `Не хватает ${diff.toFixed(1)} балла` };
+    if (diff <= 0)   return { cls: 'chance-ok',    text: 'Выше ориентира по аттестату' };
+    if (diff <= 0.4) return { cls: 'chance-close', text: `Ниже ориентира на ~${diff.toFixed(1)} балла` };
+    return { cls: 'chance-low', text: `Ниже ориентира на ${diff.toFixed(1)} балла` };
   }
   const required = school.sub || [];
   if (!required.length || required.some(k => !(Number(scores[k]) > 0))) {
@@ -80,8 +80,8 @@ function chanceInfo(school) {
   }
   const sum = required.reduce((n, k) => n + Number(scores[k]), 0);
   const diff = school.s - sum;
-  if (diff <= 0)  return { cls: 'chance-ok',    text: `Проходишь по ориентиру (+${-diff})` };
-  if (diff <= 20) return { cls: 'chance-close', text: `Не хватает ${diff} б. по ориентиру` };
+  if (diff <= 0)  return { cls: 'chance-ok',    text: `Выше ориентира на ${-diff} б.` };
+  if (diff <= 20) return { cls: 'chance-close', text: `Ниже ориентира на ${diff} б.` };
   return { cls: 'chance-low', text: `Не хватает ${diff} б. по ориентиру` };
 }
 
