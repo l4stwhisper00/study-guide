@@ -1,10 +1,10 @@
 {
   "generatedAt": "2026-11-28",
   "totals": {
-    "nationalLayerRecords": 400,
-    "nationalLayerSettlements": 133,
-    "combinedCatalogueRecords": 790,
-    "combinedCatalogueSettlements": 227,
+    "nationalLayerRecords": 441,
+    "nationalLayerSettlements": 143,
+    "combinedCatalogueRecords": 831,
+    "combinedCatalogueSettlements": 235,
     "baseMainRecords": 390,
     "baseMainSettlements": 111
   },
@@ -158,12 +158,26 @@
       "listedRows": 27,
       "records": 9,
       "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10805&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, Ставропольский край",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 33,
+      "records": 33,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10702&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, Кировская область",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 8,
+      "records": 8,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10402&type=2"
     }
   ],
-  "importedRecords": 400,
-  "uniqueCities": 133,
+  "importedRecords": 441,
+  "uniqueCities": 143,
   "byType": {
-    "vuz": 146,
+    "vuz": 187,
     "college": 254
   },
   "quality": {
