@@ -33,13 +33,24 @@ const branchOfCollege = classifyMonitoringRecord({
   ...record,
   id: "branch-2",
   icon: "_0",
-  name: "Филиал государственного профессионального колледжа"
+  name: 'Злынковский филиал ГБПОУ «БАТ имени Героя России А.С. Зайцева»'
 }, {
   pageType: "spo",
   vpoIds: new Set()
 });
 assert.equal(branchOfCollege.type, "college");
 assert.equal(branchOfCollege.locationKind, "branch");
+
+const branchOfInstitute = classifyMonitoringRecord({
+  ...record,
+  id: "branch-3",
+  icon: "_0",
+  name: "Калужский филиал Московского областного финансово-юридического института"
+}, {
+  pageType: "spo",
+  vpoIds: new Set()
+});
+assert.equal(branchOfInstitute.type, "vuz");
 
 assert.equal(normalizeSettlement("г. Вятские Поляны"), "Вятские Поляны");
 assert.equal(normalizeSettlement("с. Кочубеевское"), "Кочубеевское");
