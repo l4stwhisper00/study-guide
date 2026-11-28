@@ -12,17 +12,6 @@ on:
       - "scripts/import-national-catalog.mjs"
       - "scripts/validate-national-catalog-preview.mjs"
       - ".github/workflows/national-catalog-crawl-preview.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "scripts/crawl-national-monitoring.mjs"
-      - "scripts/merge-national-monitoring-crawl.mjs"
-      - "scripts/national-monitoring-parser.mjs"
-      - "scripts/test-national-monitoring-parser.mjs"
-      - "scripts/test-national-catalog-import.mjs"
-      - "scripts/import-national-catalog.mjs"
-      - "scripts/validate-national-catalog-preview.mjs"
-      - ".github/workflows/national-catalog-crawl-preview.yml"
 
 permissions:
   contents: read
