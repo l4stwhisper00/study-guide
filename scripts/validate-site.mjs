@@ -75,18 +75,17 @@ function statSyncSafe(file) {
 try {
   const accountHtml = readFileSync(path.join(root, "account.html"), "utf8");
   const accountJs = readFileSync(path.join(root, "account.js"), "utf8");
-  const accountIds = new Set([...accountHtml.matchAll(/\\bid=["']([^"']+)["']/g)].map((match) => match[1]));
+  const accountIds = new Set([...accountHtml.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]));
   const selectors = [
-    ...accountJs.matchAll(/\\$\\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]\\)/g),
-    ...accountJs.matchAll(/setMessage\\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]/g),
+    ...accountJs.matchAll(/\$\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]\)/g),
+    ...accountJs.matchAll(/setMessage\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]/g),
   ];
   for (const match of selectors) {
-    pass(accountIds.has(match[1]), `account.js references missing #${match[1]} in account.html`);
+    pass(accountIds.has(match[1]), \`account.js references missing #\${match[1]} in account.html\`);
   }
 } catch (error) {
-  errors.push(`Account markup validation failed: ${error.message}`);
+  errors.push(\`Account markup validation failed: \${error.message}\`);
 }
-
 
 // Execute only the repository's static catalogue data in an isolated context.
 try {
