@@ -112,10 +112,20 @@ function schoolMapLinks(school) {
 function getSchoolDetails(school) {
   const details = typeof getCatalogDetails === 'function'
     ? getCatalogDetails(school)
-    : { ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [], verifiedAt: null, sourceUrl: null };
+    : {
+      ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [],
+      minimumScores: [], passingScores: [], verifiedAt: null, sourceUrl: null
+    };
+  const ownership = details.ownership && details.ownership !== 'unknown'
+    ? details.ownership
+    : (school.ownership || 'unknown');
   return {
     ...details,
-    ownership: details.ownership && details.ownership !== 'unknown' ? details.ownership : (school.ownership || 'unknown'),
+    ownership,
+    ownershipSource: details.ownershipSource || school.ownershipSource || '',
+    ownershipConfidence: details.ownershipConfidence && details.ownershipConfidence !== 'unknown'
+      ? details.ownershipConfidence
+      : (details.ownershipSource || school.ownershipSource ? 'official-name' : ownership === 'unknown' ? 'unknown' : 'name-inferred'),
     programs: details.programs?.length ? details.programs : (school.programs || []),
     sourceUrl: details.sourceUrl || school.sourceUrl || null,
     verifiedAt: details.verifiedAt || (/^\d{4}-\d{2}-\d{2}$/.test(school.sourceSnapshot || "") ? school.sourceSnapshot : null),
@@ -126,20 +136,209 @@ function hasNumber(value) { return value !== null && value !== undefined && valu
 
 function money(value) {
   return hasNumber(value)
-    ? new Intl.NumberFormat('ru-RU').format(Number(value)) + ' ₽'
+    ? new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 2 }).format(Number(value)) + ' ₽'
     : 'Нет подтверждённых данных';
 }
 
+function latestYearRows(rows) {
+  const valid = (Array.isArray(rows) ? rows : []).filter(item => hasNumber(item.year));
+  if (!valid.length) return [];
+  const year = Math.max(...valid.map(item => Number(item.year)));
+  return valid.filter(item => Number(item.year) === year);
+}
+
+function budgetPlacesSummary(details) {
+  const rows = latestYearRows((details.budgetPlaces || []).filter(item => hasNumber(item.count)));
+  if (!rows.length) return null;
+  const unique = new Map();
+  rows.forEach(item => {
+    const key = [item.program || '', item.fundingType || '', item.form || ''].join('|');
+    if (!unique.has(key)) unique.set(key, item);
+  });
+  return {
+    year: Number(rows[0].year),
+    count: [...unique.values()].reduce((sum, item) => sum + Number(item.count), 0),
+    programs: new Set([...unique.values()].map(item => item.program || 'Программа не указана')).size
+  };
+}
+
+function tuitionSummary(details) {
+  const rows = latestYearRows((details.tuition || []).filter(item => hasNumber(item.annualRub) || hasNumber(item.monthlyRub)));
+  if (!rows.length) return null;
+  const annualValues = rows.filter(item => hasNumber(item.annualRub)).map(item => Number(item.annualRub));
+  const monthlyValues = rows.filter(item => hasNumber(item.monthlyRub)).map(item => Number(item.monthlyRub));
+  const cheapest = annualValues.length
+    ? rows.filter(item => hasNumber(item.annualRub)).sort((a, b) => Number(a.annualRub) - Number(b.annualRub))[0]
+    : rows.filter(item => hasNumber(item.monthlyRub)).sort((a, b) => Number(a.monthlyRub) - Number(b.monthlyRub))[0];
+  const annualRub = hasNumber(cheapest?.annualRub) ? Number(cheapest.annualRub) : null;
+  const monthlyRub = hasNumber(cheapest?.monthlyRub)
+    ? Number(cheapest.monthlyRub)
+    : annualRub !== null ? Math.round((annualRub / 12) * 100) / 100 : null;
+  return {
+    year: Number(rows[0].year),
+    annualRub,
+    monthlyRub,
+    monthlyIsEquivalent: cheapest?.monthlyIsEquivalent === true || (!hasNumber(cheapest?.monthlyRub) && annualRub !== null),
+    programs: new Set(rows.map(item => item.program || '')).size,
+    program: cheapest?.program || ''
+  };
+}
+
+function passingScoreSummary(details) {
+  const rows = latestYearRows((details.passingScores || []).filter(item => hasNumber(item.score)));
+  const programs = new Set(rows.map(item => item.program || 'Программа не указана'));
+  const minimumRows = latestYearRows((details.minimumScores || []).filter(item => hasNumber(item.score)));
+  if (!rows.length && !minimumRows.length) return null;
+  const budgetScores = rows.filter(item => item.basis === 'budget').map(item => Number(item.score));
+  const paidScores = rows.filter(item => item.basis === 'paid').map(item => Number(item.score));
+  return {
+    year: Number((rows[0] || minimumRows[0]).year),
+    programs: programs.size,
+    minimumRows: minimumRows.length,
+    hasPassingScores: rows.length > 0,
+    minBudget: budgetScores.length ? Math.min(...budgetScores) : null,
+    minPaid: paidScores.length ? Math.min(...paidScores) : null
+  };
+}
+
+function ownershipBadge(details) {
+  const confidenceNote = details.ownershipConfidence === 'name-inferred' ? ' · по названию' : '';
+  if (details.ownership === 'private') {
+    return '<span class="ownership-tag ownership-private">Частное' + confidenceNote + '</span>';
+  }
+  if (details.ownership === 'public') {
+    return '<span class="ownership-tag ownership-public">Государственное' + confidenceNote + '</span>';
+  }
+  return '<span class="ownership-tag ownership-unknown">Форма собственности не подтверждена</span>';
+}
+
+const PROFILE_CATEGORIES = {
+  it: 'Профиль каталога — информационные технологии, программирование, информационные системы и цифровые сервисы.',
+  med: 'Профиль каталога — медицина, фармация, сестринское дело и смежные направления здравоохранения.',
+  eng: 'Профиль каталога — инженерия, техника, производство, транспорт, строительство и прикладные технологии.',
+  econ: 'Профиль каталога — экономика, финансы, управление, бизнес и организация услуг.',
+  law: 'Профиль каталога — юриспруденция, правоохранительная деятельность и правовые дисциплины.',
+  hum: 'Профиль каталога — гуманитарные науки, языки, коммуникации, история и общественные дисциплины.',
+  sci: 'Профиль каталога — естественные, математические и исследовательские направления.',
+  agro: 'Профиль каталога — сельское хозяйство, агрономия, ветеринария и природопользование.',
+  edu: 'Профиль каталога — педагогика, образование, психология и социальная работа.',
+  art: 'Профиль каталога — искусство, культура, дизайн и творческие направления.',
+  other: 'Профиль каталога пока не уточнён по отдельным образовательным программам.'
+};
+
+function schoolDescription(school, details, category) {
+  if (details.description) {
+    return {
+      text: details.description,
+      sourceUrl: details.descriptionSourceUrl || details.sourceUrl,
+      generated: false
+    };
+  }
+  const raw = String(school.d || '').trim();
+  const isGeneric = !raw ||
+    /условия приёма и программы уточняются|перечень программ уточняется|филиал образовательной организации|образовательная организация\. условия приёма|отдельная учебная площадка|учебная площадка\s*\/\s*кампус/i.test(raw);
+  if (!isGeneric) {
+    return { text: raw, sourceUrl: details.sourceUrl, generated: false };
+  }
+  const typeName = school.t === 'college' ? 'колледж или организация среднего профессионального образования' : 'организация высшего образования';
+  const place = school.locationKind === 'branch'
+    ? 'Это отдельный филиал' + (school.parentName ? ' головной организации «' + school.parentName + '»' : ' образовательной организации') + '.'
+    : school.locationKind === 'campus' ? 'Это отдельная учебная площадка организации.' : '';
+  const categoryText = PROFILE_CATEGORIES[school.cat] || PROFILE_CATEGORIES.other;
+  const listedPrograms = (details.programs || []).filter(Boolean).slice(0, 7);
+  const programsText = listedPrograms.length
+    ? ' На странице приёма учреждения перечислены направления: ' + listedPrograms.join('; ') + '.'
+    : '';
+  const missingProgramsText = listedPrograms.length
+    ? ' Полный перечень специальностей и условия приёма проверяй в актуальных правилах приёма.'
+    : ' Точный перечень специальностей, формы обучения и условия приёма нужно сверять с документами приёмной комиссии.';
+  return {
+    text: school.n + ' — ' + typeName + ' в населённом пункте ' + school.c +
+      (school.region ? ' (' + school.region + ')' : '') + '. ' + place + ' ' + categoryText +
+      programsText + missingProgramsText,
+    sourceUrl: details.sourceUrl,
+    generated: true,
+    programsVerified: listedPrograms.length > 0
+  };
+}
+
+function renderCardAdmissionSummary(details, school) {
+  const budget = budgetPlacesSummary(details);
+  const tuition = tuitionSummary(details);
+  const score = passingScoreSummary(details);
+  const budgetText = budget
+    ? budget.count + ' мест по ' + budget.programs + ' указанным программам · ' + budget.year
+    : 'Нет подтверждённых данных';
+  const tuitionText = tuition
+    ? (tuition.annualRub !== null ? 'от ' + money(tuition.annualRub) + '/год' : 'Цена за месяц: ' + money(tuition.monthlyRub)) +
+      (tuition.monthlyRub !== null ? ' · ' + money(tuition.monthlyRub) + '/мес.' + (tuition.monthlyIsEquivalent ? ' (экв.)' : '') : '') +
+      ' · цены по ' + tuition.programs + ' программам · ' + tuition.year
+    : 'Нет подтверждённых данных';
+  const scoreText = score
+    ? (score.hasPassingScores
+      ? [
+        score.minBudget !== null ? 'бюджет от ' + score.minBudget : '',
+        score.minPaid !== null ? 'платное от ' + score.minPaid : ''
+      ].filter(Boolean).join(' / ') + ' баллов · ' + score.programs + ' программ · ' + score.year
+      : 'Есть только пороги ЕГЭ для подачи · ' + score.year)
+    : 'Нет подтверждённых данных';
+  return '<div class="card-admission-summary">' +
+    '<p><span>Бюджетные места</span><b>' + escapeHtml(budgetText) + '</b></p>' +
+    '<p><span>Платное обучение</span><b>' + escapeHtml(tuitionText) + '</b></p>' +
+    '<p><span>Точные проходные</span><b>' + escapeHtml(scoreText) + '</b></p>' +
+    '</div>';
+}
+
 function renderBudgetPlaces(details) {
-  const rows = (details.budgetPlaces || []).filter(item => hasNumber(item.count));
-  if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённого количества бюджетных мест по программам текущего набора. Не подставляем общую цифру вместо официальных данных.</p>';
-  return '<ul class="catalog-data-list">' + rows.map(item =>
-    '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
-    escapeHtml(String(item.count)) + ' мест · ' + escapeHtml(String(item.year || 'год не указан')) +
-    (item.fundingType ? ' · ' + escapeHtml(item.fundingType) : '') +
-    (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
-    '</span></li>'
-  ).join('') + '</ul>';
+  const rows = latestYearRows((details.budgetPlaces || []).filter(item => hasNumber(item.count)));
+  if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённого количества бюджетных мест по программам опубликованного набора. Это не означает, что бюджетных мест нет: количество не удалось подтвердить по доступному документу.</p>';
+  const total = budgetPlacesSummary(details);
+  return '<p class="catalog-data-summary"><b>Итого по указанным программам: ' +
+    escapeHtml(String(total.count)) + ' бюджетных мест · ' + escapeHtml(String(total.year)) +
+    '</b><br><span>Сумма контрольных цифр из перечисленных строк; квоты и формы обучения показываются в источнике отдельно.</span></p>' +
+    '<ul class="catalog-data-list">' + rows.map(item =>
+      '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
+      escapeHtml(String(item.count)) + ' мест · ' + escapeHtml(String(item.year || 'год не указан')) +
+      (item.form ? ' · ' + escapeHtml(item.form) : '') +
+      (item.fundingType ? ' · ' + escapeHtml(item.fundingType) : '') +
+      (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
+      '</span></li>'
+    ).join('') + '</ul>';
+}
+
+function renderMinimumScores(details) {
+  const rows = latestYearRows((details.minimumScores || []).filter(item => hasNumber(item.score)));
+  if (!rows.length) {
+    return '<div class="catalog-score-block"><h4>Минимальные пороги для подачи</h4><p class="catalog-data-empty">Нет подтверждённых минимальных баллов по отдельным вступительным испытаниям. Это не означает, что порог равен нулю.</p></div>';
+  }
+  return '<div class="catalog-score-block"><h4>Минимальные пороги для подачи</h4>' +
+    '<p class="school-profile-hint">Это минимумы по отдельным вступительным испытаниям, а не проходной балл конкурса.</p>' +
+    '<ul class="catalog-data-list">' + rows.map(item =>
+      '<li><b>' + escapeHtml(item.subject || item.program || 'Вступительное испытание') + '</b><span>' +
+      escapeHtml(String(item.score)) + ' баллов · ' + escapeHtml(String(item.year)) +
+      (item.form ? ' · ' + escapeHtml(item.form) : '') +
+      (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
+      '</span></li>'
+    ).join('') + '</ul></div>';
+}
+
+function renderPassingScores(details, school) {
+  const rows = latestYearRows((details.passingScores || []).filter(item => hasNumber(item.score)));
+  if (!rows.length) return '<p class="catalog-data-empty">Нет подтверждённых проходных баллов по программам и конкурсам. Старый ориентир каталога не подменяет результаты официального зачисления.</p>';
+  return '<ul class="catalog-data-list">' + rows.map(item => {
+    const basis = item.basis === 'budget' ? 'Бюджет' : item.basis === 'paid' ? 'Платное' : 'Условия не уточнены';
+    const scale = item.scoreScale === 'five' || item.scoreKind === 'certificate-average' ? ' / 5' : ' баллов';
+    const kind = item.scoreKind === 'minimum-admitted-total'
+      ? 'Минимальный балл среди зачисленных'
+      : item.scoreKind === 'certificate-average'
+        ? 'Проходной средний балл аттестата'
+        : 'Проходной балл';
+    return '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
+      escapeHtml(kind + ': ' + item.score + scale + ' · ' + basis + ' · ' + item.year) +
+      (item.form ? ' · ' + escapeHtml(item.form) : '') +
+      (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
+      '</span></li>';
+  }).join('') + '</ul>';
 }
 
 function renderTuition(details) {
@@ -171,8 +370,8 @@ function scoreMeta(school) {
   }
   return {
     value: String(school.s) + (school.t === 'college' ? ' / 5' : ' баллов'),
-    label: school.t === 'college' ? 'Ориентир среднего балла аттестата' : 'Ориентир суммы ЕГЭ',
-    note: 'Это ориентир из текущей версии каталога, а не подтверждённый официальный проходной балл. Год, конкурсная группа и программа требуют проверки в приёмной комиссии.',
+    label: school.t === 'college' ? 'Справочный ориентир среднего балла аттестата' : 'Справочный ориентир суммы ЕГЭ',
+    note: 'Это прежний ориентир каталога, не официальный проходной балл и не минимальный порог для подачи. Точные итоги зачисления показываются отдельно только при наличии опубликованного источника.',
   };
 }
 
@@ -514,23 +713,28 @@ function initVuzi() {
     const score = scoreMeta(school);
     const details = getSchoolDetails(school);
     const category = CATEGORIES.find(c => c.key === school.cat);
+    const description = schoolDescription(school, details, category);
     const examRows = (school.sub || []).map(k =>
       `<tr><td>${escapeHtml(SUBJECTS[k] || k)}</td></tr>`
     ).join('');
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
-      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
+      ${ownershipBadge(details)}
       ${school.locationKind === 'branch' ? '<span class="location-tag">Филиал</span>' : school.locationKind === 'campus' ? '<span class="location-tag">Учебная площадка</span>' : ''}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
-      <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
-      <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
+      <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}${school.region ? ' · ' + escapeHtml(school.region) : ''}</p>
+      <p class="dialog-desc">${escapeHtml(description.text)}</p>
+      ${description.generated ? '<p class="school-profile-hint">' + (description.programsVerified ? 'Описание собрано как краткая справка; направления обучения взяты из опубликованной страницы приёма, а не из рекламного текста.' : 'Профиль сформирован по названию и классификации каталога. Это справочное описание, а не подтверждённый перечень образовательных программ.') + '</p>' : ''}
+      ${description.sourceUrl ? '<p class="school-profile-hint">Источник сведений об организации: <a href="' + escapeHtml(description.sourceUrl) + '" target="_blank" rel="noopener noreferrer">официальная страница / документ</a>.</p>' : ''}
 
       <section class="school-profile-section" aria-label="Основная информация">
         <h3>О заведении</h3>
         <dl class="school-profile-grid">
           <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
-          <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Требует подтверждения'}</dd></div>
+          <div><dt>Форма собственности</dt><dd>${details.ownership === 'private' ? 'Частное' : details.ownership === 'public' ? 'Государственное / муниципальное' : 'Не подтверждена'}</dd></div>
+          ${details.ownershipConfidence === 'name-inferred' ? '<div><dt>Основание классификации</dt><dd>Предварительно определено по формулировке названия; требует сверки с юридическим реестром</dd></div>' : ''}
+          ${details.ownershipSource ? '<div><dt>Подтверждение формы собственности</dt><dd>' + escapeHtml(details.ownershipSource) + '</dd></div>' : ''}
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           ${school.region ? '<div><dt>Регион</dt><dd>' + escapeHtml(school.region) + '</dd></div>' : ''}
           ${school.address ? '<div><dt>Адрес учебной площадки</dt><dd>' + escapeHtml(school.address) + '</dd></div>' : ''}
@@ -557,7 +761,7 @@ function initVuzi() {
         <h3>Чему здесь обучают</h3>
         ${(details.programs || []).length
           ? '<ul class="catalog-program-list">' + details.programs.map(program => '<li>' + escapeHtml(program) + '</li>').join('') + '</ul>'
-          : '<p class="school-profile-hint">' + escapeHtml(school.d || 'Перечень программ уточняется на официальном сайте учреждения.') + '</p>'}
+          : '<p class="school-profile-hint">Перечень конкретных специальностей и образовательных программ пока не подтверждён в каталоге. Смотри актуальный перечень на официальном сайте учреждения.</p>'}
       </section>
 
       <section class="school-profile-section" aria-label="Бюджетные места">
@@ -572,7 +776,10 @@ function initVuzi() {
       </section>
 
       <section class="school-profile-section" aria-label="Информация о поступлении">
-        <h3>Поступление и баллы</h3>
+        <h3>Минимальные и проходные баллы</h3>
+        ${renderMinimumScores(details)}
+        <h4>Минимальный балл среди зачисленных по программам</h4>
+        ${renderPassingScores(details, school)}
         <div class="d-grid">
           <div class="d-cell">
             <dt>${escapeHtml(score.label)}</dt>
@@ -580,12 +787,12 @@ function initVuzi() {
             <p class="score-source-note">${escapeHtml(score.note)}</p>
           </div>
           <div class="d-cell">
-            <dt>Оценка твоих шансов</dt>
+            <dt>Оценка твоих шансов по справочному ориентиру</dt>
             <dd class="chance ${ch.cls}" style="font-size:1rem">${escapeHtml(ch.text)}</dd>
           </div>
         </div>
-        <p class="school-profile-hint">Проходной балл — это результат последнего зачисленного абитуриента. Он отличается по направлению, форме обучения, основе (бюджет/платное) и году приёма. Для колледжей конкурс обычно зависит от среднего балла аттестата и правил конкретного набора.</p>
-        <a class="link-btn" href="${maps.admissions}" target="_blank" rel="noopener noreferrer">Найти официальные проходные баллы и правила приёма ${icon('i-ext')}</a>
+        <p class="school-profile-hint">Минимальный балл ЕГЭ для допуска к конкурсу, минимальный проходной результат последнего зачисленного и средний балл аттестата — разные показатели. Сравнивай только одну программу, форму и основу обучения, за один и тот же год. Для колледжей обычно важен средний балл аттестата.</p>
+        <a class="link-btn" href="${maps.admissions}" target="_blank" rel="noopener noreferrer">Открыть официальные правила приёма и результаты зачисления ${icon('i-ext')}</a>
       </section>
 
       <section class="school-profile-section">
@@ -662,16 +869,17 @@ function initVuzi() {
         <div class="card-body">
           <div class="card-top">
             <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
-      ${details.ownership === 'private' ? '<span class="ownership-tag">Частное учреждение</span>' : ''}
+            ${ownershipBadge(details)}
             ${s.locationKind === 'branch' ? '<span class="location-tag">Филиал</span>' : s.locationKind === 'campus' ? '<span class="location-tag">Площадка</span>' : ''}
             ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
             <button type="button" class="fav-btn" data-fav="${s.id}" aria-pressed="${isFav}"
               aria-label="В избранное">${icon('i-star')}</button>
           </div>
           <button type="button" class="card-open" data-open="${s.id}">${escapeHtml(s.n)}</button>
+          ${renderCardAdmissionSummary(details, s)}
           <dl class="facts">
-            <div><dt>${s.t === 'college' ? 'Ориентир аттестата' : 'Ориентир суммы ЕГЭ'} · требует проверки</dt>
-              <dd class="score">${s.s == null ? '—' : s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
+            <div><dt>${s.t === 'college' ? 'Справочный балл аттестата' : 'Справочная сумма ЕГЭ'} · не официальный проходной</dt>
+              <dd class="score">${s.s == null ? 'Нет данных' : s.s}<small>${s.t === 'college' ? ' / 5' : ''}</small></dd></div>
             <div><dt class="chance ${ch.cls}">${ch.text}</dt></div>
           </dl>
         </div>
