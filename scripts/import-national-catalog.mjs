@@ -71,7 +71,13 @@ const fieldAliases = {
   city: ['населённый_пункт','населенный_пункт','город','city','locality','settlement'],
   region: ['субъект','субъект_рф','регион','region','subject'],
   address: ['адрес_места_осуществления_образовательной_деятельности','адрес_филиала','адрес_обучения','адрес','место_нахождения','address'],
-  parent: ['юридическое_лицо','головная_организация','родительская_организация','parent_name','parent_organization','legal_entity'],
+  parent: ['головная_организация','родительская_организация','parent_name','parent_organization','legal_entity_name'],
+  legalEntityStatus: ['юридическое_лицо','состояние_юрлица','статус_юридического_лица','legal_entity_status'],
+  legalEntityCheckedAt: ['сверено_егрюл','дата_сверки_егрюл','egul_checked_at','legal_entity_checked_at'],
+  territoryCode: ['октмо','код_октмо','territory_code','oktmo'],
+  coordinatesAvailable: ['координаты_доступны','есть_координаты','coordinates_available'],
+  latitude: ['широта','latitude','lat'],
+  longitude: ['долгота','longitude','lon','lng'],
   locationKind: ['тип_площадки','тип_объекта','вид_места_обучения','branch_type','location_type'],
   isBranch: ['филиал','это_филиал','is_branch','branch'],
   inn: ['инн','inn'], ogrn: ['огрн','ogrn'],
@@ -181,8 +187,19 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const ogrn = clean(get(row, 'ogrn')).replace(/\D/g, '');
   const programs = programsRaw.split(/[;|]/).map(clean).filter(Boolean);
   const site = website(get(row, 'website'));
-  const sourceUrl = website(get(row, 'sourceUrl')).url;
+  const sourceUrl = website(get(row, 'sourceUrl') || options['source-url']).url;
   const owner = ownership(get(row, 'ownership'));
+  const legalEntityStatus = clean(get(row, 'legalEntityStatus'));
+  const legalEntityCheckedAt = clean(get(row, 'legalEntityCheckedAt'));
+  const territoryCode = clean(get(row, 'territoryCode'));
+  const rawCoordinates = clean(get(row, 'coordinates'));
+  const latitude = clean(get(row, 'latitude'));
+  const longitude = clean(get(row, 'longitude'));
+  const coordinatePair = latitude && longitude ? `${latitude},${longitude}`
+    : (rawCoordinates.match(/-?\\d+(?:\\.\\d+)?\\s*[,; ]\\s*-?\\d+(?:\\.\\d+)?/) || [])[0] || '';
+  const coordinates = coordinatePair.replace(/\\s+/g, '');
+  const coordinatesAvailable = clean(get(row, 'coordinatesAvailable')) ||
+    (coordinates || /^(есть|да|true|yes)$/i.test(rawCoordinates) ? 'Есть' : '');
   const kind = locationKind(get(row, 'locationKind') + ' ' + get(row, 'isBranch'), name, parent);
   const duplicateBase = inn || ogrn || sourceId || keyText(parent || name);
   for (const type of typeList) {
@@ -201,9 +218,13 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
         : (kind === 'branch' ? 'Филиал образовательной организации.' : 'Отдельная учебная площадка / кампус.') + (parent ? ' Головная организация: ' + parent + '.' : ''),
       u: site.host, officialUrl: site.url, parentName: parent, locationKind: kind,
       ownership: owner, inn: inn || null, ogrn: ogrn || null,
+      legalEntityStatus: legalEntityStatus || null,
+      legalEntityCheckedAt: legalEntityCheckedAt || null,
+      territoryCode: territoryCode || null,
+      coordinatesAvailable: coordinatesAvailable || null,
       licenseStatus: status || 'Не указан в выгрузке',
       accreditationStatus: clean(get(row, 'accreditation')) || 'Не указан в выгрузке',
-      programs, coordinates: clean(get(row, 'coordinates')),
+      programs, coordinates,
       catalogSource: source, sourceSnapshot: snapshot,
       sourceId: sourceId || null, sourceUrl: sourceUrl || null
     });
