@@ -5,10 +5,7 @@ import {
   parseMonitoringRecords
 } from "./national-monitoring-parser.mjs";
 
-const html = \`<table><tr><td id="org-123" icon="_2" city="г. Москва" coordinates="55.75,37.61">
-  <a href="inst.php?id=123">Федеральный университет &amp; институт</a>
-  <div class="adr"><p>Адрес</p><p>101000, г. Москва, ул. Примерная, д. 1</p></div>
-</td></tr></table>\`;
+const html = '<table><tr><td id="org-123" icon="_2" city="г. Москва" coordinates="55.75,37.61"><a href="inst.php?id=123">Федеральный университет &amp; институт</a><div class="adr"><p>Адрес</p><p>101000, г. Москва, ул. Примерная, д. 1</p></div></td></tr></table>';
 const [record] = parseMonitoringRecords(html);
 assert.equal(record.id, "org-123");
 assert.equal(record.icon, "_2");
