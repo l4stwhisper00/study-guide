@@ -80,6 +80,7 @@ function renderBudgetPlaces(details) {
   return '<ul class="catalog-data-list">' + rows.map(item =>
     '<li><b>' + escapeHtml(item.program || 'Программа не указана') + '</b><span>' +
     escapeHtml(String(item.count)) + ' мест · ' + escapeHtml(String(item.year || 'год не указан')) +
+    (item.fundingType ? ' · ' + escapeHtml(item.fundingType) : '') +
     (item.sourceUrl ? ' · <a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Источник</a>' : '') +
     '</span></li>'
   ).join('') + '</ul>';
