@@ -26,6 +26,7 @@ const CATEGORIES = [
   { key: 'agro', name: 'Аграрные науки',        icon: 'i-globe' },
   { key: 'edu',  name: 'Педагогика',            icon: 'i-people' },
   { key: 'art',  name: 'Дизайн и искусство',    icon: 'i-palette' },
+  { key: 'other', name: 'Общий профиль / уточняется', icon: 'i-book' },
 ];
 
 /* n — название, t — тип (vuz/college), c — город, cat — направление,
