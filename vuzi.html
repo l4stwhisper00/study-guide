@@ -90,8 +90,10 @@
           <div class="chips" id="catChips" role="group" aria-labelledby="catLabel"></div>
         </div>
         <div class="chip-group">
-          <span class="chip-label" id="cityLabel">Город</span>
-          <div class="chips" id="cityChips" role="group" aria-labelledby="cityLabel"></div>
+          <label class="chip-label" for="citySearch">Любой город или населённый пункт</label>
+          <input type="search" id="citySearch" list="catalogCityOptions" placeholder="Начни вводить город" autocomplete="off">
+          <datalist id="catalogCityOptions"></datalist>
+          <div class="chips" id="cityChips" role="group" aria-label="Популярные города"></div>
         </div>
         <div class="chip-group">
           <span class="chip-label" id="subjLabel">Есть предмет</span>
@@ -133,6 +135,7 @@
   <script src="icons.js"></script>
   <script src="data.js"></script>
   <script src="data-extra.js"></script>
+  <script src="catalog-national.js"></script>
   <script src="catalog-data-live.js"></script>
   <script src="catalog-details.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script>
