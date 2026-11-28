@@ -1,0 +1,40 @@
+name: Promote validated national catalogue preview
+
+on:
+  push:
+    branches: [feature/national-monitoring-catalog-crawl]
+    paths:
+      - ".github/workflows/promote-national-catalog-preview.yml"
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download validated catalogue preview
+        uses: actions/download-artifact@v4
+        with:
+          name: national-monitoring-2025-catalogue-preview
+          run-id: 46137146326
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: data/incoming/preview
+      - name: Install generated catalogue files on the PR branch
+        run: |
+          cp data/incoming/preview/catalog-national-preview.js catalog-national.js
+          cp data/incoming/preview/catalog-national-preview-report.json catalog-national-report.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog-national.js catalog-national-report.json
+          if git diff --cached --quiet; then
+            echo "Catalogue already matches the validated preview."
+          else
+            git commit -m "Expand national catalogue from official 2025 monitoring"
+            git push
+          fi
