@@ -274,6 +274,7 @@ const CATALOG_DETAILS = {
         { program: 'Бизнес-информатика', year: 2026, annualRub: 291048, monthlyRub: 24254, monthlyIsEquivalent: true, paymentPeriod: 'Стоимость 1 курса на 2026/27 учебный год', form: 'Очная, бакалавриат', sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/05/15.05.2026_01-03_487_safin-l.r._urazova-a.r.pdf' }
       ],
       minimumScores: [
+        { program: 'Биология', subject: 'Биология', year: 2026, score: 40, sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
         { program: 'Биология', subject: 'Математика или химия (по выбору)', year: 2026, score: 40, sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
         { program: 'Биология', subject: 'Русский язык', year: 2026, score: 40, sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
         { program: 'Лечебное дело', subject: 'Химия', year: 2026, score: 40, sourceUrl: 'https://admissions.kpfu.ru/wp-content/uploads/2026/06/plan_priema_2026_2027-bakalavriat-speczialitet-1.pdf' },
