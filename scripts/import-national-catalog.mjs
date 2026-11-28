@@ -60,7 +60,7 @@ function parseRows(text, delimiter) {
 const fieldAliases = {
   sourceId: ['org_id','record_id','source_id','schoolguid','sysguid','guid','id','код_организации'],
   name: ['наименование','наименование_организации','название','полное_наименование','краткое_наименование','shortname','name','org_name'],
-  type: ['ступени','ступень','уровень_образования','вид_организации','тип_организации','тип','type','level','education_level'],
+  type: ['ступени','ступень','уровень_образования','вид_организации','тип_организации','тип','type','level','education_level','schooltypename'],
   city: ['населённый_пункт','населенный_пункт','город','city','locality','settlement'],
   region: ['субъект','субъект_рф','регион','region','subject'],
   address: ['адрес_места_осуществления_образовательной_деятельности','адрес_филиала','адрес_обучения','адрес','место_нахождения','address'],
@@ -69,7 +69,7 @@ const fieldAliases = {
   isBranch: ['филиал','это_филиал','is_branch','branch'],
   inn: ['инн','inn'], ogrn: ['огрн','ogrn'],
   website: ['официальный_сайт','сайт','сайт_организации','website','official_site','url'],
-  licenseStatus: ['статус_лицензии','лицензия','license_status','license'],
+  licenseStatus: ['статус_лицензии','статус_лицензии_на_образование','статус','statusname','лицензия','license_status','license'],
   accreditation: ['аккредитация','статус_аккредитации','accreditation','accreditation_status'],
   ownership: ['форма_собственности','собственность','ownership','ownership_type','окфс'],
   programs: ['специальности','программы','направления_подготовки','licensedprograms','programs','specialties'],
@@ -134,6 +134,8 @@ function website(value) {
 }
 function locationKind(raw, name, parent) {
   const v = keyText(raw + ' ' + name);
+  const flag = keyText(raw);
+  if (['1', 'true', 'yes', 'да', 'филиал', 'branch'].includes(flag)) return 'branch';
   if (/(кампус|учебная площадка|площадка)/i.test(v)) return 'campus';
   if (/(филиал|представительств|отделение)/i.test(v) || (parent && keyText(parent) !== keyText(name))) return 'branch';
   return 'institution';
@@ -156,7 +158,8 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const address = clean(get(row, 'address'));
   const parent = clean(get(row, 'parent'));
   const status = clean(get(row, 'licenseStatus'));
-  const typeList = levels(get(row, 'type') || defaultType, name);
+  const programsRaw = get(row, 'programs');
+  const typeList = levels((get(row, 'type') || defaultType) + ' ' + programsRaw, name);
   if (!name) { skipped.missingName++; continue; }
   if (!city) { skipped.missingCity++; continue; }
   if (rejectedStatus(status)) { skipped.inactiveLicense++; continue; }
@@ -169,7 +172,7 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const sourceId = clean(get(row, 'sourceId'));
   const inn = clean(get(row, 'inn')).replace(/\D/g, '');
   const ogrn = clean(get(row, 'ogrn')).replace(/\D/g, '');
-  const programs = clean(get(row, 'programs')).split(/[;|]/).map(clean).filter(Boolean);
+  const programs = programsRaw.split(/[;|]/).map(clean).filter(Boolean);
   const site = website(get(row, 'website'));
   const sourceUrl = website(get(row, 'sourceUrl')).url;
   const owner = ownership(get(row, 'ownership'));
