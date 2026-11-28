@@ -1,6 +1,13 @@
 name: Preview national education catalogue crawl
 
 on:
+  push:
+    branches: [feature/national-monitoring-catalog-crawl]
+    paths:
+      - "scripts/crawl-national-monitoring.mjs"
+      - "scripts/national-monitoring-parser.mjs"
+      - "scripts/test-national-monitoring-parser.mjs"
+      - ".github/workflows/national-catalog-crawl-preview.yml"
   pull_request:
     branches: [main]
     paths:
