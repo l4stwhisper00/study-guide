@@ -267,11 +267,12 @@ function renderCardAdmissionSummary(details, school) {
     : 'Нет подтверждённых данных';
   const tuitionText = tuition
     ? (tuition.annualRub !== null ? 'от ' + money(tuition.annualRub) + '/год' : 'Цена за месяц: ' + money(tuition.monthlyRub)) +
-      (tuition.monthlyRub !== null ? ' · ' + money(tuition.monthlyRub) + '/мес.' + (tuition.monthlyIsEquivalent ? ' (экв.)' : '') : '') + ' · ' + tuition.year
+      (tuition.monthlyRub !== null ? ' · ' + money(tuition.monthlyRub) + '/мес.' + (tuition.monthlyIsEquivalent ? ' (экв.)' : '') : '') +
+      ' · цены по ' + tuition.programs + ' программам · ' + tuition.year
     : 'Нет подтверждённых данных';
   const scoreText = score
     ? (score.hasPassingScores
-      ? score.programs + ' программ · ' + score.year
+      ? 'Подтверждены по ' + score.programs + ' программам · ' + score.year
       : 'Только минимальные пороги · ' + score.year)
     : 'Нет подтверждённых данных';
   return '<div class="card-admission-summary">' +
