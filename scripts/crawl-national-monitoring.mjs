@@ -67,7 +67,7 @@ async function mapLimit(items, limit, callback) {
 
 function ownershipFromName(name) {
   const value = String(name || "");
-  if (/(частн|негосудар|автономная некоммерческая организация высшего образования|\\bАНО\\b|\\bЧОУ\\b|\\bЧПОУ\\b|\\bООО\\b)/i.test(value)) return "private";
+  if (/(частн|негосудар|автономная некоммерческая организация высшего образования|АНО|ЧОУ|ЧПОУ|ООО)/i.test(value)) return "private";
   if (/(государствен|федеральн|муницип|бюджетн|казенн)/i.test(value)) return "public";
   return "";
 }
