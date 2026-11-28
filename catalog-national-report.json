@@ -1,41 +1,82 @@
 {
   "generatedAt": "2026-11-28",
+  "totals": {
+    "nationalLayerRecords": 248,
+    "nationalLayerSettlements": 90,
+    "combinedCatalogueRecords": 638,
+    "combinedCatalogueSettlements": 198,
+    "baseMainRecords": 390,
+    "baseMainSettlements": 111
+  },
   "sources": [
     {
       "name": "Тут виднее / реестр лицензий Рособрнадзора",
       "snapshotDate": "2026-09-06",
       "records": 5,
-      "url": "https://tutvidnee.ru/data/"
+      "url": "https://tutvidnee.ru/data/",
+      "note": "Five public CSV sample records. Address data for these rows is additionally attributed to the Ryazan monitoring page."
     },
     {
       "name": "Минпросвещения РФ — СПО-мониторинг 2025, Рязанская область",
       "snapshotDate": "2025",
       "listedRows": 38,
       "records": 31,
-      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2"
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10310&type=2",
+      "note": "31 new rows; five Tutvidnee sample rows also received address enrichment from this page. Discrepancies in statistical indicators: 31/38; incomplete: 11/38."
     },
     {
       "name": "Минпросвещения РФ — СПО-мониторинг 2025, Московская область",
       "snapshotDate": "2025",
       "listedRows": 143,
       "records": 143,
-      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2"
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10302&type=2",
+      "note": "143 listed organisations/branches. Discrepancies: 115/143; incomplete: 43/143."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Санкт-Петербург",
+      "snapshotDate": "2025",
+      "listedRows": 110,
+      "records": 41,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10201&type=2",
+      "note": "41 rows selected from the 110-row list. Discrepancies: 93/110; incomplete: 42/110."
+    },
+    {
+      "name": "Минпросвещения РФ — СПО-мониторинг 2025, Свердловская область",
+      "snapshotDate": "2025",
+      "listedRows": 163,
+      "records": 28,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10804&type=2",
+      "note": "28 rows selected from the 163-row list. Discrepancies: 142/163; incomplete: 39/163."
     }
   ],
-  "importedRecords": 179,
-  "uniqueCities": 78,
+  "importedRecords": 248,
+  "uniqueCities": 90,
   "byType": {
-    "vuz": 35,
-    "college": 144
+    "vuz": 49,
+    "college": 199
   },
   "skipped": {
-    "duplicateBaseRowsRyazan": 7,
-    "recordsAddedFromRyazanMinistryMonitoring": 31
+    "duplicateBaseRowsRyazan": 7
+  },
+  "quality": {
+    "duplicateNormalizedNameCityPairsInNationalLayer": 0,
+    "duplicateIdsInNationalLayer": 0,
+    "unknownCategories": 0,
+    "ownershipValues": [
+      "public",
+      "private",
+      "unknown"
+    ],
+    "locationKinds": [
+      "institution",
+      "branch"
+    ]
   },
   "caveats": [
-    "Для Рязанской области мониторинг сообщает о расхождениях в статистических показателях у 31 из 38 организаций и филиалов.",
-    "Для Московской области мониторинг сообщает о расхождениях в статистических показателях у 115 из 143 организаций и филиалов.",
-    "Эти страницы используются как источник названий, населённых пунктов и адресов; показатели приёма, стоимость обучения и бюджетные места из этих сводок не выводятся.",
-    "Часть строк — филиалы, а не самостоятельные юридические лица; они оставлены отдельными карточками учебных площадок."
+    "В трёх региональных страницах мониторинга и странице Рязанской области выявлены расхождения в статистических показателях. Импортируются только название, населённый пункт и опубликованный адрес; приёмные показатели, стоимость обучения, бюджетные места и статусы лицензии из этих таблиц не выводятся.",
+    "Часть строк — филиалы, а не самостоятельные юридические лица; карточки отражают учебные площадки, а не только число организаций/юрлиц.",
+    "На страницах СПО-мониторинга данные представлены за отчётный год 2025; точная дата снимка не выдумывается.",
+    "Санкт-Петербург и Свердловская область представлены частичной выборкой из публичных региональных списков: 41 из 110 и 28 из 163 строк соответственно.",
+    "Цель 4 000+ заведений и 1 000+ городов пока не достигнута."
   ]
 }
