@@ -141,6 +141,9 @@ function decodeHtml(text) {
     .replace(/&#39;|&apos;/gi, "'")
     .replace(/&lt;/gi, '<')
     .replace(/&gt;/gi, '>')
+    .replace(/&mdash;/gi, '—')
+    .replace(/&ndash;/gi, '–')
+    .replace(/&thinsp;|&ensp;|&emsp;/gi, ' ')
     .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)));
 }
 
@@ -261,7 +264,7 @@ function extractRosnouBudget(tables, alias) {
 }
 
 function semesterMinimum(text, label) {
-  const plain = stripHtml(text);
+  const plain = stripHtml(text).replace(/\u00a0/g, ' ').replace(/\s+/g, ' ');
   const lower = plain.toLocaleLowerCase('ru-RU');
   const sectionStart = lower.indexOf('стоимость за семестр');
   const searchStart = sectionStart >= 0 ? sectionStart : 0;
@@ -357,6 +360,13 @@ for (const source of sources) {
     const tables = extractTables(page.html);
     result.tableCount = tables.length;
     result.tableRows = tables.reduce((sum, table) => sum + table.rows.length, 0);
+    if (source.kind === 'table-prices') {
+      result.matchSamples = source.programs.slice(0, 3).map(item => ({
+        alias: item.alias,
+        matchingRows: findMatchingRows(tables, item.alias).slice(0, 1).map(hit => hit.row.text.slice(0, 240)),
+        textMatches: stripHtml(page.html).toLocaleLowerCase('ru-RU').includes(item.alias.toLocaleLowerCase('ru-RU'))
+      }));
+    }
 
     if (source.kind === 'table-prices') {
       for (const item of source.programs) {
@@ -499,7 +509,8 @@ for (const item of results) {
     'funded=' + item.extractedBudgetPlaces,
     ...(item.tableCount === undefined ? [] : ['tables=' + item.tableCount, 'rows=' + item.tableRows]),
     ...(item.warnings.length ? ['warnings=' + item.warnings.join(',')] : []),
-    ...(item.debugPreview ? ['preview=' + item.debugPreview] : [])
+    ...(item.debugPreview ? ['preview=' + item.debugPreview] : []),
+    ...(item.matchSamples ? ['matches=' + JSON.stringify(item.matchSamples)] : [])
   ];
   console.log(item.id + ': ' + item.status + ' (' + details.join('; ') + ')');
 }
