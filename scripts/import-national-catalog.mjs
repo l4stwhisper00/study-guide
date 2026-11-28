@@ -70,6 +70,7 @@ const fieldAliases = {
   type: ['ступени','ступень','уровень_образования','вид_организации','тип_организации','тип','type','level','education_level','schooltypename'],
   city: ['населённый_пункт','населенный_пункт','город','city','locality','settlement'],
   region: ['субъект','субъект_рф','регион','region','subject'],
+  regionId: ['region_id','regionid'],
   address: ['адрес_места_осуществления_образовательной_деятельности','адрес_филиала','адрес_обучения','адрес','место_нахождения','address'],
   parent: ['головная_организация','родительская_организация','parent_name','parentname','parent_organization','legal_entity_name'],
   legalEntityStatus: ['юридическое_лицо','состояние_юрлица','статус_юридического_лица','legal_entity_status'],
@@ -186,10 +187,10 @@ for (const item of existingNationalRecords) {
   const city = keyText(item.c);
   const address = keyText(item.address);
   if (/monitoring\.miccedu\.ru/i.test(String(item.sourceUrl || '')) && item.sourceId) {
-    existingNationalBySourceId.set(String(item.sourceId) + '|' + type, item);
+    existingNationalBySourceId.set(String(item.sourceId) + '|' + type + '|' + keyText(item.region), item);
   }
-  existingNationalExact.add([type, name, city, address].join('|'));
-  if (!address) existingNationalNameCityWithoutAddress.set([type, name, city].join('|'), item);
+  existingNationalExact.add([type, keyText(item.region), name, city, address].join('|'));
+  if (!address) existingNationalNameCityWithoutAddress.set([type, keyText(item.region), name, city].join('|'), item);
 }
 
 const records = new Map();
@@ -245,7 +246,7 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
     const duplicateKey = [duplicateBase, type, keyText(city), keyText(address || name)].join('|');
     if (records.has(duplicateKey)) { skipped.duplicate++; continue; }
     if (preserveExistingNational) {
-      const sourceMatchKey = sourceId + '|' + type;
+      const sourceMatchKey = sourceId + '|' + type + '|' + keyText(region);
       const sourceMatch = sourceId ? existingNationalBySourceId.get(sourceMatchKey) : null;
       if (sourceMatch) {
         const updated = {
@@ -264,12 +265,12 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
         skipped.currentNationalMatch++;
         continue;
       }
-      const exactNationalKey = [type, keyText(name), keyText(city), keyText(address)].join('|');
+      const exactNationalKey = [type, keyText(region), keyText(name), keyText(city), keyText(address)].join('|');
       if (existingNationalExact.has(exactNationalKey)) {
         skipped.currentNationalMatch++;
         continue;
       }
-      const noAddressKey = [type, keyText(name), keyText(city)].join('|');
+      const noAddressKey = [type, keyText(region), keyText(name), keyText(city)].join('|');
       const noAddressMatch = existingNationalNameCityWithoutAddress.get(noAddressKey);
       if (noAddressMatch) {
         const updated = {
@@ -294,7 +295,7 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
       continue;
     }
     records.set(duplicateKey, {
-      id, n: name, t: type, c: city, region, address,
+      id, n: name, t: type, c: city, region, regionId: clean(get(row, 'regionId')) || null, address,
       cat: category(name, programs), s: null, sub: [],
       d: kind === 'institution' ? 'Образовательная организация. Условия приёма и программы уточняются по официальным документам.'
         : (kind === 'branch' ? 'Филиал образовательной организации.' : 'Отдельная учебная площадка / кампус.') + (parent ? ' Головная организация: ' + parent + '.' : ''),
