@@ -242,8 +242,8 @@ function extractProgramPrice(html, tables, alias, annualIndex = 0) {
   const needle = String(alias).toLocaleLowerCase('ru-RU');
   const position = lower.indexOf(needle);
   if (position < 0) return null;
-  const rowStart = plain.lastIndexOf('\\n', position) + 1;
-  const rowEndAt = plain.indexOf('\\n', position);
+  const rowStart = plain.lastIndexOf('\n', position) + 1;
+  const rowEndAt = plain.indexOf('\n', position);
   const row = plain.slice(rowStart, rowEndAt >= 0 ? rowEndAt : position + 1200);
   const values = moneyValues(row);
   return values.length ? values[Math.min(annualIndex, values.length - 1)] : null;
