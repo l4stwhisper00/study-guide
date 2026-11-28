@@ -4,11 +4,18 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 const root = process.cwd();
-const options = Object.fromEntries(process.argv.slice(2).map((arg, index, list) => {
-  if (!arg.startsWith('--')) return [];
-  const [key, inline] = arg.slice(2).split('=');
-  return [key, inline ?? (list[index + 1] && !list[index + 1].startsWith('--') ? list[index + 1] : '')];
-}).filter(Boolean));
+const options = {};
+for (let index = 2; index < process.argv.length; index += 1) {
+  const arg = process.argv[index];
+  if (!arg.startsWith('--')) continue;
+  const equalAt = arg.indexOf('=');
+  const key = equalAt >= 0 ? arg.slice(2, equalAt) : arg.slice(2);
+  const inlineValue = equalAt >= 0 ? arg.slice(equalAt + 1) : null;
+  const nextValue = process.argv[index + 1] && !process.argv[index + 1].startsWith('--')
+    ? process.argv[++index]
+    : '';
+  options[key] = inlineValue ?? nextValue;
+}
 
 const input = options.input;
 const source = options.source;
