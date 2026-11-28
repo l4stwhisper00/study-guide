@@ -234,6 +234,21 @@ function extractTablePrice(tables, alias, annualIndex) {
   return null;
 }
 
+function extractProgramPrice(html, tables, alias, annualIndex = 0) {
+  const tableValue = extractTablePrice(tables, alias, annualIndex);
+  if (tableValue !== null) return tableValue;
+  const plain = stripHtml(html);
+  const lower = plain.toLocaleLowerCase('ru-RU');
+  const needle = String(alias).toLocaleLowerCase('ru-RU');
+  const position = lower.indexOf(needle);
+  if (position < 0) return null;
+  const rowStart = plain.lastIndexOf('\\n', position) + 1;
+  const rowEndAt = plain.indexOf('\\n', position);
+  const row = plain.slice(rowStart, rowEndAt >= 0 ? rowEndAt : position + 1200);
+  const values = moneyValues(row);
+  return values.length ? values[Math.min(annualIndex, values.length - 1)] : null;
+}
+
 function extractRosnouBudget(tables, alias) {
   const hits = findMatchingRows(tables, alias);
   for (const hit of hits) {
@@ -253,7 +268,7 @@ function semesterMinimum(text, label) {
   const labelAt = lower.indexOf(String(label).toLocaleLowerCase('ru-RU'), searchStart);
   if (labelAt < 0) return null;
   const fragment = plain.slice(labelAt, labelAt + 320);
-  const match = fragment.match(/от\s*(\d[\d\s\u00a0]*)\s*₽/i);
+  const match = fragment.match(/от\s*(\d[\d\s\u00a0]*)(?:\s*₽)?/i);
   if (!match) return null;
   const value = Number(match[1].replace(/[\s\u00a0]/g, ''));
   return Number.isFinite(value) ? value : null;
@@ -347,7 +362,7 @@ for (const source of sources) {
 
     if (source.kind === 'table-prices') {
       for (const item of source.programs) {
-        const annualRub = extractTablePrice(tables, item.alias, source.annualIndex || 0);
+        const annualRub = extractProgramPrice(page.html, tables, item.alias, source.annualIndex || 0);
         if (!annualRub || annualRub < 1000) continue;
         appendUpdate(updates, source.schoolId, {
           kind: 'tuition',
