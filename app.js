@@ -236,17 +236,25 @@ function schoolDescription(school, details, category) {
   if (!isGeneric) {
     return { text: raw, sourceUrl: details.sourceUrl, generated: false };
   }
-  const typeName = school.t === 'college' ? 'Колледж или организация среднего профессионального образования' : 'Организация высшего образования';
+  const typeName = school.t === 'college' ? 'колледж или организация среднего профессионального образования' : 'организация высшего образования';
   const place = school.locationKind === 'branch'
     ? 'Это отдельный филиал' + (school.parentName ? ' головной организации «' + school.parentName + '»' : ' образовательной организации') + '.'
     : school.locationKind === 'campus' ? 'Это отдельная учебная площадка организации.' : '';
   const categoryText = PROFILE_CATEGORIES[school.cat] || PROFILE_CATEGORIES.other;
+  const listedPrograms = (details.programs || []).filter(Boolean).slice(0, 7);
+  const programsText = listedPrograms.length
+    ? ' На странице приёма учреждения перечислены направления: ' + listedPrograms.join('; ') + '.'
+    : '';
+  const missingProgramsText = listedPrograms.length
+    ? ' Полный перечень специальностей и условия приёма проверяй в актуальных правилах приёма.'
+    : ' Точный перечень специальностей, формы обучения и условия приёма нужно сверять с документами приёмной комиссии.';
   return {
-    text: school.n + ' — ' + typeName.toLocaleLowerCase('ru-RU') + ' в населённом пункте ' + school.c +
+    text: school.n + ' — ' + typeName + ' в населённом пункте ' + school.c +
       (school.region ? ' (' + school.region + ')' : '') + '. ' + place + ' ' + categoryText +
-      ' Точный перечень специальностей, формы обучения и условия приёма нужно сверять с документами приёмной комиссии.',
+      programsText + missingProgramsText,
     sourceUrl: details.sourceUrl,
-    generated: true
+    generated: true,
+    programsVerified: listedPrograms.length > 0
   };
 }
 
@@ -709,7 +717,7 @@ function initVuzi() {
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}${school.region ? ' · ' + escapeHtml(school.region) : ''}</p>
       <p class="dialog-desc">${escapeHtml(description.text)}</p>
-      ${description.generated ? '<p class="school-profile-hint">Профиль сформирован по названию и классификации каталога. Это справочное описание, а не утверждённый список образовательных программ.</p>' : ''}
+      ${description.generated ? '<p class="school-profile-hint">' + (description.programsVerified ? 'Описание собрано как краткая справка; направления обучения взяты из опубликованной страницы приёма, а не из рекламного текста.' : 'Профиль сформирован по названию и классификации каталога. Это справочное описание, а не подтверждённый перечень образовательных программ.') + '</p>' : ''}
       ${description.sourceUrl ? '<p class="school-profile-hint">Источник описания: <a href="' + escapeHtml(description.sourceUrl) + '" target="_blank" rel="noopener noreferrer">официальная страница / документ</a>.</p>' : ''}
 
       <section class="school-profile-section" aria-label="Основная информация">
