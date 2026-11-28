@@ -81,10 +81,10 @@ try {
     ...accountJs.matchAll(/setMessage\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]/g),
   ];
   for (const match of selectors) {
-    pass(accountIds.has(match[1]), \`account.js references missing #\${match[1]} in account.html\`);
+    pass(accountIds.has(match[1]), "account.js references missing #" + match[1] + " in account.html");
   }
 } catch (error) {
-  errors.push(\`Account markup validation failed: \${error.message}\`);
+  errors.push("Account markup validation failed: " + error.message);
 }
 
 // Execute only the repository's static catalogue data in an isolated context.
