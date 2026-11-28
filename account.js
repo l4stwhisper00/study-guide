@@ -65,9 +65,9 @@
   const friendlyError = (error, fallback) => {
     const message = String(error?.message || '');
     if (/Invalid login credentials/i.test(message)) return 'Неверный ник или пароль.';
-    if (/Email not confirmed/i.test(message)) return 'Сначала подтверди почту по ссылке из письма.';
+    if (/Email not confirmed/i.test(message)) return 'Не удалось подтвердить внутренний идентификатор аккаунта. Обратись к администратору.';
     if (/Password should be at least/i.test(message)) return 'Supabase отклонил пароль. Проверь минимальную длину в настройках Auth.';
-    if (/User already registered/i.test(message)) return 'Аккаунт с такой почтой уже существует. Попробуй войти.';
+    if (/User already registered/i.test(message)) return 'Этот ник уже занят. Выбери другой.';
     if (/rate limit|too many requests/i.test(message)) return 'Слишком много запросов. Подожди немного и попробуй снова.';
     if (/redirect.*not allowed|not allowed.*redirect/i.test(message)) {
       return 'Supabase отклонил адрес возврата. Проверь Redirect URLs в настройках Auth.';
