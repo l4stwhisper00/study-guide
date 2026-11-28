@@ -110,9 +110,9 @@ const sources = [
     url: 'https://abiturient.iict.ru/',
     kind: 'mikt-price',
     programs: [
-      { program: 'Бакалавриат — очная форма (минимальная опубликованная стоимость)', form: 'очная форма' },
-      { program: 'Бакалавриат — заочная и очно-заочная формы', form: 'заочная и очно-заочная формы' },
-      { program: 'Дизайн (очная форма)', form: 'дизайн' }
+      { program: 'Бакалавриат — очная форма (минимальная опубликованная стоимость)', form: 'fulltime' },
+      { program: 'Бакалавриат — заочная и очно-заочная формы', form: 'parttime' },
+      { program: 'Дизайн (очная форма)', form: 'design' }
     ]
   },
   {
@@ -121,8 +121,8 @@ const sources = [
     url: 'https://college.iict.ru/',
     kind: 'mikt-college-price',
     programs: [
-      { program: 'Колледж — очная форма (минимальная опубликованная стоимость)', form: 'очная форма' },
-      { program: 'Графический дизайнер (очная форма)', form: 'графический дизайнер' }
+      { program: 'Колледж — очная форма (минимальная опубликованная стоимость)', form: 'fulltime' },
+      { program: 'Графический дизайнер (очная форма)', form: 'graphic' }
     ]
   },
   {
@@ -248,7 +248,9 @@ function extractRosnouBudget(tables, alias) {
 function semesterMinimum(text, label) {
   const plain = stripHtml(text);
   const lower = plain.toLocaleLowerCase('ru-RU');
-  const labelAt = lower.indexOf(String(label).toLocaleLowerCase('ru-RU'));
+  const sectionStart = lower.indexOf('стоимость за семестр');
+  const searchStart = sectionStart >= 0 ? sectionStart : 0;
+  const labelAt = lower.indexOf(String(label).toLocaleLowerCase('ru-RU'), searchStart);
   if (labelAt < 0) return null;
   const fragment = plain.slice(labelAt, labelAt + 320);
   const match = fragment.match(/от\s*(\d[\d\s\u00a0]*)\s*₽/i);
@@ -257,17 +259,21 @@ function semesterMinimum(text, label) {
   return Number.isFinite(value) ? value : null;
 }
 
-function thousandsNearForm(text, form) {
-  const clean = normalize(text);
-  const at = clean.indexOf(normalize('Стоимость обучения в 2026'));
-  const search = at >= 0 ? clean.slice(at, at + 4000) : clean;
-  const label = normalize(form);
-  const position = search.indexOf(label);
-  if (position < 0) return null;
-  const fragment = search.slice(position, position + 220);
-  const match = fragment.match(/(?:—|-|:)\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i);
-  if (!match) return null;
-  return Math.round(Number(match[1].replace(',', '.')) * 1000);
+function miktAnnualPrice(text, form, sourceKind) {
+  const clean = stripHtml(text).replace(/[\\u00a0]/g, ' ').replace(/\\s+/g, ' ');
+  const patterns = {
+    fulltime: /очная форма\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i,
+    parttime: /заочная и очно-заочная формы\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i,
+    design: /очная форма\\s*\\(\\s*направление\\s*["«]?дизайн["»]?\\s*\\)\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i,
+    graphic: /очная форма\\s*\\(\\s*профессия\\s*["«]?графический дизайнер["»]?\\s*\\)\\s*[—–-]\\s*(\\d+(?:[,.]\\d+)?)\\s*тыс\\.?\\s*руб/i
+  };
+  const pattern = patterns[form];
+  if (!pattern) return null;
+  const section = sourceKind === 'mikt-college-price'
+    ? clean.slice(clean.toLocaleLowerCase('ru-RU').indexOf('стоимость обучения в 2026'))
+    : clean.slice(clean.toLocaleLowerCase('ru-RU').indexOf('стоимость обучения в 2026'));
+  const match = (section || clean).match(pattern);
+  return match ? Math.round(Number(match[1].replace(',', '.')) * 1000) : null;
 }
 
 async function fetchPage(url) {
@@ -392,7 +398,7 @@ for (const source of sources) {
       }
     } else if (source.kind === 'mikt-price' || source.kind === 'mikt-college-price') {
       for (const item of source.programs) {
-        const annualRub = thousandsNearForm(page.text, item.form);
+        const annualRub = miktAnnualPrice(page.text, item.form, source.kind);
         if (!annualRub || annualRub < 1000) continue;
         appendUpdate(updates, source.schoolId, {
           kind: 'tuition',
