@@ -29,7 +29,7 @@ const escapeHtml = s => String(s).replace(/[&<>"']/g, ch => (
 ));
 const TYPE_LABEL = { vuz: 'Вуз', college: 'Колледж' };
 const TYPE_CLASS = { vuz: 'tag-vuz', college: 'tag-college' };
-const HUES = { it: 255, eng: 210, med: 350, econ: 140, law: 45, hum: 285, sci: 190, agro: 95, edu: 320, art: 20 };
+const HUES = { it: 255, eng: 210, med: 350, econ: 140, law: 45, hum: 285, sci: 190, agro: 95, edu: 320, art: 20, other: 260 };
 
 async function updateCatalogFreshness() {
   const element = $('#catalogFreshness');
@@ -80,8 +80,17 @@ function icon(name, cls = 'icon') {
   return `<svg class="${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
 }
 
+function schoolOfficialUrl(school) {
+  if (school.officialUrl) return school.officialUrl;
+  if (school.u) return /^https?:\\/\\//i.test(school.u) ? school.u : 'https://' + school.u;
+  return '';
+}
+
 function schoolMapLinks(school) {
-  const query = encodeURIComponent(school.n + ', ' + school.c);
+  const location = school.address
+    ? school.n + ', ' + school.address + ', ' + school.c
+    : school.n + ', ' + school.c;
+  const query = encodeURIComponent(location);
   return {
     yandex: 'https://yandex.ru/maps/?text=' + query,
     twoGis: 'https://2gis.ru/search/' + query,
@@ -92,9 +101,16 @@ function schoolMapLinks(school) {
 }
 
 function getSchoolDetails(school) {
-  return typeof getCatalogDetails === 'function'
+  const details = typeof getCatalogDetails === 'function'
     ? getCatalogDetails(school)
-    : { ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [], verifiedAt: null, sourceUrl: school.u ? 'https://' + school.u : null };
+    : { ownership: 'unknown', programs: [], budgetPlaces: [], tuition: [], verifiedAt: null, sourceUrl: null };
+  return {
+    ...details,
+    ownership: details.ownership && details.ownership !== 'unknown' ? details.ownership : (school.ownership || 'unknown'),
+    programs: details.programs?.length ? details.programs : (school.programs || []),
+    sourceUrl: details.sourceUrl || school.sourceUrl || null,
+    verifiedAt: details.verifiedAt || school.sourceSnapshot || null,
+  };
 }
 
 function hasNumber(value) { return value !== null && value !== undefined && value !== '' && Number.isFinite(Number(value)); }
