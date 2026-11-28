@@ -311,7 +311,30 @@ legend { padding: 0; margin-bottom: 8px; font-size: .875rem; color: var(--muted)
 .cover-icon { position: absolute; right: -8px; bottom: -14px; width: 104px; height: 104px; color: #fff; opacity: .16; }
 .cover-city { position: absolute; left: 14px; top: 12px; z-index: 1; font-size: .6875rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; opacity: .85; }
 .card-body { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; }
-.card-top { display: flex; align-items: center; gap: 8px; min-height: 30px; }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 30px; }
+.card-top .ownership-tag { margin: 0; }
+.card-admission-summary {
+  display: grid;
+  gap: 5px;
+  padding: 10px 0 2px;
+  border-top: 1px solid var(--border);
+}
+.card-admission-summary p {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: .79rem;
+  line-height: 1.4;
+}
+.card-admission-summary span { color: var(--muted); flex: 0 0 auto; }
+.card-admission-summary b {
+  text-align: right;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.card-admission-summary + .facts { margin-top: 4px; }
 .tag { padding: 2px 8px; border-radius: 5px; font-size: .75rem; font-weight: 600; }
 .tag-vuz { background: rgba(108, 92, 231, .2); color: var(--accent); }
 .tag-college { background: var(--surface-2); color: var(--ink); }
@@ -753,9 +776,20 @@ select option:checked {
 
 /* Карточки собственности и приёмных данных */
 .ownership-tag {
-  display: inline-flex; align-items: center; padding: 4px 9px; margin: 0 0 8px 7px;
+  display: inline-flex; align-items: center; max-width: 100%; padding: 4px 9px; margin: 0 0 8px 7px;
   border: 1px solid rgba(240, 179, 90, .38); border-radius: 999px;
   background: rgba(240, 179, 90, .12); color: #ffd18a; font-size: .75rem; font-weight: 700;
+}
+.ownership-public {
+  border-color: rgba(70, 190, 156, .35);
+  background: rgba(70, 190, 156, .1);
+  color: #8de0c7;
+}
+.ownership-unknown {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 550;
 }
 .location-tag {
   display: inline-flex; align-items: center; padding: 4px 8px; border: 1px solid var(--border-strong);
@@ -771,6 +805,17 @@ select option:checked {
   padding: 12px 14px; border: 1px dashed var(--border-strong); border-radius: 10px;
   color: var(--muted); font-size: .86rem; line-height: 1.55;
 }
+.catalog-data-summary {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  line-height: 1.5;
+}
+.catalog-data-summary span { color: var(--muted); font-size: .82rem; }
+.catalog-score-block { margin: 14px 0; }
+.catalog-score-block h4 { margin: 0 0 8px; font-size: .96rem; }
 .catalog-data-list li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); }
 .catalog-data-list li span { color: var(--muted); white-space: nowrap; }
 .catalog-tuition-list { display: grid; gap: 10px; }
@@ -782,6 +827,9 @@ select option:checked {
 .catalog-tuition-row small { grid-column: 1 / -1; }
 @media (max-width: 520px) {
   .catalog-data-list li { flex-direction: column; gap: 3px; }
+  .catalog-data-list li span { white-space: normal; }
   .catalog-tuition-row { grid-template-columns: 1fr 1fr; }
   .catalog-tuition-row > b, .catalog-tuition-row small { grid-column: 1 / -1; }
+  .card-admission-summary p { align-items: flex-start; }
+  .card-admission-summary b { max-width: 62%; }
 }
