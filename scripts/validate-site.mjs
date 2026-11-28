@@ -90,11 +90,22 @@ try {
 // Execute only the repository's static catalogue data in an isolated context.
 try {
   const data = readFileSync(path.join(root, "data.js"), "utf8") + "\n" +
-    readFileSync(path.join(root, "data-extra.js"), "utf8") +
-    "\n;globalThis.__studyGuideData = { SUBJECTS, CATEGORIES, SCHOOLS };";
+    readFileSync(path.join(root, "data-extra.js"), "utf8") + "\n" +
+    readFileSync(path.join(root, "catalog-national.js"), "utf8") +
+    "\n;globalThis.__studyGuideData = { SUBJECTS, CATEGORIES, SCHOOLS, CATALOG_NATIONAL };";
   const context = {};
   vm.runInNewContext(data, context, { timeout: 2000 });
-  const { SUBJECTS, CATEGORIES, SCHOOLS } = context.__studyGuideData;
+  const { SUBJECTS, CATEGORIES, SCHOOLS, CATALOG_NATIONAL } = context.__studyGuideData;
+  pass(Array.isArray(CATALOG_NATIONAL?.records), "catalog-national.js must expose a records array");
+  pass(Number(CATALOG_NATIONAL?.importedRecords || 0) === CATALOG_NATIONAL.records.length, "national catalogue importedRecords must match its records array");
+  for (const record of CATALOG_NATIONAL.records) {
+    pass(["vuz", "college"].includes(record.t), `${record.id}: imported record must be a university or college`);
+    pass(typeof record.catalogSource === "string" && record.catalogSource.length > 0, `${record.id}: missing data source name`);
+    pass(/^(?:\d{4}|\d{4}-\d{2}-\d{2})$/.test(record.sourceSnapshot || ""), `${record.id}: missing source snapshot date`);
+    pass(["institution", "branch", "campus"].includes(record.locationKind), `${record.id}: invalid location kind`);
+    if (record.addressSnapshot) pass(/^(?:\d{4}|\d{4}-\d{2}-\d{2})$/.test(record.addressSnapshot), `${record.id}: invalid address snapshot`);
+    pass(typeof record.c === "string" && record.c.trim().length > 0, `${record.id}: missing city`);
+  }
   pass(Array.isArray(SCHOOLS) && SCHOOLS.length > 0, "Catalogue is empty or invalid");
   const ids = new Set();
   const categoryKeys = new Set(CATEGORIES.map((item) => item.key));
@@ -120,6 +131,7 @@ try {
 try {
   const data = readFileSync(path.join(root, "data.js"), "utf8") + "\n" +
     readFileSync(path.join(root, "data-extra.js"), "utf8") + "\n" +
+    readFileSync(path.join(root, "catalog-national.js"), "utf8") + "\n" +
     readFileSync(path.join(root, "catalog-data-live.js"), "utf8") + "\n" +
     readFileSync(path.join(root, "catalog-details.js"), "utf8") +
     "\n;globalThis.__catalogCheck = { SCHOOLS, CATALOG_DETAILS, CATALOG_LIVE_DETAILS, getCatalogDetails };";
