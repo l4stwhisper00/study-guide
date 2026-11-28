@@ -65,9 +65,26 @@ for (const file of htmlFiles) {
   }
 }
 
+
 function statSyncSafe(file) {
   try { return statSync(file).isFile() || statSync(file).isDirectory(); }
   catch { return false; }
+}
+
+// Check that account.js never queries or reports a missing static account element.
+try {
+  const accountHtml = readFileSync(path.join(root, "account.html"), "utf8");
+  const accountJs = readFileSync(path.join(root, "account.js"), "utf8");
+  const accountIds = new Set([...accountHtml.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]));
+  const selectors = [
+    ...accountJs.matchAll(/\$\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]\)/g),
+    ...accountJs.matchAll(/setMessage\(['"]#([A-Za-z][A-Za-z0-9_-]*)['"]/g),
+  ];
+  for (const match of selectors) {
+    pass(accountIds.has(match[1]), "account.js references missing #" + match[1] + " in account.html");
+  }
+} catch (error) {
+  errors.push("Account markup validation failed: " + error.message);
 }
 
 // Execute only the repository's static catalogue data in an isolated context.

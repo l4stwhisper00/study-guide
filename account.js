@@ -358,6 +358,73 @@
   function initCalc() {
     const select = $('#calcSubj');
     select.innerHTML = Object.keys(RAW).map((key) => '<option value="' + key + '">' + SUBJECTS[key] + '</option>').join('');
+
+    // Native OS dropdowns ignore option colors in some browsers. Reuse the
+    // site's custom dark dropdown so the subject list remains readable.
+    const wrapper = document.createElement('div');
+    wrapper.className = 'cselect calc-subject-select';
+    select.parentNode.insertBefore(wrapper, select);
+    wrapper.appendChild(select);
+    select.tabIndex = -1;
+    select.setAttribute('aria-hidden', 'true');
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'cselect-btn';
+    trigger.setAttribute('role', 'combobox');
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-controls', 'calcSubjOptions');
+
+    const list = document.createElement('div');
+    list.className = 'cselect-list';
+    list.id = 'calcSubjOptions';
+    list.setAttribute('role', 'listbox');
+    Array.from(select.options).forEach((option) => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.setAttribute('role', 'option');
+      item.dataset.v = option.value;
+      item.setAttribute('aria-selected', String(option.value === select.value));
+      item.textContent = option.textContent;
+      list.appendChild(item);
+    });
+    wrapper.append(trigger, list);
+
+    const syncSubjectSelect = () => {
+      const selected = select.options[select.selectedIndex];
+      trigger.textContent = selected ? selected.textContent : 'Выбери предмет';
+      list.querySelectorAll('[role="option"]').forEach((option) =>
+        option.setAttribute('aria-selected', String(option.dataset.v === select.value)));
+    };
+    const closeSubjectSelect = () => {
+      wrapper.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+    trigger.addEventListener('click', () => {
+      const isOpen = wrapper.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) list.querySelector('[aria-selected="true"]')?.focus();
+    });
+    list.addEventListener('click', (event) => {
+      const option = event.target.closest('[data-v]');
+      if (!option) return;
+      select.value = option.dataset.v;
+      syncSubjectSelect();
+      closeSubjectSelect();
+      trigger.focus();
+      update();
+    });
+    list.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeSubjectSelect();
+        trigger.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (!wrapper.contains(event.target)) closeSubjectSelect();
+    });
+
     const update = () => {
       const key = select.value;
       const maxRaw = RAW[key];
@@ -377,6 +444,7 @@
     };
     select.addEventListener('change', update);
     $('#calcRaw').addEventListener('input', update);
+    syncSubjectSelect();
     update();
   }
 
