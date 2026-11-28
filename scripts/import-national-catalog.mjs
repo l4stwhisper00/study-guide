@@ -184,7 +184,8 @@ let existingNationalRecords = [];
 let previousReport = {};
 if (preserveExistingNational) {
   const nationalContext = {};
-  const nationalText = readFileSync(path.join(root, 'catalog-national.js'), 'utf8') +
+  const nationalText = existingText + '\n' +
+    readFileSync(path.join(root, 'catalog-national.js'), 'utf8') +
     '\n;globalThis.__national = CATALOG_NATIONAL.records;';
   vm.runInNewContext(nationalText, nationalContext, { timeout: 10000 });
   existingNationalRecords = Array.isArray(nationalContext.__national) ? nationalContext.__national : [];
