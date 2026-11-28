@@ -28,6 +28,7 @@
       isHydrating = true;
       localStorage.removeItem('nav_scores');
       localStorage.removeItem('nav_done');
+      localStorage.removeItem('nav_progress_owner');
       isHydrating = false;
       window.dispatchEvent(new CustomEvent('study-guide-auth-state', { detail: { user: null } }));
       return null;
@@ -35,6 +36,15 @@
 
     if (activeUserId === user.id) return user;
     activeUserId = user.id;
+
+    // Prevent one signed-in user from inheriting another user's cached progress
+    // when accounts are switched in the same browser.
+    const storedOwner = localStorage.getItem('nav_progress_owner');
+    if (storedOwner && storedOwner !== user.id) {
+      localStorage.removeItem('nav_scores');
+      localStorage.removeItem('nav_done');
+    }
+    localStorage.setItem('nav_progress_owner', user.id);
 
     const { data, error } = await client
       .from('study_profiles')
