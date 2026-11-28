@@ -117,7 +117,7 @@ function getSchoolDetails(school) {
     ownership: details.ownership && details.ownership !== 'unknown' ? details.ownership : (school.ownership || 'unknown'),
     programs: details.programs?.length ? details.programs : (school.programs || []),
     sourceUrl: details.sourceUrl || school.sourceUrl || null,
-    verifiedAt: details.verifiedAt || school.sourceSnapshot || null,
+    verifiedAt: details.verifiedAt || (/^\d{4}-\d{2}-\d{2}$/.test(school.sourceSnapshot || "") ? school.sourceSnapshot : null),
   };
 }
 
