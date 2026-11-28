@@ -87,6 +87,8 @@ const fieldAliases = {
   ownership: ['форма_собственности','собственность','ownership','ownership_type','окфс'],
   programs: ['специальности','программы','направления_подготовки','licensedprograms','programs','specialties'],
   sourceUrl: ['ссылка_на_источник','url_источника','источник','source_url'],
+  sourceSnapshot: ['source_snapshot','snapshot_date','sourcesnapshot'],
+  catalogSource: ['catalog_source','source_name','catalogsource'],
   coordinates: ['координаты','coordinates','геокоординаты']
 };
 
@@ -160,8 +162,38 @@ const existingText = readFileSync(path.join(root, 'data.js'), 'utf8') + '\n' +
 vm.runInNewContext(existingText, existingContext, { timeout: 5000 });
 const existingKeys = new Set(existingContext.__schools.map(item => keyText(item.n) + '|' + keyText(item.c)));
 
+const preserveExistingNational = ['true', '1', 'yes'].includes(String(options['preserve-existing-national'] || '').toLowerCase());
+let existingNationalRecords = [];
+let previousReport = {};
+if (preserveExistingNational) {
+  const nationalContext = {};
+  const nationalText = readFileSync(path.join(root, 'catalog-national.js'), 'utf8') +
+    '\n;globalThis.__national = CATALOG_NATIONAL.records;';
+  vm.runInNewContext(nationalText, nationalContext, { timeout: 10000 });
+  existingNationalRecords = Array.isArray(nationalContext.__national) ? nationalContext.__national : [];
+  try {
+    previousReport = JSON.parse(readFileSync(path.join(root, 'catalog-national-report.json'), 'utf8'));
+  } catch {
+    previousReport = {};
+  }
+}
+const existingNationalBySourceId = new Map();
+const existingNationalExact = new Set();
+const existingNationalNameCityWithoutAddress = new Map();
+for (const item of existingNationalRecords) {
+  const type = keyText(item.t);
+  const name = keyText(item.n);
+  const city = keyText(item.c);
+  const address = keyText(item.address);
+  if (/monitoring\.miccedu\.ru/i.test(String(item.sourceUrl || '')) && item.sourceId) {
+    existingNationalBySourceId.set(String(item.sourceId) + '|' + type, item);
+  }
+  existingNationalExact.add([type, name, city, address].join('|'));
+  if (!address) existingNationalNameCityWithoutAddress.set([type, name, city].join('|'), item);
+}
+
 const records = new Map();
-const skipped = { missingName: 0, missingCity: 0, unsupportedType: 0, inactiveLicense: 0, duplicate: 0, currentCatalogueMatch: 0 };
+const skipped = { missingName: 0, missingCity: 0, unsupportedType: 0, inactiveLicense: 0, duplicate: 0, currentCatalogueMatch: 0, currentNationalMatch: 0 };
 const needsReview = [];
 for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const row = rows[rowNo];
@@ -172,7 +204,10 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const parent = clean(get(row, 'parent'));
   const status = clean(get(row, 'licenseStatus'));
   const programsRaw = get(row, 'programs');
-  const typeList = levels((get(row, 'type') || defaultType) + ' ' + programsRaw, name);
+  const rawType = keyText(get(row, 'type'));
+  const typeList = ['college', 'vuz'].includes(rawType)
+    ? [rawType]
+    : levels((get(row, 'type') || defaultType) + ' ' + programsRaw, name);
   if (!name) { skipped.missingName++; continue; }
   if (!city) { skipped.missingCity++; continue; }
   if (rejectedStatus(status)) { skipped.inactiveLicense++; continue; }
@@ -188,6 +223,8 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
   const programs = programsRaw.split(/[;|]/).map(clean).filter(Boolean);
   const site = website(get(row, 'website'));
   const sourceUrl = website(get(row, 'sourceUrl') || options['source-url']).url;
+  const rowSource = clean(get(row, 'catalogSource')) || source;
+  const rowSnapshot = clean(get(row, 'sourceSnapshot')) || snapshot;
   const owner = ownership(get(row, 'ownership'));
   const legalEntityStatus = clean(get(row, 'legalEntityStatus'));
   const legalEntityCheckedAt = clean(get(row, 'legalEntityCheckedAt'));
@@ -207,6 +244,51 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
     const id = 'national-' + hash(identity);
     const duplicateKey = [duplicateBase, type, keyText(city), keyText(address || name)].join('|');
     if (records.has(duplicateKey)) { skipped.duplicate++; continue; }
+    if (preserveExistingNational) {
+      const sourceMatchKey = sourceId + '|' + type;
+      const sourceMatch = sourceId ? existingNationalBySourceId.get(sourceMatchKey) : null;
+      if (sourceMatch) {
+        const updated = {
+          ...sourceMatch,
+          region: sourceMatch.region || region,
+          address: sourceMatch.address || address,
+          coordinates: sourceMatch.coordinates || coordinates,
+          coordinatesAvailable: sourceMatch.coordinatesAvailable || coordinatesAvailable,
+          sourceUrl: sourceMatch.sourceUrl || sourceUrl,
+          catalogSource: sourceMatch.catalogSource || rowSource,
+          sourceSnapshot: sourceMatch.sourceSnapshot || rowSnapshot
+        };
+        const oldIndex = existingNationalRecords.indexOf(sourceMatch);
+        if (oldIndex >= 0) existingNationalRecords[oldIndex] = updated;
+        existingNationalBySourceId.set(sourceMatchKey, updated);
+        skipped.currentNationalMatch++;
+        continue;
+      }
+      const exactNationalKey = [type, keyText(name), keyText(city), keyText(address)].join('|');
+      if (existingNationalExact.has(exactNationalKey)) {
+        skipped.currentNationalMatch++;
+        continue;
+      }
+      const noAddressKey = [type, keyText(name), keyText(city)].join('|');
+      const noAddressMatch = existingNationalNameCityWithoutAddress.get(noAddressKey);
+      if (noAddressMatch) {
+        const updated = {
+          ...noAddressMatch,
+          region: noAddressMatch.region || region,
+          address: address || noAddressMatch.address,
+          coordinates: noAddressMatch.coordinates || coordinates,
+          coordinatesAvailable: noAddressMatch.coordinatesAvailable || coordinatesAvailable,
+          sourceUrl: noAddressMatch.sourceUrl || sourceUrl,
+          catalogSource: noAddressMatch.catalogSource || rowSource,
+          sourceSnapshot: noAddressMatch.sourceSnapshot || rowSnapshot
+        };
+        const oldIndex = existingNationalRecords.indexOf(noAddressMatch);
+        if (oldIndex >= 0) existingNationalRecords[oldIndex] = updated;
+        existingNationalNameCityWithoutAddress.set(noAddressKey, updated);
+        skipped.currentNationalMatch++;
+        continue;
+      }
+    }
     if (existingKeys.has(keyText(name) + '|' + keyText(city))) {
       skipped.currentCatalogueMatch++;
       continue;
@@ -225,22 +307,83 @@ for (let rowNo = 1; rowNo < rows.length; rowNo++) {
       licenseStatus: status || 'Не указан в выгрузке',
       accreditationStatus: clean(get(row, 'accreditation')) || 'Не указан в выгрузке',
       programs, coordinates,
-      catalogSource: source, sourceSnapshot: snapshot,
+      catalogSource: rowSource, sourceSnapshot: rowSnapshot,
       sourceId: sourceId || null, sourceUrl: sourceUrl || null
     });
   }
 }
-const imported = [...records.values()].sort((a, b) => a.c.localeCompare(b.c, 'ru') || a.n.localeCompare(b.n, 'ru'));
+const newlyImported = [...records.values()];
+const combinedById = new Map();
+for (const item of (preserveExistingNational ? existingNationalRecords : []).concat(newlyImported)) {
+  const identity = item.id || [item.t, keyText(item.n), keyText(item.c), keyText(item.address)].join('|');
+  if (!combinedById.has(identity)) combinedById.set(identity, item);
+}
+const imported = [...combinedById.values()].sort((a, b) => a.c.localeCompare(b.c, 'ru') || a.n.localeCompare(b.n, 'ru'));
 const cities = new Set(imported.map(item => item.c));
+const settlementLocations = new Set(imported.map(item => keyText(item.region) + '|' + keyText(item.c)));
 const byType = { vuz: imported.filter(item => item.t === 'vuz').length, college: imported.filter(item => item.t === 'college').length };
-const report = { generatedAt: new Date().toISOString(), source, snapshotDate: snapshot, inputRows: rows.length - 1, importedRecords: imported.length, uniqueCities: cities.size, byType, skipped, needsReview };
+const baseCities = new Set(existingContext.__schools.map(item => item.c));
+const combinedCities = new Set([...existingContext.__schools.map(item => item.c), ...imported.map(item => item.c)]);
+const combinedLocations = new Set([
+  ...existingContext.__schools.map(item => keyText(item.region) + '|' + keyText(item.c)),
+  ...imported.map(item => keyText(item.region) + '|' + keyText(item.c))
+]);
+const sourceUrl = website(options['source-url']).url;
+const previousSources = Array.isArray(previousReport.sources) ? previousReport.sources : [];
+const currentSourceEntry = {
+  name: source,
+  snapshotDate: snapshot,
+  listedRows: rows.length - 1,
+  records: newlyImported.length,
+  url: sourceUrl
+};
+const sources = preserveExistingNational
+  ? previousSources.filter(item => item.name !== source).concat(currentSourceEntry)
+  : [currentSourceEntry];
+const totals = {
+  nationalLayerRecords: imported.length,
+  nationalLayerSettlements: cities.size,
+  nationalLayerLocations: settlementLocations.size,
+  combinedCatalogueRecords: existingContext.__schools.length + imported.length,
+  combinedCatalogueSettlements: combinedCities.size,
+  combinedCatalogueLocations: combinedLocations.size,
+  baseMainRecords: existingContext.__schools.length,
+  baseMainSettlements: baseCities.size
+};
+const report = {
+  generatedAt: new Date().toISOString(),
+  source,
+  snapshotDate: snapshot,
+  inputRows: rows.length - 1,
+  importedRecords: imported.length,
+  newlyImportedRecords: newlyImported.length,
+  preservedExistingRecords: preserveExistingNational ? existingNationalRecords.length : 0,
+  uniqueCities: cities.size,
+  uniqueSettlements: settlementLocations.size,
+  byType,
+  skipped,
+  needsReview,
+  totals,
+  sources,
+  coverageNote: 'Мониторинг охватывает организации, предоставившие сведения; он не является полным реестром лицензий и не включает часть ведомственных организаций и организации, не предоставившие данные.',
+  previousQuality: preserveExistingNational ? previousReport.quality || null : null
+};
 const outputData = {
-  generatedAt: report.generatedAt, source, snapshotDate: snapshot,
-  inputRows: report.inputRows, importedRecords: imported.length,
-  uniqueCities: cities.size, byType, skipped, needsReview: needsReview.length,
+  generatedAt: report.generatedAt,
+  source,
+  snapshotDate: snapshot,
+  inputRows: report.inputRows,
+  importedRecords: imported.length,
+  newlyImportedRecords: newlyImported.length,
+  preservedExistingRecords: preserveExistingNational ? existingNationalRecords.length : 0,
+  uniqueCities: cities.size,
+  uniqueSettlements: settlementLocations.size,
+  byType,
+  skipped,
+  needsReview: needsReview.length,
   records: imported
 };
 writeFileSync(output, '/* Generated by scripts/import-national-catalog.mjs. Do not edit by hand. */\nvar CATALOG_NATIONAL = ' + JSON.stringify(outputData, null, 2) + ';\nSCHOOLS.push(...CATALOG_NATIONAL.records.filter(record => !SCHOOLS.some(item => item.id === record.id)));\n');
 writeFileSync(output.replace(/\.js$/i, '-report.json'), JSON.stringify(report, null, 2) + '\n');
-console.log('Imported ' + imported.length + ' records in ' + cities.size + ' cities (' + byType.college + ' colleges, ' + byType.vuz + ' universities).');
+console.log('Imported ' + imported.length + ' total national records (' + newlyImported.length + ' new) in ' + cities.size + ' cities / ' + settlementLocations.size + ' region-settlements (' + byType.college + ' colleges, ' + byType.vuz + ' universities).');
 console.log('Skipped: ' + JSON.stringify(skipped) + '; rows needing review: ' + needsReview.length);
