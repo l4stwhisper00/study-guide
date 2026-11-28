@@ -29,7 +29,12 @@ const branchOfUniversity = classifyMonitoringRecord({ ...record, id: "branch-1",
 assert.equal(branchOfUniversity.type, "vuz");
 assert.equal(branchOfUniversity.locationKind, "branch");
 
-const branchOfCollege = classifyMonitoringRecord({ ...record, id: "branch-2", icon: "_0" }, {
+const branchOfCollege = classifyMonitoringRecord({
+  ...record,
+  id: "branch-2",
+  icon: "_0",
+  name: "Филиал государственного профессионального колледжа"
+}, {
   pageType: "spo",
   vpoIds: new Set()
 });
