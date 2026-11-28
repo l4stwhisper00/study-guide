@@ -31,6 +31,20 @@ const TYPE_LABEL = { vuz: 'Вуз', college: 'Колледж' };
 const TYPE_CLASS = { vuz: 'tag-vuz', college: 'tag-college' };
 const HUES = { it: 255, eng: 210, med: 350, econ: 140, law: 45, hum: 285, sci: 190, agro: 95, edu: 320, art: 20 };
 
+async function updateCatalogFreshness() {
+  const element = $('#catalogFreshness');
+  if (!element) return;
+  try {
+    const response = await fetch('catalog-source-status.json', { cache: 'no-store' });
+    if (!response.ok) return;
+    const report = await response.json();
+    if (!report.checkedAt) return;
+    const date = new Date(report.checkedAt).toLocaleDateString('ru-RU');
+    element.textContent = `Проверка доступности официальных сайтов: ${date} · доступно ${report.reachable} из ${report.total}. Это техническая проверка ссылок, а не подтверждение цен и бюджетных мест — финансовые сведения показываются только при наличии официального источника.`;
+  } catch { /* Keep the static explanation if the report is unavailable. */ }
+}
+updateCatalogFreshness();
+
 function icon(name, cls = 'icon') {
   return `<svg class="${cls}" aria-hidden="true"><use href="#${name}"/></svg>`;
 }
@@ -425,6 +439,7 @@ function initVuzi() {
     const ch = chanceInfo(school);
     const maps = schoolMapLinks(school);
     const score = scoreMeta(school);
+    const details = getSchoolDetails(school);
     const category = CATEGORIES.find(c => c.key === school.cat);
     const examRows = (school.sub || []).map(k =>
       `<tr><td>${escapeHtml(SUBJECTS[k] || k)}</td></tr>`
@@ -432,6 +447,7 @@ function initVuzi() {
     $('#dialogBody').innerHTML = `
       <button type="button" class="dialog-close" data-close aria-label="Закрыть">${icon('i-x')}</button>
       <span class="tag ${TYPE_CLASS[school.t]}">${TYPE_LABEL[school.t]}</span>
+      ${details.ownership === "private" ? "<span class=\"ownership-tag\">Частное учреждение</span>" : ""}
       <h2 id="dlgTitle">${escapeHtml(school.n)}</h2>
       <p class="card-city">${icon('i-pin')} ${escapeHtml(school.c)}</p>
       <p class="dialog-desc">${escapeHtml(school.d || 'Описание заведения уточняется на официальном сайте.')}</p>
@@ -440,6 +456,7 @@ function initVuzi() {
         <h3>О заведении</h3>
         <dl class="school-profile-grid">
           <div><dt>Тип</dt><dd>${TYPE_LABEL[school.t]}</dd></div>
+          <div><dt>Форма собственности</dt><dd>${details.ownership === "private" ? "Частное" : details.ownership === "public" ? "Государственное / муниципальное" : "Требует подтверждения"}</dd></div>
           <div><dt>Город</dt><dd>${escapeHtml(school.c)}</dd></div>
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
           <div><dt>Официальный сайт</dt><dd><a href="https://${escapeHtml(school.u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(school.u)} ${icon('i-ext')}</a></dd></div>
@@ -545,6 +562,7 @@ function initVuzi() {
       const ch = chanceInfo(s);
       const isFav = state.fav.includes(s.id);
       const cat = CATEGORIES.find(c => c.key === s.cat);
+      const details = getSchoolDetails(s);
       return `
       <article class="card" style="--i:${i}">
         <div class="card-cover" data-photo="${escapeHtml(s.n)}" style="--hue:${HUES[s.cat] ?? 250}">
@@ -554,6 +572,7 @@ function initVuzi() {
         <div class="card-body">
           <div class="card-top">
             <span class="tag ${TYPE_CLASS[s.t]}">${TYPE_LABEL[s.t]}</span>
+            ${details.ownership === "private" ? "<span class=\"ownership-tag\">Частное</span>" : ""}
             ${cat ? `<span class="card-cat">${icon(cat.icon)} ${cat.name}</span>` : ''}
             <button type="button" class="fav-btn" data-fav="${s.id}" aria-pressed="${isFav}"
               aria-label="В избранное">${icon('i-star')}</button>
