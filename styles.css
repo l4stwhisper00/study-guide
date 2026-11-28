@@ -254,6 +254,8 @@ legend { padding: 0; margin-bottom: 8px; font-size: .875rem; color: var(--muted)
 .seg button[aria-pressed="true"] { background: var(--grad); color: #fff; }
 .chip-group { display: flex; gap: 12px; align-items: flex-start; }
 .chip-label { flex: 0 0 110px; padding-top: 6px; font-size: .875rem; color: var(--muted); }
+#citySearch { flex: 0 1 320px; min-width: 220px; max-width: 420px; height: 38px; }
+#catalogCityOptions { display: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
   display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px;
@@ -754,6 +756,10 @@ select option:checked {
   display: inline-flex; align-items: center; padding: 4px 9px; margin: 0 0 8px 7px;
   border: 1px solid rgba(240, 179, 90, .38); border-radius: 999px;
   background: rgba(240, 179, 90, .12); color: #ffd18a; font-size: .75rem; font-weight: 700;
+}
+.location-tag {
+  display: inline-flex; align-items: center; padding: 4px 8px; border: 1px solid var(--border-strong);
+  border-radius: 999px; background: var(--surface-2); color: var(--muted); font-size: .72rem; font-weight: 650;
 }
 .catalog-freshness {
   margin: 18px 0 12px; padding: 12px 15px; border: 1px solid var(--border);
