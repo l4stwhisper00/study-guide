@@ -1,0 +1,10 @@
+{
+  "checkedAt": null,
+  "intervalDays": 14,
+  "total": 0,
+  "reachable": 0,
+  "unreachable": 0,
+  "unknown": 0,
+  "note": "The first scheduled check has not run yet.",
+  "sources": []
+}
