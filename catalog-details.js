@@ -20,7 +20,6 @@ const CATALOG_DETAILS = {
       tuition: [
         { program: 'Колледж — минимальная опубликованная цена', year: 2026, annualRub: 30000, monthlyRub: 2500, monthlyIsEquivalent: true, paymentPeriod: 'От 15 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' },
         { program: 'Бакалавриат — минимальная опубликованная цена', year: 2026, annualRub: 38000, monthlyRub: 3166.67, monthlyIsEquivalent: true, paymentPeriod: 'От 19 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' },
-        { program: 'Специалитет — минимальная опубликованная цена', year: 2026, annualRub: 38000, monthlyRub: 3166.67, monthlyIsEquivalent: true, paymentPeriod: 'От 19 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' },
         { program: 'Магистратура — минимальная опубликованная цена', year: 2026, annualRub: 56000, monthlyRub: 4666.67, monthlyIsEquivalent: true, paymentPeriod: 'От 28 000 ₽ за семестр; год и месяц — расчётный эквивалент', sourceUrl: 'https://synergy.ru/abiturientam/priemnaya_komissiya' }
       ]
     },
@@ -164,6 +163,21 @@ const CATALOG_DETAILS = {
   }
 };
 
+function mergeVerifiedRows(staticRows, liveRows) {
+  const merged = new Map();
+  for (const row of Array.isArray(staticRows) ? staticRows : []) {
+    merged.set(row.program + '|' + (row.year || ''), { ...row });
+  }
+  for (const row of Array.isArray(liveRows) ? liveRows : []) {
+    const key = row.program + '|' + (row.year || '');
+    merged.set(key, { ...(merged.get(key) || {}), ...row });
+  }
+  return [...merged.values()].sort((a, b) =>
+    String(a.program || '').localeCompare(String(b.program || ''), 'ru') ||
+    Number(b.year || 0) - Number(a.year || 0)
+  );
+}
+
 function getCatalogDetails(school) {
   const specific = CATALOG_DETAILS.schools[school.id] || {};
   const liveDetails = typeof CATALOG_LIVE_DETAILS !== 'undefined' && CATALOG_LIVE_DETAILS.schools
@@ -173,9 +187,11 @@ function getCatalogDetails(school) {
     ...CATALOG_DETAILS.defaults,
     ...specific,
     ...liveDetails,
-    programs: liveDetails.programs || specific.programs || [],
-    budgetPlaces: liveDetails.budgetPlaces || specific.budgetPlaces || [],
-    tuition: liveDetails.tuition || specific.tuition || [],
+    programs: Array.isArray(liveDetails.programs) && liveDetails.programs.length
+      ? liveDetails.programs
+      : (specific.programs || []),
+    budgetPlaces: mergeVerifiedRows(specific.budgetPlaces, liveDetails.budgetPlaces),
+    tuition: mergeVerifiedRows(specific.tuition, liveDetails.tuition),
     sourceUrl: liveDetails.sourceUrl || specific.sourceUrl || (school.u ? 'https://' + school.u : null)
   };
 }
