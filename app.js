@@ -536,6 +536,10 @@ function initVuzi() {
           ${school.parentName ? '<div><dt>Головная организация</dt><dd>' + escapeHtml(school.parentName) + '</dd></div>' : ''}
           ${school.inn ? '<div><dt>ИНН</dt><dd>' + escapeHtml(school.inn) + '</dd></div>' : ''}
           ${school.ogrn ? '<div><dt>ОГРН</dt><dd>' + escapeHtml(school.ogrn) + '</dd></div>' : ''}
+          ${school.legalEntityStatus ? '<div><dt>Статус юрлица</dt><dd>' + escapeHtml(school.legalEntityStatus) + '</dd></div>' : ''}
+          ${school.legalEntityCheckedAt ? '<div><dt>Сверено с ЕГРЮЛ</dt><dd>' + escapeHtml(school.legalEntityCheckedAt) + '</dd></div>' : ''}
+          ${school.territoryCode ? '<div><dt>Код ОКТМО</dt><dd>' + escapeHtml(school.territoryCode) + '</dd></div>' : ''}
+          ${school.coordinatesAvailable ? '<div><dt>Координаты в источнике</dt><dd>' + escapeHtml(school.coordinatesAvailable) + '</dd></div>' : ''}
           ${school.licenseStatus ? '<div><dt>Лицензия</dt><dd>' + escapeHtml(school.licenseStatus) + '</dd></div>' : ''}
           ${school.accreditationStatus ? '<div><dt>Аккредитация</dt><dd>' + escapeHtml(school.accreditationStatus) + '</dd></div>' : ''}
           <div><dt>Профиль</dt><dd>${escapeHtml(category ? category.name : 'Не указан')}</dd></div>
