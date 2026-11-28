@@ -680,7 +680,7 @@ const CATALOG_DETAILS = {
           "program": "Механика и математическое моделирование — «Математическое и компьютерное моделирование в механике»",
           "year": 2026,
           "count": 15,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 20 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -688,7 +688,7 @@ const CATALOG_DETAILS = {
           "program": "Прикладная математика и информатика — профиль «Математическое моделирование»",
           "year": 2026,
           "count": 35,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 15 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -696,7 +696,7 @@ const CATALOG_DETAILS = {
           "program": "Прикладная математика и информатика — профиль «Математическое и программное обеспечение вычислительных машин и компьютерных сетей»",
           "year": 2026,
           "count": 50,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 20 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -704,7 +704,7 @@ const CATALOG_DETAILS = {
           "program": "Фундаментальная информатика и информационные технологии — «Информационные технологии и системы искусственного интеллекта»",
           "year": 2026,
           "count": 20,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 30 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -712,7 +712,7 @@ const CATALOG_DETAILS = {
           "program": "Строительство — «Промышленное, гражданское и энергетическое строительство»",
           "year": 2026,
           "count": 49,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 10 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -720,7 +720,7 @@ const CATALOG_DETAILS = {
           "program": "Информатика и вычислительная техника — «Вычислительные машины, комплексы, системы и сети»",
           "year": 2026,
           "count": 185,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 50 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -728,7 +728,7 @@ const CATALOG_DETAILS = {
           "program": "Информатика и вычислительная техника — «Информационные технологии и искусственный интеллект в радиоэлектронике»",
           "year": 2026,
           "count": 16,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 9 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -736,7 +736,7 @@ const CATALOG_DETAILS = {
           "program": "Информатика и вычислительная техника — «Информационные системы и технологии в проектировании и производстве»",
           "year": 2026,
           "count": 50,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 25 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -744,7 +744,7 @@ const CATALOG_DETAILS = {
           "program": "Теплоэнергетика и теплотехника — профили ИТНО (энергетика предприятий, водородные технологии и цифровые двойники)",
           "year": 2026,
           "count": 75,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 50 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -752,7 +752,7 @@ const CATALOG_DETAILS = {
           "program": "Ядерная энергетика и теплофизика — «Новые технологии и материалы в атомной энергетике и промышленности»",
           "year": 2026,
           "count": 50,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 25 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -760,7 +760,7 @@ const CATALOG_DETAILS = {
           "program": "Прикладная информатика — «Прикладная информатика в экономике»",
           "year": 2026,
           "count": 30,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 60 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
@@ -768,7 +768,7 @@ const CATALOG_DETAILS = {
           "program": "Информационная безопасность — «Безопасность компьютерных систем и автоматизированных систем»",
           "year": 2026,
           "count": 53,
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "fundingType": "Контрольные цифры приёма 2026 года; дополнительно по договору — 100 мест",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         }
@@ -781,7 +781,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 31666.67,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -791,7 +791,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 31666.67,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -801,7 +801,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 31666.67,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -811,7 +811,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 31666.67,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -821,7 +821,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -831,7 +831,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -841,7 +841,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -851,7 +851,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -861,7 +861,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -871,7 +871,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 39500,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -881,7 +881,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         },
         {
@@ -891,7 +891,7 @@ const CATALOG_DETAILS = {
           "monthlyRub": 35000,
           "monthlyIsEquivalent": true,
           "paymentPeriod": "Стоимость на 2026 год; оплата по семестрам (месячная сумма — расчётный эквивалент)",
-          "form": "Очная, бакалавриат/специалитет",
+          "form": "Очная, бакалавриат",
           "sourceUrl": "https://pk.mpei.ru/info/speclist_pos.html"
         }
       ],
