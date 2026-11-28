@@ -10,6 +10,8 @@ The public account UI asks only for a nickname and password. Supabase Auth still
 
 The Edge Function validates requests, restricts browser origins to the production site, rate-limits registrations, tracks failed login attempts by nickname and IP hash, and requires a one-time server-validated CAPTCHA after three incorrect passwords. CAPTCHA answers are stored as hashes and expire after five minutes. The Edge Function is public by design (\`verify_jwt=false\`) because it handles registration and login; privileged operations use the service-role key only server-side.
 
+**Remaining Auth warning:** Supabase Security Advisor still reports leaked-password protection as disabled. Enable it in Authentication → Password Security if the project's plan supports it.
+
 **Important limitation:** there is no email address or other account-recovery channel. A user who forgets their password cannot self-recover the account. Users can change their password while signed in.
 
 ## Other application protections
