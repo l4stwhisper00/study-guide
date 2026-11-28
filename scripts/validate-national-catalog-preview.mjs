@@ -30,9 +30,9 @@ const badNewRows = newSource.filter(record =>
   !record.sourceId || !record.regionId || !record.n || !record.c || !record.region
   || !record.address || !record.coordinates || !record.sourceUrl
   || !["college", "vuz"].includes(record.t)
-  || !["institution", "branch"].includes(record.locationKind)
+  || !["institution", "branch", "campus"].includes(record.locationKind)
 );
-if (badNewRows.length) throw new Error("New monitoring records have incomplete required fields: " + badNewRows.length);
+if (badNewRows.length) throw new Error("New monitoring records have incomplete required fields: " + badNewRows.length + "; sample=" + JSON.stringify(badNewRows.slice(0, 5).map(record => ({ id: record.id, name: record.n, city: record.c, region: record.region, locationKind: record.locationKind, sourceUrl: record.sourceUrl, coordinates: record.coordinates }))));
 
 const missingSourceLinks = newSource.filter(record => !/monitoring\.miccedu\.ru/i.test(record.sourceUrl));
 if (missingSourceLinks.length) throw new Error("Monitoring records have missing source links: " + missingSourceLinks.length);
@@ -46,5 +46,6 @@ console.log("PREVIEW_VALIDATION " + JSON.stringify({
   combinedCatalogueRecords: SCHOOLS.length,
   nationalSettlements: report.totals.nationalLayerLocations,
   combinedSettlements: report.totals.combinedCatalogueLocations,
-  byType: CATALOG_NATIONAL.byType
+  byType: CATALOG_NATIONAL.byType,
+  locationKinds: Object.fromEntries([...new Set(newSource.map(record => record.locationKind))].map(kind => [kind, newSource.filter(record => record.locationKind === kind).length]))
 }));
