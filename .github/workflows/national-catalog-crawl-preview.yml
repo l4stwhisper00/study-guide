@@ -18,20 +18,32 @@ concurrency:
 
 jobs:
   crawl:
+    strategy:
+      fail-fast: false
+      matrix:
+        chunk: [0, 1, 2]
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      CRAWL_CHUNK_INDEX: ${{ matrix.chunk }}
+      CRAWL_CHUNKS: "3"
+      CRAWL_CONCURRENCY: "2"
+      CRAWL_REQUEST_DELAY_MS: "350"
+      OUTPUT_CSV: data/incoming/national-monitoring-2025-part-${{ matrix.chunk }}.csv
+      OUTPUT_REPORT: data/incoming/national-monitoring-2025-part-${{ matrix.chunk }}-report.json
     steps:
       - uses: actions/checkout@v7
       - name: Test parser and classification
         run: node scripts/test-national-monitoring-parser.mjs
-      - name: Crawl all regional monitoring pages
+      - name: Crawl regional monitoring pages in this chunk
         run: node scripts/crawl-national-monitoring.mjs
       - name: Upload crawl preview
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: national-monitoring-2025-crawl
+          name: national-monitoring-2025-crawl-part-${{ matrix.chunk }}
           path: |
-            data/incoming/national-monitoring-2025.csv
-            data/incoming/national-monitoring-2025-report.json
-          if-no-files-found: error
+            data/incoming/national-monitoring-2025-part-${{ matrix.chunk }}.csv
+            data/incoming/national-monitoring-2025-part-${{ matrix.chunk }}-report.json
+          if-no-files-found: warn
           retention-days: 7
