@@ -20,4 +20,6 @@ jobs:
       - name: Show runtime
         run: node --version
       - name: Validate pages, assets, scripts and catalogue
-        run: node scripts/validate-site.mjs
+        run: |
+          node scripts/validate-site.mjs
+          node scripts/test-national-catalog-import.mjs
