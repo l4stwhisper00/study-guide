@@ -238,15 +238,15 @@ function extractProgramPrice(html, tables, alias, annualIndex = 0) {
   const tableValue = extractTablePrice(tables, alias, annualIndex);
   if (tableValue !== null) return tableValue;
   const plain = stripHtml(html);
-  const lower = plain.toLocaleLowerCase('ru-RU');
-  const needle = String(alias).toLocaleLowerCase('ru-RU');
-  const position = lower.indexOf(needle);
-  if (position < 0) return null;
-  const rowStart = plain.lastIndexOf('\n', position) + 1;
-  const rowEndAt = plain.indexOf('\n', position);
-  const row = plain.slice(rowStart, rowEndAt >= 0 ? rowEndAt : position + 1200);
-  const values = moneyValues(row);
-  return values.length ? values[Math.min(annualIndex, values.length - 1)] : null;
+  const wanted = normalize(alias);
+  const lines = plain.split(/\n+/).map(line => line.trim()).filter(Boolean);
+  for (let index = 0; index < lines.length; index += 1) {
+    if (!normalize(lines[index]).includes(wanted)) continue;
+    const nearby = lines.slice(index, Math.min(lines.length, index + 6)).join(' ');
+    const values = moneyValues(nearby);
+    if (values.length) return values[Math.min(annualIndex, values.length - 1)];
+  }
+  return null;
 }
 
 function extractRosnouBudget(tables, alias) {
@@ -274,7 +274,7 @@ function semesterMinimum(text, label) {
   return Number.isFinite(value) ? value : null;
 }
 
-function miktAnnualPrice(text, form, sourceKind) {
+function miktAnnualPrice(text, form) {
   const clean = stripHtml(text).replace(/\u00a0/g, ' ').replace(/\s+/g, ' ');
   const patterns = {
     fulltime: /очная форма\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i,
@@ -282,11 +282,7 @@ function miktAnnualPrice(text, form, sourceKind) {
     design: /очная форма\s*\(\s*направление\s*["«]?дизайн["»]?\s*\)\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i,
     graphic: /очная форма\s*\(\s*профессия\s*["«]?графический дизайнер["»]?\s*\)\s*[—–-]\s*(\d+(?:[,.]\d+)?)\s*тыс\.?\s*руб/i
   };
-  const pattern = patterns[form];
-  if (!pattern) return null;
-  const header = clean.toLocaleLowerCase('ru-RU').indexOf('стоимость обучения в 2026');
-  const section = header >= 0 ? clean.slice(header) : clean;
-  const match = section.match(pattern);
+  const match = patterns[form]?.exec(clean);
   return match ? Math.round(Number(match[1].replace(',', '.')) * 1000) : null;
 }
 
@@ -359,6 +355,8 @@ for (const source of sources) {
     }
     result.year = year;
     const tables = extractTables(page.html);
+    result.tableCount = tables.length;
+    result.tableRows = tables.reduce((sum, table) => sum + table.rows.length, 0);
 
     if (source.kind === 'table-prices') {
       for (const item of source.programs) {
@@ -412,7 +410,7 @@ for (const source of sources) {
       }
     } else if (source.kind === 'mikt-price' || source.kind === 'mikt-college-price') {
       for (const item of source.programs) {
-        const annualRub = miktAnnualPrice(page.text, item.form, source.kind);
+        const annualRub = miktAnnualPrice(page.text, item.form);
         if (!annualRub || annualRub < 1000) continue;
         appendUpdate(updates, source.schoolId, {
           kind: 'tuition',
@@ -445,7 +443,11 @@ for (const source of sources) {
     }
 
     result.status = result.extractedPrices + result.extractedBudgetPlaces > 0 ? 'updated' : 'needs_review';
-    if (result.status === 'needs_review') result.warnings.push('no_structured_values_extracted');
+    if (result.status === 'needs_review') {
+      result.warnings.push('no_structured_values_extracted');
+      const marker = page.text.toLocaleLowerCase('ru-RU').indexOf('стоимость');
+      result.debugPreview = (marker >= 0 ? page.text.slice(marker, marker + 700) : page.text.slice(0, 450)).replace(/\\s+/g, ' ');
+    }
   } catch (error) {
     result.status = 'error';
     result.warnings.push(error?.name === 'TimeoutError' ? 'source_timeout' : 'source_fetch_or_parse_error');
@@ -494,7 +496,7 @@ console.log('Official admissions sources: ' + okSources + '/' + results.length +
 for (const item of results) {
   console.log(item.id + ': ' + item.status +
     ' (prices=' + item.extractedPrices + ', funded=' + item.extractedBudgetPlaces + ')' +
-    (item.warnings.length ? ' warnings=' + item.warnings.join(',') : ''));
+    (item.warnings.length ? ' warnings=' + item.warnings.join(',') : '') +\n    (item.tableCount !== undefined ? ' tables=' + item.tableCount + ' rows=' + item.tableRows : '') +\n    (item.debugPreview ? ' preview=' + item.debugPreview : ''));
 }
 
 if (!checkOnly) {
