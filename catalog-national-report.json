@@ -1,10 +1,10 @@
 {
   "generatedAt": "2026-11-28",
   "totals": {
-    "nationalLayerRecords": 314,
-    "nationalLayerSettlements": 119,
-    "combinedCatalogueRecords": 704,
-    "combinedCatalogueSettlements": 219,
+    "nationalLayerRecords": 400,
+    "nationalLayerSettlements": 133,
+    "combinedCatalogueRecords": 790,
+    "combinedCatalogueSettlements": 227,
     "baseMainRecords": 390,
     "baseMainSettlements": 111
   },
@@ -94,12 +94,76 @@
       "records": 8,
       "url": "https://monitoring.miccedu.ru/iam/2025/_spo/material.php?id=10608&type=2",
       "note": "8 rows selected. Discrepancies: 104/132; incomplete: 25/132."
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг эффективности деятельности образовательных организаций высшего образования 2025, Пермский край",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 21,
+      "records": 12,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10803&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг эффективности деятельности образовательных организаций высшего образования 2025, Республика Башкортостан",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 27,
+      "records": 12,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10806&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг эффективности деятельности образовательных организаций высшего образования 2025, Нижегородская область",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 30,
+      "records": 11,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10401&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг эффективности деятельности образовательных организаций высшего образования 2025, Воронежская область",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 26,
+      "records": 14,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10502&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, г. Москва",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 151,
+      "records": 8,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10301&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, Московская область",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 55,
+      "records": 6,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10302&type=2",
+      "note": "Two exact name/city duplicates were skipped because the records were already present in the SPO-based catalogue."
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, Санкт-Петербург",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 64,
+      "records": 4,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10201&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, Свердловская область",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 34,
+      "records": 10,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10804&type=2"
+    },
+    {
+      "name": "Минобрнауки РФ — мониторинг вузов 2025, Челябинская область",
+      "snapshotDate": "2026-02-03",
+      "listedRows": 27,
+      "records": 9,
+      "url": "https://monitoring.miccedu.ru/iam/2025/_vpo/material.php?id=10805&type=2"
     }
   ],
-  "importedRecords": 314,
-  "uniqueCities": 119,
+  "importedRecords": 400,
+  "uniqueCities": 133,
   "byType": {
-    "vuz": 60,
+    "vuz": 146,
     "college": 254
   },
   "quality": {
@@ -114,13 +178,16 @@
     "locationKinds": [
       "institution",
       "branch"
-    ]
+    ],
+    "skippedNewHigherEducationRowsAsDuplicates": 4
   },
   "caveats": [
     "В региональных страницах мониторинга выявлены расхождения в статистических показателях. Импортируются только названия, населённые пункты и опубликованные адреса; приёмные показатели, стоимость обучения, бюджетные места и статусы лицензии из этих таблиц не выводятся.",
     "Часть строк — филиалы, а не самостоятельные юридические лица; карточки отражают учебные площадки, а не число уникальных юридических лиц.",
     "Год снимка отображается как 2025, без выдуманной точной даты.",
     "Санкт-Петербург, Свердловская область и город Москва представлены частичными выборками; для Новосибирской, Ростовской, Самарской областей, Краснодарского края и Татарстана внесены начальные выборки, а не полные региональные списки.",
-    "Цель 4 000+ заведений и 1 000+ городов пока не достигнута."
+    "Цель 4 000+ заведений и 1 000+ городов пока не достигнута.",
+    "Из мониторинга эффективности вузов выбраны 49 записей из четырёх региональных перечней (Пермский край 12/21, Башкортостан 12/27, Нижегородская область 11/30, Воронежская область 14/26). Это выборки из организаций, принявших участие в мониторинге 2025 года, обновлённом 03.02.2026; они не являются полным реестром вузов.",
+    "Из дополнительных страниц мониторинга вузов выбраны 41 строки по Москве, Московской области, Санкт-Петербургу, Свердловской и Челябинской областям; после удаления четырёх повторов добавлено 37 новых карточек. Эти страницы включают участвовавшие организации и филиалы, а не все существующие образовательные организации."
   ]
 }
