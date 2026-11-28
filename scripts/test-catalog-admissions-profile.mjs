@@ -61,6 +61,14 @@ assertRows(kfu.minimumScores, 'KFU subject minimum scores', {
   test: row => row.score >= 40 && row.score <= 100 && row.subject
 });
 assert(kfu.minimumScores.length >= 12, 'KFU subject minimum-score data is incomplete');
+assertRows(kfu.tuition, 'KFU first-year tuition', {
+  field: 'annualRub',
+  test: row => row.annualRub > 0 && row.monthlyIsEquivalent === true &&
+    Math.abs(row.annualRub / 12 - row.monthlyRub) < 0.01
+});
+assert(kfu.tuition.length >= 35, 'KFU 2026/27 tuition rows are incomplete');
+assert(kfu.tuition.find(row => row.program === 'Лечебное дело')?.annualRub === 349752,
+  'KFU 2026/27 General Medicine tuition changed unexpectedly');
 
 const rosnou = getCatalogDetails(school('rosnou-moscow'));
 assertRows(rosnou.budgetPlaces, 'RosNOU budget places', {
